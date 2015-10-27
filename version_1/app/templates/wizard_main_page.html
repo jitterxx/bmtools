@@ -1,0 +1,30 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        % for step in wizard_steps:
+            <div class="col-md-4 col-sm-2 text-center">
+                <a href="step${step}">
+                    <h1>Шаг ${step}</h1>
+                </a>
+                <p>Прогресс выполнения</p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        <span class="sr-only">40% Complete (success)</span>40%
+                    </div>
+                </div>
+                <p>Описание</p>
+            </div>
+        % endfor
+    </div>
+
+
+</div>
+
