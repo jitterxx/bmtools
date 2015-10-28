@@ -24,18 +24,35 @@
                 </div>
 
             </form>
-            % if status == "ok":
-                <hr>
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Ваша отрасль сохранена!</strong> Нажмите Дальше для продолжения.
-                </div>
-                <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Дальше</a>
-            % else:
+
+            % if status == "new":
                 <p>
                     <button class="btn btn-default" type="submit" form="pick_industry">Сохранить</button>
                 </p>
+            % elif status == "show":
+                <p>
+                    Редактировать
+                </p>
+                <hr>
+                <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Дальше</a>
+
+            % elif status == "save":
+                % if op_status:
+                    <hr>
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Ваша отрасль сохранена!</strong> Нажмите Дальше для продолжения.
+                    </div>
+                    <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Дальше</a>
+                % else:
+                    <hr>
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Ошибка при сохранении!</strong> Обратитесь к администратору.
+                    </div>
+                % endif
             % endif
+
         </div>
     </div>
 

@@ -28,25 +28,63 @@ class Wizard(object):
         tmpl = lookup.get_template("wizard_main_page.html")
         params = cherrypy.request.headers
 
+        # check wizard configuration exist
+        session = BMTObjects.Session()
+        wiz_conf = BMTObjects.wizard_conf_read(session)
+        if wiz_conf:
+            print "Wizard configuration exist"
+        else:
+            print "Wizard configuration NOT exist"
+            wiz_conf = BMTObjects.WizardConfiguration()
+            try:
+                session.add(wiz_conf)
+                session.commit()
+            except:
+                pass
+            else:
+                print "Wizard configuration created."
+            finally:
+                session.close()
+
         return tmpl.render(params=params, wizard_steps=[x for x in range(1, 15)])
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step1(self, industry=None):
+    def step1(self, industry=None,action=None):
         tmpl = lookup.get_template("wizard_step1_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
         step_desc['full_description'] = BMTObjects.get_desc("step1_full_description")
         step_desc['name'] = "Шаг 1. " + BMTObjects.get_desc("step1_name")
         step_desc['next_step'] = "2"
-        def_industry = {"1": "Дистрибьюция"}
-        status = ""
 
+        session = BMTObjects.Session()
+        wiz_conf = BMTObjects.wizard_conf_read(session)
+
+        if wiz_conf.industry == "":
+            status = "new"
+        else:
+            status = "show"
+
+        op_status = None
         if industry:
+            status = "save"
             print "Сохраняем отрасль: %s" % industry
-            status = "ok"
+            wiz_conf.industry = industry
+            wiz_conf.cur_step = "1"
+            wiz_conf.status = "Выполняется шаг 1"
+            op_status = BMTObjects.wizard_conf_save(session)
 
-        return tmpl.render(params=params, step_desc=step_desc, industry=def_industry, status=status)
+        if action == "edit":
+            status = "edit"
+
+        print("status: %s" % status)
+        print("op_status: %s" % op_status)
+        print("industry: %s" % wiz_conf.industry)
+
+        session.close()
+        return tmpl.render(params=params, step_desc=step_desc, industry=BMTObjects.def_industry,
+                           status=status, wiz_conf=wiz_conf,op_status=op_status)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -54,15 +92,8 @@ class Wizard(object):
         tmpl = lookup.get_template("wizard_step_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
-        step_desc['full_description'] = """
-            <p>Дерево отражающее организационную структуру компании, в которое можно
-            добавлять подчиненные единицы.<p>Каждая ветка означает организационную единицу. </p>
-
-            <p>Переход на следующий шаг, после составления структуры.
-            Должна быть создана хотя бы одна организационная единица.
-            </p>
-            """
-        step_desc['name'] = "Шаг 2. Оганизационная структура компании"
+        step_desc['full_description'] = BMTObjects.get_desc("step2_full_description")
+        step_desc['name'] = "Шаг 2. " + BMTObjects.get_desc("step2_name")
         step_desc['next_step'] = "3"
 
         return tmpl.render(params=params, step_desc=step_desc)
@@ -217,6 +248,7 @@ class Root(object):
 
     auth = AuthController()
     wizard = Wizard()
+
     @cherrypy.expose
     @require(member_of("users"))
     def index(self):

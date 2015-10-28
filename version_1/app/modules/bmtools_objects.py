@@ -17,7 +17,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer
 from sqlalchemy import or_, and_, desc
-from configurations import sql_uri
+from configurations import sql_uri, def_industry
 import uuid
 import logging
 
@@ -201,3 +201,67 @@ def get_desc(code):
         print "Описание найдено"
         logging.warning("Описание с кодом %s найдено" % code)
         return description.text
+
+
+class WizardConfiguration(Base):
+    """
+    Класс для хранения настроек мастера: текущий этап, выбранные опции, прочие данные которые необходимо запомнить.
+
+    :parameter id: sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    :parameter industry: отрасль (sqlalchemy.Column(sqlalchemy.String(256)))
+    :parameter cur_step: номер текущего шага в мастере (sqlalchemy.Column(sqlalchemy.String(256)))
+    :parameter status: общий статус мастера (sqlalchemy.Column(sqlalchemy.String(256)))
+
+    """
+
+    __tablename__ = 'wizard_configuration'
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    industry = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    cur_step = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    status = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+    def __init__(self):
+        self.industry = ""
+        self.cur_step = ""
+        self.status = ""
+
+
+def wizard_conf_save(session):
+    """
+    Сохранение новых данных в базу.
+
+    :return: True - сохранение прошло успешно, False - ошибки при сохранении
+    """
+
+    try:
+        session.commit()
+    except Exception as e:
+        print(str(e))
+        return False
+    else:
+        return True
+
+
+def wizard_conf_read(session):
+    """
+    Чтение настроек мастера из базы.
+
+    :return: None - ошибки при чтении конфигурации, или объект класса WizardConfiguration
+    """
+
+    try:
+        wiz_conf = session.query(WizardConfiguration).one()
+    except sqlalchemy.orm.exc.NoResultFound:
+        print "Конфигурация мастера не найдена."
+        logging.warning("Конфигурация мастера не найдена.")
+        return None
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        # status = [False,"Такой логин существует. Задайте другой."]
+        print "Найдено множество конфигураций."
+        logging.warning("Найдено множество конфигураций.")
+        raise Exception(e)
+    else:
+        print "Конфигурация найдена."
+        logging.warning("Конфигурация найдена.")
+        return wiz_conf
