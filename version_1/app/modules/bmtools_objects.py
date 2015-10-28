@@ -265,3 +265,9 @@ def wizard_conf_read(session):
         print "Конфигурация найдена."
         logging.warning("Конфигурация найдена.")
         return wiz_conf
+
+class OrgStucture(Base):
+    """
+    Класс для хранения орг структуры компании
+
+    """
