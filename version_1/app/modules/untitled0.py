@@ -20,8 +20,6 @@ sys.setdefaultencoding("utf-8")
 session = BMTObjects.Session()
 
 
-user = BMTObjects.get_user_by_login("test")
-user.read()
-print "Группы: %s" % user.list_access_groups
+print BMTObjects.get_parent_ids()
 
 session.close()

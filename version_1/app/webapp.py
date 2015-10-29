@@ -88,15 +88,31 @@ class Wizard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step2(self):
-        tmpl = lookup.get_template("wizard_step_page.html")
+    def step2(self, action=None, org_id=None, parentid=None, org_name=None, director=None):
+        tmpl = lookup.get_template("wizard_step2_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
         step_desc['full_description'] = BMTObjects.get_desc("step2_full_description")
         step_desc['name'] = "Шаг 2. " + BMTObjects.get_desc("step2_name")
         step_desc['next_step'] = "3"
 
-        return tmpl.render(params=params, step_desc=step_desc)
+        if action == "new":
+            # show current structure
+            pass
+        elif action == "add":
+            # page with form for add new org object to structure
+            pass
+        elif action == "edit":
+            # edit object from structure
+            pass
+        elif action == "save":
+            # save object to structure
+            pass
+        else:
+            # if action is None: show the org structure
+            pass
+
+        return tmpl.render(params=params, step_desc=step_desc, action=action)
 
     @cherrypy.expose
     @require(member_of("users"))

@@ -266,8 +266,51 @@ def wizard_conf_read(session):
         logging.warning("Конфигурация найдена.")
         return wiz_conf
 
+
 class OrgStucture(Base):
     """
     Класс для хранения орг структуры компании
 
     """
+
+    __tablename__ = 'org_structure'
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    parentid = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    org_name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    director = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+
+    def __init__(self):
+        self.parentid = 0
+        self.org_name = ""
+        self.director = 0
+
+
+def get_parent_ids():
+    """
+    Возвращает список ИД всех уже существующих организационных единиц
+
+    :return:список с ИД, если ничего нет, то пустой
+    """
+
+    session = Session()
+    try:
+        resp = session.query(OrgStucture).all()
+    except Exception as e:
+        print "Ошибка при поиске организационноых единиц. " + str(e)
+        return list()
+    else:
+        return resp
+    finally:
+        session.close()
+
+def get_org_structure():
+    """
+    Возвращает структуру организации.
+
+    :return:
+    """
+
+    pass
+
+

@@ -3119,3 +3119,209 @@ INFO     [2015-10-28 18:55:03,732] [28/Oct/2015:18:55:03] ENGINE Bus EXITING
 INFO     [2015-10-28 18:55:03,732] [28/Oct/2015:18:55:03] ENGINE Bus EXITED
 INFO     [2015-10-28 18:55:03,762] [28/Oct/2015:18:55:03] ENGINE Waiting for child threads to terminate...
 INFO     [2015-10-28 18:55:03,763] [28/Oct/2015:18:55:03] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:26:15,282] [29/Oct/2015:12:26:15] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:26:15,283] [29/Oct/2015:12:26:15] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:26:15,283] [29/Oct/2015:12:26:15] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:26:15,283] [29/Oct/2015:12:26:15] ENGINE Bus STARTING
+INFO     [2015-10-29 12:26:15,284] [29/Oct/2015:12:26:15] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:26:15,288] [29/Oct/2015:12:26:15] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:26:15,394] [29/Oct/2015:12:26:15] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:26:15,394] [29/Oct/2015:12:26:15] ENGINE Bus STARTED
+INFO     [2015-10-29 12:26:25,240] [29/Oct/2015:12:26:25] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-10-29 12:26:25,242] 127.0.0.1 - - [29/Oct/2015:12:26:25] "GET /wizard/step2 HTTP/1.1" 303 119 "http://127.0.0.1:8080/wizard/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:25,279] 127.0.0.1 - - [29/Oct/2015:12:26:25] "GET /auth/login?from_page=/wizard/step2 HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizard/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:25,308] 127.0.0.1 - - [29/Oct/2015:12:26:25] "GET /static/css/signin.css HTTP/1.1" 200 792 "http://127.0.0.1:8080/auth/login?from_page=/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:25,359] 127.0.0.1 - - [29/Oct/2015:12:26:25] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://127.0.0.1:8080/auth/login?from_page=/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:25,382] 127.0.0.1 - - [29/Oct/2015:12:26:25] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://127.0.0.1:8080/auth/login?from_page=/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:27,315] Пользователь с логином test найден
+INFO     [2015-10-29 12:26:27,317] 127.0.0.1 - test [29/Oct/2015:12:26:27] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:27,345] Пользователь с логином test найден
+INFO     [2015-10-29 12:26:27,365] 127.0.0.1 - test [29/Oct/2015:12:26:27] "GET / HTTP/1.1" 200 1329 "http://127.0.0.1:8080/auth/login?from_page=/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:27,391] 127.0.0.1 - - [29/Oct/2015:12:26:27] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:28,659] Пользователь с логином test найден
+INFO     [2015-10-29 12:26:28,660] 127.0.0.1 - test [29/Oct/2015:12:26:28] "GET /wizard HTTP/1.1" 301 104 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:28,786] Пользователь с логином test найден
+WARNING  [2015-10-29 12:26:28,852] Конфигурация найдена.
+INFO     [2015-10-29 12:26:28,853] 127.0.0.1 - test [29/Oct/2015:12:26:28] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:30,896] Пользователь с логином test найден
+WARNING  [2015-10-29 12:26:30,907] Описание с кодом step1_full_description найдено
+WARNING  [2015-10-29 12:26:30,918] Описание с кодом step1_name найдено
+WARNING  [2015-10-29 12:26:30,919] Конфигурация найдена.
+INFO     [2015-10-29 12:26:30,921] 127.0.0.1 - test [29/Oct/2015:12:26:30] "GET /wizard/step1 HTTP/1.1" 200 1664 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:32,914] Пользователь с логином test найден
+WARNING  [2015-10-29 12:26:32,916] Конфигурация найдена.
+INFO     [2015-10-29 12:26:32,917] 127.0.0.1 - test [29/Oct/2015:12:26:32] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/wizard/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:34,111] Пользователь с логином test найден
+WARNING  [2015-10-29 12:26:34,167] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 12:26:34,169] Описание с кодом step2_name найдено
+INFO     [2015-10-29 12:26:34,170] 127.0.0.1 - test [29/Oct/2015:12:26:34] "GET /wizard/step2 HTTP/1.1" 200 1694 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 12:26:54,757] Пользователь с логином test найден
+WARNING  [2015-10-29 12:26:54,764] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 12:26:54,803] Описание с кодом step2_name найдено
+INFO     [2015-10-29 12:26:54,804] 127.0.0.1 - test [29/Oct/2015:12:26:54] "GET /wizard/step2 HTTP/1.1" 200 1679 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:54,823] 127.0.0.1 - - [29/Oct/2015:12:26:54] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:54,828] 127.0.0.1 - - [29/Oct/2015:12:26:54] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:26:54,831] 127.0.0.1 - - [29/Oct/2015:12:26:54] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 12:29:30,727] [29/Oct/2015:12:29:30] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-10-29 12:29:30,727] [29/Oct/2015:12:29:30] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:29:30,728] [29/Oct/2015:12:29:30] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:29:30,733] [29/Oct/2015:12:29:30] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:29:30,733] [29/Oct/2015:12:29:30] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:29:30,733] [29/Oct/2015:12:29:30] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-10-29 12:29:30,734] [29/Oct/2015:12:29:30] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:29:30,734] [29/Oct/2015:12:29:30] ENGINE Bus EXITING
+INFO     [2015-10-29 12:29:30,734] [29/Oct/2015:12:29:30] ENGINE Bus EXITED
+INFO     [2015-10-29 12:29:30,826] [29/Oct/2015:12:29:30] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:29:30,826] [29/Oct/2015:12:29:30] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:29:31,373] [29/Oct/2015:12:29:31] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:29:31,373] [29/Oct/2015:12:29:31] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:29:31,373] [29/Oct/2015:12:29:31] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:29:31,374] [29/Oct/2015:12:29:31] ENGINE Bus STARTING
+INFO     [2015-10-29 12:29:31,374] [29/Oct/2015:12:29:31] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:29:31,375] [29/Oct/2015:12:29:31] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:29:31,478] [29/Oct/2015:12:29:31] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:29:31,479] [29/Oct/2015:12:29:31] ENGINE Bus STARTED
+INFO     [2015-10-29 12:32:52,803] [29/Oct/2015:12:32:52] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-10-29 12:32:52,803] [29/Oct/2015:12:32:52] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:32:52,803] [29/Oct/2015:12:32:52] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:32:52,806] [29/Oct/2015:12:32:52] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:32:52,806] [29/Oct/2015:12:32:52] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:32:52,806] [29/Oct/2015:12:32:52] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:32:52,807] [29/Oct/2015:12:32:52] ENGINE Bus EXITING
+INFO     [2015-10-29 12:32:52,807] [29/Oct/2015:12:32:52] ENGINE Bus EXITED
+INFO     [2015-10-29 12:32:52,842] [29/Oct/2015:12:32:52] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:32:52,842] [29/Oct/2015:12:32:52] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:32:53,251] [29/Oct/2015:12:32:53] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:32:53,252] [29/Oct/2015:12:32:53] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:32:53,252] [29/Oct/2015:12:32:53] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:32:53,252] [29/Oct/2015:12:32:53] ENGINE Bus STARTING
+INFO     [2015-10-29 12:32:53,253] [29/Oct/2015:12:32:53] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:32:53,253] [29/Oct/2015:12:32:53] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:32:53,357] [29/Oct/2015:12:32:53] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:32:53,357] [29/Oct/2015:12:32:53] ENGINE Bus STARTED
+INFO     [2015-10-29 12:34:59,163] [29/Oct/2015:12:34:59] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-10-29 12:34:59,164] [29/Oct/2015:12:34:59] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:34:59,164] [29/Oct/2015:12:34:59] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:34:59,178] [29/Oct/2015:12:34:59] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:34:59,178] [29/Oct/2015:12:34:59] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:34:59,179] [29/Oct/2015:12:34:59] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:34:59,179] [29/Oct/2015:12:34:59] ENGINE Bus EXITING
+INFO     [2015-10-29 12:34:59,179] [29/Oct/2015:12:34:59] ENGINE Bus EXITED
+INFO     [2015-10-29 12:34:59,262] [29/Oct/2015:12:34:59] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:34:59,262] [29/Oct/2015:12:34:59] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:34:59,662] [29/Oct/2015:12:34:59] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:34:59,662] [29/Oct/2015:12:34:59] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:34:59,662] [29/Oct/2015:12:34:59] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:34:59,663] [29/Oct/2015:12:34:59] ENGINE Bus STARTING
+INFO     [2015-10-29 12:34:59,664] [29/Oct/2015:12:34:59] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:34:59,664] [29/Oct/2015:12:34:59] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:34:59,768] [29/Oct/2015:12:34:59] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:34:59,768] [29/Oct/2015:12:34:59] ENGINE Bus STARTED
+INFO     [2015-10-29 12:36:30,280] [29/Oct/2015:12:36:30] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-10-29 12:36:30,282] [29/Oct/2015:12:36:30] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:36:30,282] [29/Oct/2015:12:36:30] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:36:30,286] [29/Oct/2015:12:36:30] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:36:30,286] [29/Oct/2015:12:36:30] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:36:30,287] [29/Oct/2015:12:36:30] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:36:30,287] [29/Oct/2015:12:36:30] ENGINE Bus EXITING
+INFO     [2015-10-29 12:36:30,287] [29/Oct/2015:12:36:30] ENGINE Bus EXITED
+INFO     [2015-10-29 12:36:30,290] [29/Oct/2015:12:36:30] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:36:30,291] [29/Oct/2015:12:36:30] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:36:30,760] [29/Oct/2015:12:36:30] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:36:30,761] [29/Oct/2015:12:36:30] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:36:30,761] [29/Oct/2015:12:36:30] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:36:30,761] [29/Oct/2015:12:36:30] ENGINE Bus STARTING
+INFO     [2015-10-29 12:36:30,762] [29/Oct/2015:12:36:30] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:36:30,762] [29/Oct/2015:12:36:30] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:36:30,869] [29/Oct/2015:12:36:30] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:36:30,869] [29/Oct/2015:12:36:30] ENGINE Bus STARTED
+INFO     [2015-10-29 12:37:00,974] [29/Oct/2015:12:37:00] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-10-29 12:37:00,974] [29/Oct/2015:12:37:00] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:37:00,974] [29/Oct/2015:12:37:00] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:37:00,977] [29/Oct/2015:12:37:00] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:37:00,977] [29/Oct/2015:12:37:00] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:37:00,977] [29/Oct/2015:12:37:00] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:37:00,977] [29/Oct/2015:12:37:00] ENGINE Bus EXITING
+INFO     [2015-10-29 12:37:00,978] [29/Oct/2015:12:37:00] ENGINE Bus EXITED
+INFO     [2015-10-29 12:37:01,051] [29/Oct/2015:12:37:01] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:37:01,051] [29/Oct/2015:12:37:01] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:37:01,436] [29/Oct/2015:12:37:01] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:37:01,436] [29/Oct/2015:12:37:01] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:37:01,436] [29/Oct/2015:12:37:01] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:37:01,437] [29/Oct/2015:12:37:01] ENGINE Bus STARTING
+INFO     [2015-10-29 12:37:01,437] [29/Oct/2015:12:37:01] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:37:01,438] [29/Oct/2015:12:37:01] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:37:01,541] [29/Oct/2015:12:37:01] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:37:01,542] [29/Oct/2015:12:37:01] ENGINE Bus STARTED
+INFO     [2015-10-29 12:38:38,110] [29/Oct/2015:12:38:38] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-10-29 12:38:38,111] [29/Oct/2015:12:38:38] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:38:38,111] [29/Oct/2015:12:38:38] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:38:38,116] [29/Oct/2015:12:38:38] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:38:38,117] [29/Oct/2015:12:38:38] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:38:38,117] [29/Oct/2015:12:38:38] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:38:38,117] [29/Oct/2015:12:38:38] ENGINE Bus EXITING
+INFO     [2015-10-29 12:38:38,118] [29/Oct/2015:12:38:38] ENGINE Bus EXITED
+INFO     [2015-10-29 12:38:38,161] [29/Oct/2015:12:38:38] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:38:38,161] [29/Oct/2015:12:38:38] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:38:38,674] [29/Oct/2015:12:38:38] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:38:38,675] [29/Oct/2015:12:38:38] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:38:38,675] [29/Oct/2015:12:38:38] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:38:38,675] [29/Oct/2015:12:38:38] ENGINE Bus STARTING
+INFO     [2015-10-29 12:38:38,676] [29/Oct/2015:12:38:38] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:38:38,676] [29/Oct/2015:12:38:38] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:38:38,781] [29/Oct/2015:12:38:38] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:38:38,782] [29/Oct/2015:12:38:38] ENGINE Bus STARTED
+INFO     [2015-10-29 12:40:27,499] [29/Oct/2015:12:40:27] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-10-29 12:40:27,500] [29/Oct/2015:12:40:27] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:40:27,500] [29/Oct/2015:12:40:27] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:40:27,503] [29/Oct/2015:12:40:27] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:40:27,503] [29/Oct/2015:12:40:27] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:40:27,503] [29/Oct/2015:12:40:27] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:40:27,503] [29/Oct/2015:12:40:27] ENGINE Bus EXITING
+INFO     [2015-10-29 12:40:27,503] [29/Oct/2015:12:40:27] ENGINE Bus EXITED
+INFO     [2015-10-29 12:40:27,519] [29/Oct/2015:12:40:27] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:40:27,520] [29/Oct/2015:12:40:27] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:40:28,038] [29/Oct/2015:12:40:28] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:40:28,038] [29/Oct/2015:12:40:28] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:40:28,039] [29/Oct/2015:12:40:28] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:40:28,039] [29/Oct/2015:12:40:28] ENGINE Bus STARTING
+INFO     [2015-10-29 12:40:28,040] [29/Oct/2015:12:40:28] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:40:28,040] [29/Oct/2015:12:40:28] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:40:28,144] [29/Oct/2015:12:40:28] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:40:28,145] [29/Oct/2015:12:40:28] ENGINE Bus STARTED
+INFO     [2015-10-29 12:41:08,346] [29/Oct/2015:12:41:08] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-10-29 12:41:08,347] [29/Oct/2015:12:41:08] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:41:08,347] [29/Oct/2015:12:41:08] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:41:08,350] [29/Oct/2015:12:41:08] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:41:08,350] [29/Oct/2015:12:41:08] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:41:08,350] [29/Oct/2015:12:41:08] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:41:08,350] [29/Oct/2015:12:41:08] ENGINE Bus EXITING
+INFO     [2015-10-29 12:41:08,351] [29/Oct/2015:12:41:08] ENGINE Bus EXITED
+INFO     [2015-10-29 12:41:08,450] [29/Oct/2015:12:41:08] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:41:08,451] [29/Oct/2015:12:41:08] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:41:08,972] [29/Oct/2015:12:41:08] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:41:08,972] [29/Oct/2015:12:41:08] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:41:08,972] [29/Oct/2015:12:41:08] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:41:08,972] [29/Oct/2015:12:41:08] ENGINE Bus STARTING
+INFO     [2015-10-29 12:41:08,973] [29/Oct/2015:12:41:08] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:41:08,977] [29/Oct/2015:12:41:08] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:41:09,081] [29/Oct/2015:12:41:09] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:41:09,082] [29/Oct/2015:12:41:09] ENGINE Bus STARTED
+INFO     [2015-10-29 12:41:11,008] [29/Oct/2015:12:41:11] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-10-29 12:41:11,009] [29/Oct/2015:12:41:11] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 12:41:11,009] [29/Oct/2015:12:41:11] ENGINE Bus STOPPING
+INFO     [2015-10-29 12:41:11,012] [29/Oct/2015:12:41:11] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 12:41:11,012] [29/Oct/2015:12:41:11] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:41:11,012] [29/Oct/2015:12:41:11] ENGINE Bus STOPPED
+INFO     [2015-10-29 12:41:11,012] [29/Oct/2015:12:41:11] ENGINE Bus EXITING
+INFO     [2015-10-29 12:41:11,013] [29/Oct/2015:12:41:11] ENGINE Bus EXITED
+INFO     [2015-10-29 12:41:11,101] [29/Oct/2015:12:41:11] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 12:41:11,102] [29/Oct/2015:12:41:11] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 12:41:11,613] [29/Oct/2015:12:41:11] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 12:41:11,613] [29/Oct/2015:12:41:11] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 12:41:11,613] [29/Oct/2015:12:41:11] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 12:41:11,614] [29/Oct/2015:12:41:11] ENGINE Bus STARTING
+INFO     [2015-10-29 12:41:11,615] [29/Oct/2015:12:41:11] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 12:41:11,635] [29/Oct/2015:12:41:11] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 12:41:11,739] [29/Oct/2015:12:41:11] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 12:41:11,739] [29/Oct/2015:12:41:11] ENGINE Bus STARTED
