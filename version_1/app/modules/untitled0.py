@@ -20,6 +20,10 @@ sys.setdefaultencoding("utf-8")
 session = BMTObjects.Session()
 
 
-print BMTObjects.get_org_structure()[0].org_name
+st, shift = BMTObjects.get_structure_sorted()
+for one in st:
+    print one.id, one.parentid, one.org_name
+
+print shift.__len__()
 
 session.close()

@@ -5131,3 +5131,250 @@ WARNING  [2015-10-29 15:49:52,056] Пользователь с логином te
 WARNING  [2015-10-29 15:49:52,098] Описание с кодом step2_full_description найдено
 WARNING  [2015-10-29 15:49:52,121] Описание с кодом step2_name найдено
 INFO     [2015-10-29 15:49:52,161] 127.0.0.1 - test [29/Oct/2015:15:49:52] "GET /wizard/step2?action=delete&org_id=8 HTTP/1.1" 200 1940 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 16:18:48,714] [29/Oct/2015:16:18:48] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-10-29 16:18:48,714] [29/Oct/2015:16:18:48] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 16:18:48,715] [29/Oct/2015:16:18:48] ENGINE Bus STOPPING
+INFO     [2015-10-29 16:18:48,717] [29/Oct/2015:16:18:48] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 16:18:48,718] [29/Oct/2015:16:18:48] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-10-29 16:18:48,718] [29/Oct/2015:16:18:48] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 16:18:48,718] [29/Oct/2015:16:18:48] ENGINE Bus STOPPED
+INFO     [2015-10-29 16:18:48,718] [29/Oct/2015:16:18:48] ENGINE Bus EXITING
+INFO     [2015-10-29 16:18:48,718] [29/Oct/2015:16:18:48] ENGINE Bus EXITED
+INFO     [2015-10-29 16:18:48,776] [29/Oct/2015:16:18:48] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 16:18:48,777] [29/Oct/2015:16:18:48] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 16:18:49,259] [29/Oct/2015:16:18:49] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 16:18:49,260] [29/Oct/2015:16:18:49] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 16:18:49,260] [29/Oct/2015:16:18:49] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 16:18:49,260] [29/Oct/2015:16:18:49] ENGINE Bus STARTING
+INFO     [2015-10-29 16:18:49,261] [29/Oct/2015:16:18:49] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 16:18:49,261] [29/Oct/2015:16:18:49] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 16:18:49,366] [29/Oct/2015:16:18:49] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 16:18:49,366] [29/Oct/2015:16:18:49] ENGINE Bus STARTED
+INFO     [2015-10-29 16:19:41,622] [29/Oct/2015:16:19:41] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-10-29 16:19:41,622] [29/Oct/2015:16:19:41] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 16:19:41,623] [29/Oct/2015:16:19:41] ENGINE Bus STOPPING
+INFO     [2015-10-29 16:19:41,625] [29/Oct/2015:16:19:41] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 16:19:41,626] [29/Oct/2015:16:19:41] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 16:19:41,626] [29/Oct/2015:16:19:41] ENGINE Bus STOPPED
+INFO     [2015-10-29 16:19:41,626] [29/Oct/2015:16:19:41] ENGINE Bus EXITING
+INFO     [2015-10-29 16:19:41,626] [29/Oct/2015:16:19:41] ENGINE Bus EXITED
+INFO     [2015-10-29 16:19:41,678] [29/Oct/2015:16:19:41] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 16:19:41,678] [29/Oct/2015:16:19:41] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 16:19:42,072] [29/Oct/2015:16:19:42] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 16:19:42,072] [29/Oct/2015:16:19:42] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 16:19:42,072] [29/Oct/2015:16:19:42] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 16:19:42,073] [29/Oct/2015:16:19:42] ENGINE Bus STARTING
+INFO     [2015-10-29 16:19:42,073] [29/Oct/2015:16:19:42] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 16:19:42,074] [29/Oct/2015:16:19:42] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 16:19:42,178] [29/Oct/2015:16:19:42] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 16:19:42,178] [29/Oct/2015:16:19:42] ENGINE Bus STARTED
+INFO     [2015-10-29 16:27:34,257] [29/Oct/2015:16:27:34] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-10-29 16:27:34,258] [29/Oct/2015:16:27:34] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 16:27:34,258] [29/Oct/2015:16:27:34] ENGINE Bus STOPPING
+INFO     [2015-10-29 16:27:34,262] [29/Oct/2015:16:27:34] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 16:27:34,262] [29/Oct/2015:16:27:34] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 16:27:34,263] [29/Oct/2015:16:27:34] ENGINE Bus STOPPED
+INFO     [2015-10-29 16:27:34,263] [29/Oct/2015:16:27:34] ENGINE Bus EXITING
+INFO     [2015-10-29 16:27:34,263] [29/Oct/2015:16:27:34] ENGINE Bus EXITED
+INFO     [2015-10-29 16:27:34,306] [29/Oct/2015:16:27:34] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 16:27:34,306] [29/Oct/2015:16:27:34] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 16:59:46,458] [29/Oct/2015:16:59:46] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 16:59:46,459] [29/Oct/2015:16:59:46] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 16:59:46,459] [29/Oct/2015:16:59:46] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 16:59:46,459] [29/Oct/2015:16:59:46] ENGINE Bus STARTING
+INFO     [2015-10-29 16:59:46,460] [29/Oct/2015:16:59:46] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 16:59:46,460] [29/Oct/2015:16:59:46] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 16:59:46,573] [29/Oct/2015:16:59:46] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 16:59:46,574] [29/Oct/2015:16:59:46] ENGINE Bus STARTED
+INFO     [2015-10-29 16:59:49,352] [29/Oct/2015:16:59:49] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-10-29 16:59:49,353] 127.0.0.1 - - [29/Oct/2015:16:59:49] "GET /wizard/ HTTP/1.1" 303 114 "http://127.0.0.1:8080/wizard/step2?action=delete&org_id=8" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 16:59:49,378] 127.0.0.1 - - [29/Oct/2015:16:59:49] "GET /auth/login?from_page=/wizard/ HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizard/step2?action=delete&org_id=8" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 16:59:50,742] Пользователь с логином test найден
+INFO     [2015-10-29 16:59:50,743] 127.0.0.1 - test [29/Oct/2015:16:59:50] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 16:59:50,766] Пользователь с логином test найден
+INFO     [2015-10-29 16:59:50,790] 127.0.0.1 - test [29/Oct/2015:16:59:50] "GET / HTTP/1.1" 200 1329 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 16:59:51,611] Пользователь с логином test найден
+WARNING  [2015-10-29 16:59:51,706] Конфигурация найдена.
+INFO     [2015-10-29 16:59:51,707] 127.0.0.1 - test [29/Oct/2015:16:59:51] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 16:59:52,461] Пользователь с логином test найден
+WARNING  [2015-10-29 16:59:52,484] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 16:59:52,487] Описание с кодом step2_name найдено
+INFO     [2015-10-29 16:59:52,494] 127.0.0.1 - test [29/Oct/2015:16:59:52] "GET /wizard/step2 HTTP/1.1" 200 1926 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 16:59:55,986] Пользователь с логином test найден
+WARNING  [2015-10-29 16:59:56,031] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 16:59:56,076] Описание с кодом step2_name найдено
+INFO     [2015-10-29 16:59:56,079] 127.0.0.1 - test [29/Oct/2015:16:59:56] "GET /wizard/step2?action=add HTTP/1.1" 200 2069 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:00:04,750] Пользователь с логином test найден
+WARNING  [2015-10-29 17:00:04,753] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:00:04,758] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:00:04,806] 127.0.0.1 - test [29/Oct/2015:17:00:04] "POST /wizard/step2 HTTP/1.1" 200 1960 "http://127.0.0.1:8080/wizard/step2?action=add" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:04:37,538] [29/Oct/2015:17:04:37] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-10-29 17:04:37,538] [29/Oct/2015:17:04:37] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 17:04:37,539] [29/Oct/2015:17:04:37] ENGINE Bus STOPPING
+INFO     [2015-10-29 17:04:37,542] [29/Oct/2015:17:04:37] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 17:04:37,542] [29/Oct/2015:17:04:37] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 17:04:37,543] [29/Oct/2015:17:04:37] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-10-29 17:04:37,543] [29/Oct/2015:17:04:37] ENGINE Bus STOPPED
+INFO     [2015-10-29 17:04:37,543] [29/Oct/2015:17:04:37] ENGINE Bus EXITING
+INFO     [2015-10-29 17:04:37,543] [29/Oct/2015:17:04:37] ENGINE Bus EXITED
+INFO     [2015-10-29 17:04:37,635] [29/Oct/2015:17:04:37] ENGINE Waiting for child threads to terminate...
+INFO     [2015-10-29 17:04:37,636] [29/Oct/2015:17:04:37] ENGINE Re-spawning webapp.py
+INFO     [2015-10-29 17:04:38,142] [29/Oct/2015:17:04:38] ENGINE Listening for SIGHUP.
+INFO     [2015-10-29 17:04:38,142] [29/Oct/2015:17:04:38] ENGINE Listening for SIGTERM.
+INFO     [2015-10-29 17:04:38,142] [29/Oct/2015:17:04:38] ENGINE Listening for SIGUSR1.
+INFO     [2015-10-29 17:04:38,143] [29/Oct/2015:17:04:38] ENGINE Bus STARTING
+INFO     [2015-10-29 17:04:38,144] [29/Oct/2015:17:04:38] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-10-29 17:04:38,144] [29/Oct/2015:17:04:38] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-10-29 17:04:38,248] [29/Oct/2015:17:04:38] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-10-29 17:04:38,248] [29/Oct/2015:17:04:38] ENGINE Bus STARTED
+INFO     [2015-10-29 17:06:17,779] [29/Oct/2015:17:06:17] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-10-29 17:06:17,780] 127.0.0.1 - - [29/Oct/2015:17:06:17] "GET /wizard/ HTTP/1.1" 303 114 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:06:17,818] 127.0.0.1 - - [29/Oct/2015:17:06:17] "GET /auth/login?from_page=/wizard/ HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:06:18,818] Пользователь с логином test найден
+INFO     [2015-10-29 17:06:18,820] 127.0.0.1 - test [29/Oct/2015:17:06:18] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:06:18,865] Пользователь с логином test найден
+INFO     [2015-10-29 17:06:18,887] 127.0.0.1 - test [29/Oct/2015:17:06:18] "GET / HTTP/1.1" 200 1329 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:06:19,639] Пользователь с логином test найден
+WARNING  [2015-10-29 17:06:19,664] Конфигурация найдена.
+INFO     [2015-10-29 17:06:19,667] 127.0.0.1 - test [29/Oct/2015:17:06:19] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:06:20,677] Пользователь с логином test найден
+WARNING  [2015-10-29 17:06:20,703] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:06:20,708] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:06:20,714] 127.0.0.1 - test [29/Oct/2015:17:06:20] "GET /wizard/step2 HTTP/1.1" 200 1950 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:08:18,498] Пользователь с логином test найден
+WARNING  [2015-10-29 17:08:18,535] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:08:18,611] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:08:18,618] [29/Oct/2015:17:08:18] HTTP 
+Request Headers:
+  REFERER: http://127.0.0.1:8080/wizard/
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  CACHE-CONTROL: max-age=0
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0
+  COOKIE: session_id=5d5bfc2bc2dae9e30538caaae665ad7e94e35dd5
+  ACCEPT-LANGUAGE: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-10-29 17:08:18,618] [29/Oct/2015:17:08:18] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 152, in step2
+    status=status, org_edit=org_edit, shift=shift)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 445, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 829, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 864, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 890, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 49, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "wizard_step2_page_html", line 61, in render_body
+AttributeError: 'int' object has no attribute 'id'
+INFO     [2015-10-29 17:08:18,621] 127.0.0.1 - test [29/Oct/2015:17:08:18] "GET /wizard/step2 HTTP/1.1" 500 2145 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:09:13,281] Пользователь с логином test найден
+WARNING  [2015-10-29 17:09:13,315] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:09:13,317] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:09:13,322] 127.0.0.1 - test [29/Oct/2015:17:09:13] "GET /wizard/step2 HTTP/1.1" 200 1950 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:09:13,356] 127.0.0.1 - - [29/Oct/2015:17:09:13] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:09:13,361] 127.0.0.1 - - [29/Oct/2015:17:09:13] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:09:13,361] 127.0.0.1 - - [29/Oct/2015:17:09:13] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:09:55,913] Пользователь с логином test найден
+WARNING  [2015-10-29 17:09:55,961] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:09:55,967] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:09:55,987] 127.0.0.1 - test [29/Oct/2015:17:09:55] "GET /wizard/step2 HTTP/1.1" 200 1948 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:09:56,010] 127.0.0.1 - - [29/Oct/2015:17:09:56] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:09:56,016] 127.0.0.1 - - [29/Oct/2015:17:09:56] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:09:56,017] 127.0.0.1 - - [29/Oct/2015:17:09:56] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:10:08,410] Пользователь с логином test найден
+WARNING  [2015-10-29 17:10:08,437] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:10:08,440] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:10:08,525] 127.0.0.1 - test [29/Oct/2015:17:10:08] "GET /wizard/step2 HTTP/1.1" 200 1959 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:08,541] 127.0.0.1 - - [29/Oct/2015:17:10:08] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:08,544] 127.0.0.1 - - [29/Oct/2015:17:10:08] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:08,546] 127.0.0.1 - - [29/Oct/2015:17:10:08] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:10:18,175] Пользователь с логином test найден
+WARNING  [2015-10-29 17:10:18,214] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:10:18,216] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:10:18,222] 127.0.0.1 - test [29/Oct/2015:17:10:18] "GET /wizard/step2 HTTP/1.1" 200 1956 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:18,251] 127.0.0.1 - - [29/Oct/2015:17:10:18] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:18,252] 127.0.0.1 - - [29/Oct/2015:17:10:18] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:18,254] 127.0.0.1 - - [29/Oct/2015:17:10:18] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:10:44,917] Пользователь с логином test найден
+WARNING  [2015-10-29 17:10:44,959] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:10:44,962] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:10:44,969] 127.0.0.1 - test [29/Oct/2015:17:10:44] "GET /wizard/step2 HTTP/1.1" 200 1950 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:45,006] 127.0.0.1 - - [29/Oct/2015:17:10:45] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:45,014] 127.0.0.1 - - [29/Oct/2015:17:10:45] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:45,028] 127.0.0.1 - - [29/Oct/2015:17:10:45] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:10:54,783] Пользователь с логином test найден
+WARNING  [2015-10-29 17:10:54,818] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:10:54,820] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:10:54,825] 127.0.0.1 - test [29/Oct/2015:17:10:54] "GET /wizard/step2 HTTP/1.1" 200 1948 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:54,842] 127.0.0.1 - - [29/Oct/2015:17:10:54] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:54,844] 127.0.0.1 - - [29/Oct/2015:17:10:54] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:54,853] 127.0.0.1 - - [29/Oct/2015:17:10:54] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:10:55,622] Пользователь с логином test найден
+WARNING  [2015-10-29 17:10:55,625] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:10:55,627] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:10:55,634] 127.0.0.1 - test [29/Oct/2015:17:10:55] "GET /wizard/step2 HTTP/1.1" 200 1948 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:55,661] 127.0.0.1 - - [29/Oct/2015:17:10:55] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:55,664] 127.0.0.1 - - [29/Oct/2015:17:10:55] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:10:55,666] 127.0.0.1 - - [29/Oct/2015:17:10:55] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:11:01,455] Пользователь с логином test найден
+WARNING  [2015-10-29 17:11:01,496] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:11:01,497] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:11:01,504] 127.0.0.1 - test [29/Oct/2015:17:11:01] "GET /wizard/step2 HTTP/1.1" 200 1947 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:11:01,534] 127.0.0.1 - - [29/Oct/2015:17:11:01] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:11:01,539] 127.0.0.1 - - [29/Oct/2015:17:11:01] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:11:01,545] 127.0.0.1 - - [29/Oct/2015:17:11:01] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:11:11,268] Пользователь с логином test найден
+WARNING  [2015-10-29 17:11:11,311] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:11:11,314] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:11:11,320] 127.0.0.1 - test [29/Oct/2015:17:11:11] "GET /wizard/step2 HTTP/1.1" 200 1943 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:11:11,350] 127.0.0.1 - - [29/Oct/2015:17:11:11] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:11:11,352] 127.0.0.1 - - [29/Oct/2015:17:11:11] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:11:11,355] 127.0.0.1 - - [29/Oct/2015:17:11:11] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:12:05,069] Пользователь с логином test найден
+WARNING  [2015-10-29 17:12:05,093] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:12:05,095] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:12:05,102] 127.0.0.1 - test [29/Oct/2015:17:12:05] "GET /wizard/step2 HTTP/1.1" 200 1947 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:12:05,119] 127.0.0.1 - - [29/Oct/2015:17:12:05] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:12:05,122] 127.0.0.1 - - [29/Oct/2015:17:12:05] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:12:05,123] 127.0.0.1 - - [29/Oct/2015:17:12:05] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:12:40,626] Пользователь с логином test найден
+WARNING  [2015-10-29 17:12:40,652] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:12:40,655] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:12:40,662] 127.0.0.1 - test [29/Oct/2015:17:12:40] "GET /wizard/step2 HTTP/1.1" 200 1943 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:12:40,683] 127.0.0.1 - - [29/Oct/2015:17:12:40] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:12:40,684] 127.0.0.1 - - [29/Oct/2015:17:12:40] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:12:40,690] 127.0.0.1 - - [29/Oct/2015:17:12:40] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:13:00,915] Пользователь с логином test найден
+INFO     [2015-10-29 17:13:00,922] 127.0.0.1 - test [29/Oct/2015:17:13:00] "GET /wizard/step3 HTTP/1.1" 200 1494 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:13:06,073] Пользователь с логином test найден
+INFO     [2015-10-29 17:13:06,077] 127.0.0.1 - test [29/Oct/2015:17:13:06] "GET /wizard/step3 HTTP/1.1" 200 1494 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:13:06,124] 127.0.0.1 - - [29/Oct/2015:17:13:06] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:13:06,127] 127.0.0.1 - - [29/Oct/2015:17:13:06] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:13:06,137] 127.0.0.1 - - [29/Oct/2015:17:13:06] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:13:08,682] Пользователь с логином test найден
+WARNING  [2015-10-29 17:13:08,683] Конфигурация найдена.
+INFO     [2015-10-29 17:13:08,685] 127.0.0.1 - test [29/Oct/2015:17:13:08] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:13:09,778] Пользователь с логином test найден
+WARNING  [2015-10-29 17:13:09,792] Описание с кодом step1_full_description найдено
+WARNING  [2015-10-29 17:13:09,796] Описание с кодом step1_name найдено
+WARNING  [2015-10-29 17:13:09,797] Конфигурация найдена.
+INFO     [2015-10-29 17:13:09,800] 127.0.0.1 - test [29/Oct/2015:17:13:09] "GET /wizard/step1 HTTP/1.1" 200 1664 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:13:11,523] Пользователь с логином test найден
+WARNING  [2015-10-29 17:13:11,525] Конфигурация найдена.
+INFO     [2015-10-29 17:13:11,526] 127.0.0.1 - test [29/Oct/2015:17:13:11] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/wizard/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-10-29 17:13:12,534] Пользователь с логином test найден
+WARNING  [2015-10-29 17:13:12,536] Описание с кодом step2_full_description найдено
+WARNING  [2015-10-29 17:13:12,538] Описание с кодом step2_name найдено
+INFO     [2015-10-29 17:13:12,545] 127.0.0.1 - test [29/Oct/2015:17:13:12] "GET /wizard/step2 HTTP/1.1" 200 1943 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"

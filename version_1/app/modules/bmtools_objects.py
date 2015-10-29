@@ -286,7 +286,7 @@ class OrgStucture(Base):
         self.director = 0
 
 
-def get_parent_ids():
+def get_structure_sorted():
     """
     Возвращает список ИД всех уже существующих организационных единиц
 
@@ -295,14 +295,32 @@ def get_parent_ids():
 
     session = Session()
     try:
-        resp = session.query(OrgStucture).all()
+        resp = session.query(OrgStucture).filter(OrgStucture.parentid != 0).all()
     except Exception as e:
         print "Ошибка при поиске организационноых единиц. " + str(e)
         return list()
-    else:
-        return resp
     finally:
         session.close()
+
+    # Сортируем согласно родительским объектам.
+    sorted = list()
+    shift = list()
+    root = get_org_structure_root()
+    sorted.append(root)
+    shift.append(0)
+    for one in resp:
+        inx=0
+        for i in sorted:
+            if one.parentid == i.id:
+                inx = sorted.index(i)
+        sorted.insert(inx+1, one)
+        shift.insert(inx+1, shift[inx]+5)
+
+    return sorted, shift
+
+
+
+
 
 
 def get_org_structure():
@@ -334,15 +352,15 @@ def get_org_structure_root():
     session = Session()
     try:
         query = session.query(OrgStucture). \
-            filter(OrgStucture.parent_id == 0).one()
+            filter(OrgStucture.parentid == 0).one()
     except sqlalchemy.orm.exc.NoResultFound as e:
         print "Родительский узел не найден."+str(e)
-        return 0
+        return None
     except sqlalchemy.orm.exc.MultipleResultsFound as e:
         print "Найдено несколько корневых узлов. " + str(e)
         raise e
     else:
-        return query.id
+        return query
     finally:
         session.close()
 

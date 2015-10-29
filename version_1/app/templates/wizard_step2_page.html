@@ -19,10 +19,10 @@
 
             % if action == "show":
                 % if org_structure:
-                    % for one in org_structure:
-                        ${one.parentid} - ${one.org_name} - ${persons[one.director]}
-                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=edit&org_id=${one.id}" role="button">Редактировать</a>
-                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=delete&org_id=${one.id}" role="button">Удалить</a>
+                    % for one in xrange(0,org_structure.__len__()):
+                        ${shift[one]*"-"} ${org_structure[one].org_name} - ${persons[org_structure[one].director]}
+                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=edit&org_id=${org_structure[one].id}" role="button">Редактировать</a>
+                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=delete&org_id=${org_structure[one].id}" role="button">Удалить</a>
                         <br>
                     % endfor
                 % else:

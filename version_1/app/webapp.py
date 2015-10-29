@@ -143,13 +143,13 @@ class Wizard(object):
             # if action is None: show the org structure
             action = "show"
 
-        org_structure = BMTObjects.get_org_structure()
+        org_structure, shift = BMTObjects.get_structure_sorted()
 
         print org_structure
 
         return tmpl.render(params=params, step_desc=step_desc, action=action,
                            org_structure=org_structure, persons=BMTObjects.persons,
-                           status=status, org_edit=org_edit)
+                           status=status, org_edit=org_edit, shift=shift)
 
     @cherrypy.expose
     @require(member_of("users"))
