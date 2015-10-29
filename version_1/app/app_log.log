@@ -5378,3 +5378,13 @@ WARNING  [2015-10-29 17:13:12,534] Пользователь с логином te
 WARNING  [2015-10-29 17:13:12,536] Описание с кодом step2_full_description найдено
 WARNING  [2015-10-29 17:13:12,538] Описание с кодом step2_name найдено
 INFO     [2015-10-29 17:13:12,545] 127.0.0.1 - test [29/Oct/2015:17:13:12] "GET /wizard/step2 HTTP/1.1" 200 1943 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-10-29 17:19:49,979] [29/Oct/2015:17:19:49] ENGINE Keyboard Interrupt: shutting down bus
+INFO     [2015-10-29 17:19:49,980] [29/Oct/2015:17:19:49] ENGINE Bus STOPPING
+INFO     [2015-10-29 17:19:49,983] [29/Oct/2015:17:19:49] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-10-29 17:19:49,984] [29/Oct/2015:17:19:49] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-10-29 17:19:49,984] [29/Oct/2015:17:19:49] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-10-29 17:19:49,985] [29/Oct/2015:17:19:49] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-10-29 17:19:49,985] [29/Oct/2015:17:19:49] ENGINE Bus STOPPED
+INFO     [2015-10-29 17:19:49,985] [29/Oct/2015:17:19:49] ENGINE Bus EXITING
+INFO     [2015-10-29 17:19:49,986] [29/Oct/2015:17:19:49] ENGINE Bus EXITED
+INFO     [2015-10-29 17:19:49,986] [29/Oct/2015:17:19:49] ENGINE Waiting for child threads to terminate...
