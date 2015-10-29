@@ -17,7 +17,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer
 from sqlalchemy import or_, and_, desc
-from configurations import sql_uri, def_industry
+from configurations import sql_uri, def_industry, persons
 import uuid
 import logging
 
@@ -304,6 +304,7 @@ def get_parent_ids():
     finally:
         session.close()
 
+
 def get_org_structure():
     """
     Возвращает структуру организации.
@@ -311,6 +312,116 @@ def get_org_structure():
     :return:
     """
 
-    pass
+    session = Session()
+    try:
+        resp = session.query(OrgStucture).all()
+    except Exception as e:
+        print "Ошибка при поиске организационноых единиц. " + str(e)
+        return list()
+    else:
+        return resp
+    finally:
+        session.close()
 
 
+def get_org_structure_root():
+    """
+    Возвращает id корневого узла.
+
+
+    :return: id корневого узла
+    """
+    session = Session()
+    try:
+        query = session.query(OrgStucture). \
+            filter(OrgStucture.parent_id == 0).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Родительский узел не найден."+str(e)
+        return 0
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Найдено несколько корневых узлов. " + str(e)
+        raise e
+    else:
+        return query.id
+    finally:
+        session.close()
+
+
+def save_new_org_structure(parentid, director, org_name):
+    """
+    Записыает новый орг объект в базу.
+
+
+    :return:
+    """
+    session = Session()
+    new = OrgStucture()
+    new.director = director
+    new.parentid = parentid
+    new.org_name = org_name
+
+    try:
+        session.add(new)
+        session.commit()
+    except Exception as e:
+        print "Ошибка при записи объекта орг структуры. " + str(e)
+        return "error"
+    else:
+        return "writed"
+    finally:
+        session.close()
+
+
+def save_edit_org_structure(parentid, director, org_name, org_id):
+    """
+    Записыает изменения орг объекта в базу.
+
+
+    :return:
+    """
+
+    session = Session()
+    try:
+        new = session.query(OrgStucture).filter(OrgStucture.id == org_id).one()
+    except Exception as e:
+        pass
+    else:
+        new.director = director
+        new.parentid = parentid
+        new.org_name = org_name
+
+        try:
+            session.commit()
+        except Exception as e:
+            print "Ошибка при записи объекта орг структуры. " + str(e)
+            return "error"
+        else:
+            return "writed"
+    finally:
+        session.close()
+
+
+def delete_org_structure(org_id):
+    """
+    Удаляет орг объекта в базу.
+
+    :return:
+    """
+
+    session = Session()
+    try:
+        new = session.query(OrgStucture).filter(OrgStucture.id == org_id).one()
+    except Exception as e:
+        pass
+    else:
+
+        try:
+            session.delete(new)
+            session.commit()
+        except Exception as e:
+            print "Ошибка удаления объекта орг структуры. " + str(e)
+            return "error"
+        else:
+            return "writed"
+    finally:
+        session.close()

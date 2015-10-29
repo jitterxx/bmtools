@@ -20,6 +20,6 @@ sys.setdefaultencoding("utf-8")
 session = BMTObjects.Session()
 
 
-print BMTObjects.get_parent_ids()
+print BMTObjects.get_org_structure()[0].org_name
 
 session.close()

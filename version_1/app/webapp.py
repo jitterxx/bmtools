@@ -95,6 +95,8 @@ class Wizard(object):
         step_desc['full_description'] = BMTObjects.get_desc("step2_full_description")
         step_desc['name'] = "Шаг 2. " + BMTObjects.get_desc("step2_name")
         step_desc['next_step'] = "3"
+        status = ""
+        org_edit = ""
 
         if action == "new":
             # show current structure
@@ -102,17 +104,52 @@ class Wizard(object):
         elif action == "add":
             # page with form for add new org object to structure
             pass
+        elif action == "delete":
+            print "org_id: %s" % org_id
+            status = BMTObjects.delete_org_structure(org_id)
+            action = "show"
         elif action == "edit":
-            # edit object from structure
+            print "org_id: %s" % org_id
+            for one in BMTObjects.get_org_structure():
+                if one.id == int(org_id):
+                    org_edit = one
+            print "Org for edit : %s" % org_edit.id
             pass
+        elif action == "save_edit":
+            # edit object from structure
+            print "Parent ID: %s" % parentid
+            print "Director: %s" % director
+            print "Org name: %s" % org_name
+            print "org_id: %s" % org_id
+            if parentid and director and org_name and org_id:
+                print "Data for edit org object READY"
+                status = BMTObjects.save_edit_org_structure(parentid, director, org_name, org_id)
+                action = "show"
+            else:
+                print "Data for edit Org object NOT READY"
         elif action == "save":
             # save object to structure
-            pass
+            print "Parent ID: %s" % parentid
+            print "Director: %s" % director
+            print "Org name: %s" % org_name
+            if parentid and director and org_name:
+                print "Data for new org object READY"
+                status = BMTObjects.save_new_org_structure(parentid, director, org_name)
+                action = "show"
+            else:
+                print "Data for new Org object NOT READY"
+
         else:
             # if action is None: show the org structure
-            pass
+            action = "show"
 
-        return tmpl.render(params=params, step_desc=step_desc, action=action)
+        org_structure = BMTObjects.get_org_structure()
+
+        print org_structure
+
+        return tmpl.render(params=params, step_desc=step_desc, action=action,
+                           org_structure=org_structure, persons=BMTObjects.persons,
+                           status=status, org_edit=org_edit)
 
     @cherrypy.expose
     @require(member_of("users"))

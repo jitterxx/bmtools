@@ -16,7 +16,109 @@
                 <li>Проверить заданы ли сроки для этого шага?</li>
                 <li>?</li>
             </ul>
-            <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Дальше</a>
+
+            % if action == "show":
+                % if org_structure:
+                    % for one in org_structure:
+                        ${one.parentid} - ${one.org_name} - ${persons[one.director]}
+                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=edit&org_id=${one.id}" role="button">Редактировать</a>
+                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=delete&org_id=${one.id}" role="button">Удалить</a>
+                        <br>
+                    % endfor
+                % else:
+                    Создайте одну организационную единицу.<br>
+                % endif
+                % if status == "writed":
+                    Новая структура создана.
+                % elif status == "error":
+                    Ошибка записи.
+                % endif
+                <hr>
+                <a class="btn btn-default" href="/wizard/step2?action=add" role="button">Добавить</a>
+                <hr>
+                <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Дальше</a>
+            % elif action == "add":
+                <hr>
+
+                <form method="post" action="/wizard/step2" id="add_org_object">
+                    <div class="form-group">
+                        <label for="director">Руководитель</label>
+                        <select required class="form-control" name="director" id="director">
+                            % for one in persons.keys():
+                                <option value="${one}">${persons[one]}</option>
+                            % endfor
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="org_name">Название</label>
+                        <input required name="org_name" id="org_name" type="text" class="form-control">
+
+                    </div>
+                    <div class="form-group">
+                        % if org_structure:
+                            <label for="parentid">Находится в подчинении:</label>
+                            <select required class="form-control" name="parentid" id="parentid">
+                                % for one in org_structure:
+                                    <option value="${one.id}">${one.org_name}</option>
+                                % endfor
+                            </select>
+                        % else:
+                            <input name="parentid" id="parentid" type="hidden" class="form-control" value="0">
+                            Это первая организационная единица вашей компании.
+                        % endif
+                    </div>
+                    <div class="form-group">
+                        <input name="action" type="hidden" class="form-control" value="save">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Добавить</button>
+                    </div>
+                </form>
+            % elif action == "edit":
+                <hr>
+
+                <form method="post" action="/wizard/step2" id="edit_org_object">
+                    <div class="form-group">
+                        <label for="director">Руководитель</label>
+                        <select required class="form-control" name="director" id="director">
+                            % for one in persons.keys():
+                                % if one == org_edit.director:
+                                    <option selected value="${one}">${persons[one]}</option>
+                                % else:
+                                    <option value="${one}">${persons[one]}</option>
+                                % endif
+                            % endfor
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="org_name">Название</label>
+                        <input required name="org_name" id="org_name" type="text" class="form-control" value="${org_edit.org_name}">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="parentid">Находится в подчинении:</label>
+                        <select required class="form-control" name="parentid" id="parentid">
+                            % for one in org_structure:
+                                % if one.id == org_edit.parentid:
+                                    <option selected value="${one.id}">${one.org_name}</option>
+                                % else:
+                                    <option value="${one.id}">${one.org_name}</option>
+                                % endif
+                            % endfor
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input name="action" type="hidden" class="form-control" value="save_edit">
+                        <input name="org_id" type="hidden" class="form-control" value="${org_edit.id}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Сохранить</button>
+                    </div>
+                </form>
+
+            % endif
+
+
         </div>
     </div>
 
