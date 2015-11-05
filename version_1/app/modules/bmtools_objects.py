@@ -17,7 +17,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer
 from sqlalchemy import or_, and_, desc
-from configurations import sql_uri, def_industry, persons
+from configurations import *
 import uuid
 import logging
 
@@ -443,3 +443,231 @@ def delete_org_structure(org_id):
             return "writed"
     finally:
         session.close()
+
+
+class Lib_Goal(Base):
+    __tablename__ = "lib_goals"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
+    goal_name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    perspective = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+
+    def __init__(self):
+        self.code = ""
+        self.goal_name = ""
+        self.description = ""
+        self.perspective = 0
+
+
+class Lib_KPI(Base):
+    __tablename__ = "lib_kpi"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
+    formula = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    link_to_desc = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+    def __init__(self):
+        self.name = ""
+        self.description = ""
+        self.code = ""
+        self.formula = ""
+        self.link_to_desc = "#"
+
+
+class Lib_linked_goals(Base):
+    __tablename__ = "lib_linked_goals"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    parent_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    child_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+class Lib_linked_kpi_to_goal(Base):
+    __tablename__ = "lib_linked_kpi_to_goal"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    goal_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    kpi_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+class Custom_goal(Base):
+    __tablename__ = "custom_goals"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
+    goal_name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    perspective = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+
+    def __init__(self):
+        self.code = ""
+        self.goal_name = ""
+        self.description = ""
+        self.perspective = 0
+
+
+class Custom_KPI(Base):
+    __tablename__ = "custom_kpi"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
+    formula = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    link_to_desc = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+    def __init__(self):
+        self.name = ""
+        self.description = ""
+        self.code = ""
+        self.formula = ""
+        self.link_to_desc = "#"
+
+
+class Custom_linked_goals(Base):
+    __tablename__ = "custom_linked_goals"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    parent_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    child_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+class Custom_linked_kpi_to_goal(Base):
+    __tablename__ = "custom_linked_kpi_to_goal"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    goal_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    kpi_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+def load_custom_goals_kpi():
+    """
+    Функция загрузки из базы всех целей и показателей компании.
+
+    :return:
+    """
+
+    session = Session()
+    try:
+        resp = session.query(Custom_goal).all()
+    except Exception as e:
+        raise e
+    else:
+        goals = dict()
+        for g in resp:
+            goals[g.code] = g
+
+    try:
+        resp = session.query(Custom_KPI).all()
+    except Exception as e:
+        raise e
+    else:
+        kpi = dict()
+        for k in resp:
+            kpi[k.code] = k
+
+    return goals, kpi
+
+    session.close()
+
+
+def load_lib_goals_kpi():
+    """
+    Функция загрузки из базы всех заранее заданных целей и показателей.
+
+    :return:
+    """
+
+    session = Session()
+    try:
+        resp = session.query(Lib_Goal).all()
+    except Exception as e:
+        raise e
+    else:
+        goals = dict()
+        for g in resp:
+            goals[g.code] = g
+
+    try:
+        resp = session.query(Lib_KPI).all()
+    except Exception as e:
+        raise e
+    else:
+        kpi = dict()
+        for k in resp:
+            kpi[k.code] = k
+
+    return goals, kpi
+
+    session.close()
+
+
+def load_lib_links():
+
+    session = Session()
+    try:
+        resp = session.query(Lib_linked_goals).all()
+    except Exception as e:
+        raise e
+    else:
+        linked_goals = dict()
+        for g in resp:
+            if g.parent_code in linked_goals.keys():
+                linked_goals[g.parent_code].append(g.child_code)
+            else:
+                linked_goals[g.parent_code] = list()
+                linked_goals[g.parent_code].append(g.child_code)
+
+    try:
+        resp = session.query(Lib_linked_kpi_to_goal).all()
+    except Exception as e:
+        raise e
+    else:
+        linked_kpi = dict()
+        for g in resp:
+            if g.goal_code in linked_kpi.keys():
+                linked_kpi[g.goal_code].append(g.kpi_code)
+            else:
+                linked_kpi[g.goal_code] = list()
+                linked_kpi[g.goal_code].append(g.kpi_code)
+    return linked_goals, linked_kpi
+
+    session.close()
+
+
+def load_custom_links():
+
+    session = Session()
+    try:
+        resp = session.query(Custom_linked_goals).all()
+    except Exception as e:
+        raise e
+    else:
+        linked_goals = dict()
+        for g in resp:
+            if g.parent_code in linked_goals.keys():
+                linked_goals[g.parent_code].append(g.child_code)
+            else:
+                linked_goals[g.parent_code] = list()
+                linked_goals[g.parent_code].append(g.child_code)
+
+    try:
+        resp = session.query(Custom_linked_kpi_to_goal).all()
+    except Exception as e:
+        raise e
+    else:
+        linked_kpi = dict()
+        for g in resp:
+            if g.goal_code in linked_kpi.keys():
+                linked_kpi[g.goal_code].append(g.kpi_code)
+            else:
+                linked_kpi[g.goal_code] = list()
+                linked_kpi[g.goal_code].append(g.kpi_code)
+    return linked_goals, linked_kpi
+
+    session.close()

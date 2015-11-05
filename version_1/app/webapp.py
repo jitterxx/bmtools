@@ -20,6 +20,14 @@ lookup = TemplateLookup(directories=["./templates"], output_encoding="utf-8",
                         input_encoding="utf-8", encoding_errors="replace")
 
 
+def ShowError(e):
+    tmpl = lookup.get_template("wizard_error_page.html")
+    params = cherrypy.request.headers
+    msg = "Ошибка при выполнении. \n" + str(e)
+
+    return tmpl.render(params=params, msg=msg)
+
+
 class Wizard(object):
 
     @cherrypy.expose
@@ -154,14 +162,79 @@ class Wizard(object):
     @cherrypy.expose
     @require(member_of("users"))
     def step3(self):
-        tmpl = lookup.get_template("wizard_step_page.html")
+        tmpl = lookup.get_template("wizard_step3_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
-        step_desc['full_description'] = ""
-        step_desc['name'] = "Шаг 3. Формирование стратегической карты компании"
+        step_desc['full_description'] = BMTObjects.get_desc("step3_full_description")
+        step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
         step_desc['next_step'] = "4"
 
-        return tmpl.render(params=params, step_desc=step_desc)
+        try:
+            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+        except Exception as e:
+            ShowError(e)
+
+        print "Custom goals: %s" % custom_goals.keys()
+        print "Custom KPI: %s" % custom_kpi.keys()
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage1(self):
+        """
+            Функция добавления целей в кастомные таблицы компании
+        """
+        tmpl = lookup.get_template("wizard_step3stage1_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['stage1_description'] = BMTObjects.get_desc("step3_stage1_description")
+        step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
+        step_desc['next_step'] = "4"
+
+        try:
+            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
+            lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
+            lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
+        except Exception as e:
+            ShowError(e)
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
+                           custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
+                           lib_goals=lib_goals, lib_kpi=lib_kpi,
+                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage2(self, picked_goals=None):
+        """
+            Функция добавления связанных целей в кастомные таблицы компании
+        """
+        tmpl = lookup.get_template("wizard_step3stage2_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['stage2_description'] = BMTObjects.get_desc("step3_stage2_description")
+        step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
+        step_desc['subheader'] = "Вы выбрали цели которые связаны с другими. Рекомендуем их добавить к вашему выбору."
+        step_desc['next_step'] = "4"
+
+        try:
+            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
+            lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
+            lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
+        except Exception as e:
+            ShowError(e)
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
+                           custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
+                           lib_goals=lib_goals, lib_kpi=lib_kpi,
+                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi, picked_goals=picked_goals)
+
+
 
     @cherrypy.expose
     @require(member_of("users"))

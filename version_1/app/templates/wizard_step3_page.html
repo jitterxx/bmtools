@@ -14,6 +14,20 @@
             <h3>Описание</h3>
             ${step_desc['full_description']}
             <hr>
+            <h3>Цели показатели</h3>
+            % if custom_goals.keys():
+                ${custom_goals.keys()}
+            % else:
+                <p>Цели не заданы.</p>
+            % endif
+            % if custom_kpi.keys():
+                ${custom_kpi.keys()}
+            % else:
+                <p>Показатели не заданы.</p>
+            % endif
+            <hr>
+            <a class="btn btn-default" href="/wizard/step3stage1" role="button">Новая цель</a>
+            <hr>
             <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Дальше</a>
         </div>
     </div>
