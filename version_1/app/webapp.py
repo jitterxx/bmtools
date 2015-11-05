@@ -218,6 +218,43 @@ class Wizard(object):
         step_desc = dict()
         step_desc['stage2_description'] = BMTObjects.get_desc("step3_stage2_description")
         step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
+        step_desc['subheader'] = BMTObjects.get_desc("step3_subheader")
+        step_desc['next_step'] = "4"
+
+        print type(picked_goals)
+        print picked_goals
+
+        if picked_goals is None:
+            print "picked_goals empty. Redirect to step3stage1."
+            raise cherrypy.HTTPRedirect("step3stage1")
+        else:
+            print "picked_goals not empty"
+
+        try:
+            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
+            lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
+            lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
+        except Exception as e:
+            return ShowError(e)
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
+                           custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
+                           lib_goals=lib_goals, lib_kpi=lib_kpi,
+                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi, picked_goals=picked_goals)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage3(self,picked_goals=list()):
+        """
+            Функция добавления связанных целей в кастомные таблицы компании
+        """
+        tmpl = lookup.get_template("wizard_step3stage2_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['stage2_description'] = BMTObjects.get_desc("step3_stage2_description")
+        step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
         step_desc['subheader'] = "Вы выбрали цели которые связаны с другими. Рекомендуем их добавить к вашему выбору."
         step_desc['next_step'] = "4"
 
@@ -233,7 +270,6 @@ class Wizard(object):
                            custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
                            lib_goals=lib_goals, lib_kpi=lib_kpi,
                            lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi, picked_goals=picked_goals)
-
 
 
     @cherrypy.expose
