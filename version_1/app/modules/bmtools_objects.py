@@ -724,10 +724,81 @@ def save_picked_links_to_custom():
         print type(resp)
         print "Lib goals links: %s" % lresp
         for l in lresp:
-            n = Custom_linked_goals()
-            n.parent_code = l.parent_code
-            n.child_code = l.child_code
+            req = session.query(Custom_linked_goals).filter(and_(Custom_linked_goals.parent_code == l.parent_code),
+                                                            Custom_linked_goals.child_code == l.child_code).one_or_none()
+            if not req:
+                print "Adding link to custom %s - %s" %(l.parent_code, l.child_code)
+                n = Custom_linked_goals()
+                n.parent_code = l.parent_code
+                n.child_code = l.child_code
+                session.add(n)
+                session.commit()
+            else:
+                print "Link already added to custom"
+    finally:
+        session.close()
+
+
+def save_picked_kpi_to_custom(picked_kpi):
+    """
+    Сохраняем выбранные показатели из библиотеки в кастомные таблицы.
+    Сохраняем связи между ними.
+
+    :return:
+    """
+
+    session = Session()
+
+    try:
+        resp = session.query(Lib_KPI).filter(Lib_KPI.code.in_(picked_kpi)).all()
+    except Exception as e:
+        raise e
+    else:
+        for g in resp:
+            n = Custom_KPI()
+            n.code = g.code
+            n.name = g.name
+            n.description = g.description
+            n.formula = g.formula
+            n.link_to_desc = g.link_to_desc
             session.add(n)
             session.commit()
     finally:
         session.close()
+
+    save_picked_kpi_links_to_custom()
+
+
+def save_picked_kpi_links_to_custom():
+    session = Session()
+
+    try:
+        req = session.query(Custom_KPI.code).all()
+        resp = [i[0] for i in req]
+        req = session.query(Custom_goal.code).all()
+        resp1 = [i[0] for i in req]
+        lresp = session.query(Lib_linked_kpi_to_goal).filter(and_(Lib_linked_kpi_to_goal.kpi_code.in_(resp),
+                                                            Lib_linked_kpi_to_goal.goal_code.in_(resp1))).all()
+    except Exception as e:
+        raise e
+    else:
+        print "Custom KPI codes: %s" % resp1
+        print "Custom goals codes: %s" % resp
+        print "Lib goals to KPI links: %s" % lresp
+        for l in lresp:
+            req = session.query(Custom_linked_kpi_to_goal).filter(and_(Custom_linked_kpi_to_goal.goal_code ==
+                                                                       l.goal_code),
+                                                                  Custom_linked_kpi_to_goal.kpi_code ==
+                                                                  l.kpi_code).one_or_none()
+            if not req:
+                print "Adding link to custom %s - %s" %(l.goal_code, l.kpi_code)
+                n = Custom_linked_kpi_to_goal()
+                n.goal_code = l.goal_code
+                n.kpi_code = l.kpi_code
+                session.add(n)
+                session.commit()
+            else:
+                print "Link already added to custom"
+    finally:
+        session.close()
+

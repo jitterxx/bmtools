@@ -319,21 +319,44 @@ class Wizard(object):
         step_desc = dict()
         step_desc['stage3_description'] = BMTObjects.get_desc("step3_stage3_description")
         step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
-        step_desc['subheader'] = "К целям необходимо добавить показатели."
+        step_desc['subheader'] = BMTObjects.get_desc("step3_stage3_subheader")
         step_desc['next_step'] = "4"
 
         try:
             custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
-            custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
-            lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
-            lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
+            lib_kpi = BMTObjects.load_lib_goals_kpi()[1]
+            lib_linked_kpi = BMTObjects.load_lib_links()[1]
         except Exception as e:
             ShowError(e)
 
-        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
-                           custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
-                           lib_goals=lib_goals, lib_kpi=lib_kpi,
-                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi)
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, lib_kpi=lib_kpi,
+                           lib_linked_kpi=lib_linked_kpi, custom_kpi=custom_kpi)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage3save(self, picked_kpi=None):
+        """
+            Сохраняем выбранные показатели в кастомные таблицы компании
+        """
+
+        if picked_kpi is None:
+            print "picked_kpi empty. Redirect to step3stage3."
+            raise cherrypy.HTTPRedirect("step3stage3")
+        else:
+            if not isinstance(picked_kpi, list):
+                picked_kpi = [picked_kpi]
+            print "picked_kpi not empty. Save data."
+
+        # Проверяем, есть ли уже в кастомных показателях выбранные
+
+        try:
+            BMTObjects.save_picked_kpi_to_custom(picked_kpi)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("step3stage3")
+
 
 
     @cherrypy.expose
