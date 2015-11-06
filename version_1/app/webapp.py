@@ -172,7 +172,7 @@ class Wizard(object):
         try:
             custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
         except Exception as e:
-            ShowError(e)
+            return ShowError(e)
 
         print "Custom goals: %s" % custom_goals.keys()
         print "Custom KPI: %s" % custom_kpi.keys()
@@ -199,17 +199,41 @@ class Wizard(object):
             lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
             lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
         except Exception as e:
-            ShowError(e)
+            return ShowError(e)
 
         return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
                            custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
                            lib_goals=lib_goals, lib_kpi=lib_kpi,
                            lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi)
 
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage1save(self, picked_goals=None):
+        """
+            Сохраняем выбранные цели в кастомные таблицы компании
+        """
+
+        if picked_goals is None:
+            print "picked_goals empty. Redirect to step3stage1."
+            raise cherrypy.HTTPRedirect("step3stage1")
+        else:
+            print "picked_goals not empty. Save data."
+
+        params = cherrypy.request.headers
+
+        # Проверяем, есть ли уже в кастомных целях выбранные
+
+        try:
+            BMTObjects.save_picked_goals_to_custom(picked_goals)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("step3stage1")
+
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3stage2(self, picked_goals=None):
+    def step3stage2(self):
         """
             Функция добавления связанных целей в кастомные таблицы компании
         """
@@ -221,15 +245,6 @@ class Wizard(object):
         step_desc['subheader'] = BMTObjects.get_desc("step3_subheader")
         step_desc['next_step'] = "4"
 
-        print type(picked_goals)
-        print picked_goals
-
-        if picked_goals is None:
-            print "picked_goals empty. Redirect to step3stage1."
-            raise cherrypy.HTTPRedirect("step3stage1")
-        else:
-            print "picked_goals not empty"
-
         try:
             custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
             custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
@@ -238,24 +253,71 @@ class Wizard(object):
         except Exception as e:
             return ShowError(e)
 
-        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
-                           custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
-                           lib_goals=lib_goals, lib_kpi=lib_kpi,
-                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi, picked_goals=picked_goals)
+        # Опеределяем, надо ли выводить предложение о дополнительных связанных целях
+        # Если нет, то переходим на выбор показателей. Если да, то показываем связанные невыбранные цели. ДЛя этого
+        # формируем список таких целей и с каким из выбранных они связаны.
+        missing_linked = dict()
+        cg = custom_goals.keys()
+        for custom in cg:
+            missed = list(set(lib_linked_goals[custom]) - set(cg))
+            print "Цели связанные с выбранной ** %s **  : %s" % (custom, lib_linked_goals[custom])
+            if custom in lib_linked_goals.keys() and missed:
+                print "Цели связанные с выбранной ** %s **, но не выбранные: %s" % (custom, missed)
+                for one in missed:
+                    if missing_linked.get(one):
+                        missing_linked[one].append(custom)
+                    else:
+                        missing_linked[one] = list()
+                        missing_linked[one].append(custom)
+
+        if missing_linked:
+            print "Есть пропущенные цели. Выводим список."
+            print missing_linked
+        else:
+            print "Нет пропущенных целей. Переходим на следующий шаг."
+            raise cherrypy.HTTPRedirect("step3stage3")
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, lib_goals=lib_goals,
+                           missing_linked=missing_linked)
 
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3stage3(self,picked_goals=list()):
+    def step3stage2save(self, picked_goals=None):
+        """
+            Сохраняем добполнительно выбранные цели в кастомные таблицы компании
+        """
+
+        if picked_goals is None:
+            print "picked_goals empty. Redirect to step3stage2."
+            raise cherrypy.HTTPRedirect("step3stage2")
+        else:
+            if not isinstance(picked_goals, list):
+                picked_goals = [picked_goals]
+            print "Picked goals: %s" % picked_goals
+            print "picked_goals not empty. Save data."
+
+        # Проверяем, есть ли уже в кастомных целях выбранные
+        try:
+            BMTObjects.save_picked_goals_to_custom(picked_goals)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("step3stage2")
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage3(self):
         """
             Функция добавления связанных целей в кастомные таблицы компании
         """
-        tmpl = lookup.get_template("wizard_step3stage2_page.html")
+        tmpl = lookup.get_template("wizard_step3stage3_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
-        step_desc['stage2_description'] = BMTObjects.get_desc("step3_stage2_description")
+        step_desc['stage3_description'] = BMTObjects.get_desc("step3_stage3_description")
         step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
-        step_desc['subheader'] = "Вы выбрали цели которые связаны с другими. Рекомендуем их добавить к вашему выбору."
+        step_desc['subheader'] = "К целям необходимо добавить показатели."
         step_desc['next_step'] = "4"
 
         try:
@@ -269,7 +331,7 @@ class Wizard(object):
         return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
                            custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
                            lib_goals=lib_goals, lib_kpi=lib_kpi,
-                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi, picked_goals=picked_goals)
+                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi)
 
 
     @cherrypy.expose

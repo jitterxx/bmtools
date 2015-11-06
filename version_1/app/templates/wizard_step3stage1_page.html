@@ -13,7 +13,8 @@
             <h1>${step_desc['name']}</h1>
             <h3>Выберите подходящие цели</h3>
             ${step_desc['stage1_description']}
-            <form method="post" action="/wizard/step3stage2" id="add_lib_goals">
+            ${custom_goals.keys()}
+            <form method="post" action="/wizard/step3stage1save" id="add_lib_goals">
             <table class="table">
                 <tbody>
             % for g in lib_goals.values():
@@ -21,7 +22,11 @@
                     <td>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="${g.code}" name="picked_goals">
+                                % if g.code in custom_goals.keys():
+                                    <input type="checkbox" value="" name="picked_goals" checked readonly>
+                                % else:
+                                    <input type="checkbox" value="${g.code}" name="picked_goals">
+                                % endif
                             </label>
                         </div>
                     </td>
@@ -33,8 +38,9 @@
             % endfor
                 </tbody>
             </table>
-                <button type="submit" class="btn btn-default">Дальше</button>
+                <button type="submit" class="btn btn-default">Сохранить</button>
             </form>
+                <a class="btn btn-default" href="/wizard/step3stage2" role="button">Дальше</a>
             <hr>
             <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Следующий шаг</a>
         </div>

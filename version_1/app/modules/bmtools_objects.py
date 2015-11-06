@@ -668,6 +668,33 @@ def load_custom_links():
             else:
                 linked_kpi[g.goal_code] = list()
                 linked_kpi[g.goal_code].append(g.kpi_code)
+    finally:
+        session.close()
+
     return linked_goals, linked_kpi
 
-    session.close()
+
+def save_picked_goals_to_custom(picked_goals):
+    """
+    Сохраняем выбранные цели из библиотеки в кастомные таблицы.
+
+    :return:
+    """
+
+    session = Session()
+
+    try:
+        resp = session.query(Lib_Goal).filter(Lib_Goal.code.in_(picked_goals)).all()
+    except Exception as e:
+        raise e
+    else:
+        for g in resp:
+            n = Custom_goal()
+            n.code = g.code
+            n.goal_name = g.goal_name
+            n.description = g.description
+            n.perspective = g.perspective
+            session.add(n)
+            session.commit()
+    finally:
+        session.close()
