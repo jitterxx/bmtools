@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03726f1b-ff6a-4b85-8b7a-dea0f9f42f78" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/wizard_step3stage3_page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app_log.log" afterPath="$PROJECT_DIR$/app/app_log.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/modules/bmtools_objects.py" afterPath="$PROJECT_DIR$/app/modules/bmtools_objects.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp.py" afterPath="$PROJECT_DIR$/app/webapp.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/wizard_step3stage1_page.html" afterPath="$PROJECT_DIR$/app/templates/wizard_step3stage1_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/wizard_step3stage2_page.html" afterPath="$PROJECT_DIR$/app/templates/wizard_step3stage2_page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="version_1.iws" />
@@ -30,18 +27,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="webapp.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="webapp.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47741935">
-              <caret line="314" column="54" selection-start-line="314" selection-start-column="54" selection-end-line="314" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="303" column="64" selection-start-line="303" selection-start-column="64" selection-end-line="303" selection-end-column="64" />
               <folding>
                 <element signature="e#6391#6472#1" expanded="true" />
                 <element signature="e#7674#7755#1" expanded="true" />
-                <element signature="e#8386#8477#1" expanded="true" />
-                <element signature="e#10780#10876#1" expanded="true" />
-                <element signature="e#11612#11703#1" expanded="true" />
-                <element signature="e#17907#18742#1" expanded="true" />
+                <element signature="e#8483#8574#1" expanded="true" />
+                <element signature="e#10877#10973#1" expanded="true" />
+                <element signature="e#11709#11800#1" expanded="true" />
+                <element signature="e#18004#18839#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,26 +54,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wizard_step3stage2_page.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/wizard_step3stage2_page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.444445">
-              <caret line="49" column="90" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="90" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bmtools_objects.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bmtools_objects.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/modules/bmtools_objects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="691" column="28" selection-start-line="691" selection-start-column="28" selection-end-line="691" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.67096776">
+              <caret line="716" column="34" selection-start-line="716" selection-start-column="34" selection-end-line="716" selection-end-column="34" />
               <folding>
                 <element signature="e#86#101#0" expanded="true" />
                 <element signature="e#16053#16142#1" expanded="true" />
                 <element signature="e#16612#16709#1" expanded="true" />
-                <element signature="e#19090#19179#1" expanded="true" />
+                <element signature="e#19090#19211#1" expanded="true" />
+                <element signature="e#19757#19827#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,10 +113,10 @@
         <option value="$PROJECT_DIR$/app/modules/configurations.py" />
         <option value="$PROJECT_DIR$/app/templates/wizard_error_page.html" />
         <option value="$PROJECT_DIR$/app/templates/wizard_step3_page.html" />
-        <option value="$PROJECT_DIR$/app/modules/bmtools_objects.py" />
         <option value="$PROJECT_DIR$/app/templates/wizard_step3stage1_page.html" />
         <option value="$PROJECT_DIR$/app/templates/wizard_step3stage2_page.html" />
         <option value="$PROJECT_DIR$/app/webapp.py" />
+        <option value="$PROJECT_DIR$/app/modules/bmtools_objects.py" />
       </list>
     </option>
   </component>
@@ -482,13 +470,20 @@
       <option name="project" value="LOCAL" />
       <updated>1446761244185</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Шаг 3 стадия 2. Все вычисления перенесены в приложение, генератор страниц только отображает.&#10;Функции сохранения данных выведены в отдельные блоки, оканчиваются на ..save.&#10;Стадия 2. Закончена.">
+      <created>1446815829236</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1446815829236</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="24" width="1865" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -503,7 +498,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -525,7 +519,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="Добавлены классы для работы с целями, показателями и связями между ними.&#10;Связи храняться в отдельных таблицах для связей. Связи двунаправленные.&#10;Разделены библиотеки и кастомные таблицы для хранения. Данные из бибилиотечных таблиц копируются в кастомные при выборе.&#10;Закончен шаг3 стадия 2: добавление связанных целей по уже выбранным.&#10;" />
     <MESSAGE value="Переделать шаг3 стадия 2. &#10;Все списки сформировать в основной функции сервера, в шаблоне только отображение." />
-    <option name="LAST_COMMIT_MESSAGE" value="Переделать шаг3 стадия 2. &#10;Все списки сформировать в основной функции сервера, в шаблоне только отображение." />
+    <MESSAGE value="Шаг 3 стадия 2. Все вычисления перенесены в приложение, генератор страниц только отображает.&#10;Функции сохранения данных выведены в отдельные блоки, оканчиваются на ..save.&#10;Стадия 2. Закончена." />
+    <option name="LAST_COMMIT_MESSAGE" value="Шаг 3 стадия 2. Все вычисления перенесены в приложение, генератор страниц только отображает.&#10;Функции сохранения данных выведены в отдельные блоки, оканчиваются на ..save.&#10;Стадия 2. Закончена." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -539,10 +534,10 @@
           <folding>
             <element signature="e#6391#6472#1" expanded="true" />
             <element signature="e#7674#7755#1" expanded="true" />
-            <element signature="e#8386#8477#1" expanded="true" />
-            <element signature="e#10780#10876#1" expanded="true" />
-            <element signature="e#11612#11703#1" expanded="true" />
-            <element signature="e#17907#18742#1" expanded="true" />
+            <element signature="e#8483#8574#1" expanded="true" />
+            <element signature="e#10877#10973#1" expanded="true" />
+            <element signature="e#11709#11800#1" expanded="true" />
+            <element signature="e#18004#18839#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -563,7 +558,8 @@
             <element signature="e#86#101#0" expanded="true" />
             <element signature="e#16053#16142#1" expanded="true" />
             <element signature="e#16612#16709#1" expanded="true" />
-            <element signature="e#19090#19179#1" expanded="true" />
+            <element signature="e#19090#19211#1" expanded="true" />
+            <element signature="e#19757#19827#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -616,10 +612,10 @@
           <folding>
             <element signature="e#6391#6472#1" expanded="true" />
             <element signature="e#7674#7755#1" expanded="true" />
-            <element signature="e#8386#8477#1" expanded="true" />
-            <element signature="e#10780#10876#1" expanded="true" />
-            <element signature="e#11612#11703#1" expanded="true" />
-            <element signature="e#17907#18742#1" expanded="true" />
+            <element signature="e#8483#8574#1" expanded="true" />
+            <element signature="e#10877#10973#1" expanded="true" />
+            <element signature="e#11709#11800#1" expanded="true" />
+            <element signature="e#18004#18839#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -647,7 +643,8 @@
             <element signature="e#86#101#0" expanded="true" />
             <element signature="e#16053#16142#1" expanded="true" />
             <element signature="e#16612#16709#1" expanded="true" />
-            <element signature="e#19090#19179#1" expanded="true" />
+            <element signature="e#19090#19211#1" expanded="true" />
+            <element signature="e#19757#19827#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -692,10 +689,10 @@
           <folding>
             <element signature="e#6391#6472#1" expanded="true" />
             <element signature="e#7674#7755#1" expanded="true" />
-            <element signature="e#8386#8477#1" expanded="true" />
-            <element signature="e#10780#10876#1" expanded="true" />
-            <element signature="e#11612#11703#1" expanded="true" />
-            <element signature="e#17907#18742#1" expanded="true" />
+            <element signature="e#8483#8574#1" expanded="true" />
+            <element signature="e#10877#10973#1" expanded="true" />
+            <element signature="e#11709#11800#1" expanded="true" />
+            <element signature="e#18004#18839#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -723,7 +720,8 @@
             <element signature="e#86#101#0" expanded="true" />
             <element signature="e#16053#16142#1" expanded="true" />
             <element signature="e#16612#16709#1" expanded="true" />
-            <element signature="e#19090#19179#1" expanded="true" />
+            <element signature="e#19090#19211#1" expanded="true" />
+            <element signature="e#19757#19827#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -916,24 +914,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/wizard_step3stage2_page.html">
+    <entry file="file://$PROJECT_DIR$/app/webapp.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.444445">
-          <caret line="49" column="90" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="90" />
-          <folding />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="303" column="64" selection-start-line="303" selection-start-column="64" selection-end-line="303" selection-end-column="64" />
+          <folding>
+            <element signature="e#6391#6472#1" expanded="true" />
+            <element signature="e#7674#7755#1" expanded="true" />
+            <element signature="e#8483#8574#1" expanded="true" />
+            <element signature="e#10877#10973#1" expanded="true" />
+            <element signature="e#11709#11800#1" expanded="true" />
+            <element signature="e#18004#18839#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/modules/bmtools_objects.py">
+    <entry file="file://$PROJECT_DIR$/app/templates/wizard_step3stage2_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="691" column="28" selection-start-line="691" selection-start-column="28" selection-end-line="691" selection-end-column="28" />
-          <folding>
-            <element signature="e#86#101#0" expanded="true" />
-            <element signature="e#16053#16142#1" expanded="true" />
-            <element signature="e#16612#16709#1" expanded="true" />
-            <element signature="e#19090#19179#1" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.7009967">
+          <caret line="49" column="90" selection-start-line="49" selection-start-column="90" selection-end-line="49" selection-end-column="90" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -945,17 +945,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp.py">
+    <entry file="file://$PROJECT_DIR$/app/modules/bmtools_objects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47741935">
-          <caret line="314" column="54" selection-start-line="314" selection-start-column="54" selection-end-line="314" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.67096776">
+          <caret line="716" column="34" selection-start-line="716" selection-start-column="34" selection-end-line="716" selection-end-column="34" />
           <folding>
-            <element signature="e#6391#6472#1" expanded="true" />
-            <element signature="e#7674#7755#1" expanded="true" />
-            <element signature="e#8386#8477#1" expanded="true" />
-            <element signature="e#10780#10876#1" expanded="true" />
-            <element signature="e#11612#11703#1" expanded="true" />
-            <element signature="e#17907#18742#1" expanded="true" />
+            <element signature="e#86#101#0" expanded="true" />
+            <element signature="e#16053#16142#1" expanded="true" />
+            <element signature="e#16612#16709#1" expanded="true" />
+            <element signature="e#19090#19211#1" expanded="true" />
+            <element signature="e#19757#19827#1" expanded="true" />
           </folding>
         </state>
       </provider>

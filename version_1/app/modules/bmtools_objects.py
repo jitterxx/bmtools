@@ -677,6 +677,7 @@ def load_custom_links():
 def save_picked_goals_to_custom(picked_goals):
     """
     Сохраняем выбранные цели из библиотеки в кастомные таблицы.
+    Сохраняем свящи между ними.
 
     :return:
     """
@@ -694,6 +695,38 @@ def save_picked_goals_to_custom(picked_goals):
             n.goal_name = g.goal_name
             n.description = g.description
             n.perspective = g.perspective
+            session.add(n)
+            session.commit()
+    finally:
+        session.close()
+
+    save_picked_links_to_custom()
+
+
+def save_picked_links_to_custom():
+    """
+    Сохраняем связи между кастомными целями.
+
+    :return:
+    """
+
+    session = Session()
+
+    try:
+        req = session.query(Custom_goal.code).all()
+        resp = [i[0] for i in req]
+        lresp = session.query(Lib_linked_goals).filter(and_(Lib_linked_goals.parent_code.in_(resp),
+                                                            Lib_linked_goals.child_code.in_(resp))).all()
+    except Exception as e:
+        raise e
+    else:
+        print "Custom goals code: %s" % resp
+        print type(resp)
+        print "Lib goals links: %s" % lresp
+        for l in lresp:
+            n = Custom_linked_goals()
+            n.parent_code = l.parent_code
+            n.child_code = l.child_code
             session.add(n)
             session.commit()
     finally:

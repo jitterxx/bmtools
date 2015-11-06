@@ -217,6 +217,8 @@ class Wizard(object):
             print "picked_goals empty. Redirect to step3stage1."
             raise cherrypy.HTTPRedirect("step3stage1")
         else:
+            if not isinstance(picked_goals, list):
+                picked_goals = [picked_goals]
             print "picked_goals not empty. Save data."
 
         params = cherrypy.request.headers
