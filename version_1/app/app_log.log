@@ -11453,3 +11453,244 @@ WARNING  [2015-11-06 19:36:42,356] Описание с кодом step3_stage3_d
 WARNING  [2015-11-06 19:36:42,358] Описание с кодом step3_name найдено
 WARNING  [2015-11-06 19:36:42,359] Описание с кодом step3_stage3_subheader найдено
 INFO     [2015-11-06 19:36:42,369] 127.0.0.1 - test [06/Nov/2015:19:36:42] "GET /wizard/step3stage3 HTTP/1.1" 200 2584 "http://127.0.0.1:8080/wizard/step3stage3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-11-06 23:57:00,794] 127.0.0.1 - - [06/Nov/2015:23:57:00] "GET /wizard/step4 HTTP/1.1" 303 120 "http://127.0.0.1:8080/wizard/step3stage3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-11-06 23:57:00,805] 127.0.0.1 - - [06/Nov/2015:23:57:00] "GET /auth/login?from_page=/wizard/step4 HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizard/step3stage3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-06 23:57:03,694] Пользователь с логином test найден
+INFO     [2015-11-06 23:57:03,695] 127.0.0.1 - test [06/Nov/2015:23:57:03] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizard/step4" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-06 23:57:03,877] Пользователь с логином test найден
+INFO     [2015-11-06 23:57:03,878] 127.0.0.1 - test [06/Nov/2015:23:57:03] "GET / HTTP/1.1" 200 1329 "http://127.0.0.1:8080/auth/login?from_page=/wizard/step4" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-06 23:57:04,825] Пользователь с логином test найден
+WARNING  [2015-11-06 23:57:04,831] Конфигурация найдена.
+INFO     [2015-11-06 23:57:04,832] 127.0.0.1 - test [06/Nov/2015:23:57:04] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-06 23:57:05,927] Пользователь с логином test найден
+WARNING  [2015-11-06 23:57:05,936] Описание с кодом step3_full_description найдено
+WARNING  [2015-11-06 23:57:05,937] Описание с кодом step3_name найдено
+INFO     [2015-11-06 23:57:05,941] 127.0.0.1 - test [06/Nov/2015:23:57:05] "GET /wizard/step3 HTTP/1.1" 200 1658 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-06 23:57:15,095] Пользователь с логином test найден
+INFO     [2015-11-06 23:57:15,114] 127.0.0.1 - test [06/Nov/2015:23:57:15] "GET /wizard/step4 HTTP/1.1" 200 1407 "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-06 23:57:19,506] Пользователь с логином test найден
+INFO     [2015-11-06 23:57:19,507] 127.0.0.1 - test [06/Nov/2015:23:57:19] "GET /wizard/step5 HTTP/1.1" 200 1408 "http://127.0.0.1:8080/wizard/step4" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-11-07 00:22:33,135] [07/Nov/2015:00:22:33] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-07 00:22:33,135] [07/Nov/2015:00:22:33] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-07 00:22:33,135] [07/Nov/2015:00:22:33] ENGINE Bus STOPPING
+INFO     [2015-11-07 00:22:33,138] [07/Nov/2015:00:22:33] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-07 00:22:33,139] [07/Nov/2015:00:22:33] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-07 00:22:33,139] [07/Nov/2015:00:22:33] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-07 00:22:33,139] [07/Nov/2015:00:22:33] ENGINE Bus STOPPED
+INFO     [2015-11-07 00:22:33,139] [07/Nov/2015:00:22:33] ENGINE Bus EXITING
+INFO     [2015-11-07 00:22:33,139] [07/Nov/2015:00:22:33] ENGINE Bus EXITED
+INFO     [2015-11-07 00:22:33,234] [07/Nov/2015:00:22:33] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-07 00:22:33,234] [07/Nov/2015:00:22:33] ENGINE Re-spawning webapp.py
+INFO     [2015-11-07 01:02:39,810] [07/Nov/2015:01:02:39] ENGINE Listening for SIGHUP.
+INFO     [2015-11-07 01:02:39,811] [07/Nov/2015:01:02:39] ENGINE Listening for SIGTERM.
+INFO     [2015-11-07 01:02:39,811] [07/Nov/2015:01:02:39] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-07 01:02:39,811] [07/Nov/2015:01:02:39] ENGINE Bus STARTING
+INFO     [2015-11-07 01:02:39,812] [07/Nov/2015:01:02:39] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-07 01:02:39,812] [07/Nov/2015:01:02:39] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-07 01:02:39,915] [07/Nov/2015:01:02:39] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-07 01:02:39,916] [07/Nov/2015:01:02:39] ENGINE Bus STARTED
+INFO     [2015-11-07 01:02:42,851] [07/Nov/2015:01:02:42] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-07 01:02:42,852] 127.0.0.1 - - [07/Nov/2015:01:02:42] "GET /wizard/ HTTP/1.1" 303 114 "http://127.0.0.1:8080/wizard/step5" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-11-07 01:02:42,896] 127.0.0.1 - - [07/Nov/2015:01:02:42] "GET /auth/login?from_page=/wizard/ HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizard/step5" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:45,150] Пользователь с логином test найден
+INFO     [2015-11-07 01:02:45,151] 127.0.0.1 - test [07/Nov/2015:01:02:45] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:45,352] Пользователь с логином test найден
+INFO     [2015-11-07 01:02:45,369] 127.0.0.1 - test [07/Nov/2015:01:02:45] "GET / HTTP/1.1" 200 1329 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:46,273] Пользователь с логином test найден
+WARNING  [2015-11-07 01:02:46,280] Конфигурация найдена.
+INFO     [2015-11-07 01:02:46,281] 127.0.0.1 - test [07/Nov/2015:01:02:46] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:47,534] Пользователь с логином test найден
+WARNING  [2015-11-07 01:02:47,543] Описание с кодом step3_full_description найдено
+WARNING  [2015-11-07 01:02:47,544] Описание с кодом step3_name найдено
+INFO     [2015-11-07 01:02:47,548] 127.0.0.1 - test [07/Nov/2015:01:02:47] "GET /wizard/step3 HTTP/1.1" 200 1624 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:49,268] Пользователь с логином test найден
+WARNING  [2015-11-07 01:02:49,280] Описание с кодом step3_stage1_description найдено
+WARNING  [2015-11-07 01:02:49,282] Описание с кодом step3_name найдено
+INFO     [2015-11-07 01:02:49,294] 127.0.0.1 - test [07/Nov/2015:01:02:49] "GET /wizard/step3stage1 HTTP/1.1" 200 2325 "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:51,664] Пользователь с логином test найден
+INFO     [2015-11-07 01:02:51,753] 127.0.0.1 - test [07/Nov/2015:01:02:51] "POST /wizard/step3stage1save HTTP/1.1" 303 105 "http://127.0.0.1:8080/wizard/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:51,772] Пользователь с логином test найден
+WARNING  [2015-11-07 01:02:51,774] Описание с кодом step3_stage1_description найдено
+WARNING  [2015-11-07 01:02:51,776] Описание с кодом step3_name найдено
+INFO     [2015-11-07 01:02:51,788] 127.0.0.1 - test [07/Nov/2015:01:02:51] "GET /wizard/step3stage1 HTTP/1.1" 200 2341 "http://127.0.0.1:8080/wizard/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:54,013] Пользователь с логином test найден
+WARNING  [2015-11-07 01:02:54,025] Описание с кодом step3_stage2_description не найдено
+WARNING  [2015-11-07 01:02:54,027] Описание с кодом step3_name найдено
+WARNING  [2015-11-07 01:02:54,030] Описание с кодом step3_subheader найдено
+INFO     [2015-11-07 01:02:54,038] 127.0.0.1 - test [07/Nov/2015:01:02:54] "GET /wizard/step3stage2 HTTP/1.1" 200 2026 "http://127.0.0.1:8080/wizard/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:55,956] Пользователь с логином test найден
+INFO     [2015-11-07 01:02:56,113] 127.0.0.1 - test [07/Nov/2015:01:02:56] "POST /wizard/step3stage2save HTTP/1.1" 303 105 "http://127.0.0.1:8080/wizard/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:56,129] Пользователь с логином test найден
+WARNING  [2015-11-07 01:02:56,131] Описание с кодом step3_stage2_description не найдено
+WARNING  [2015-11-07 01:02:56,132] Описание с кодом step3_name найдено
+WARNING  [2015-11-07 01:02:56,136] Описание с кодом step3_subheader найдено
+INFO     [2015-11-07 01:02:56,146] 127.0.0.1 - test [07/Nov/2015:01:02:56] "GET /wizard/step3stage2 HTTP/1.1" 200 2025 "http://127.0.0.1:8080/wizard/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:59,557] Пользователь с логином test найден
+INFO     [2015-11-07 01:02:59,558] 127.0.0.1 - test [07/Nov/2015:01:02:59] "POST /wizard/step3stage2save HTTP/1.1" 303 105 "http://127.0.0.1:8080/wizard/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:02:59,583] Пользователь с логином test найден
+WARNING  [2015-11-07 01:02:59,585] Описание с кодом step3_stage2_description не найдено
+WARNING  [2015-11-07 01:02:59,587] Описание с кодом step3_name найдено
+WARNING  [2015-11-07 01:02:59,588] Описание с кодом step3_subheader найдено
+INFO     [2015-11-07 01:02:59,598] 127.0.0.1 - test [07/Nov/2015:01:02:59] "GET /wizard/step3stage2 HTTP/1.1" 200 2025 "http://127.0.0.1:8080/wizard/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:03:00,249] Пользователь с логином test найден
+WARNING  [2015-11-07 01:03:00,261] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-07 01:03:00,263] Описание с кодом step3_name найдено
+WARNING  [2015-11-07 01:03:00,264] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-07 01:03:00,275] 127.0.0.1 - test [07/Nov/2015:01:03:00] "GET /wizard/step3stage3 HTTP/1.1" 200 2572 "http://127.0.0.1:8080/wizard/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:03:06,179] Пользователь с логином test найден
+INFO     [2015-11-07 01:03:06,526] 127.0.0.1 - test [07/Nov/2015:01:03:06] "POST /wizard/step3stage3save HTTP/1.1" 303 105 "http://127.0.0.1:8080/wizard/step3stage3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:03:06,543] Пользователь с логином test найден
+WARNING  [2015-11-07 01:03:06,545] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-07 01:03:06,546] Описание с кодом step3_name найдено
+WARNING  [2015-11-07 01:03:06,548] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-07 01:03:06,558] 127.0.0.1 - test [07/Nov/2015:01:03:06] "GET /wizard/step3stage3 HTTP/1.1" 200 2576 "http://127.0.0.1:8080/wizard/step3stage3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:03:11,253] Пользователь с логином test найден
+INFO     [2015-11-07 01:03:11,257] 127.0.0.1 - test [07/Nov/2015:01:03:11] "GET /wizard/step4 HTTP/1.1" 200 1407 "http://127.0.0.1:8080/wizard/step3stage3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:12:52,623] Пользователь с логином test найден
+WARNING  [2015-11-07 01:12:52,625] Конфигурация найдена.
+INFO     [2015-11-07 01:12:52,627] 127.0.0.1 - test [07/Nov/2015:01:12:52] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/wizard/step4" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:12:57,444] Пользователь с логином test найден
+WARNING  [2015-11-07 01:12:57,469] Описание с кодом step1_full_description найдено
+WARNING  [2015-11-07 01:12:57,470] Описание с кодом step1_name найдено
+WARNING  [2015-11-07 01:12:57,472] Конфигурация найдена.
+INFO     [2015-11-07 01:12:57,473] 127.0.0.1 - test [07/Nov/2015:01:12:57] "GET /wizard/step1 HTTP/1.1" 200 1664 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:13:07,912] Пользователь с логином test найден
+WARNING  [2015-11-07 01:13:07,943] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:13:07,944] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:13:07,949] 127.0.0.1 - test [07/Nov/2015:01:13:07] "GET /wizard/step2 HTTP/1.1" 200 1943 "http://127.0.0.1:8080/wizard/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:13:20,582] Пользователь с логином test найден
+WARNING  [2015-11-07 01:13:20,584] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:13:20,590] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:13:20,596] 127.0.0.1 - test [07/Nov/2015:01:13:20] "GET /wizard/step2?action=edit&org_id=3 HTTP/1.1" 200 2099 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:13:41,737] Пользователь с логином test найден
+WARNING  [2015-11-07 01:13:41,740] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:13:41,748] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:13:41,754] 127.0.0.1 - test [07/Nov/2015:01:13:41] "GET /wizard/step2?action=edit&org_id=3 HTTP/1.1" 200 2099 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:13:44,586] Пользователь с логином test найден
+WARNING  [2015-11-07 01:13:44,587] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:13:44,589] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:13:44,646] [07/Nov/2015:01:13:44] HTTP 
+Request Headers:
+  Content-Length: 65
+  REFERER: http://127.0.0.1:8080/wizard/step2?action=edit&org_id=3
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0
+  COOKIE: session_id=dec65da7f646fdb23b0f6348f70445e65ae50a12
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  Content-Type: application/x-www-form-urlencoded
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-07 01:13:44,647] [07/Nov/2015:01:13:44] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 154, in step2
+    org_structure, shift = BMTObjects.get_structure_sorted()
+  File "/home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py", line 314, in get_structure_sorted
+    if one.parentid == i.id:
+AttributeError: 'NoneType' object has no attribute 'id'
+INFO     [2015-11-07 01:13:44,648] 127.0.0.1 - test [07/Nov/2015:01:13:44] "POST /wizard/step2 HTTP/1.1" 500 1572 "http://127.0.0.1:8080/wizard/step2?action=edit&org_id=3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:13:54,785] Пользователь с логином test найден
+WARNING  [2015-11-07 01:13:54,787] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:13:54,789] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:13:54,836] [07/Nov/2015:01:13:54] HTTP 
+Request Headers:
+  Content-Length: 65
+  REFERER: http://127.0.0.1:8080/wizard/step2?action=edit&org_id=3
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0
+  COOKIE: session_id=dec65da7f646fdb23b0f6348f70445e65ae50a12
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  Content-Type: application/x-www-form-urlencoded
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-07 01:13:54,836] [07/Nov/2015:01:13:54] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 154, in step2
+    org_structure, shift = BMTObjects.get_structure_sorted()
+  File "/home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py", line 314, in get_structure_sorted
+    if one.parentid == i.id:
+AttributeError: 'NoneType' object has no attribute 'id'
+INFO     [2015-11-07 01:13:54,837] 127.0.0.1 - test [07/Nov/2015:01:13:54] "POST /wizard/step2 HTTP/1.1" 500 1572 "http://127.0.0.1:8080/wizard/step2?action=edit&org_id=3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:13:59,945] Пользователь с логином test найден
+WARNING  [2015-11-07 01:13:59,947] Конфигурация найдена.
+INFO     [2015-11-07 01:13:59,949] 127.0.0.1 - test [07/Nov/2015:01:13:59] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/wizard/step2?action=edit&org_id=3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:14:01,374] Пользователь с логином test найден
+WARNING  [2015-11-07 01:14:01,376] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:14:01,378] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:14:01,381] [07/Nov/2015:01:14:01] HTTP 
+Request Headers:
+  REFERER: http://127.0.0.1:8080/wizard/
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0
+  COOKIE: session_id=dec65da7f646fdb23b0f6348f70445e65ae50a12
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-07 01:14:01,381] [07/Nov/2015:01:14:01] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 154, in step2
+    org_structure, shift = BMTObjects.get_structure_sorted()
+  File "/home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py", line 314, in get_structure_sorted
+    if one.parentid == i.id:
+AttributeError: 'NoneType' object has no attribute 'id'
+INFO     [2015-11-07 01:14:01,381] 127.0.0.1 - test [07/Nov/2015:01:14:01] "GET /wizard/step2 HTTP/1.1" 500 1572 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:14:27,910] Пользователь с логином test найден
+WARNING  [2015-11-07 01:14:27,912] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:14:27,914] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:14:27,919] 127.0.0.1 - test [07/Nov/2015:01:14:27] "GET /wizard/step2 HTTP/1.1" 200 1943 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:14:33,860] Пользователь с логином test найден
+WARNING  [2015-11-07 01:14:33,862] Описание с кодом step2_full_description найдено
+WARNING  [2015-11-07 01:14:33,864] Описание с кодом step2_name найдено
+INFO     [2015-11-07 01:14:33,877] 127.0.0.1 - test [07/Nov/2015:01:14:33] "GET /wizard/step2?action=edit&org_id=3 HTTP/1.1" 200 2099 "http://127.0.0.1:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:14:47,403] Пользователь с логином test найден
+WARNING  [2015-11-07 01:14:47,405] Конфигурация найдена.
+INFO     [2015-11-07 01:14:47,407] 127.0.0.1 - test [07/Nov/2015:01:14:47] "GET /wizard/ HTTP/1.1" 200 1638 "http://127.0.0.1:8080/wizard/step2?action=edit&org_id=3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:14:53,814] Пользователь с логином test найден
+WARNING  [2015-11-07 01:14:53,816] Описание с кодом step3_full_description найдено
+WARNING  [2015-11-07 01:14:53,817] Описание с кодом step3_name найдено
+INFO     [2015-11-07 01:14:53,820] 127.0.0.1 - test [07/Nov/2015:01:14:53] "GET /wizard/step3 HTTP/1.1" 200 1661 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:15:14,850] Пользователь с логином test найден
+INFO     [2015-11-07 01:15:14,852] 127.0.0.1 - test [07/Nov/2015:01:15:14] "GET /wizard/step4 HTTP/1.1" 200 1407 "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:15:38,937] Пользователь с логином test найден
+WARNING  [2015-11-07 01:15:38,938] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-07 01:15:38,939] Описание с кодом step3_name найдено
+WARNING  [2015-11-07 01:15:38,941] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-07 01:15:38,950] 127.0.0.1 - test [07/Nov/2015:01:15:38] "GET /wizard/step3stage3 HTTP/1.1" 200 2576 "http://127.0.0.1:8080/wizard/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:16:21,367] Пользователь с логином test найден
+INFO     [2015-11-07 01:16:21,369] 127.0.0.1 - test [07/Nov/2015:01:16:21] "GET /wizard/step4 HTTP/1.1" 200 1407 "http://127.0.0.1:8080/wizard/step3stage3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+WARNING  [2015-11-07 01:16:22,789] Пользователь с логином test найден
+INFO     [2015-11-07 01:16:22,790] 127.0.0.1 - test [07/Nov/2015:01:16:22] "GET /wizard/step5 HTTP/1.1" 200 1408 "http://127.0.0.1:8080/wizard/step4" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:41.0) Gecko/20100101 Firefox/41.0"
+INFO     [2015-11-07 02:03:25,345] [07/Nov/2015:02:03:25] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-07 02:03:25,346] [07/Nov/2015:02:03:25] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-07 02:03:25,346] [07/Nov/2015:02:03:25] ENGINE Bus STOPPING
+INFO     [2015-11-07 02:03:25,349] [07/Nov/2015:02:03:25] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-07 02:03:25,350] [07/Nov/2015:02:03:25] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-07 02:03:25,350] [07/Nov/2015:02:03:25] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-07 02:03:25,350] [07/Nov/2015:02:03:25] ENGINE Bus STOPPED
+INFO     [2015-11-07 02:03:25,350] [07/Nov/2015:02:03:25] ENGINE Bus EXITING
+INFO     [2015-11-07 02:03:25,350] [07/Nov/2015:02:03:25] ENGINE Bus EXITED
+INFO     [2015-11-07 02:03:25,427] [07/Nov/2015:02:03:25] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-07 02:03:25,427] [07/Nov/2015:02:03:25] ENGINE Re-spawning webapp.py

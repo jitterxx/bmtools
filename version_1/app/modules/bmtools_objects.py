@@ -470,6 +470,10 @@ class Lib_KPI(Base):
     code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
     formula = sqlalchemy.Column(sqlalchemy.String(256), default="")
     link_to_desc = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    # measure = sqlalchemy.Column(sqlalchemy.String(256), default="") # from MEASURES
+    # target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    # fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    # cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
 
     def __init__(self):
         self.name = ""
@@ -520,6 +524,10 @@ class Custom_KPI(Base):
     code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
     formula = sqlalchemy.Column(sqlalchemy.String(256), default="")
     link_to_desc = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    # measure = sqlalchemy.Column(sqlalchemy.String(256), default="") # from MEASURES
+    # target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    # fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    # cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
 
     def __init__(self):
         self.name = ""
@@ -697,6 +705,12 @@ def save_picked_goals_to_custom(picked_goals):
             n.perspective = g.perspective
             session.add(n)
             session.commit()
+            # Добавлем запись в стратегическую карту
+            n = StrategicMap()
+            n.map_code = current_strategic_map
+            n.goal_code = g.code
+            session.add(n)
+            session.commit()
     finally:
         session.close()
 
@@ -755,12 +769,19 @@ def save_picked_kpi_to_custom(picked_kpi):
         raise e
     else:
         for g in resp:
+            # Копируем показатели
             n = Custom_KPI()
             n.code = g.code
             n.name = g.name
             n.description = g.description
             n.formula = g.formula
             n.link_to_desc = g.link_to_desc
+            session.add(n)
+            session.commit()
+            # Добавлем запись в стратегическую карту
+            n = StrategicMap()
+            n.map_code = current_strategic_map
+            n.kpi_code = g.code
             session.add(n)
             session.commit()
     finally:
@@ -801,4 +822,105 @@ def save_picked_kpi_links_to_custom():
                 print "Link already added to custom"
     finally:
         session.close()
+
+
+class StrategicMapDescription(Base):
+    """
+    Класс для хранения данных о стратегических картах. Код карты, название, описание, владелец, дата.
+    """
+    __tablename__ = "strategic_maps_desc"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
+    name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    owner = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    status = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+
+    def __init__(self):
+        self.code = ""
+        self.name = ""
+        self.description = ""
+        self.owner = 0
+        self.status = 0
+        self.date = datetime.datetime.now()
+
+    def create_enterprise_map(self):
+        session = Session()
+
+        self.code = "ent0"
+        self.name = "Стратегическая карта компании"
+        self.description = "Стратегическая карта компании верхнего уровня."
+        self.owner = 0
+        self.status = 0
+        self.date = datetime.datetime.now()
+
+        try:
+            session.add(self)
+            session.commit()
+        except Exception as e:
+            raise e
+        finally:
+            session.close()
+
+
+class StrategicMap(Base):
+    """
+    Класс для хранения информации об объектах которые входят в ту или иную карту.
+    Хранит коды объектов, каждый тип в своем поле.
+    """
+    __tablename__ = "strategic_maps"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    map_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    goal_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    metric_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    event_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+
+    def __init__(self):
+        self.map_code = ""
+        self.goal_code = ""
+        self.kpi_code = ""
+        self.metric_code = ""
+        self.event_code = ""
+        self.version = 0
+        self.date = datetime.datetime.now()
+
+
+class KPITargetValues(Base):
+    """
+    Класс для хранения целевых значений показателей и их типов.
+    """
+    __tablename__ = "kpi_target_values"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    first_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
+    second_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
+    kpi_scale_type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from  KPI_SCALE_TYPE
+    version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+
+
+class FactValue(Base):
+    """
+    Хранит фактические значния показателей и метрик.
+    """
+    __tablename__ = "fact_value"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    metric_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    fact_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
+    date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+
+
+
+
+
+
 
