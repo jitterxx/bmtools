@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03726f1b-ff6a-4b85-8b7a-dea0f9f42f78" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/templates/wizard_step5edit_page.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app_log.log" afterPath="$PROJECT_DIR$/app/app_log.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/modules/bmtools_objects.py" afterPath="$PROJECT_DIR$/app/modules/bmtools_objects.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/modules/configurations.py" afterPath="$PROJECT_DIR$/app/modules/configurations.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/modules/untitled0.py" afterPath="$PROJECT_DIR$/app/modules/untitled0.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp.py" afterPath="$PROJECT_DIR$/app/webapp.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/templates/wizard_step5_page.html" afterPath="$PROJECT_DIR$/app/templates/wizard_step5_page.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/database/Dump20151107-1.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="version_1.iws" />
@@ -188,10 +182,6 @@
               <option name="myItemId" value="version_1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -222,24 +212,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="version_1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="version_1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="temp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -528,12 +500,18 @@
       <option name="project" value="LOCAL" />
       <updated>1446896819780</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Добавлены функции записи и обновления целевых значений показатлей.&#10;Так же добавлен обновление некоторыз полей показателей: отвественный, периодичность, ед измерения, шкала.">
+      <created>1446905348552</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1446905348552</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="24" width="1865" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -545,7 +523,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24972856" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24972856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24972856" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916668" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.271875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -577,7 +555,8 @@
     <MESSAGE value="Добавлена работа с несколькими стратегическими картами, все изменения вносяться в текущую карту. Все цели и показатели при записи вносятся в соответствующую карту.&#10; Добавлены классы для работы с целевыми значениями и фактическим данными показаетлей и метрик." />
     <MESSAGE value="Дамп БД добавлен." />
     <MESSAGE value="Добавлены расширения классов Custom_KPI, Lib_KPI для работы с значениями показателей.&#10;Добавлены функции чтения и записи целевых значений для показателей." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавлены расширения классов Custom_KPI, Lib_KPI для работы с значениями показателей.&#10;Добавлены функции чтения и записи целевых значений для показателей." />
+    <MESSAGE value="Добавлены функции записи и обновления целевых значений показатлей.&#10;Так же добавлен обновление некоторыз полей показателей: отвественный, периодичность, ед измерения, шкала." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавлены функции записи и обновления целевых значений показатлей.&#10;Так же добавлен обновление некоторыз полей показателей: отвественный, периодичность, ед измерения, шкала." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
