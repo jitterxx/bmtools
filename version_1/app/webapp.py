@@ -379,7 +379,7 @@ class Wizard(object):
         step_desc = dict()
         step_desc['full_description'] = BMTObjects.get_desc("step5_full_description")
         step_desc['name'] = "Шаг 5. " + BMTObjects.get_desc("step5_name")
-        step_desc['subheader'] = "Шаг 5. " + BMTObjects.get_desc("step5_subheader")
+        step_desc['subheader'] = BMTObjects.get_desc("step5_subheader")
         step_desc['next_step'] = "6"
 
         try:
@@ -391,13 +391,84 @@ class Wizard(object):
         kpi_target_values = dict()
         for one in custom_kpi.keys():
             target = BMTObjects.get_kpi_target_value(one)
-            if not target:
+            if target:
                 kpi_target_values[one] = target
 
         return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                            kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                            kpi_target_values=kpi_target_values)
+
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step5edit(self, picked_kpi=None):
+        tmpl = lookup.get_template("wizard_step5edit_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("step5_full_description")
+        step_desc['name'] = "Шаг 5. " + BMTObjects.get_desc("step5_name")
+        step_desc['subheader'] = "Шаг 5. " + BMTObjects.get_desc("step5_subheader")
+        step_desc['next_step'] = "6"
+
+        if picked_kpi is None:
+            print "kpi empty. Redirect to step5."
+            raise cherrypy.HTTPRedirect("step5")
+
+        try:
+            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_kpi_links = BMTObjects.load_custom_links()[1]
+        except Exception as e:
+            return ShowError(e)
+
+        kpi_target_values = dict()
+        for one in custom_kpi.keys():
+            target = BMTObjects.get_kpi_target_value(one)
+            if target:
+                kpi_target_values[one] = target
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           kpi_target_values=kpi_target_values, picked_kpi=picked_kpi)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step5save(self, picked_kpi=None, target_responsible=None, measure=None, cycle=None, kpi_scale_type=None,
+                  first_value=None, second_value=None):
+        """
+            Сохраняем выбранные значения
+        """
+        print "Step 5 SAVE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step5edit?picked_kpi=%s" % picked_kpi)
+
+        kpi_target_values = dict()
+        custom_kpi_update = dict()
+
+        kpi_target_values["kpi_code"] = picked_kpi
+        kpi_target_values["first_value"] = float(first_value)
+        kpi_target_values["second_value"] = float(second_value)
+        kpi_target_values["kpi_scale_type"] = int(kpi_scale_type)
+        kpi_target_values["version"] = BMTObjects.VERSION
+
+        custom_kpi_update["code"] = picked_kpi
+        custom_kpi_update["target_responsible"] = int(target_responsible)
+        custom_kpi_update["measure"] = int(measure)
+        custom_kpi_update["cycle"] = int(cycle)
+
+
+        try:
+            BMTObjects.save_kpi_target_value(kpi_target_values)
+            BMTObjects.update_custom_kpi(custom_kpi_update)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("step5")
 
 
     @cherrypy.expose

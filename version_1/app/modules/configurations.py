@@ -17,6 +17,8 @@ CYCLES = {0: "Неделя", 1: "Месяц", 2: "Полгода", 3: "Год"}
 
 MEASURES = {0: "Число", 1: "Проценты", 2: "Баллы"}
 
+VERSION = 0
+
 QUEUE_NAME = ''
 QUEUE_BROKER = 'amqp://guest@localhost//'
 QUEUE_BROKER_BACKEND = 'rpc://'

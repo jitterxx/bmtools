@@ -20,10 +20,7 @@ sys.setdefaultencoding("utf-8")
 session = BMTObjects.Session()
 
 
-st, shift = BMTObjects.get_structure_sorted()
-for one in st:
-    print one.id, one.parentid, one.org_name
-
-print shift.__len__()
+o = BMTObjects.Custom_KPI()
+print o.__dict__
 
 session.close()

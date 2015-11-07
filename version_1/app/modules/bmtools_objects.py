@@ -535,6 +535,10 @@ class Custom_KPI(Base):
         self.code = ""
         self.formula = ""
         self.link_to_desc = "#"
+        self.measure = 0
+        self.cycle = 0
+        self.target_responsible = 0
+        self.fact_responsible = 0
 
 
 class Custom_linked_goals(Base):
@@ -551,6 +555,39 @@ class Custom_linked_kpi_to_goal(Base):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     goal_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
     kpi_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+def update_custom_kpi(custom_kpi_update):
+    """
+    Обновляет значения полей кастомного KPI.
+
+    :param custom_kpi_update:
+    :return:
+    """
+
+    session = Session()
+
+    print "SAVE custom kpi"
+    for key in custom_kpi_update.keys():
+        print key, ":", custom_kpi_update[key]
+
+    try:
+        resp = session.query(Custom_KPI).filter(Custom_KPI.code == custom_kpi_update['code']).one()
+    except Exception as e:
+        raise e
+    else:
+        """
+        for key in custom_kpi_update.keys():
+            if custom_kpi_update[key] != resp.__dict__[key]:
+                resp.__dict__[key] = custom_kpi_update[key]
+        """
+        resp.code = custom_kpi_update["code"]
+        resp.target_responsible = custom_kpi_update["target_responsible"]
+        resp.measure = custom_kpi_update["measure"]
+        resp.cycle = custom_kpi_update["cycle"]
+        session.commit()
+    finally:
+        session.close()
 
 
 def load_custom_goals_kpi():
@@ -944,10 +981,13 @@ def save_kpi_target_value(kpi_target_value):
     Если такой kpi_code встречался, то происходит обновление. Если не встречался, то создается новый.
     """
     session = Session()
+    print "SAVE target values"
+    for key in kpi_target_value.keys():
+        print key, ":", kpi_target_value[key]
 
     # check exist
     try:
-        exist = get_kpi_target_value(kpi_target_value.kpi_code)
+        exist = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_target_value['kpi_code']).one()
     except Exception as e:
         print "Ошибка в функции BMTObjects.save_kpi_target_value. Чтение KPITargetValue. " + str(e)
         session.close()
@@ -955,12 +995,13 @@ def save_kpi_target_value(kpi_target_value):
 
     if exist:
         # такой объект существует, обновляем
-        exist.first_value = kpi_target_value.first_value
-        exist.second_value = kpi_target_value.second_value
-        exist.kpi_scale_type = kpi_target_value.kpi_scale_type
-        exist.version = kpi_target_value.version
-        exist.date = kpi_target_value.date
+        print "KPI TARGET такой объект существует, обновляем"
         try:
+            exist.first_value = kpi_target_value["first_value"]
+            exist.second_value = kpi_target_value["second_value"]
+            exist.kpi_scale_type = kpi_target_value["kpi_scale_type"]
+            exist.version = kpi_target_value["version"]
+            exist.date = datetime.datetime.now()
             session.commit()
         except Exception as e:
             print "Ошибка в функции BMTObjects.save_kpi_target_value. Обновление KPITargetValue. " + str(e)
@@ -969,8 +1010,11 @@ def save_kpi_target_value(kpi_target_value):
             session.close()
     else:
         # создаем новый
+        new = KPITargetValue()
         try:
-            session.add(kpi_target_value)
+            for key in kpi_target_value.keys():
+                new.__dict__[key] = kpi_target_value[key]
+            session.add(new)
             session.commit()
         except Exception as e:
             print "Ошибка в функции BMTObjects.save_kpi_target_value. Создание нового KPITargetValue. " + str(e)

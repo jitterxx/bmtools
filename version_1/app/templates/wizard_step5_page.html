@@ -14,16 +14,17 @@
             <h3>${step_desc['subheader']}</h3>
             ${step_desc['full_description']}
 
-                   <table class="table table-condensed table-hover table-bordered">
+                   <table class="table table-condensed table-hover">
+                   <caption></caption>
                        <thead>
                        <tr>
-                           <th>Цель</th>
-                           <th>Показатель</th>
-                           <th>Ответственный</th>
-                           <th>Ед. изм.</th>
-                           <th>Периодичность</th>
-                           <th>Шкала</th>
-                           <th>Целевое значение1</th>
+                           <th></th>
+                           <th><small>Показатель</small></th>
+                           <th><small>Ответственный</small></th>
+                           <th><small>Ед. изм.</small></th>
+                           <th><small>Периодичность</small></th>
+                           <th><small>Шкала</small></th>
+                           <th><small>Целевое значение1</small></th>
                            <th><small>Целевое значение2</small></th>
                            <th></th>
                        </tr>
@@ -32,13 +33,13 @@
                        % for goal in custom_kpi_links.keys():
                            % for kpi in custom_kpi_links[goal]:
                            <tr>
-                               <td>${custom_goals.get(goal).goal_name}</td>
+                               <th scope="row">${custom_goals.get(goal).goal_name}</th>
                                <td>${custom_kpi.get(kpi).name}</td>
                                <td>${persons[custom_kpi.get(kpi).target_responsible]}</td>
                                <td>${measures[custom_kpi.get(kpi).measure]}</td>
                                <td>${cycles[custom_kpi.get(kpi).cycle]}</td>
                                % if kpi_target_values.get(kpi):
-                               <td>${kpi_target_values.get(kpi).kpi_scale_type}</td>
+                               <td>${kpi_scale[kpi_target_values.get(kpi).kpi_scale_type]}</td>
                                <td>${kpi_target_values.get(kpi).first_value}</td>
                                <td>${kpi_target_values.get(kpi).second_value}</td>
                                % else:
@@ -46,7 +47,8 @@
                                <td>-</td>
                                <td>-</td>
                                % endif
-                               <td><button type="button" class="btn btn-default btn-xs">Изменить</button></td>
+                               <td><a href="/wizard/step5edit?picked_kpi=${kpi}" role="button" class="btn btn-default btn-xs">
+                                   Изменить</a></td>
                            </tr>
                            % endfor
                        % endfor
