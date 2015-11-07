@@ -1,0 +1,64 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-6">
+            <h1>${step_desc['name']}</h1>
+
+            <h3>${step_desc['subheader']}</h3>
+            ${step_desc['full_description']}
+
+                   <table class="table table-condensed table-hover table-bordered">
+                       <thead>
+                       <tr>
+                           <th>Цель</th>
+                           <th>Показатель</th>
+                           <th>Ответственный</th>
+                           <th>Ед. изм.</th>
+                           <th>Периодичность</th>
+                           <th>Шкала</th>
+                           <th>Целевое значение1</th>
+                           <th><small>Целевое значение2</small></th>
+                           <th></th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       % for goal in custom_kpi_links.keys():
+                           % for kpi in custom_kpi_links[goal]:
+                           <tr>
+                               <td>${custom_goals.get(goal).goal_name}</td>
+                               <td>${custom_kpi.get(kpi).name}</td>
+                               <td>${persons[custom_kpi.get(kpi).target_responsible]}</td>
+                               <td>${measures[custom_kpi.get(kpi).measure]}</td>
+                               <td>${cycles[custom_kpi.get(kpi).cycle]}</td>
+                               % if kpi_target_values.get(kpi):
+                               <td>${kpi_target_values.get(kpi).kpi_scale_type}</td>
+                               <td>${kpi_target_values.get(kpi).first_value}</td>
+                               <td>${kpi_target_values.get(kpi).second_value}</td>
+                               % else:
+                               <td>-</td>
+                               <td>-</td>
+                               <td>-</td>
+                               % endif
+                               <td><button type="button" class="btn btn-default btn-xs">Изменить</button></td>
+                           </tr>
+                           % endfor
+                       % endfor
+
+                       </tbody>
+                   </table>
+            </form>
+            <hr>
+            <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Следующий шаг</a>
+        </div>
+    </div>
+
+
+</div>
+

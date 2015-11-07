@@ -470,10 +470,10 @@ class Lib_KPI(Base):
     code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
     formula = sqlalchemy.Column(sqlalchemy.String(256), default="")
     link_to_desc = sqlalchemy.Column(sqlalchemy.String(256), default="")
-    # measure = sqlalchemy.Column(sqlalchemy.String(256), default="") # from MEASURES
-    # target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
-    # fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
-    # cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
+    measure = sqlalchemy.Column(sqlalchemy.String(256), default=0) # from MEASURES
+    target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
 
     def __init__(self):
         self.name = ""
@@ -524,10 +524,10 @@ class Custom_KPI(Base):
     code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
     formula = sqlalchemy.Column(sqlalchemy.String(256), default="")
     link_to_desc = sqlalchemy.Column(sqlalchemy.String(256), default="")
-    # measure = sqlalchemy.Column(sqlalchemy.String(256), default="") # from MEASURES
-    # target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
-    # fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
-    # cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
+    measure = sqlalchemy.Column(sqlalchemy.String(256), default=0) # from MEASURES
+    target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
 
     def __init__(self):
         self.name = ""
@@ -649,6 +649,13 @@ def load_lib_links():
 
 
 def load_custom_links():
+    """
+    Функция возвращает словари целей и показателей связанных с целями.
+    Ключами в обеих структурах являются goal_code, значениями объекты классов Custom_linked_goals или \
+    Custom_linked_goals.
+
+    :return: linked_goals, linked_kpi - словари.
+    """
 
     session = Session()
     try:
@@ -776,6 +783,10 @@ def save_picked_kpi_to_custom(picked_kpi):
             n.description = g.description
             n.formula = g.formula
             n.link_to_desc = g.link_to_desc
+            n.cycle = g.cycle
+            n.fact_responsible = g.fact_responsible
+            n.measure = g.measure
+            n.target_responsible = g.target_responsible
             session.add(n)
             session.commit()
             # Добавлем запись в стратегическую карту
@@ -891,7 +902,7 @@ class StrategicMap(Base):
         self.date = datetime.datetime.now()
 
 
-class KPITargetValues(Base):
+class KPITargetValue(Base):
     """
     Класс для хранения целевых значений показателей и их типов.
     """
@@ -904,6 +915,68 @@ class KPITargetValues(Base):
     kpi_scale_type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from  KPI_SCALE_TYPE
     version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+
+
+def get_kpi_target_value(kpi_code):
+    """
+    Возвращает объект класса KPITargetValue.
+    """
+
+    session = Session()
+
+    try:
+        resp = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "BMTObjects.get_kpi_target_value(kpi_code). Ничего не найдено для KPI = %s" % kpi_code
+        return None
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.get_kpi_target_value(kpi_code). " + str(e)
+        raise e
+    else:
+        return resp
+    finally:
+        session.close()
+
+
+def save_kpi_target_value(kpi_target_value):
+    """
+    Сохраняет объект класса KPITargetValue.
+    Если такой kpi_code встречался, то происходит обновление. Если не встречался, то создается новый.
+    """
+    session = Session()
+
+    # check exist
+    try:
+        exist = get_kpi_target_value(kpi_target_value.kpi_code)
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.save_kpi_target_value. Чтение KPITargetValue. " + str(e)
+        session.close()
+        raise e
+
+    if exist:
+        # такой объект существует, обновляем
+        exist.first_value = kpi_target_value.first_value
+        exist.second_value = kpi_target_value.second_value
+        exist.kpi_scale_type = kpi_target_value.kpi_scale_type
+        exist.version = kpi_target_value.version
+        exist.date = kpi_target_value.date
+        try:
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.save_kpi_target_value. Обновление KPITargetValue. " + str(e)
+            raise e
+        finally:
+            session.close()
+    else:
+        # создаем новый
+        try:
+            session.add(kpi_target_value)
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.save_kpi_target_value. Создание нового KPITargetValue. " + str(e)
+            raise e
+        finally:
+            session.close()
 
 
 class FactValue(Base):

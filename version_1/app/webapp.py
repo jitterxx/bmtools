@@ -374,14 +374,31 @@ class Wizard(object):
     @cherrypy.expose
     @require(member_of("users"))
     def step5(self):
-        tmpl = lookup.get_template("wizard_step_page.html")
+        tmpl = lookup.get_template("wizard_step5_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
-        step_desc['full_description'] = ""
-        step_desc['name'] = "Шаг 5. Выбор показателей и целевых значений"
+        step_desc['full_description'] = BMTObjects.get_desc("step5_full_description")
+        step_desc['name'] = "Шаг 5. " + BMTObjects.get_desc("step5_name")
+        step_desc['subheader'] = "Шаг 5. " + BMTObjects.get_desc("step5_subheader")
         step_desc['next_step'] = "6"
 
-        return tmpl.render(params=params, step_desc=step_desc)
+        try:
+            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_kpi_links = BMTObjects.load_custom_links()[1]
+        except Exception as e:
+            return ShowError(e)
+
+        kpi_target_values = dict()
+        for one in custom_kpi.keys():
+            target = BMTObjects.get_kpi_target_value(one)
+            if not target:
+                kpi_target_values[one] = target
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           kpi_target_values=kpi_target_values)
+
 
     @cherrypy.expose
     @require(member_of("users"))
