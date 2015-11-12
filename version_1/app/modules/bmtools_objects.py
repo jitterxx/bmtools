@@ -1041,7 +1041,58 @@ class FactValue(Base):
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
 
 
+class Event(Base):
+    """
+    Хранит данные о мероприятиях.
+    Мероприятие может быть связано только с одной целью.
 
+    """
+    __tablename__ = "events"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    event_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    linked_goal_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    plan_result = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    fact_result = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    start_date = sqlalchemy.Column(sqlalchemy.DATETIME())
+    end_date = sqlalchemy.Column(sqlalchemy.DATETIME())
+    responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    actors = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+def get_events():
+    """
+    Возвращает все мероприятия.
+
+    :return:
+    """
+    pass
+
+
+def create_new_event():
+    """
+    Функция создания нового мероприятия.
+    :return:
+    """
+    pass
+
+
+def update_event():
+    """
+    Функция изменения мероприятия.
+    :return:
+    """
+    pass
+
+
+def delete_event():
+    """
+    Функция удаления мероприятия.
+    :return:
+    """
+    pass
 
 
 

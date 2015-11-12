@@ -15597,3 +15597,62 @@ WARNING  [2015-11-12 17:46:34,551] Описание с кодом step5_full_des
 WARNING  [2015-11-12 17:46:34,554] Описание с кодом step5_name найдено
 WARNING  [2015-11-12 17:46:34,556] Описание с кодом step5_subheader найдено
 INFO     [2015-11-12 17:46:34,568] 127.0.0.1 - test [12/Nov/2015:17:46:34] "GET /wizard/step5 HTTP/1.1" 200 2101 "http://localhost:8080/wizard/step5edit?picked_kpi=ms" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-12 18:33:00,270] Пользователь с логином test найден
+WARNING  [2015-11-12 18:33:00,272] Описание с кодом step5_full_description найдено
+WARNING  [2015-11-12 18:33:00,274] Описание с кодом step5_name найдено
+WARNING  [2015-11-12 18:33:00,276] Описание с кодом step5_subheader найдено
+INFO     [2015-11-12 18:33:00,286] 127.0.0.1 - test [12/Nov/2015:18:33:00] "GET /wizard/step5edit?picked_kpi=ms HTTP/1.1" 200 2602 "http://localhost:8080/wizard/step5" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-12 18:33:14,563] Пользователь с логином test найден
+INFO     [2015-11-12 18:33:14,602] 127.0.0.1 - test [12/Nov/2015:18:33:14] "POST /wizard/step5save HTTP/1.1" 303 101 "http://localhost:8080/wizard/step5edit?picked_kpi=ms" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-12 18:33:14,622] Пользователь с логином test найден
+WARNING  [2015-11-12 18:33:14,623] Описание с кодом step5_full_description найдено
+WARNING  [2015-11-12 18:33:14,624] Описание с кодом step5_name найдено
+WARNING  [2015-11-12 18:33:14,626] Описание с кодом step5_subheader найдено
+INFO     [2015-11-12 18:33:14,635] 127.0.0.1 - test [12/Nov/2015:18:33:14] "GET /wizard/step5 HTTP/1.1" 200 2101 "http://localhost:8080/wizard/step5edit?picked_kpi=ms" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-12 18:34:44,197] [12/Nov/2015:18:34:44] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-12 18:34:44,197] [12/Nov/2015:18:34:44] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-12 18:34:44,198] [12/Nov/2015:18:34:44] ENGINE Bus STOPPING
+INFO     [2015-11-12 18:34:44,200] [12/Nov/2015:18:34:44] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-12 18:34:44,200] [12/Nov/2015:18:34:44] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-12 18:34:44,200] [12/Nov/2015:18:34:44] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-12 18:34:44,201] [12/Nov/2015:18:34:44] ENGINE Bus STOPPED
+INFO     [2015-11-12 18:34:44,201] [12/Nov/2015:18:34:44] ENGINE Bus EXITING
+INFO     [2015-11-12 18:34:44,201] [12/Nov/2015:18:34:44] ENGINE Bus EXITED
+INFO     [2015-11-12 18:34:44,268] [12/Nov/2015:18:34:44] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-12 18:34:44,268] [12/Nov/2015:18:34:44] ENGINE Re-spawning webapp.py
+INFO     [2015-11-12 18:34:44,668] [12/Nov/2015:18:34:44] ENGINE Listening for SIGHUP.
+INFO     [2015-11-12 18:34:44,668] [12/Nov/2015:18:34:44] ENGINE Listening for SIGTERM.
+INFO     [2015-11-12 18:34:44,669] [12/Nov/2015:18:34:44] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-12 18:34:44,669] [12/Nov/2015:18:34:44] ENGINE Bus STARTING
+INFO     [2015-11-12 18:34:44,669] [12/Nov/2015:18:34:44] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-12 18:34:44,670] [12/Nov/2015:18:34:44] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-12 18:34:44,873] [12/Nov/2015:18:34:44] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-12 18:34:44,873] [12/Nov/2015:18:34:44] ENGINE Bus STARTED
+INFO     [2015-11-12 18:34:49,755] [12/Nov/2015:18:34:49] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-12 18:34:49,755] [12/Nov/2015:18:34:49] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-12 18:34:49,755] [12/Nov/2015:18:34:49] ENGINE Bus STOPPING
+INFO     [2015-11-12 18:34:49,759] [12/Nov/2015:18:34:49] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-12 18:34:49,759] [12/Nov/2015:18:34:49] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-12 18:34:49,759] [12/Nov/2015:18:34:49] ENGINE Bus STOPPED
+INFO     [2015-11-12 18:34:49,759] [12/Nov/2015:18:34:49] ENGINE Bus EXITING
+INFO     [2015-11-12 18:34:49,759] [12/Nov/2015:18:34:49] ENGINE Bus EXITED
+INFO     [2015-11-12 18:34:49,826] [12/Nov/2015:18:34:49] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-12 18:34:49,826] [12/Nov/2015:18:34:49] ENGINE Re-spawning webapp.py
+INFO     [2015-11-12 18:34:50,246] [12/Nov/2015:18:34:50] ENGINE Listening for SIGHUP.
+INFO     [2015-11-12 18:34:50,246] [12/Nov/2015:18:34:50] ENGINE Listening for SIGTERM.
+INFO     [2015-11-12 18:34:50,246] [12/Nov/2015:18:34:50] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-12 18:34:50,246] [12/Nov/2015:18:34:50] ENGINE Bus STARTING
+INFO     [2015-11-12 18:34:50,250] [12/Nov/2015:18:34:50] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-12 18:34:50,251] [12/Nov/2015:18:34:50] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-12 18:34:50,359] [12/Nov/2015:18:34:50] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-12 18:34:50,359] [12/Nov/2015:18:34:50] ENGINE Bus STARTED
+INFO     [2015-11-12 18:35:13,481] [12/Nov/2015:18:35:13] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-12 18:35:13,481] [12/Nov/2015:18:35:13] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-12 18:35:13,481] [12/Nov/2015:18:35:13] ENGINE Bus STOPPING
+INFO     [2015-11-12 18:35:13,483] [12/Nov/2015:18:35:13] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-12 18:35:13,484] [12/Nov/2015:18:35:13] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-12 18:35:13,484] [12/Nov/2015:18:35:13] ENGINE Bus STOPPED
+INFO     [2015-11-12 18:35:13,484] [12/Nov/2015:18:35:13] ENGINE Bus EXITING
+INFO     [2015-11-12 18:35:13,484] [12/Nov/2015:18:35:13] ENGINE Bus EXITED
+INFO     [2015-11-12 18:35:13,512] [12/Nov/2015:18:35:13] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-12 18:35:13,512] [12/Nov/2015:18:35:13] ENGINE Re-spawning webapp.py
