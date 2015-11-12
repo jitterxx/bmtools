@@ -437,7 +437,7 @@ class Wizard(object):
     @cherrypy.expose
     @require(member_of("users"))
     def step5save(self, picked_kpi=None, target_responsible=None, measure=None, cycle=None, kpi_scale_type=None,
-                  first_value=None, second_value=None):
+                  first_value=None, second_value=None, fact_responsible=None, data_source=None):
         """
             Сохраняем выбранные значения
         """
@@ -447,6 +447,13 @@ class Wizard(object):
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
             raise cherrypy.HTTPRedirect("step5edit?picked_kpi=%s" % picked_kpi)
 
+        if first_value == "":
+            first_value = 0
+
+        if second_value == "":
+            second_value     = 0
+
+
         kpi_target_values = dict()
         custom_kpi_update = dict()
 
@@ -455,12 +462,13 @@ class Wizard(object):
         kpi_target_values["second_value"] = float(second_value)
         kpi_target_values["kpi_scale_type"] = int(kpi_scale_type)
         kpi_target_values["version"] = BMTObjects.VERSION
+        kpi_target_values["data_source"] = data_source
 
         custom_kpi_update["code"] = picked_kpi
         custom_kpi_update["target_responsible"] = int(target_responsible)
+        custom_kpi_update["fact_responsible"] = int(fact_responsible)
         custom_kpi_update["measure"] = int(measure)
         custom_kpi_update["cycle"] = int(cycle)
-
 
         try:
             BMTObjects.save_kpi_target_value(kpi_target_values)

@@ -20,12 +20,14 @@
                        <tr>
                            <th></th>
                            <th><small>Показатель</small></th>
-                           <th><small>Ответственный</small></th>
+                           <th><small>Ответственный за достижение целевых значений</small></th>
+                           <th><small>Ответственный за сбор данных</small></th>
                            <th><small>Ед. изм.</small></th>
                            <th><small>Периодичность</small></th>
                            <th><small>Шкала</small></th>
                            <th><small>Целевое значение1</small></th>
                            <th><small>Целевое значение2</small></th>
+                           <th><small>Источник данных</small></th>
                            <th></th>
                        </tr>
                        </thead>
@@ -58,6 +60,24 @@
                                                </select>
                                            </div>
                                        </td>
+                                       <td>
+                                           <div class="form-group">
+                                               <select  name="fact_responsible">
+                                               % for p in persons.keys():
+                                               % if p == custom_kpi.get(kpi).fact_responsible:
+                                                   <option value="${custom_kpi.get(kpi).fact_responsible}" selected>
+                                                       ${persons[custom_kpi.get(kpi).fact_responsible]}
+                                                   </option>
+                                               %else:
+                                                   <option value="${p}">
+                                                       ${persons[p]}
+                                                   </option>
+                                               % endif
+                                               % endfor
+                                               </select>
+                                           </div>
+                                       </td>
+
                                        <td>
                                            <div class="form-group">
                                                <select  name="measure">
@@ -122,6 +142,13 @@
                                                       value="${kpi_target_values.get(kpi).second_value}">
                                            </div>
                                        </td>
+                                       <td>
+                                           <div class="form-group">
+                                               <input type="text" class="form-control" name="data_source"
+                                                      value="${kpi_target_values.get(kpi).data_source}">
+                                           </div>
+                                       </td>
+
                                        % else:
                                        <td>
                                            <div class="form-group">
@@ -144,6 +171,11 @@
                                                <input type="number" class="form-control" name="second_value" value="">
                                            </div>
                                        </td>
+                                       <td>
+                                           <div class="form-group">
+                                               <input type="text" class="form-control" name="data_source" value="">
+                                           </div>
+                                       </td>
                                        % endif
                                        <td><button type="submit" class="btn btn-default btn-xs">Сохранить</button></td>
                                        </form>
@@ -159,7 +191,11 @@
                                        <td>${kpi_target_values.get(kpi).kpi_scale_type}</td>
                                        <td>${kpi_target_values.get(kpi).first_value}</td>
                                        <td>${kpi_target_values.get(kpi).second_value}</td>
+                                       <td>${persons[custom_kpi.get(kpi).fact_responsible]}</td>
+                                       <td>${kpi_target_values.get(kpi).data_source}</td>
                                        % else:
+                                       <td>-</td>
+                                       <td>-</td>
                                        <td>-</td>
                                        <td>-</td>
                                        <td>-</td>

@@ -20,12 +20,14 @@
                        <tr>
                            <th></th>
                            <th><small>Показатель</small></th>
-                           <th><small>Ответственный</small></th>
+                           <th><small>Ответственный за достижение целевых значений</small></th>
+                           <th><small>Ответственный за сбор данных</small></th>
                            <th><small>Ед. изм.</small></th>
                            <th><small>Периодичность</small></th>
                            <th><small>Шкала</small></th>
                            <th><small>Целевое значение1</small></th>
                            <th><small>Целевое значение2</small></th>
+                           <th><small>Источник данных</small></th>
                            <th></th>
                        </tr>
                        </thead>
@@ -36,13 +38,16 @@
                                <th scope="row">${custom_goals.get(goal).goal_name}</th>
                                <td>${custom_kpi.get(kpi).name}</td>
                                <td>${persons[custom_kpi.get(kpi).target_responsible]}</td>
+                               <td>${persons[custom_kpi.get(kpi).fact_responsible]}</td>
                                <td>${measures[custom_kpi.get(kpi).measure]}</td>
                                <td>${cycles[custom_kpi.get(kpi).cycle]}</td>
                                % if kpi_target_values.get(kpi):
                                <td>${kpi_scale[kpi_target_values.get(kpi).kpi_scale_type]}</td>
                                <td>${kpi_target_values.get(kpi).first_value}</td>
                                <td>${kpi_target_values.get(kpi).second_value}</td>
+                               <td>${kpi_target_values.get(kpi).data_source}</td>
                                % else:
+                               <td>-</td>
                                <td>-</td>
                                <td>-</td>
                                <td>-</td>

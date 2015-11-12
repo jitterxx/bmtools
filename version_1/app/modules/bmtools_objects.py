@@ -583,6 +583,7 @@ def update_custom_kpi(custom_kpi_update):
         """
         resp.code = custom_kpi_update["code"]
         resp.target_responsible = custom_kpi_update["target_responsible"]
+        resp.fact_responsible = custom_kpi_update["fact_responsible"]
         resp.measure = custom_kpi_update["measure"]
         resp.cycle = custom_kpi_update["cycle"]
         session.commit()
@@ -950,6 +951,7 @@ class KPITargetValue(Base):
     first_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
     second_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
     kpi_scale_type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from  KPI_SCALE_TYPE
+    data_source = sqlalchemy.Column(sqlalchemy.String(256), default="")
     version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
 
@@ -988,6 +990,8 @@ def save_kpi_target_value(kpi_target_value):
     # check exist
     try:
         exist = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_target_value['kpi_code']).one()
+    except sqlalchemy.orm.exc.NoResultFound:
+        exist = None
     except Exception as e:
         print "Ошибка в функции BMTObjects.save_kpi_target_value. Чтение KPITargetValue. " + str(e)
         session.close()
@@ -1000,6 +1004,7 @@ def save_kpi_target_value(kpi_target_value):
             exist.first_value = kpi_target_value["first_value"]
             exist.second_value = kpi_target_value["second_value"]
             exist.kpi_scale_type = kpi_target_value["kpi_scale_type"]
+            exist.data_source = kpi_target_value["data_source"]
             exist.version = kpi_target_value["version"]
             exist.date = datetime.datetime.now()
             session.commit()
