@@ -3,15 +3,11 @@
 <%block name="title">
     <title>Главная</title>
     <link href="/static/css/dashboard.css" rel="stylesheet">
-    <link href="/static/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <link href="/static/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="/static/css/bootstrap-datetimepicker-standalone.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
-        <script type="text/javascript" src="/static/js/moment.js"></script>
-    <script type="text/javascript" src="/static/js/transition.js"></script>
-    <script type="text/javascript" src="/static/js/collapse.js"></script>
-    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/static/js/bootstrap-datetimepicker.min.js"></script>
+    <link href="/static/css/bootstrap-datepicker3.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/static/locales/bootstrap-datepicker.ru.min.js" charset="UTF-8"></script>
 
 </%block>
 
@@ -52,14 +48,34 @@
                         </span>
                     </div>
                     <script type="text/javascript">
-                        $(function () {
-                            $('#start_date').bootstrap-datetimepicker();
-                        });
+                            $('#start_date').datepicker({
+                                language: "ru",
+                                calendarWeeks: true,
+                                autoclose: true,
+                                todayHighlight: true,
+                                todayBtn: "linked",
+                                toggleActive: true
+                            });
                     </script>
                 </div>
                 <div class="form-group">
                     <label for="end_date" class="control-label">Дата окончания</label>
-                    <input type="date" name="end_date" id="end_date" class="form-control">
+                    <div class='input-group date' id='end_date'>
+                        <input type='text' class="form-control" name="end_date"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <script type="text/javascript">
+                            $('#end_date').datepicker({
+                                language: "ru",
+                                calendarWeeks: true,
+                                autoclose: true,
+                                todayHighlight: true,
+                                todayBtn: "linked",
+                                toggleActive: true
+                            });
+                    </script>
                 </div>
                 <div class="form-group">
                     <label for="input_planres" class="control-label">Плановый результат</label>

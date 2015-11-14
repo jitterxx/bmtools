@@ -491,12 +491,13 @@ class Wizard(object):
         step_desc['subheader'] = BMTObjects.get_desc("step6_subheader")
         try:
             events = BMTObjects.get_events()
+            custom_goals = BMTObjects.load_custom_goals_kpi()[0]
         except Exception as e:
             return ShowError(e)
 
         print events
 
-        return tmpl.render(params=params, step_desc=step_desc, events=events)
+        return tmpl.render(params=params, step_desc=step_desc, events=events, custom_goals=custom_goals)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -511,11 +512,11 @@ class Wizard(object):
 
         # Получаем список кастомных целей компании
         try:
-            custom_goals = BMTObjects.load_custom_goals_kpi()[0]
+            goals = BMTObjects.load_custom_goals_kpi()[0]
         except Exception as e:
             return ShowError(e)
 
-        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=custom_goals)
+        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=goals)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -545,7 +546,7 @@ class Wizard(object):
         except Exception as e:
             return ShowError(e)
         else:
-            raise cherrypy.HTTPRedirect("step5")
+            raise cherrypy.HTTPRedirect("/wizard/step6")
 
 
     @cherrypy.expose

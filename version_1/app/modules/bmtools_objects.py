@@ -1064,7 +1064,7 @@ class Event(Base):
 
     def __init__(self):
         u = uuid.uuid4().get_hex().__str__()
-        self.event_code = random.sample(u, 6)
+        self.event_code = "".join(random.sample(u, 6))
         self.actors = 0
         self.description = ""
         self.end_date = None
