@@ -1,0 +1,94 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-datetimepicker-standalone.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+        <script type="text/javascript" src="/static/js/moment.js"></script>
+    <script type="text/javascript" src="/static/js/transition.js"></script>
+    <script type="text/javascript" src="/static/js/collapse.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datetimepicker.min.js"></script>
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <h1>${step_desc['name']}</h1>
+            <h3>Описание</h3>
+            <div style="margin-left: 3%;">
+                ${step_desc['full_description']}
+            </div>
+            <hr>
+            <form action="/wizard/step6save" method="post">
+                <div class="form-group">
+                    <label for="input_goal">Цель</label>
+                    <select name="goal" id="input_goal" class="form-control">
+                        <option value="" selected>Не указана</option>
+                        % for one in goals.keys():
+                            <option value="${one}">${goals[one].goal_name}</option>
+                        % endfor
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="input_name" class="control-label">Название</label>
+                    <input type="text" name="name" id="input_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="input_desc" class="control-label">Описание</label>
+                    <textarea rows="5" name="description" id="input_desc" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="start_date" class="control-label">Дата начала</label>
+                    <div class='input-group date' id='start_date'>
+                        <input type='text' class="form-control" name="start_date"/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#start_date').bootstrap-datetimepicker();
+                        });
+                    </script>
+                </div>
+                <div class="form-group">
+                    <label for="end_date" class="control-label">Дата окончания</label>
+                    <input type="date" name="end_date" id="end_date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="input_planres" class="control-label">Плановый результат</label>
+                    <textarea rows="5" name="planres" id="input_planres" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="input_responsible" class="control-label">Ответственный за выполнение</label>
+                    <select name="responsible" id="input_responsible" class="form-control">
+                        % for one in persons.keys():
+                            <option value="${one}">${persons[one]}</option>
+                        % endfor
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="input_actors" class="control-label">Участники</label>
+                    <select name="actors" id="input_actors" multiple size="5" class="form-control">
+                        % for one in persons.keys():
+                            <option value="${one}">${persons[one]}</option>
+                        % endfor
+                    </select>
+                </div>
+                <hr>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+

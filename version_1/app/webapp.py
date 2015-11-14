@@ -482,14 +482,71 @@ class Wizard(object):
     @cherrypy.expose
     @require(member_of("users"))
     def step6(self):
-        tmpl = lookup.get_template("wizard_step_page.html")
+        tmpl = lookup.get_template("wizard_step6_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
-        step_desc['full_description'] = ""
-        step_desc['name'] = "Шаг 6. Выбор мероприятий"
+        step_desc['full_description'] = BMTObjects.get_desc("step6_full_description")
+        step_desc['name'] = "Шаг 6. " + BMTObjects.get_desc("step6_name")
         step_desc['next_step'] = "7"
+        step_desc['subheader'] = BMTObjects.get_desc("step6_subheader")
+        try:
+            events = BMTObjects.get_events()
+        except Exception as e:
+            return ShowError(e)
 
-        return tmpl.render(params=params, step_desc=step_desc)
+        print events
+
+        return tmpl.render(params=params, step_desc=step_desc, events=events)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step6new(self):
+        tmpl = lookup.get_template("wizard_step6new_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("step6_full_description")
+        step_desc['name'] = "Шаг 6. " + BMTObjects.get_desc("step6_name")
+        step_desc['next_step'] = "7"
+        step_desc['subheader'] = BMTObjects.get_desc("step6_subheader")
+
+        # Получаем список кастомных целей компании
+        try:
+            custom_goals = BMTObjects.load_custom_goals_kpi()[0]
+        except Exception as e:
+            return ShowError(e)
+
+        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=custom_goals)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step6save(self, goal=None, name=None, description=None, planres=None,
+                  responsible=None, actors=None, start_date=None, end_date=None):
+        """
+            Сохраняем выбранные значения
+        """
+        print "Step 6 SAVE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step6new")
+        event_fields = dict()
+
+        event_fields['actors'] = ",".join(actors)
+        event_fields['description'] = description
+        event_fields['end_date'] = end_date
+        event_fields['start_date'] = start_date
+        event_fields['name'] = name
+        event_fields['plan_result'] = planres
+        event_fields['linked_goal_code'] = goal
+        event_fields['responsible'] = responsible
+
+        try:
+            BMTObjects.create_new_event(event_fields)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("step5")
+
 
     @cherrypy.expose
     @require(member_of("users"))

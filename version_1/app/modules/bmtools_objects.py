@@ -1152,14 +1152,20 @@ def update_event(event_code, event_fields):
         raise e
     else:
 
-        query.actors = event_fields['actors']
-        query.description = event_fields['description']
-        query.end_date = event_fields['end_date']
-        query.start_date = event_fields['start_date']
-        query.fact_result = event_fields['fact_result']
-        query.name = event_fields['name']
-        query.plan_result = event_fields['plan_result']
-        query.linked_goal_code = event_fields['linked_goal_code']
+        try:
+            query.actors = event_fields['actors']
+            query.description = event_fields['description']
+            query.end_date = event_fields['end_date']
+            query.start_date = event_fields['start_date']
+            query.fact_result = event_fields['fact_result']
+            query.name = event_fields['name']
+            query.plan_result = event_fields['plan_result']
+            query.linked_goal_code = event_fields['linked_goal_code']
+            query.responsible = event_fields['responsible']
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.update_event(). Не все параметры указаны. %s" % str(e)
+            raise e
+
         try:
             session.commit()
         except Exception as e:
