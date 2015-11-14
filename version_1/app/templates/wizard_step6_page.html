@@ -27,8 +27,8 @@
                 % for e in events.values():
                     <p>
                         ${e.name} - ${custom_goals[e.linked_goal_code].goal_name}
-                        <a role="button" class="btn btn-xs btn-warning"  href="step6edit?event=${e.event_code}">Редактировать</a>
-                        <a role="button" class="btn btn-xs btn-danger" href="step6delete?event=${e.event_code}">Удалить</a>
+                        <a role="button" class="btn btn-xs btn-warning"  href="step6edit?event_code=${e.event_code}">Редактировать</a>
+                        <a role="button" class="btn btn-xs btn-danger" href="step6delete?event_code=${e.event_code}">Удалить</a>
                     </p>
                 % endfor
             % else:

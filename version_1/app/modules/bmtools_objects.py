@@ -1151,13 +1151,12 @@ def update_event(event_code, event_fields):
         print "Ошибка в функции BMTObjects.update_event(). %s" % str(e)
         raise e
     else:
-
+        # Фактический результат заполняется при смене статуса. В отдельной функции
         try:
             query.actors = event_fields['actors']
             query.description = event_fields['description']
             query.end_date = event_fields['end_date']
             query.start_date = event_fields['start_date']
-            query.fact_result = event_fields['fact_result']
             query.name = event_fields['name']
             query.plan_result = event_fields['plan_result']
             query.linked_goal_code = event_fields['linked_goal_code']
@@ -1204,13 +1203,12 @@ def delete_event(event_code):
             raise e
         else:
             try:
-                query = session.query(StrategicMap).filter(StrategicMap.event_code == event_code).all()
+                query1 = session.query(StrategicMap).filter(StrategicMap.event_code == event_code).delete()
             except Exception as e:
                 print "Ошибка в функции BMTObjects.delete_event(). Поиск связи в Strategic Map. %s" % str(e)
                 raise e
             else:
                 try:
-                    session.delete(query)
                     session.commit()
                 except Exception as e:
                     print "Ошибка в функции BMTObjects.delete_event(). Удаление связи в Strategic Map. %s" % str(e)

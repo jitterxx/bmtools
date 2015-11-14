@@ -12,6 +12,8 @@ sys.setdefaultencoding("utf-8")
 
 import modules.bmtools_objects as BMTObjects
 import cherrypy
+import datetime
+import re
 from bs4 import BeautifulSoup
 from auth import AuthController, require, member_of, name_is, all_of, any_of
 from mako.lookup import TemplateLookup
@@ -489,6 +491,7 @@ class Wizard(object):
         step_desc['name'] = "Шаг 6. " + BMTObjects.get_desc("step6_name")
         step_desc['next_step'] = "7"
         step_desc['subheader'] = BMTObjects.get_desc("step6_subheader")
+
         try:
             events = BMTObjects.get_events()
             custom_goals = BMTObjects.load_custom_goals_kpi()[0]
@@ -534,8 +537,8 @@ class Wizard(object):
 
         event_fields['actors'] = ",".join(actors)
         event_fields['description'] = description
-        event_fields['end_date'] = end_date
-        event_fields['start_date'] = start_date
+        event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
+        event_fields['start_date'] = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
         event_fields['name'] = name
         event_fields['plan_result'] = planres
         event_fields['linked_goal_code'] = goal
@@ -548,6 +551,83 @@ class Wizard(object):
         else:
             raise cherrypy.HTTPRedirect("/wizard/step6")
 
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step6edit(self, event_code=None):
+        """
+            Сохраняем выбранные значения
+        """
+        print "Step 6 EDIT : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step6")
+
+        tmpl = lookup.get_template("wizard_step6edit_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("step6_full_description")
+        step_desc['name'] = "Шаг 6. " + BMTObjects.get_desc("step6_name")
+        step_desc['next_step'] = "7"
+        step_desc['subheader'] = BMTObjects.get_desc("step6_subheader")
+
+        try:
+            events = BMTObjects.get_events()
+            goals = BMTObjects.load_custom_goals_kpi()[0]
+        except Exception as e:
+            return ShowError(e)
+        event=events[event_code]
+        actors = re.split(",", event.actors)
+
+        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons,
+                           goals=goals, event=event, actors=actors)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step6update(self, event_code=None, goal=None, name=None, description=None, planres=None,
+                  responsible=None, actors=None, start_date=None, end_date=None):
+        """
+            Сохраняем выбранные значения
+        """
+        print "Step 6 UPDATE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Step6 UPDATE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step6")
+        event_fields = dict()
+
+        event_fields['actors'] = ",".join(actors)
+        event_fields['description'] = description
+        event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
+        event_fields['start_date'] = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+        event_fields['name'] = name
+        event_fields['plan_result'] = planres
+        event_fields['linked_goal_code'] = goal
+        event_fields['responsible'] = responsible
+
+        try:
+            BMTObjects.update_event(event_code, event_fields)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/wizard/step6")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step6delete(self, event_code=None):
+
+        print "Step 6 DELETE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Step6 DELETE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step6")
+
+        try:
+            BMTObjects.delete_event(event_code)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/wizard/step6")
 
     @cherrypy.expose
     @require(member_of("users"))
