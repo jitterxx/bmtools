@@ -18,6 +18,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer
 from sqlalchemy import or_, and_, desc
 from configurations import *
+import random
 import uuid
 import logging
 
@@ -1050,7 +1051,7 @@ class Event(Base):
     __tablename__ = "events"
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
-    event_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    event_code = sqlalchemy.Column(sqlalchemy.String(10), unique=True)
     linked_goal_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
     name = sqlalchemy.Column(sqlalchemy.String(256), default="")
     description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
@@ -1061,6 +1062,18 @@ class Event(Base):
     responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     actors = sqlalchemy.Column(sqlalchemy.String(256), default="")
 
+    def __init__(self):
+        u = uuid.uuid4().get_hex().__str__()
+        self.event_code = random.sample(u, 6)
+        self.actors = 0
+        self.description = ""
+        self.end_date = None
+        self.start_date = datetime.datetime.now()
+        self.fact_result = ""
+        self.linked_goal_code = ""
+        self.name = ""
+        self.plan_result = ""
+
 
 def get_events():
     """
@@ -1068,31 +1081,137 @@ def get_events():
 
     :return:
     """
-    pass
+    events = dict()
+    session = Session()
+    try:
+        query = session.query(Event).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено для Event(). BMTObjects.get_events(). %s" % str(e)
+        return events
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.get_events(). %s" % str(e)
+        raise e
+    else:
+        for one in query:
+            events[one.event_code] = one
+        return events
+    finally:
+        session.close()
 
 
-def create_new_event():
+def create_new_event(event_fields):
     """
     Функция создания нового мероприятия.
     :return:
     """
-    pass
+    event = Event()
+
+    session = Session()
+    try:
+        for key in event_fields.keys():
+            event.__dict__[key] = event_fields[key]
+        session.add(event)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.create_new_event(). Мероприятие не записано. %s" % str(e)
+        raise e
+    else:
+        # Добавляем запись в стратегическую карту
+        smap = StrategicMap()
+        smap.event_code = event.event_code
+        smap.date = datetime.datetime.now()
+        smap.map_code = current_strategic_map
+        smap.version = VERSION
+        try:
+            session.add(smap)
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.create_new_event(). Strategic map не записана. %s" % str(e)
+            raise e
+    finally:
+        session.close()
+
+    return [True, ""]
 
 
-def update_event():
+def update_event(event_code, event_fields):
     """
     Функция изменения мероприятия.
     :return:
     """
-    pass
+    session = Session()
+    try:
+        query = session.query(Event).filter(Event.event_code == event_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        return [False, "Нет такого мероприятия."]
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.update_event(). НАйдено много мероприятий с кодом: %s. %s" % (event_code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.update_event(). %s" % str(e)
+        raise e
+    else:
+
+        query.actors = event_fields['actors']
+        query.description = event_fields['description']
+        query.end_date = event_fields['end_date']
+        query.start_date = event_fields['start_date']
+        query.fact_result = event_fields['fact_result']
+        query.name = event_fields['name']
+        query.plan_result = event_fields['plan_result']
+        query.linked_goal_code = event_fields['linked_goal_code']
+        try:
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.update_event(). Мероприятие не обновлено. %s" % str(e)
+            raise e
+    finally:
+        session.close()
+
+    return [True, ""]
 
 
-def delete_event():
+def delete_event(event_code):
     """
     Функция удаления мероприятия.
+
     :return:
     """
-    pass
+
+    session = Session()
+    try:
+        query = session.query(Event).filter(Event.event_code == event_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        return [False, "Нет такого мероприятия."]
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.delete_event(). НАйдено много мероприятий с кодом: %s. %s" % (event_code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.delete_event(). Поиск Event. %s" % str(e)
+        raise e
+    else:
+        try:
+            session.delete(query)
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.delete_event(). Удаление Event. %s" % str(e)
+            raise e
+        else:
+            try:
+                query = session.query(StrategicMap).filter(StrategicMap.event_code == event_code).all()
+            except Exception as e:
+                print "Ошибка в функции BMTObjects.delete_event(). Поиск связи в Strategic Map. %s" % str(e)
+                raise e
+            else:
+                try:
+                    session.delete(query)
+                    session.commit()
+                except Exception as e:
+                    print "Ошибка в функции BMTObjects.delete_event(). Удаление связи в Strategic Map. %s" % str(e)
+                    raise e
+    finally:
+        session.close()
+
 
 
 
