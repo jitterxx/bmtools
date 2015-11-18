@@ -1,0 +1,65 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-6">
+            <h1>${step_desc['name']}</h1>
+            <h3>Описание</h3>
+            <div style="margin-left: 3%;">
+                ${step_desc['full_description']}
+            </div>
+            <hr>
+            <h3>
+                ${step_desc['subheader']}
+                <small></small>
+
+            </h3>
+            <br>
+            <form method="post" action="/wizard/step7save">
+            <table class="table table-condensed table-hover">
+                <tbody>
+                % for i in range(len(org)):
+                    % if org[i].parentid != 0:
+                    <tr>
+                        <td width="5%" align="center">
+                            % if departments[i]:
+                            <a class="btn btn-link" href="/maps?code=${departments[i].code}" role="button">
+                                <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                            </a>
+                            %else:
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value=${org[i].id} name="org">
+                                </label>
+                            </div>
+                            % endif
+                        </td>
+                        <td>
+                            <h4 style="margin-left:${1*shift[i]}%;">
+                                ${org[i].org_name}
+                                <small>(Руководитель отдела: ${persons[org[i].director]})</small>
+                            </h4>
+                        </td>
+                    </tr>
+                % endif
+                % endfor
+                </tbody>
+            </table>
+                <hr>
+                <button type="submit" class="btn btn-default">Создать карты</button>
+            </form>
+            <hr>
+            <a class="btn btn-default" href="/wizard/step${step_desc['next_step']}" role="button">Дальше</a>
+        </div>
+    </div>
+
+
+</div>
+

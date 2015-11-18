@@ -632,14 +632,61 @@ class Wizard(object):
     @cherrypy.expose
     @require(member_of("users"))
     def step7(self):
-        tmpl = lookup.get_template("wizard_step_page.html")
+        # Выбор подразделений из орг структуры которые будут создавать свои стратегические карты
+        # Надо вывести все подразделения с возможностью отметить их. Если у подразделения есть карта,
+        # то галка выбора не должна быть доступна.
+        # Данные для сохранения передаются по адресу step7save
+        tmpl = lookup.get_template("wizard_step7_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
-        step_desc['full_description'] = ""
-        step_desc['name'] = "Шаг 7. Выбор организационных единиц для составления стратегических карт подразделений"
+        step_desc['full_description'] = BMTObjects.get_desc("step7_full_description")
+        step_desc['name'] = "Шаг 7." + BMTObjects.get_desc("step7_name")
+        step_desc['subheader'] = BMTObjects.get_desc("step7_subheader")
         step_desc['next_step'] = "8"
 
-        return tmpl.render(params=params, step_desc=step_desc)
+        try:
+            org, shift = BMTObjects.get_structure_sorted()
+        except Exception as e:
+            ShowError(e)
+
+        departments = list()
+        for one in org:
+            answer = BMTObjects.get_map_for_dep(one.id)
+            if answer:
+                departments.append(answer)
+            else:
+                departments.append(None)
+
+        return tmpl.render(params=params, step_desc=step_desc, org=org, shift=shift, persons=BMTObjects.persons,
+                           departments=departments)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step7save(self, org=None):
+        """
+            Сохраняем выбранные значения
+        """
+        print "Step 7 SAVE : %s " % cherrypy.request.params
+        if not isinstance(org, list):
+            org = [org]
+
+        if None in org:
+            print "Step7 SAVE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("/wizard/step7")
+
+        orgs = dict()
+        for one in BMTObjects.get_structure_sorted()[0]:
+            orgs[one.id] = one
+        try:
+
+            for one in org:
+                BMTObjects.create_strategic_map(int(one), name="Стратегическая карта: %s" % orgs[int(one)].org_name,
+                                                owner=orgs[int(one)].director)
+        except Exception as e:
+            print "Step7 SAVE. Ошибка: %s" % str(e)
+            ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/wizard/step7")
 
     @cherrypy.expose
     @require(member_of("users"))

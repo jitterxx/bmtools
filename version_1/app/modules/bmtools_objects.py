@@ -886,6 +886,7 @@ class StrategicMapDescription(Base):
     description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
     owner = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     status = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    department = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
 
     def __init__(self):
@@ -894,6 +895,7 @@ class StrategicMapDescription(Base):
         self.description = ""
         self.owner = 0
         self.status = 0
+        self.department = 0
         self.date = datetime.datetime.now()
 
     def create_enterprise_map(self):
@@ -904,6 +906,7 @@ class StrategicMapDescription(Base):
         self.description = "Стратегическая карта компании верхнего уровня."
         self.owner = 0
         self.status = 0
+        self.department = 0
         self.date = datetime.datetime.now()
 
         try:
@@ -913,6 +916,49 @@ class StrategicMapDescription(Base):
             raise e
         finally:
             session.close()
+
+
+def create_strategic_map(department, name="", description="", owner=0, status=0):
+    session = Session()
+
+    s = StrategicMapDescription()
+    s.code = "dep" + str(department)
+    s.name = name
+    s.description = description
+    s.owner = owner
+    s.status = status
+    s.department = department
+    s.date = datetime.datetime.now()
+
+    try:
+        session.add(s)
+        session.commit()
+    except Exception as e:
+        raise e
+    finally:
+        session.close()
+
+
+def get_map_for_dep(department):
+    session = Session()
+
+    try:
+        query = session.query(StrategicMapDescription).filter(StrategicMapDescription.department == int(department)).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_map_for_dep(). %s" % str(e)
+        return None
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.get_map_for_dep(). НАйдено много карт для подразделения: %s. %s" %\
+              (department, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции get_map_for_dep(). %s" % str(e)
+        raise e
+    else:
+        return query
+    finally:
+        session.close()
+
 
 
 class StrategicMap(Base):
