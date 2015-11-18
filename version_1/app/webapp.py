@@ -30,6 +30,37 @@ def ShowError(e):
     return tmpl.render(params=params, msg=msg)
 
 
+class DepartmentWizard(object):
+    """
+    Мастер для заполнения карты подразделения.
+    Какую карту заполнять, определяется по коду в переменной current_strategic_map.
+    Значение переменной может быть изменено на первой странице Мастера, исходя из прав доступа.
+    Если прав достаточно (т.е. можете редактировать любую карту), то меняется значение.
+    Если прав недостаточн, т.е. текущий пользователь ответственный за конкретную карту, то изменить нельзя.
+    Остальные шаги идут согласно основному мастеру.
+
+    """
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def index(self):
+        # Проверка прав и выбор текущей карты, если это возможно
+        tmpl = lookup.get_template("wizardfordepartment_main_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("depwiz_start_full_description")
+        step_desc['name'] = BMTObjects.get_desc("depwiz_start_name")
+        step_desc['next_step'] = "1"
+
+        maps = dict()
+        try:
+            for one in BMTObjects.get_all_maps():
+                if BMTObjects.check_access(one.code, cherrypy.request.login)[0]:
+                    maps[one.code] = one
+        except Exception as e:
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc, maps=maps)
+
 class Wizard(object):
 
     @cherrypy.expose
@@ -774,10 +805,12 @@ class Wizard(object):
 
 
 
+
 class Root(object):
 
     auth = AuthController()
     wizard = Wizard()
+    wizardfordepartment = DepartmentWizard()
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -786,6 +819,35 @@ class Root(object):
         params = cherrypy.request.headers
 
         return tmpl.render(params=params)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def changemap(self, map=None):
+        # Проверка прав и выбор текущей карты, если это возможно
+        tmpl = lookup.get_template("changemap_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Выберите стратегическую карту для работы"
+        step_desc['next_step'] = ""
+        maps = dict()
+
+        if map:
+            # Если указана карта, то меняем карту после проверки прав
+            try:
+                if BMTObjects.check_access(map, cherrypy.request.login)[1]:
+                    BMTObjects.current_strategic_map = map
+            except Exception as e:
+                return ShowError(e)
+
+        try:
+            for one in BMTObjects.get_all_maps():
+                if BMTObjects.check_access(one.code, cherrypy.request.login)[1]:
+                    maps[one.code] = one
+        except Exception as e:
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc, maps=maps, cur_map=BMTObjects.current_strategic_map)
+
 
 
 """

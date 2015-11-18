@@ -1,0 +1,27 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-6">
+            <h1>${step_desc['name']}</h1>
+            <h3><small>Текущая карта:</small> ${maps[cur_map].name}</h3>
+            ${step_desc['full_description']}
+            <hr>
+            % for one in maps.values():
+            <p>
+                <a role="button" class="btn btn-link" href="/changemap?map=${one.code}">${one.name}</a>
+            </p>
+            % endfor
+        </div>
+    </div>
+
+
+</div>
+

@@ -22,3 +22,27 @@ VERSION = 0
 QUEUE_NAME = ''
 QUEUE_BROKER = 'amqp://guest@localhost//'
 QUEUE_BROKER_BACKEND = 'rpc://'
+
+users = dict()
+
+
+class User():
+    id = int()
+    name = str()
+    login = str()
+
+    def __init__(self):
+        self.id = 0
+        self.name = ""
+        self.login = ""
+
+    def create(self, id, name, login):
+        self.id = id
+        self.name = name
+        self.login = login
+        return self
+
+users[0] = User()
+users[1] = User().create(1, "Фомин Сергей", "sergey")
+users[2] = User().create(2, "Жукова Вера", "vera")
+users[3] = User().create(3, "Тестовый пользователь", "test")

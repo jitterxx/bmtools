@@ -960,6 +960,22 @@ def get_map_for_dep(department):
         session.close()
 
 
+def get_all_maps():
+    session = Session()
+
+    try:
+        query = session.query(StrategicMapDescription).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_map_for_dep(). %s" % str(e)
+        return None
+    except Exception as e:
+        print "Ошибка в функции get_map_for_dep(). %s" % str(e)
+        raise e
+    else:
+        return query
+    finally:
+        session.close()
+
 
 class StrategicMap(Base):
     """
@@ -1263,6 +1279,13 @@ def delete_event(event_code):
         session.close()
 
 
+def check_access(subject, person):
+    # Проверяем права доступ person к субъекту
+
+    return [True, True]
 
 
+def change_current_startegic_map(smap):
+    # меняем текущую стратегическую карту
 
+    current_strategic_map = smap
