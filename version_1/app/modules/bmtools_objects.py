@@ -589,9 +589,12 @@ class Custom_goal(Base):
 def create_new_custom_goal(goal_fields):
     """
     Создаем новую кастомную цель, добавлем ее в таблицу кастомных целей и в текущую карту.
+
     :param goal_fields: список полей новой цели
-    :return:
+    :return: код новой цели
+
     """
+
     goal = Custom_goal()
 
     session = Session()
@@ -616,10 +619,10 @@ def create_new_custom_goal(goal_fields):
         except Exception as e:
             print "Ошибка в функции BMTObjects.create_new_custom_goal(). Strategic map не записана. %s" % str(e)
             raise e
+        else:
+            return [True, goal.code]
     finally:
         session.close()
-
-    return [True, ""]
 
 
 class Custom_KPI(Base):
@@ -654,6 +657,42 @@ class Custom_linked_goals(Base):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     parent_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
     child_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+def create_custom_link_for_goals(goal, linked):
+    """
+    Связываем кастомную цель с другими целями
+
+    :param goal:
+    :param linked:
+    :return:
+    """
+
+    session = Session()
+    if not isinstance(linked, list):
+        linked = [linked]
+
+    print linked
+
+    for one in linked:
+        link = Custom_linked_goals()
+        link.parent_code = goal
+        link.child_code = one
+        link1 = Custom_linked_goals()
+        link1.parent_code = one
+        link1.child_code = goal
+        try:
+            session.add(link)
+            session.add(link1)
+            session.commit()
+        except Exception as e:
+            session.close()
+            print "Ошибка в функции create_custom_link_for_goals(). %s" % str(e)
+            raise e
+
+    session.close()
+
+
 
 
 class Custom_linked_kpi_to_goal(Base):
@@ -815,7 +854,7 @@ def load_custom_links():
     """
     Функция возвращает словари целей и показателей связанных с целями.
     Ключами в обеих структурах являются goal_code, значениями объекты классов Custom_linked_goals или \
-    Custom_linked_goals.
+    Custom_linked_kpi_to_goal.
 
     :return: linked_goals, linked_kpi - словари.
     """
@@ -1197,7 +1236,7 @@ class StrategicMap(Base):
 
 def save_goals_to_map(picked_goals):
     """
-    Сохраняем указание на выбранные цели в текущую карту .
+    Сохраняем указание на выбранные цели в текущую карту.
 
     :parameter picked_goals: выбранные коды целей
 
@@ -1226,6 +1265,41 @@ def save_goals_to_map(picked_goals):
                 raise e
         else:
             print "Функция save_goals_to_map(). Запись для goal %s в карте %s существует." % (g, current_strategic_map)
+
+    session.close()
+
+
+def save_kpi_to_map(picked_kpi):
+    """
+    Сохраняем указание на выбранные kpi в текущую карту.
+
+    :parameter picked_kpi: выбранные коды показателей
+
+    :return:
+    """
+
+    session = Session()
+    for g in picked_kpi:
+        try:
+            query = session.query(StrategicMap).filter(and_(StrategicMap.map_code == current_strategic_map,
+                                                            StrategicMap.kpi_code == g)).one_or_none()
+        except Exception as e:
+            session.close()
+            raise e
+        if not query:
+
+            # Добавлем запись в стратегическую карту
+            n = StrategicMap()
+            n.map_code = current_strategic_map
+            n.kpi_code = g
+            try:
+                session.add(n)
+                session.commit()
+            except Exception as e:
+                session.close()
+                raise e
+        else:
+            print "Функция save_kpi_to_map(). Запись для kpi %s в карте %s существует." % (g, current_strategic_map)
 
     session.close()
 
