@@ -17,11 +17,22 @@
             <h3>Цели</h3>
             % if custom_goals.keys():
                 % for one in custom_goals.keys():
-                    <p>${custom_goals[one].goal_name}</p>
+                    <p class=
+                        % if custom_goals[one].perspective == 0:
+                        "text-success"
+                        % elif custom_goals[one].perspective == 1:
+                        "text-danger"
+                        %else:
+
+                        %endif
+                        ">
+                        ${custom_goals[one].goal_name}
+                    </p>
                 % endfor
             % else:
                 <p>Цели не заданы.</p>
             % endif
+            <hr>
             <h3>Показатели</h3>
             % if custom_kpi.keys():
                 % for one in custom_kpi.keys():
@@ -32,8 +43,27 @@
                 <p>Показатели не заданы.</p>
             % endif
             <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step1stage1" role="button">Добавить цель</a>
-            <a class="btn btn-default" href="/wizardfordepartment/step1stage3" role="button">Добавить показатель</a>
+            <h3>Мероприятия</h3>
+            % if events.keys():
+                % for one in events.keys():
+                    <p>${events[one].name}</p>
+                % endfor
+            % else:
+                <p>Мероприятий нет.</p>
+            % endif
+            <hr>
+            <h3>Операционные показатели</h3>
+            % if metrics.keys():
+                % for one in metrics.keys():
+                    <p>${metrics[one].name}</p>
+                % endfor
+            % else:
+                <p>Не заданы.</p>
+            % endif
+            <hr>
+            <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить цель</a>
+            <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить показатель</a>
+            <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить мероприятие</a>
             <hr>
             <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Дальше</a>
         </div>

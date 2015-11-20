@@ -19,11 +19,13 @@
                    <table class="table">
                        <tbody>
                        % for g in custom_goals.keys():
+                            % if lib_linked_kpi.get(g):
                             <tr>
                                 <td rowspan="${len(lib_linked_kpi[g])}">
                                     <p class="text-center"><b>${custom_goals[g].goal_name}</b></p>
                                 </td>
                                 <td>
+
                                     <div class="checkbox">
                                         <label>
                                             % if lib_kpi[lib_linked_kpi[g][0]].code in custom_kpi.keys():
@@ -64,6 +66,18 @@
                                     </td>
                                 </tr>
                             % endfor
+                            % else:
+                            <tr>
+                                <td>
+                                    <p class="text-center"><b>${custom_goals[g].goal_name}</b></p>
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                    Нет показателей
+                                </td>
+                            </tr>
+                            % endif
                        % endfor
                        </tbody>
                    </table>

@@ -820,6 +820,8 @@ def save_picked_goals_to_custom(picked_goals):
     Сохраняем выбранные цели из библиотеки в кастомные таблицы.
     Сохраняем свящи между ними.
 
+    :parameter picked_goals: выбранные коды целей
+
     :return:
     """
 
@@ -1156,6 +1158,41 @@ class StrategicMap(Base):
         self.date = datetime.datetime.now()
 
 
+def save_goals_to_map(picked_goals):
+    """
+    Сохраняем указание на выбранные цели в текущую карту .
+
+    :parameter picked_goals: выбранные коды целей
+
+    :return:
+    """
+
+    session = Session()
+    for g in picked_goals:
+        try:
+            query = session.query(StrategicMap).filter(and_(StrategicMap.map_code == current_strategic_map,
+                                                            StrategicMap.goal_code == g)).one_or_none()
+        except Exception as e:
+            session.close()
+            raise e
+        if not query:
+
+            # Добавлем запись в стратегическую карту
+            n = StrategicMap()
+            n.map_code = current_strategic_map
+            n.goal_code = g
+            try:
+                session.add(n)
+                session.commit()
+            except Exception as e:
+                session.close()
+                raise e
+        else:
+            print "Функция save_goals_to_map(). Запись для goal %s в карте %s существует." % (g, current_strategic_map)
+
+    session.close()
+
+
 class KPITargetValue(Base):
     """
     Класс для хранения целевых значений показателей и их типов.
@@ -1313,7 +1350,7 @@ def get_events(event_code=None):
         raise e
     else:
         if event_code:
-            return query
+            return query[0]
         else:
             for one in query:
                 events[one.event_code] = one
