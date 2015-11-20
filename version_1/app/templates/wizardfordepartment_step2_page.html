@@ -1,0 +1,41 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-6">
+            <h1>${step_desc['name']}</h1>
+            <h3>Описание</h3>
+            ${step_desc['full_description']}
+            <hr>
+            <h3>Цели</h3>
+            % if custom_goals.keys():
+                % for one in custom_goals.keys():
+                    <p>${custom_goals[one].goal_name}</p>
+                % endfor
+            % else:
+                <p>Цели не заданы.</p>
+            % endif
+            <h3>Показатели</h3>
+            % if custom_kpi.keys():
+                ${custom_kpi.keys()}
+            % else:
+                <p>Показатели не заданы.</p>
+            % endif
+            <hr>
+            <a class="btn btn-default" href="/wizardfordepartment/step2stage1" role="button">Добавить цель</a>
+            <a class="btn btn-default" href="/wizardfordepartment/step2stage3" role="button">Добавить показатель</a>
+            <hr>
+            <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Дальше</a>
+        </div>
+    </div>
+
+
+</div>
+

@@ -54,12 +54,81 @@ class DepartmentWizard(object):
         maps = dict()
         try:
             for one in BMTObjects.get_all_maps():
-                if BMTObjects.check_access(one.code, cherrypy.request.login)[0]:
+                if BMTObjects.check_access(one.code, cherrypy.request.login)[0] and one.code != "ent0":
                     maps[one.code] = one
         except Exception as e:
             return ShowError(e)
 
         return tmpl.render(step_desc=step_desc, maps=maps)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def start(self, code=None):
+        # Запускаем Мастер для заполнения карты указанной в code.
+        #  Меняем значения переменных, создаем настройки Мастера и переадресуем на первую или текущую страницу Мастера
+
+        if code:
+            # Если указана карта, то меняем карту после проверки прав
+            try:
+                if BMTObjects.check_access(code, cherrypy.request.login)[1]:
+                    BMTObjects.current_strategic_map = code
+            except Exception as e:
+                return ShowError(e)
+            # Проверяем наличие настроек для Мастера
+            try:
+                master = BMTObjects.wizard_conf_read(code)
+            except Exception as e:
+                return ShowError(e)
+
+            # Переадресуем на нужную страницу
+            if master:
+                raise cherrypy.HTTPRedirect("/wizardfordepartment/" + str(master.cur_step))
+            else:
+                raise cherrypy.HTTPRedirect("/wizardfordepartment/step1")
+
+        else:
+            raise cherrypy.HTTPRedirect("/wizardfordepartment")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step1(self):
+        tmpl = lookup.get_template("wizardfordepartment_step1_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step1_full_description")
+        step_desc['name'] = "Шаг 1. Мастер по настройке карты департамента"
+        step_desc['next_step'] = "2"
+
+        print "Current MAP : %s" % BMTObjects.current_strategic_map
+
+        try:
+            cur_map_goals, cur_map_kpi, cur_map_events, cur_map_metrics = BMTObjects.load_cur_map_objects()
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+
+        print "Current MAP : %s" % BMTObjects.current_strategic_map
+        print "Current MAP goals: %s" % cur_map_goals
+        print "Current MAP KPI: %s" % cur_map_kpi
+        print "Current MAP Events: %s" % cur_map_events
+        print "Current MAP Metrics: %s" % cur_map_metrics
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map),
+                           custom_goals=cur_map_goals, custom_kpi=cur_map_kpi)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step2(self):
+        tmpl = lookup.get_template("wizardfordepartment_step2_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step2_full_description")
+        step_desc['name'] = BMTObjects.get_desc("depwiz_step2_name")
+        step_desc['next_step'] = "2"
+
+
+        return tmpl.render(params=params, step_desc=step_desc)
+
 
 class Wizard(object):
 
@@ -71,7 +140,7 @@ class Wizard(object):
 
         # check wizard configuration exist
         session = BMTObjects.Session()
-        wiz_conf = BMTObjects.wizard_conf_read(session)
+        wiz_conf = BMTObjects.wizard_conf_read_old(session)
         if wiz_conf:
             print "Wizard configuration exist"
         else:
@@ -100,7 +169,7 @@ class Wizard(object):
         step_desc['next_step'] = "2"
 
         session = BMTObjects.Session()
-        wiz_conf = BMTObjects.wizard_conf_read(session)
+        wiz_conf = BMTObjects.wizard_conf_read_old(session)
 
         if wiz_conf.industry == "":
             status = "new"
@@ -114,7 +183,7 @@ class Wizard(object):
             wiz_conf.industry = industry
             wiz_conf.cur_step = "1"
             wiz_conf.status = "Выполняется шаг 1"
-            op_status = BMTObjects.wizard_conf_save(session)
+            op_status = BMTObjects.wizard_conf_save_old(session)
 
         if action == "edit":
             status = "edit"
@@ -677,6 +746,7 @@ class Wizard(object):
 
         try:
             org, shift = BMTObjects.get_structure_sorted()
+            current_map = BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map)
         except Exception as e:
             ShowError(e)
 
@@ -689,7 +759,7 @@ class Wizard(object):
                 departments.append(None)
 
         return tmpl.render(params=params, step_desc=step_desc, org=org, shift=shift, persons=BMTObjects.persons,
-                           departments=departments)
+                           departments=departments, current_map=current_map)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -846,7 +916,30 @@ class Root(object):
         except Exception as e:
             return ShowError(e)
 
-        return tmpl.render(step_desc=step_desc, maps=maps, cur_map=BMTObjects.current_strategic_map)
+        try:
+            current_map = BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map)
+        except Exception as e:
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc, maps=maps, cur_map=BMTObjects.current_strategic_map,
+                           current_map=current_map)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def maps(self, code=None):
+        tmpl = lookup.get_template("maps_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Просмотр карты"
+        step_desc['next_step'] = ""
+
+        try:
+            current_map = BMTObjects.get_current_strategic_map_object(code)
+        except Exception as e:
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map,
+                           current_map=current_map)
 
 
 

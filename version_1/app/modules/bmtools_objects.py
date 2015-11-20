@@ -220,15 +220,17 @@ class WizardConfiguration(Base):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     industry = sqlalchemy.Column(sqlalchemy.String(256), default="")
     cur_step = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    object_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
     status = sqlalchemy.Column(sqlalchemy.String(256), default="")
 
     def __init__(self):
         self.industry = ""
         self.cur_step = ""
+        self.object_code = ""
         self.status = ""
 
 
-def wizard_conf_save(session):
+def wizard_conf_save_old(session):
     """
     Сохранение новых данных в базу.
 
@@ -244,7 +246,7 @@ def wizard_conf_save(session):
         return True
 
 
-def wizard_conf_read(session):
+def wizard_conf_read_old(session):
     """
     Чтение настроек мастера из базы.
 
@@ -266,6 +268,73 @@ def wizard_conf_read(session):
         print "Конфигурация найдена."
         logging.warning("Конфигурация найдена.")
         return wiz_conf
+
+
+def wizard_conf_read(object_code=None):
+    session = Session()
+    try:
+        query = session.query(WizardConfiguration).filter(WizardConfiguration.object_code == object_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено для WizardConfiguration(). BMTObjects.wizard_conf_read(). %s" % str(e)
+        return None
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.wizard_conf_read(). НАйдено много конфигураций для объекта: %s. %s" %\
+              (object_code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.wizard_conf_read(). %s" % str(e)
+        raise e
+    else:
+        return query
+    finally:
+        session.close()
+
+
+def wizard_conf_save(object_code=None, status="", cur_step="", industry=""):
+    if not object_code:
+        e = Exception()
+        e.message = "Ошибка в функции BMTObjects.wizard_conf_save(). Не указан object_code. %s" % str(e)
+        raise e
+
+    session = Session()
+    try:
+        query = session.query(WizardConfiguration).filter(WizardConfiguration.object_code == object_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        # Идем дальше
+        pass
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.wizard_conf_read(). НАйдено много конфигураций для объекта: %s. %s" %\
+              (object_code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.wizard_conf_read(). %s" % str(e)
+        raise e
+    else:
+        if query:
+            # не пустой, обновляем настройки
+            query.cur_step = cur_step
+            query.status = status
+            query.industry = industry
+            try:
+                session.commit()
+            except Exception as e:
+                print "Ошибка в функции BMTObjects.wizard_conf_read(). %s" % str(e)
+                raise e
+        else:
+            # если пустой, создаем настройки
+            conf = WizardConfiguration()
+            conf.cur_step = cur_step
+            conf.status = status
+            conf.industry = industry
+            conf.object_code = object_code
+            try:
+                session.add(conf)
+                session.commit()
+            except Exception as e:
+                print "Ошибка в функции BMTObjects.wizard_conf_read(). %s" % str(e)
+                raise e
+    finally:
+        session.close()
 
 
 class OrgStucture(Base):
@@ -592,35 +661,53 @@ def update_custom_kpi(custom_kpi_update):
         session.close()
 
 
-def load_custom_goals_kpi():
+def load_custom_goals_kpi(goal_code=None, kpi_code=None):
     """
     Функция загрузки из базы всех целей и показателей компании.
+    :parameter goal_code: код цели
+    :parameter kpi_code: код показателя
 
     :return:
     """
 
     session = Session()
     try:
-        resp = session.query(Custom_goal).all()
+        if goal_code:
+            resp = session.query(Custom_goal).filter(Custom_goal.code == goal_code).all()
+        else:
+            resp = session.query(Custom_goal).all()
     except Exception as e:
+        session.close()
         raise e
     else:
-        goals = dict()
-        for g in resp:
-            goals[g.code] = g
+        if goal_code:
+            goals = resp[0]
+        else:
+            goals = dict()
+            for g in resp:
+                goals[g.code] = g
 
     try:
-        resp = session.query(Custom_KPI).all()
+        if kpi_code:
+            resp = session.query(Custom_KPI).filter(Custom_KPI.code == kpi_code).all()
+        else:
+            resp = session.query(Custom_KPI).all()
     except Exception as e:
         raise e
     else:
-        kpi = dict()
-        for k in resp:
-            kpi[k.code] = k
+        if kpi_code:
+            kpi = resp[0]
+        else:
+            kpi = dict()
+            for k in resp:
+                kpi[k.code] = k
 
-    return goals, kpi
+        return goals, kpi
 
-    session.close()
+    finally:
+        session.close()
+
+
 
 
 def load_lib_goals_kpi():
@@ -874,6 +961,46 @@ def save_picked_kpi_links_to_custom():
         session.close()
 
 
+def load_cur_map_objects(cur_map=None):
+    """
+    Загружаем объекты находящиеся в указанной стратегической карте.
+    Если ничего не указано, загружем для текущей current_strategic_map.
+
+    :return:
+    """
+    goals = dict()
+    kpi = dict()
+    events = dict()
+    metrics = dict()
+
+    if not cur_map:
+        cur_map = current_strategic_map
+
+    session = Session()
+    # Загружаем цели для указанной карты
+    try:
+        query = session.query(StrategicMap).filter(StrategicMap.map_code == cur_map).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        # Если ничего нет, то возвращаем None
+        pass
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.load_cur_map_objects(). %s" % str(e)
+        raise e
+    else:
+        for each in query:
+            if each.goal_code:
+                goals[each.goal_code] = load_custom_goals_kpi(each.goal_code, None)[0]
+            if each.kpi_code:
+                kpi[each.kpi_code] = load_custom_goals_kpi(None, each.kpi_code)[1]
+            if each.event_code:
+                events[each.event_code] = get_events(each.event_code)
+            if each.metric_code:
+                pass
+    finally:
+        return goals, kpi, events, metrics
+        session.close()
+
+
 class StrategicMapDescription(Base):
     """
     Класс для хранения данных о стратегических картах. Код карты, название, описание, владелец, дата.
@@ -961,12 +1088,14 @@ def get_map_for_dep(department):
 
 
 def get_all_maps():
+    # Возвращает объекты всех карт
+
     session = Session()
 
     try:
         query = session.query(StrategicMapDescription).all()
     except sqlalchemy.orm.exc.NoResultFound as e:
-        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_map_for_dep(). %s" % str(e)
+        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_all_maps(). %s" % str(e)
         return None
     except Exception as e:
         print "Ошибка в функции get_map_for_dep(). %s" % str(e)
@@ -975,6 +1104,30 @@ def get_all_maps():
         return query
     finally:
         session.close()
+
+
+def get_current_strategic_map_object(current_map_code):
+    # Возвращает объект катры по коду
+
+    session = Session()
+
+    try:
+        query = session.query(StrategicMapDescription).filter(StrategicMapDescription.code == current_map_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_current_strategic_map_object(). %s" % str(e)
+        return None
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.get_current_strategic_map_object(). НАйдено много карт для кода: %s. %s" %\
+              (current_map_code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции get_current_strategic_map_object(). %s" % str(e)
+        raise e
+    else:
+        return query
+    finally:
+        session.close()
+
 
 
 class StrategicMap(Base):
@@ -1137,16 +1290,21 @@ class Event(Base):
         self.plan_result = ""
 
 
-def get_events():
+def get_events(event_code=None):
     """
     Возвращает все мероприятия.
+
+    :parameter event_code: код события
 
     :return:
     """
     events = dict()
     session = Session()
     try:
-        query = session.query(Event).all()
+        if event_code:
+            query = session.query(Event).filter(Event.event_code == event_code).all()
+        else:
+            query = session.query(Event).all()
     except sqlalchemy.orm.exc.NoResultFound as e:
         print "Ничего не найдено для Event(). BMTObjects.get_events(). %s" % str(e)
         return events
@@ -1154,9 +1312,12 @@ def get_events():
         print "Ошибка в функции BMTObjects.get_events(). %s" % str(e)
         raise e
     else:
-        for one in query:
-            events[one.event_code] = one
-        return events
+        if event_code:
+            return query
+        else:
+            for one in query:
+                events[one.event_code] = one
+            return events
     finally:
         session.close()
 

@@ -16,7 +16,7 @@
             <hr>
             % for one in maps.values():
             <p>
-                <a role="button" class="btn btn-link" href="/wizardfordepartment/changemap?map=${one.code}">${one.name}</a>
+                <a role="button" class="btn btn-link" href="/wizardfordepartment/start?code=${one.code}">${one.name}</a>
             </p>
             % endfor
         </div>
