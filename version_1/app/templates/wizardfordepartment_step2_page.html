@@ -15,7 +15,7 @@
             ${step_desc['full_description']}
             <hr>
             <h3>Цели компании</h3>
-            <form method="post" action="/wizardfordepartment/step2save">
+            <form method="post" action="/wizardfordepartment/step2add">
             <table class="table table-condensed table-hover">
                 <tbody>
                 % for i in ent_goals.keys():
@@ -60,7 +60,7 @@
                 <p>Цели не заданы.</p>
             % endif
             <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step2stage1" role="button">Создать новую цель</a>
+            <a class="btn btn-default" href="/wizardfordepartment/step2new" role="button">Создать новую цель</a>
             <hr>
             <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Дальше</a>
         </div>

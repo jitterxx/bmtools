@@ -145,7 +145,7 @@ class DepartmentWizard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step2save(self, ent_goals=None):
+    def step2add(self, ent_goals=None):
         """
             Сохраняем выбранные цели в карту подразделения
         """
@@ -168,6 +168,56 @@ class DepartmentWizard(object):
         else:
             raise cherrypy.HTTPRedirect("step2")
 
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step2new(self):
+        # Добавить новую цель в карту подразделения. Подцель.
+        tmpl = lookup.get_template("wizardfordepartment_step2new_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step2new_full_description")
+        step_desc['name'] = BMTObjects.get_desc("depwiz_step2new_name")
+        step_desc['next_step'] = "3"
+
+        try:
+            cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+
+        print "Current MAP : %s" % BMTObjects.current_strategic_map
+        print "Current MAP goals: %s" % cur_map_goals
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map),
+                           cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step2save(self, name=None, description=None, perspective=None):
+        """
+            Сохраняем новую цель в кастомные цели и добавляем в карту подразделения
+        """
+
+        print "Wizard for DEP. Step 2 SAVE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+
+        goal_fields = dict()
+
+        goal_fields['goal_name'] = name
+        goal_fields['description'] = description
+        goal_fields['perspective'] = perspective
+
+        try:
+            BMTObjects.create_new_custom_goal(goal_fields)
+        except Exception as e:
+            print "Ошибка при создании CUSTOM_GOAL. %s" % str(e)
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
 
     @cherrypy.expose
     @require(member_of("users"))

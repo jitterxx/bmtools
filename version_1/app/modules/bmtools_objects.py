@@ -579,10 +579,47 @@ class Custom_goal(Base):
     perspective = sqlalchemy.Column(sqlalchemy.Integer, default=0)
 
     def __init__(self):
-        self.code = ""
+        u = uuid.uuid4().get_hex().__str__()
+        self.code = "dg" + "".join(random.sample(u, 4))
         self.goal_name = ""
         self.description = ""
         self.perspective = 0
+
+
+def create_new_custom_goal(goal_fields):
+    """
+    Создаем новую кастомную цель, добавлем ее в таблицу кастомных целей и в текущую карту.
+    :param goal_fields: список полей новой цели
+    :return:
+    """
+    goal = Custom_goal()
+
+    session = Session()
+    try:
+        for key in goal_fields.keys():
+            goal.__dict__[key] = goal_fields[key]
+        session.add(goal)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.create_new_custom_goal(). Цель не записана. %s" % str(e)
+        raise e
+    else:
+        # Добавляем запись в стратегическую карту
+        smap = StrategicMap()
+        smap.goal_code = goal.code
+        smap.date = datetime.datetime.now()
+        smap.map_code = current_strategic_map
+        smap.version = VERSION
+        try:
+            session.add(smap)
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.create_new_custom_goal(). Strategic map не записана. %s" % str(e)
+            raise e
+    finally:
+        session.close()
+
+    return [True, ""]
 
 
 class Custom_KPI(Base):
