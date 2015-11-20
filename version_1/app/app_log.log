@@ -26560,3 +26560,702 @@ WARNING  [2015-11-20 20:56:33,004] Пользователь с логином te
 WARNING  [2015-11-20 20:56:33,006] Описание с кодом depwiz_step2_full_description найдено
 WARNING  [2015-11-20 20:56:33,007] Описание с кодом depwiz_step2_name найдено
 INFO     [2015-11-20 20:56:33,046] 127.0.0.1 - test [20/Nov/2015:20:56:33] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2535 "http://127.0.0.1:8080/wizardfordepartment/step2new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:10:31,754] 127.0.0.1 - - [20/Nov/2015:23:10:31] "GET /wizardfordepartment/step2 HTTP/1.1" 303 127 "http://127.0.0.1:8080/wizardfordepartment/step2new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:10:31,799] 127.0.0.1 - - [20/Nov/2015:23:10:31] "GET /auth/login?from_page=/wizardfordepartment/step2 HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizardfordepartment/step2new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:10:32,188] 127.0.0.1 - - [20/Nov/2015:23:10:32] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:10:32,190] 127.0.0.1 - - [20/Nov/2015:23:10:32] "GET /static/css/signin.css HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:10:32,229] 127.0.0.1 - - [20/Nov/2015:23:10:32] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:36:37,289] Пользователь с логином test найден
+INFO     [2015-11-20 23:36:37,289] 127.0.0.1 - test [20/Nov/2015:23:36:37] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:36:37,364] Пользователь с логином test найден
+INFO     [2015-11-20 23:36:37,365] 127.0.0.1 - test [20/Nov/2015:23:36:37] "GET / HTTP/1.1" 200 1375 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:37:19,208] Пользователь с логином test найден
+WARNING  [2015-11-20 23:37:19,210] Конфигурация найдена.
+INFO     [2015-11-20 23:37:19,211] 127.0.0.1 - test [20/Nov/2015:23:37:19] "GET /wizard/ HTTP/1.1" 200 1682 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:37:20,170] Пользователь с логином test найден
+WARNING  [2015-11-20 23:37:20,172] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-20 23:37:20,174] Описание с кодом step7_name найдено
+WARNING  [2015-11-20 23:37:20,176] Описание с кодом step7_subheader найдено
+INFO     [2015-11-20 23:37:20,196] 127.0.0.1 - test [20/Nov/2015:23:37:20] "GET /wizard/step7 HTTP/1.1" 200 2155 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:37:23,507] Пользователь с логином test найден
+INFO     [2015-11-20 23:37:23,509] 127.0.0.1 - test [20/Nov/2015:23:37:23] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 109 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:37:23,516] Пользователь с логином test найден
+WARNING  [2015-11-20 23:37:23,517] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-20 23:37:23,536] 127.0.0.1 - test [20/Nov/2015:23:37:23] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1899 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:38:41,709] Пользователь с логином test найден
+WARNING  [2015-11-20 23:38:41,711] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-20 23:38:41,715] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-20 23:38:41,757] 127.0.0.1 - test [20/Nov/2015:23:38:41] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2535 "http://127.0.0.1:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:41:13,063] Пользователь с логином test найден
+WARNING  [2015-11-20 23:41:13,065] Описание с кодом depwiz_step3_full_description не найдено
+WARNING  [2015-11-20 23:41:13,067] Описание с кодом depwiz_step3_name не найдено
+INFO     [2015-11-20 23:41:13,067] [20/Nov/2015:23:41:13] HTTP 
+Request Headers:
+  REFERER: http://127.0.0.1:8080/wizardfordepartment/step2
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _ga=GA1.1.960229294.1447360615; session_id=283decbd19c9873d0e7fda5474de65742b735253
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-20 23:41:13,067] [20/Nov/2015:23:41:13] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 257, in step3
+    return tmpl.render(params=params, step_desc=step_desc)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "wizardfordepartment_step2_page_html", line 45, in render_body
+AttributeError: 'Undefined' object has no attribute 'keys'
+INFO     [2015-11-20 23:41:13,069] 127.0.0.1 - test [20/Nov/2015:23:41:13] "GET /wizardfordepartment/step3 HTTP/1.1" 500 2174 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:41:34,752] [20/Nov/2015:23:41:34] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-20 23:41:34,752] [20/Nov/2015:23:41:34] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-20 23:41:34,752] [20/Nov/2015:23:41:34] ENGINE Bus STOPPING
+INFO     [2015-11-20 23:41:34,754] [20/Nov/2015:23:41:34] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-20 23:41:34,755] [20/Nov/2015:23:41:34] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:41:34,755] [20/Nov/2015:23:41:34] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-20 23:41:34,755] [20/Nov/2015:23:41:34] ENGINE Bus STOPPED
+INFO     [2015-11-20 23:41:34,755] [20/Nov/2015:23:41:34] ENGINE Bus EXITING
+INFO     [2015-11-20 23:41:34,755] [20/Nov/2015:23:41:34] ENGINE Bus EXITED
+INFO     [2015-11-20 23:41:34,854] [20/Nov/2015:23:41:34] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-20 23:41:34,855] [20/Nov/2015:23:41:34] ENGINE Re-spawning webapp.py
+INFO     [2015-11-20 23:41:35,280] [20/Nov/2015:23:41:35] ENGINE Listening for SIGHUP.
+INFO     [2015-11-20 23:41:35,280] [20/Nov/2015:23:41:35] ENGINE Listening for SIGTERM.
+INFO     [2015-11-20 23:41:35,280] [20/Nov/2015:23:41:35] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-20 23:41:35,280] [20/Nov/2015:23:41:35] ENGINE Bus STARTING
+INFO     [2015-11-20 23:41:35,281] [20/Nov/2015:23:41:35] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-20 23:41:35,282] [20/Nov/2015:23:41:35] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:41:35,486] [20/Nov/2015:23:41:35] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-20 23:41:35,486] [20/Nov/2015:23:41:35] ENGINE Bus STARTED
+INFO     [2015-11-20 23:47:31,433] [20/Nov/2015:23:47:31] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-20 23:47:31,433] [20/Nov/2015:23:47:31] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-20 23:47:31,433] [20/Nov/2015:23:47:31] ENGINE Bus STOPPING
+INFO     [2015-11-20 23:47:31,435] [20/Nov/2015:23:47:31] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-20 23:47:31,435] [20/Nov/2015:23:47:31] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:47:31,435] [20/Nov/2015:23:47:31] ENGINE Bus STOPPED
+INFO     [2015-11-20 23:47:31,435] [20/Nov/2015:23:47:31] ENGINE Bus EXITING
+INFO     [2015-11-20 23:47:31,436] [20/Nov/2015:23:47:31] ENGINE Bus EXITED
+INFO     [2015-11-20 23:47:31,470] [20/Nov/2015:23:47:31] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-20 23:47:31,471] [20/Nov/2015:23:47:31] ENGINE Re-spawning webapp.py
+INFO     [2015-11-20 23:47:31,883] [20/Nov/2015:23:47:31] ENGINE Listening for SIGHUP.
+INFO     [2015-11-20 23:47:31,883] [20/Nov/2015:23:47:31] ENGINE Listening for SIGTERM.
+INFO     [2015-11-20 23:47:31,884] [20/Nov/2015:23:47:31] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-20 23:47:31,884] [20/Nov/2015:23:47:31] ENGINE Bus STARTING
+INFO     [2015-11-20 23:47:31,884] [20/Nov/2015:23:47:31] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-20 23:47:31,885] [20/Nov/2015:23:47:31] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:47:32,015] [20/Nov/2015:23:47:32] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-20 23:47:32,015] [20/Nov/2015:23:47:32] ENGINE Bus STARTED
+INFO     [2015-11-20 23:47:51,061] [20/Nov/2015:23:47:51] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-20 23:47:51,061] [20/Nov/2015:23:47:51] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-20 23:47:51,061] [20/Nov/2015:23:47:51] ENGINE Bus STOPPING
+INFO     [2015-11-20 23:47:51,063] [20/Nov/2015:23:47:51] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-20 23:47:51,064] [20/Nov/2015:23:47:51] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:47:51,064] [20/Nov/2015:23:47:51] ENGINE Bus STOPPED
+INFO     [2015-11-20 23:47:51,065] [20/Nov/2015:23:47:51] ENGINE Bus EXITING
+INFO     [2015-11-20 23:47:51,065] [20/Nov/2015:23:47:51] ENGINE Bus EXITED
+INFO     [2015-11-20 23:47:51,151] [20/Nov/2015:23:47:51] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-20 23:47:51,151] [20/Nov/2015:23:47:51] ENGINE Re-spawning webapp.py
+INFO     [2015-11-20 23:47:51,522] [20/Nov/2015:23:47:51] ENGINE Listening for SIGHUP.
+INFO     [2015-11-20 23:47:51,522] [20/Nov/2015:23:47:51] ENGINE Listening for SIGTERM.
+INFO     [2015-11-20 23:47:51,522] [20/Nov/2015:23:47:51] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-20 23:47:51,522] [20/Nov/2015:23:47:51] ENGINE Bus STARTING
+INFO     [2015-11-20 23:47:51,523] [20/Nov/2015:23:47:51] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-20 23:47:51,523] [20/Nov/2015:23:47:51] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:47:51,727] [20/Nov/2015:23:47:51] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-20 23:47:51,728] [20/Nov/2015:23:47:51] ENGINE Bus STARTED
+INFO     [2015-11-20 23:49:05,129] [20/Nov/2015:23:49:05] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-20 23:49:05,129] [20/Nov/2015:23:49:05] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-20 23:49:05,129] [20/Nov/2015:23:49:05] ENGINE Bus STOPPING
+INFO     [2015-11-20 23:49:05,132] [20/Nov/2015:23:49:05] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-20 23:49:05,132] [20/Nov/2015:23:49:05] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:49:05,133] [20/Nov/2015:23:49:05] ENGINE Bus STOPPED
+INFO     [2015-11-20 23:49:05,133] [20/Nov/2015:23:49:05] ENGINE Bus EXITING
+INFO     [2015-11-20 23:49:05,133] [20/Nov/2015:23:49:05] ENGINE Bus EXITED
+INFO     [2015-11-20 23:49:05,174] [20/Nov/2015:23:49:05] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-20 23:49:05,175] [20/Nov/2015:23:49:05] ENGINE Re-spawning webapp.py
+INFO     [2015-11-20 23:52:47,726] [20/Nov/2015:23:52:47] ENGINE Listening for SIGHUP.
+INFO     [2015-11-20 23:52:47,726] [20/Nov/2015:23:52:47] ENGINE Listening for SIGTERM.
+INFO     [2015-11-20 23:52:47,726] [20/Nov/2015:23:52:47] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-20 23:52:47,726] [20/Nov/2015:23:52:47] ENGINE Bus STARTING
+INFO     [2015-11-20 23:52:47,727] [20/Nov/2015:23:52:47] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-20 23:52:47,727] [20/Nov/2015:23:52:47] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:52:47,831] [20/Nov/2015:23:52:47] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-20 23:52:47,832] [20/Nov/2015:23:52:47] ENGINE Bus STARTED
+INFO     [2015-11-20 23:52:51,406] [20/Nov/2015:23:52:51] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-20 23:52:51,407] 127.0.0.1 - - [20/Nov/2015:23:52:51] "GET /wizardfordepartment/step3 HTTP/1.1" 303 128 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:52:51,443] 127.0.0.1 - - [20/Nov/2015:23:52:51] "GET /auth/login?from_page=/wizardfordepartment/step3 HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:52:51,462] 127.0.0.1 - - [20/Nov/2015:23:52:51] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:52:51,461] 127.0.0.1 - - [20/Nov/2015:23:52:51] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:52:51,522] 127.0.0.1 - - [20/Nov/2015:23:52:51] "GET /static/css/signin.css HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:52:54,725] Пользователь с логином test найден
+INFO     [2015-11-20 23:52:54,726] 127.0.0.1 - test [20/Nov/2015:23:52:54] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:52:54,828] Пользователь с логином test найден
+INFO     [2015-11-20 23:52:54,851] 127.0.0.1 - test [20/Nov/2015:23:52:54] "GET / HTTP/1.1" 200 1375 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:52:55,853] Пользователь с логином test найден
+WARNING  [2015-11-20 23:52:55,860] Конфигурация найдена.
+INFO     [2015-11-20 23:52:55,862] 127.0.0.1 - test [20/Nov/2015:23:52:55] "GET /wizard/ HTTP/1.1" 200 1682 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:52:56,993] Пользователь с логином test найден
+WARNING  [2015-11-20 23:52:57,010] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-20 23:52:57,012] Описание с кодом step7_name найдено
+WARNING  [2015-11-20 23:52:57,014] Описание с кодом step7_subheader найдено
+INFO     [2015-11-20 23:52:57,034] 127.0.0.1 - test [20/Nov/2015:23:52:57] "GET /wizard/step7 HTTP/1.1" 200 2159 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:52:58,322] Пользователь с логином test найден
+INFO     [2015-11-20 23:52:58,325] 127.0.0.1 - test [20/Nov/2015:23:52:58] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 109 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:52:58,383] Пользователь с логином test найден
+WARNING  [2015-11-20 23:52:58,397] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-20 23:52:58,420] 127.0.0.1 - test [20/Nov/2015:23:52:58] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1899 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:53:00,362] Пользователь с логином test найден
+WARNING  [2015-11-20 23:53:00,374] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-20 23:53:00,377] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-20 23:53:00,415] 127.0.0.1 - test [20/Nov/2015:23:53:00] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2535 "http://127.0.0.1:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:53:03,174] Пользователь с логином test найден
+INFO     [2015-11-20 23:53:03,174] [20/Nov/2015:23:53:03] HTTP 
+Request Headers:
+  REFERER: http://127.0.0.1:8080/wizardfordepartment/step2
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _ga=GA1.1.960229294.1447360615; session_id=bd19319f9edc566d37387ffa611582185a49b4b6
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-20 23:53:03,174] [20/Nov/2015:23:53:03] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 249, in step3
+    tmpl = lookup.get_template("wizardfordepartment_step3_page.html")
+  File "/usr/local/lib/python2.7/dist-packages/mako/lookup.py", line 248, in get_template
+    "Cant locate template for uri %r" % uri)
+TopLevelLookupException: Cant locate template for uri 'wizardfordepartment_step3_page.html'
+INFO     [2015-11-20 23:53:03,175] 127.0.0.1 - test [20/Nov/2015:23:53:03] "GET /wizardfordepartment/step3 HTTP/1.1" 500 1613 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-20 23:53:48,707] Пользователь с логином test найден
+WARNING  [2015-11-20 23:53:48,713] Описание с кодом depwiz_step3_full_description найдено
+WARNING  [2015-11-20 23:53:48,715] Описание с кодом depwiz_step3_name найдено
+INFO     [2015-11-20 23:53:48,722] 127.0.0.1 - test [20/Nov/2015:23:53:48] "GET /wizardfordepartment/step3 HTTP/1.1" 200 1472 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:53:48,737] 127.0.0.1 - - [20/Nov/2015:23:53:48] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:53:48,740] 127.0.0.1 - - [20/Nov/2015:23:53:48] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:53:48,744] 127.0.0.1 - - [20/Nov/2015:23:53:48] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-20 23:58:12,613] [20/Nov/2015:23:58:12] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-20 23:58:12,614] [20/Nov/2015:23:58:12] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-20 23:58:12,614] [20/Nov/2015:23:58:12] ENGINE Bus STOPPING
+INFO     [2015-11-20 23:58:12,616] [20/Nov/2015:23:58:12] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-20 23:58:12,616] [20/Nov/2015:23:58:12] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:58:12,616] [20/Nov/2015:23:58:12] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-20 23:58:12,617] [20/Nov/2015:23:58:12] ENGINE Bus STOPPED
+INFO     [2015-11-20 23:58:12,617] [20/Nov/2015:23:58:12] ENGINE Bus EXITING
+INFO     [2015-11-20 23:58:12,617] [20/Nov/2015:23:58:12] ENGINE Bus EXITED
+INFO     [2015-11-20 23:58:12,650] [20/Nov/2015:23:58:12] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-20 23:58:12,650] [20/Nov/2015:23:58:12] ENGINE Re-spawning webapp.py
+INFO     [2015-11-20 23:58:13,042] [20/Nov/2015:23:58:13] ENGINE Listening for SIGHUP.
+INFO     [2015-11-20 23:58:13,042] [20/Nov/2015:23:58:13] ENGINE Listening for SIGTERM.
+INFO     [2015-11-20 23:58:13,043] [20/Nov/2015:23:58:13] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-20 23:58:13,043] [20/Nov/2015:23:58:13] ENGINE Bus STARTING
+INFO     [2015-11-20 23:58:13,043] [20/Nov/2015:23:58:13] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:58:13,044] [20/Nov/2015:23:58:13] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-20 23:58:13,248] [20/Nov/2015:23:58:13] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-20 23:58:13,248] [20/Nov/2015:23:58:13] ENGINE Bus STARTED
+INFO     [2015-11-20 23:58:49,396] [20/Nov/2015:23:58:49] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/configurations.py changed.
+INFO     [2015-11-20 23:58:49,396] [20/Nov/2015:23:58:49] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-20 23:58:49,396] [20/Nov/2015:23:58:49] ENGINE Bus STOPPING
+INFO     [2015-11-20 23:58:49,399] [20/Nov/2015:23:58:49] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-20 23:58:49,399] [20/Nov/2015:23:58:49] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:58:49,399] [20/Nov/2015:23:58:49] ENGINE Bus STOPPED
+INFO     [2015-11-20 23:58:49,400] [20/Nov/2015:23:58:49] ENGINE Bus EXITING
+INFO     [2015-11-20 23:58:49,400] [20/Nov/2015:23:58:49] ENGINE Bus EXITED
+INFO     [2015-11-20 23:58:49,417] [20/Nov/2015:23:58:49] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-20 23:58:49,417] [20/Nov/2015:23:58:49] ENGINE Re-spawning webapp.py
+INFO     [2015-11-20 23:58:49,799] [20/Nov/2015:23:58:49] ENGINE Listening for SIGHUP.
+INFO     [2015-11-20 23:58:49,799] [20/Nov/2015:23:58:49] ENGINE Listening for SIGTERM.
+INFO     [2015-11-20 23:58:49,799] [20/Nov/2015:23:58:49] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-20 23:58:49,799] [20/Nov/2015:23:58:49] ENGINE Bus STARTING
+INFO     [2015-11-20 23:58:49,800] [20/Nov/2015:23:58:49] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:58:49,800] [20/Nov/2015:23:58:49] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-20 23:58:50,024] [20/Nov/2015:23:58:50] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-20 23:58:50,024] [20/Nov/2015:23:58:50] ENGINE Bus STARTED
+INFO     [2015-11-20 23:58:54,868] [20/Nov/2015:23:58:54] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/configurations.py changed.
+INFO     [2015-11-20 23:58:54,868] [20/Nov/2015:23:58:54] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-20 23:58:54,869] [20/Nov/2015:23:58:54] ENGINE Bus STOPPING
+INFO     [2015-11-20 23:58:54,871] [20/Nov/2015:23:58:54] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-20 23:58:54,871] [20/Nov/2015:23:58:54] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-20 23:58:54,872] [20/Nov/2015:23:58:54] ENGINE Bus STOPPED
+INFO     [2015-11-20 23:58:54,872] [20/Nov/2015:23:58:54] ENGINE Bus EXITING
+INFO     [2015-11-20 23:58:54,872] [20/Nov/2015:23:58:54] ENGINE Bus EXITED
+INFO     [2015-11-20 23:58:54,935] [20/Nov/2015:23:58:54] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-20 23:58:54,935] [20/Nov/2015:23:58:54] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:03:29,885] [21/Nov/2015:00:03:29] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:03:29,885] [21/Nov/2015:00:03:29] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:03:29,885] [21/Nov/2015:00:03:29] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:03:29,885] [21/Nov/2015:00:03:29] ENGINE Bus STARTING
+INFO     [2015-11-21 00:03:29,886] [21/Nov/2015:00:03:29] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:03:29,887] [21/Nov/2015:00:03:29] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:03:29,990] [21/Nov/2015:00:03:29] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:03:29,991] [21/Nov/2015:00:03:29] ENGINE Bus STARTED
+INFO     [2015-11-21 00:03:39,062] [21/Nov/2015:00:03:39] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-21 00:03:39,063] 127.0.0.1 - - [21/Nov/2015:00:03:39] "GET /wizardfordepartment/step3 HTTP/1.1" 303 128 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:03:39,093] 127.0.0.1 - - [21/Nov/2015:00:03:39] "GET /auth/login?from_page=/wizardfordepartment/step3 HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:03:39,107] 127.0.0.1 - - [21/Nov/2015:00:03:39] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:03:39,112] 127.0.0.1 - - [21/Nov/2015:00:03:39] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:03:39,113] 127.0.0.1 - - [21/Nov/2015:00:03:39] "GET /static/css/signin.css HTTP/1.1" 200 792 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:41,215] Пользователь с логином test найден
+INFO     [2015-11-21 00:03:41,216] 127.0.0.1 - test [21/Nov/2015:00:03:41] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:41,256] Пользователь с логином test найден
+INFO     [2015-11-21 00:03:41,275] 127.0.0.1 - test [21/Nov/2015:00:03:41] "GET / HTTP/1.1" 200 1375 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:42,080] Пользователь с логином test найден
+WARNING  [2015-11-21 00:03:42,086] Конфигурация найдена.
+INFO     [2015-11-21 00:03:42,087] 127.0.0.1 - test [21/Nov/2015:00:03:42] "GET /wizard/ HTTP/1.1" 200 1682 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:43,075] Пользователь с логином test найден
+WARNING  [2015-11-21 00:03:43,086] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-21 00:03:43,088] Описание с кодом step7_name найдено
+WARNING  [2015-11-21 00:03:43,090] Описание с кодом step7_subheader найдено
+INFO     [2015-11-21 00:03:43,110] 127.0.0.1 - test [21/Nov/2015:00:03:43] "GET /wizard/step7 HTTP/1.1" 200 2159 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:45,453] Пользователь с логином test найден
+INFO     [2015-11-21 00:03:45,455] 127.0.0.1 - test [21/Nov/2015:00:03:45] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 109 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:45,460] Пользователь с логином test найден
+WARNING  [2015-11-21 00:03:45,473] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-21 00:03:45,497] 127.0.0.1 - test [21/Nov/2015:00:03:45] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1899 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:47,751] Пользователь с логином test найден
+WARNING  [2015-11-21 00:03:47,773] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-21 00:03:47,775] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-21 00:03:47,818] 127.0.0.1 - test [21/Nov/2015:00:03:47] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2535 "http://127.0.0.1:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:03:49,005] Пользователь с логином test найден
+WARNING  [2015-11-21 00:03:49,017] Описание с кодом depwiz_step3_full_description найдено
+WARNING  [2015-11-21 00:03:49,019] Описание с кодом depwiz_step3_name найдено
+INFO     [2015-11-21 00:03:49,044] 127.0.0.1 - test [21/Nov/2015:00:03:49] "GET /wizardfordepartment/step3 HTTP/1.1" 200 1586 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:07:30,118] [21/Nov/2015:00:07:30] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:07:30,118] [21/Nov/2015:00:07:30] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:07:30,119] [21/Nov/2015:00:07:30] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:07:30,121] [21/Nov/2015:00:07:30] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:07:30,121] [21/Nov/2015:00:07:30] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:07:30,121] [21/Nov/2015:00:07:30] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-21 00:07:30,122] [21/Nov/2015:00:07:30] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:07:30,122] [21/Nov/2015:00:07:30] ENGINE Bus EXITING
+INFO     [2015-11-21 00:07:30,122] [21/Nov/2015:00:07:30] ENGINE Bus EXITED
+INFO     [2015-11-21 00:07:30,169] [21/Nov/2015:00:07:30] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:07:30,169] [21/Nov/2015:00:07:30] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:07:30,574] [21/Nov/2015:00:07:30] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:07:30,575] [21/Nov/2015:00:07:30] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:07:30,575] [21/Nov/2015:00:07:30] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:07:30,575] [21/Nov/2015:00:07:30] ENGINE Bus STARTING
+INFO     [2015-11-21 00:07:30,576] [21/Nov/2015:00:07:30] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:07:30,576] [21/Nov/2015:00:07:30] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:07:30,780] [21/Nov/2015:00:07:30] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:07:30,781] [21/Nov/2015:00:07:30] ENGINE Bus STARTED
+INFO     [2015-11-21 00:08:28,119] [21/Nov/2015:00:08:28] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:08:28,119] [21/Nov/2015:00:08:28] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:08:28,119] [21/Nov/2015:00:08:28] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:08:28,123] [21/Nov/2015:00:08:28] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:08:28,123] [21/Nov/2015:00:08:28] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:08:28,123] [21/Nov/2015:00:08:28] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:08:28,123] [21/Nov/2015:00:08:28] ENGINE Bus EXITING
+INFO     [2015-11-21 00:08:28,124] [21/Nov/2015:00:08:28] ENGINE Bus EXITED
+INFO     [2015-11-21 00:08:28,187] [21/Nov/2015:00:08:28] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:08:28,187] [21/Nov/2015:00:08:28] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:08:28,583] [21/Nov/2015:00:08:28] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:08:28,583] [21/Nov/2015:00:08:28] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:08:28,583] [21/Nov/2015:00:08:28] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:08:28,583] [21/Nov/2015:00:08:28] ENGINE Bus STARTING
+INFO     [2015-11-21 00:08:28,584] [21/Nov/2015:00:08:28] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:08:28,584] [21/Nov/2015:00:08:28] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:08:28,795] [21/Nov/2015:00:08:28] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:08:28,796] [21/Nov/2015:00:08:28] ENGINE Bus STARTED
+INFO     [2015-11-21 00:09:00,873] [21/Nov/2015:00:09:00] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:09:00,873] [21/Nov/2015:00:09:00] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:09:00,874] [21/Nov/2015:00:09:00] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:09:00,876] [21/Nov/2015:00:09:00] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:09:00,876] [21/Nov/2015:00:09:00] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:09:00,876] [21/Nov/2015:00:09:00] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:09:00,876] [21/Nov/2015:00:09:00] ENGINE Bus EXITING
+INFO     [2015-11-21 00:09:00,876] [21/Nov/2015:00:09:00] ENGINE Bus EXITED
+INFO     [2015-11-21 00:09:00,956] [21/Nov/2015:00:09:00] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:09:00,956] [21/Nov/2015:00:09:00] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:09:01,354] [21/Nov/2015:00:09:01] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:09:01,355] [21/Nov/2015:00:09:01] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:09:01,355] [21/Nov/2015:00:09:01] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:09:01,355] [21/Nov/2015:00:09:01] ENGINE Bus STARTING
+INFO     [2015-11-21 00:09:01,355] [21/Nov/2015:00:09:01] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:09:01,356] [21/Nov/2015:00:09:01] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:09:01,560] [21/Nov/2015:00:09:01] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:09:01,560] [21/Nov/2015:00:09:01] ENGINE Bus STARTED
+INFO     [2015-11-21 00:09:31,644] [21/Nov/2015:00:09:31] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:09:31,645] [21/Nov/2015:00:09:31] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:09:31,645] [21/Nov/2015:00:09:31] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:09:31,647] [21/Nov/2015:00:09:31] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:09:31,647] [21/Nov/2015:00:09:31] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:09:31,647] [21/Nov/2015:00:09:31] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:09:31,647] [21/Nov/2015:00:09:31] ENGINE Bus EXITING
+INFO     [2015-11-21 00:09:31,647] [21/Nov/2015:00:09:31] ENGINE Bus EXITED
+INFO     [2015-11-21 00:09:31,721] [21/Nov/2015:00:09:31] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:09:31,721] [21/Nov/2015:00:09:31] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:09:32,112] [21/Nov/2015:00:09:32] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:09:32,113] [21/Nov/2015:00:09:32] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:09:32,113] [21/Nov/2015:00:09:32] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:09:32,113] [21/Nov/2015:00:09:32] ENGINE Bus STARTING
+INFO     [2015-11-21 00:09:32,114] [21/Nov/2015:00:09:32] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:09:32,114] [21/Nov/2015:00:09:32] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:09:32,237] [21/Nov/2015:00:09:32] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:09:32,238] [21/Nov/2015:00:09:32] ENGINE Bus STARTED
+INFO     [2015-11-21 00:09:52,296] [21/Nov/2015:00:09:52] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:09:52,296] [21/Nov/2015:00:09:52] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:09:52,296] [21/Nov/2015:00:09:52] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:09:52,299] [21/Nov/2015:00:09:52] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:09:52,299] [21/Nov/2015:00:09:52] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:09:52,299] [21/Nov/2015:00:09:52] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:09:52,299] [21/Nov/2015:00:09:52] ENGINE Bus EXITING
+INFO     [2015-11-21 00:09:52,299] [21/Nov/2015:00:09:52] ENGINE Bus EXITED
+INFO     [2015-11-21 00:09:52,375] [21/Nov/2015:00:09:52] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:09:52,375] [21/Nov/2015:00:09:52] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:09:52,780] [21/Nov/2015:00:09:52] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:09:52,781] [21/Nov/2015:00:09:52] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:09:52,781] [21/Nov/2015:00:09:52] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:09:52,781] [21/Nov/2015:00:09:52] ENGINE Bus STARTING
+INFO     [2015-11-21 00:09:52,782] [21/Nov/2015:00:09:52] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:09:52,782] [21/Nov/2015:00:09:52] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:09:52,986] [21/Nov/2015:00:09:52] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:09:52,987] [21/Nov/2015:00:09:52] ENGINE Bus STARTED
+INFO     [2015-11-21 00:10:56,334] [21/Nov/2015:00:10:56] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:10:56,335] [21/Nov/2015:00:10:56] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:10:56,335] [21/Nov/2015:00:10:56] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:10:56,337] [21/Nov/2015:00:10:56] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:10:56,338] [21/Nov/2015:00:10:56] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:10:56,338] [21/Nov/2015:00:10:56] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:10:56,338] [21/Nov/2015:00:10:56] ENGINE Bus EXITING
+INFO     [2015-11-21 00:10:56,338] [21/Nov/2015:00:10:56] ENGINE Bus EXITED
+INFO     [2015-11-21 00:10:56,408] [21/Nov/2015:00:10:56] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:10:56,408] [21/Nov/2015:00:10:56] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:10:56,812] [21/Nov/2015:00:10:56] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:10:56,813] [21/Nov/2015:00:10:56] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:10:56,813] [21/Nov/2015:00:10:56] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:10:56,813] [21/Nov/2015:00:10:56] ENGINE Bus STARTING
+INFO     [2015-11-21 00:10:56,814] [21/Nov/2015:00:10:56] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:10:56,814] [21/Nov/2015:00:10:56] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:10:56,918] [21/Nov/2015:00:10:56] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:10:56,918] [21/Nov/2015:00:10:56] ENGINE Bus STARTED
+INFO     [2015-11-21 00:11:24,062] [21/Nov/2015:00:11:24] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:11:24,062] [21/Nov/2015:00:11:24] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:11:24,063] [21/Nov/2015:00:11:24] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:11:24,065] [21/Nov/2015:00:11:24] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:11:24,066] [21/Nov/2015:00:11:24] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:11:24,066] [21/Nov/2015:00:11:24] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:11:24,066] [21/Nov/2015:00:11:24] ENGINE Bus EXITING
+INFO     [2015-11-21 00:11:24,066] [21/Nov/2015:00:11:24] ENGINE Bus EXITED
+INFO     [2015-11-21 00:11:24,069] [21/Nov/2015:00:11:24] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:11:24,069] [21/Nov/2015:00:11:24] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:11:24,437] [21/Nov/2015:00:11:24] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:11:24,438] [21/Nov/2015:00:11:24] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:11:24,438] [21/Nov/2015:00:11:24] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:11:24,438] [21/Nov/2015:00:11:24] ENGINE Bus STARTING
+INFO     [2015-11-21 00:11:24,439] [21/Nov/2015:00:11:24] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:11:24,439] [21/Nov/2015:00:11:24] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:11:24,643] [21/Nov/2015:00:11:24] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:11:24,643] [21/Nov/2015:00:11:24] ENGINE Bus STARTED
+INFO     [2015-11-21 00:12:41,136] [21/Nov/2015:00:12:41] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:12:41,136] [21/Nov/2015:00:12:41] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:12:41,136] [21/Nov/2015:00:12:41] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:12:41,140] [21/Nov/2015:00:12:41] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:12:41,140] [21/Nov/2015:00:12:41] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:12:41,140] [21/Nov/2015:00:12:41] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:12:41,140] [21/Nov/2015:00:12:41] ENGINE Bus EXITING
+INFO     [2015-11-21 00:12:41,141] [21/Nov/2015:00:12:41] ENGINE Bus EXITED
+INFO     [2015-11-21 00:12:41,184] [21/Nov/2015:00:12:41] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:12:41,184] [21/Nov/2015:00:12:41] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:12:41,592] [21/Nov/2015:00:12:41] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:12:41,593] [21/Nov/2015:00:12:41] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:12:41,593] [21/Nov/2015:00:12:41] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:12:41,593] [21/Nov/2015:00:12:41] ENGINE Bus STARTING
+INFO     [2015-11-21 00:12:41,594] [21/Nov/2015:00:12:41] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:12:41,595] [21/Nov/2015:00:12:41] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:12:41,698] [21/Nov/2015:00:12:41] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:12:41,699] [21/Nov/2015:00:12:41] ENGINE Bus STARTED
+INFO     [2015-11-21 00:18:20,583] [21/Nov/2015:00:18:20] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:18:20,584] [21/Nov/2015:00:18:20] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:18:20,584] [21/Nov/2015:00:18:20] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:18:20,586] [21/Nov/2015:00:18:20] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:18:20,586] [21/Nov/2015:00:18:20] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:18:20,586] [21/Nov/2015:00:18:20] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:18:20,587] [21/Nov/2015:00:18:20] ENGINE Bus EXITING
+INFO     [2015-11-21 00:18:20,587] [21/Nov/2015:00:18:20] ENGINE Bus EXITED
+INFO     [2015-11-21 00:18:20,667] [21/Nov/2015:00:18:20] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:18:20,667] [21/Nov/2015:00:18:20] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:18:21,129] [21/Nov/2015:00:18:21] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:18:21,129] [21/Nov/2015:00:18:21] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:18:21,129] [21/Nov/2015:00:18:21] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:18:21,130] [21/Nov/2015:00:18:21] ENGINE Bus STARTING
+INFO     [2015-11-21 00:18:21,134] [21/Nov/2015:00:18:21] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:18:21,134] [21/Nov/2015:00:18:21] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:18:21,338] [21/Nov/2015:00:18:21] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:18:21,338] [21/Nov/2015:00:18:21] ENGINE Bus STARTED
+INFO     [2015-11-21 00:18:25,033] [21/Nov/2015:00:18:25] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-21 00:18:25,034] 127.0.0.1 - - [21/Nov/2015:00:18:25] "GET /wizard/ HTTP/1.1" 303 114 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:18:25,065] 127.0.0.1 - - [21/Nov/2015:00:18:25] "GET /auth/login?from_page=/wizard/ HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:32,509] Пользователь с логином test найден
+INFO     [2015-11-21 00:18:32,510] 127.0.0.1 - test [21/Nov/2015:00:18:32] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:32,531] Пользователь с логином test найден
+INFO     [2015-11-21 00:18:32,551] 127.0.0.1 - test [21/Nov/2015:00:18:32] "GET / HTTP/1.1" 200 1375 "http://127.0.0.1:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:33,625] Пользователь с логином test найден
+WARNING  [2015-11-21 00:18:33,634] Конфигурация найдена.
+INFO     [2015-11-21 00:18:33,635] 127.0.0.1 - test [21/Nov/2015:00:18:33] "GET /wizard/ HTTP/1.1" 200 1682 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:34,708] Пользователь с логином test найден
+WARNING  [2015-11-21 00:18:34,722] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-21 00:18:34,725] Описание с кодом step7_name найдено
+WARNING  [2015-11-21 00:18:34,726] Описание с кодом step7_subheader найдено
+INFO     [2015-11-21 00:18:34,751] 127.0.0.1 - test [21/Nov/2015:00:18:34] "GET /wizard/step7 HTTP/1.1" 200 2159 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:35,675] Пользователь с логином test найден
+INFO     [2015-11-21 00:18:35,677] 127.0.0.1 - test [21/Nov/2015:00:18:35] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 109 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:35,682] Пользователь с логином test найден
+WARNING  [2015-11-21 00:18:35,700] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-21 00:18:35,722] 127.0.0.1 - test [21/Nov/2015:00:18:35] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1899 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:37,483] Пользователь с логином test найден
+WARNING  [2015-11-21 00:18:37,496] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-21 00:18:37,497] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-21 00:18:37,539] 127.0.0.1 - test [21/Nov/2015:00:18:37] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2535 "http://127.0.0.1:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:18:38,628] Пользователь с логином test найден
+WARNING  [2015-11-21 00:18:38,642] Описание с кодом depwiz_step3_full_description найдено
+WARNING  [2015-11-21 00:18:38,645] Описание с кодом depwiz_step3_name найдено
+INFO     [2015-11-21 00:18:38,668] 127.0.0.1 - test [21/Nov/2015:00:18:38] "GET /wizardfordepartment/step3 HTTP/1.1" 200 1619 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:21:38,919] [21/Nov/2015:00:21:38] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:21:38,919] [21/Nov/2015:00:21:38] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:21:38,919] [21/Nov/2015:00:21:38] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:21:38,923] [21/Nov/2015:00:21:38] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:21:38,923] [21/Nov/2015:00:21:38] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:21:38,923] [21/Nov/2015:00:21:38] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-21 00:21:38,923] [21/Nov/2015:00:21:38] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:21:38,923] [21/Nov/2015:00:21:38] ENGINE Bus EXITING
+INFO     [2015-11-21 00:21:38,924] [21/Nov/2015:00:21:38] ENGINE Bus EXITED
+INFO     [2015-11-21 00:21:38,934] [21/Nov/2015:00:21:38] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:21:38,935] [21/Nov/2015:00:21:38] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:21:39,307] [21/Nov/2015:00:21:39] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:21:39,307] [21/Nov/2015:00:21:39] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:21:39,308] [21/Nov/2015:00:21:39] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:21:39,308] [21/Nov/2015:00:21:39] ENGINE Bus STARTING
+INFO     [2015-11-21 00:21:39,308] [21/Nov/2015:00:21:39] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:21:39,309] [21/Nov/2015:00:21:39] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:21:39,513] [21/Nov/2015:00:21:39] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:21:39,513] [21/Nov/2015:00:21:39] ENGINE Bus STARTED
+INFO     [2015-11-21 00:22:01,506] [21/Nov/2015:00:22:01] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:22:01,507] [21/Nov/2015:00:22:01] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:22:01,507] [21/Nov/2015:00:22:01] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:22:01,510] [21/Nov/2015:00:22:01] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:22:01,510] [21/Nov/2015:00:22:01] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:22:01,510] [21/Nov/2015:00:22:01] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:22:01,510] [21/Nov/2015:00:22:01] ENGINE Bus EXITING
+INFO     [2015-11-21 00:22:01,511] [21/Nov/2015:00:22:01] ENGINE Bus EXITED
+INFO     [2015-11-21 00:22:01,556] [21/Nov/2015:00:22:01] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:22:01,556] [21/Nov/2015:00:22:01] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:22:01,951] [21/Nov/2015:00:22:01] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:22:01,951] [21/Nov/2015:00:22:01] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:22:01,951] [21/Nov/2015:00:22:01] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:22:01,952] [21/Nov/2015:00:22:01] ENGINE Bus STARTING
+INFO     [2015-11-21 00:22:01,952] [21/Nov/2015:00:22:01] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:22:01,953] [21/Nov/2015:00:22:01] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:22:02,157] [21/Nov/2015:00:22:02] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:22:02,158] [21/Nov/2015:00:22:02] ENGINE Bus STARTED
+INFO     [2015-11-21 00:22:22,153] [21/Nov/2015:00:22:22] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-21 00:22:22,153] [21/Nov/2015:00:22:22] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-21 00:22:22,154] [21/Nov/2015:00:22:22] ENGINE Bus STOPPING
+INFO     [2015-11-21 00:22:22,156] [21/Nov/2015:00:22:22] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-21 00:22:22,157] [21/Nov/2015:00:22:22] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:22:22,157] [21/Nov/2015:00:22:22] ENGINE Bus STOPPED
+INFO     [2015-11-21 00:22:22,157] [21/Nov/2015:00:22:22] ENGINE Bus EXITING
+INFO     [2015-11-21 00:22:22,157] [21/Nov/2015:00:22:22] ENGINE Bus EXITED
+INFO     [2015-11-21 00:22:22,206] [21/Nov/2015:00:22:22] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-21 00:22:22,206] [21/Nov/2015:00:22:22] ENGINE Re-spawning webapp.py
+INFO     [2015-11-21 00:22:22,611] [21/Nov/2015:00:22:22] ENGINE Listening for SIGHUP.
+INFO     [2015-11-21 00:22:22,611] [21/Nov/2015:00:22:22] ENGINE Listening for SIGTERM.
+INFO     [2015-11-21 00:22:22,611] [21/Nov/2015:00:22:22] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-21 00:22:22,611] [21/Nov/2015:00:22:22] ENGINE Bus STARTING
+INFO     [2015-11-21 00:22:22,612] [21/Nov/2015:00:22:22] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-21 00:22:22,612] [21/Nov/2015:00:22:22] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-21 00:22:22,718] [21/Nov/2015:00:22:22] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-21 00:22:22,718] [21/Nov/2015:00:22:22] ENGINE Bus STARTED
+INFO     [2015-11-21 00:25:27,664] [21/Nov/2015:00:25:27] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-21 00:25:27,665] 127.0.0.1 - - [21/Nov/2015:00:25:27] "GET /wizardfordepartment/step3 HTTP/1.1" 303 128 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:25:27,698] 127.0.0.1 - - [21/Nov/2015:00:25:27] "GET /auth/login?from_page=/wizardfordepartment/step3 HTTP/1.1" 200 1192 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:25:27,716] 127.0.0.1 - - [21/Nov/2015:00:25:27] "GET /static/css/signin.css HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:25:27,723] 127.0.0.1 - - [21/Nov/2015:00:25:27] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:25:27,725] 127.0.0.1 - - [21/Nov/2015:00:25:27] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:29,883] Пользователь с логином test найден
+INFO     [2015-11-21 00:25:29,884] 127.0.0.1 - test [21/Nov/2015:00:25:29] "POST /auth/login HTTP/1.1" 303 88 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:29,957] Пользователь с логином test найден
+INFO     [2015-11-21 00:25:29,977] 127.0.0.1 - test [21/Nov/2015:00:25:29] "GET / HTTP/1.1" 200 1375 "http://127.0.0.1:8080/auth/login?from_page=/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:30,678] Пользователь с логином test найден
+WARNING  [2015-11-21 00:25:30,685] Конфигурация найдена.
+INFO     [2015-11-21 00:25:30,686] 127.0.0.1 - test [21/Nov/2015:00:25:30] "GET /wizard/ HTTP/1.1" 200 1682 "http://127.0.0.1:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:32,086] Пользователь с логином test найден
+WARNING  [2015-11-21 00:25:32,104] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-21 00:25:32,108] Описание с кодом step7_name найдено
+WARNING  [2015-11-21 00:25:32,109] Описание с кодом step7_subheader найдено
+INFO     [2015-11-21 00:25:32,129] 127.0.0.1 - test [21/Nov/2015:00:25:32] "GET /wizard/step7 HTTP/1.1" 200 2159 "http://127.0.0.1:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:33,574] Пользователь с логином test найден
+INFO     [2015-11-21 00:25:33,576] 127.0.0.1 - test [21/Nov/2015:00:25:33] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 109 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:33,581] Пользователь с логином test найден
+WARNING  [2015-11-21 00:25:33,596] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-21 00:25:33,620] 127.0.0.1 - test [21/Nov/2015:00:25:33] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1899 "http://127.0.0.1:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:36,976] Пользователь с логином test найден
+WARNING  [2015-11-21 00:25:36,988] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-21 00:25:36,990] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-21 00:25:37,036] 127.0.0.1 - test [21/Nov/2015:00:25:37] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2535 "http://127.0.0.1:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:38,526] Пользователь с логином test найден
+WARNING  [2015-11-21 00:25:38,534] Описание с кодом depwiz_step3_full_description найдено
+WARNING  [2015-11-21 00:25:38,536] Описание с кодом depwiz_step3_name найдено
+INFO     [2015-11-21 00:25:38,558] 127.0.0.1 - test [21/Nov/2015:00:25:38] "GET /wizardfordepartment/step3 HTTP/1.1" 200 1619 "http://127.0.0.1:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:40,476] Пользователь с логином test найден
+WARNING  [2015-11-21 00:25:40,482] Описание с кодом depwiz_step3new_full_description найдено
+WARNING  [2015-11-21 00:25:40,485] Описание с кодом depwiz_step3new_name найдено
+INFO     [2015-11-21 00:25:40,522] 127.0.0.1 - test [21/Nov/2015:00:25:40] "GET /wizardfordepartment/step3new HTTP/1.1" 200 1927 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:25:59,520] Пользователь с логином test найден
+WARNING  [2015-11-21 00:25:59,531] Описание с кодом depwiz_step3new_full_description найдено
+WARNING  [2015-11-21 00:25:59,537] Описание с кодом depwiz_step3new_name найдено
+INFO     [2015-11-21 00:25:59,574] [21/Nov/2015:00:25:59] HTTP 
+Request Headers:
+  REFERER: http://127.0.0.1:8080/wizardfordepartment/step3
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  CACHE-CONTROL: max-age=0
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _ga=GA1.1.960229294.1447360615; session_id=a177381e6ad2a3ba7b7cdae938aca2d4d6656535
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-21 00:25:59,574] [21/Nov/2015:00:25:59] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 307, in step3new
+    cur_map_goals=cur_map_goals, ent_goals=ent_goals)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "wizardfordepartment_step3new_page_html", line 48, in render_body
+AttributeError: 'Custom_goal' object has no attribute 'name'
+INFO     [2015-11-21 00:25:59,577] 127.0.0.1 - test [21/Nov/2015:00:25:59] "GET /wizardfordepartment/step3new HTTP/1.1" 500 2177 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:26:03,152] Пользователь с логином test найден
+WARNING  [2015-11-21 00:26:03,158] Описание с кодом depwiz_step3new_full_description найдено
+WARNING  [2015-11-21 00:26:03,159] Описание с кодом depwiz_step3new_name найдено
+INFO     [2015-11-21 00:26:03,200] 127.0.0.1 - test [21/Nov/2015:00:26:03] "GET /wizardfordepartment/step3new HTTP/1.1" 200 1936 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:03,242] 127.0.0.1 - - [21/Nov/2015:00:26:03] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:03,242] 127.0.0.1 - - [21/Nov/2015:00:26:03] "GET /static/css/bootstrap-datepicker3.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:03,243] 127.0.0.1 - - [21/Nov/2015:00:26:03] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:03,246] 127.0.0.1 - - [21/Nov/2015:00:26:03] "GET /static/js/bootstrap.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:03,248] 127.0.0.1 - - [21/Nov/2015:00:26:03] "GET /static/js/bootstrap-datepicker.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:03,250] 127.0.0.1 - - [21/Nov/2015:00:26:03] "GET /static/locales/bootstrap-datepicker.ru.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:03,253] 127.0.0.1 - - [21/Nov/2015:00:26:03] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:26:40,979] Пользователь с логином test найден
+WARNING  [2015-11-21 00:26:40,987] Описание с кодом depwiz_step3new_full_description найдено
+WARNING  [2015-11-21 00:26:40,989] Описание с кодом depwiz_step3new_name найдено
+INFO     [2015-11-21 00:26:41,028] 127.0.0.1 - test [21/Nov/2015:00:26:41] "GET /wizardfordepartment/step3new HTTP/1.1" 200 1979 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:41,055] 127.0.0.1 - - [21/Nov/2015:00:26:41] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:41,055] 127.0.0.1 - - [21/Nov/2015:00:26:41] "GET /static/css/bootstrap-datepicker3.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:41,058] 127.0.0.1 - - [21/Nov/2015:00:26:41] "GET /static/js/bootstrap.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:41,059] 127.0.0.1 - - [21/Nov/2015:00:26:41] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:41,060] 127.0.0.1 - - [21/Nov/2015:00:26:41] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:41,061] 127.0.0.1 - - [21/Nov/2015:00:26:41] "GET /static/locales/bootstrap-datepicker.ru.min.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-21 00:26:41,063] 127.0.0.1 - - [21/Nov/2015:00:26:41] "GET /static/js/bootstrap-datepicker.js HTTP/1.1" 304 - "http://127.0.0.1:8080/wizardfordepartment/step3new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:27:26,803] Пользователь с логином test найден
+WARNING  [2015-11-21 00:27:26,811] Описание с кодом depwiz_step3new_full_description найдено
+WARNING  [2015-11-21 00:27:26,812] Описание с кодом depwiz_step3new_name найдено
+INFO     [2015-11-21 00:27:26,850] [21/Nov/2015:00:27:26] HTTP 
+Request Headers:
+  REFERER: http://127.0.0.1:8080/wizardfordepartment/step3
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  CACHE-CONTROL: max-age=0
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _ga=GA1.1.960229294.1447360615; session_id=a177381e6ad2a3ba7b7cdae938aca2d4d6656535
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-21 00:27:26,851] [21/Nov/2015:00:27:26] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 307, in step3new
+    cur_map_goals=cur_map_goals, ent_goals=ent_goals)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "wizardfordepartment_step3new_page_html", line 59, in render_body
+TypeError: unsupported operand type(s) for -: 'list' and 'list'
+INFO     [2015-11-21 00:27:26,853] 127.0.0.1 - test [21/Nov/2015:00:27:26] "GET /wizardfordepartment/step3new HTTP/1.1" 500 2180 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-21 00:28:07,816] Пользователь с логином test найден
+WARNING  [2015-11-21 00:28:07,825] Описание с кодом depwiz_step3new_full_description найдено
+WARNING  [2015-11-21 00:28:07,826] Описание с кодом depwiz_step3new_name найдено
+INFO     [2015-11-21 00:28:07,864] [21/Nov/2015:00:28:07] HTTP 
+Request Headers:
+  REFERER: http://127.0.0.1:8080/wizardfordepartment/step3
+  HOST: 127.0.0.1:8080
+  CONNECTION: keep-alive
+  CACHE-CONTROL: max-age=0
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _ga=GA1.1.960229294.1447360615; session_id=a177381e6ad2a3ba7b7cdae938aca2d4d6656535
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-21 00:28:07,864] [21/Nov/2015:00:28:07] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 307, in step3new
+    cur_map_goals=cur_map_goals, ent_goals=ent_goals)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "wizardfordepartment_step3new_page_html", line 52, in render_body
+AttributeError: 'Undefined' object has no attribute 'keys'
+INFO     [2015-11-21 00:28:07,866] 127.0.0.1 - test [21/Nov/2015:00:28:07] "GET /wizardfordepartment/step3new HTTP/1.1" 500 2175 "http://127.0.0.1:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"

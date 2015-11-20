@@ -54,7 +54,7 @@ class DepartmentWizard(object):
         maps = dict()
         try:
             for one in BMTObjects.get_all_maps():
-                if BMTObjects.check_access(one.code, cherrypy.request.login)[0] and one.code != "ent0":
+                if BMTObjects.check_access(one.code, cherrypy.request.login)[0] and one.code != BMTObjects.enterprise_strategic_map:
                     maps[one.code] = one
         except Exception as e:
             return ShowError(e)
@@ -113,7 +113,7 @@ class DepartmentWizard(object):
         print "Current MAP Metrics: %s" % cur_map_metrics
 
         return tmpl.render(step_desc=step_desc,
-                           current_map=BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map),
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            custom_goals=cur_map_goals, custom_kpi=cur_map_kpi, events=cur_map_events,
                            metrics=cur_map_metrics)
 
@@ -131,7 +131,7 @@ class DepartmentWizard(object):
 
         try:
             cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
-            ent_goals = BMTObjects.load_cur_map_objects("ent0")[0]
+            ent_goals = BMTObjects.load_cur_map_objects(BMTObjects.enterprise_strategic_map)[0]
         except Exception as e:
             print "Ошибка %s " % str(e)
             return ShowError(e)
@@ -140,7 +140,7 @@ class DepartmentWizard(object):
         print "Current ENT goals: %s" % ent_goals
 
         return tmpl.render(step_desc=step_desc,
-                           current_map=BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map),
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, ent_goals=ent_goals)
 
     @cherrypy.expose
@@ -203,7 +203,7 @@ class DepartmentWizard(object):
         print "Current MAP goals: %s" % cur_map_goals
 
         return tmpl.render(step_desc=step_desc,
-                           current_map=BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map),
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives)
 
 
@@ -244,22 +244,121 @@ class DepartmentWizard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3(self, goal_one=None, goal_two=None):
-        # добавление связей между целями
-        tmpl = lookup.get_template("wizardfordepartment_step2_page.html")
-        params = cherrypy.request.headers
+    def step2delete(self, code=None):
+        print "DELETE DEPT GOAL."
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step2update(self, code=None, name=None, description=None, perspective=None, linked=None):
+        print "UPDATE DEPT GOAL."
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3(self):
+        # добавление показателей
+        tmpl = lookup.get_template("wizardfordepartment_step3_page.html")
         step_desc = dict()
         step_desc['full_description'] = BMTObjects.get_desc("depwiz_step3_full_description")
         step_desc['name'] = BMTObjects.get_desc("depwiz_step3_name")
         step_desc['next_step'] = "4"
 
+        # Получаем показатели которые уже есть в карте
+        try:
+            kpi = BMTObjects.load_custom_goals_kpi()[1]
+            ent_kpi = BMTObjects.load_cur_map_objects(BMTObjects.enterprise_strategic_map)[1]
+        except Exception as e:
+            print "Ошибка. %s" % str(e)
+            return ShowError(e)
 
-        return tmpl.render(params=params, step_desc=step_desc)
+        print "Current MAP : %s" % BMTObjects.current_strategic_map
+        print "Current MAP KPI's: %s" % kpi
+        print "Enterprise KPI's: %s" % ent_kpi
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           kpi=kpi, ent_kpi=ent_kpi)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3new(self):
+        # Добавить новый показатель в карту подразделения. Связать его с целью относящейся к подразделению.
+        tmpl = lookup.get_template("wizardfordepartment_step3new_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step3new_full_description")
+        step_desc['name'] = BMTObjects.get_desc("depwiz_step3new_name")
+        step_desc['next_step'] = "4"
+
+        try:
+            cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
+            ent_goals = BMTObjects.load_cur_map_objects(BMTObjects.enterprise_strategic_map)[0]
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+
+        print "Current MAP : %s" % BMTObjects.current_strategic_map
+        print "Current MAP goals: %s" % cur_map_goals
+        print "Enterprise goals: %s" % ent_goals
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           cur_map_goals=cur_map_goals, ent_goals=ent_goals)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3save(self, name=None, description=None, perspective=None, linked=None):
+        """
+            Сохраняем новый показатель и добавляем в карту подразделения
+        """
+
+        print "Wizard for DEP. Step 2 SAVE : %s " % cherrypy.request.params
+
+        if None in [name, description, perspective]:
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+
+        goal_fields = dict()
+
+        goal_fields['goal_name'] = name
+        goal_fields['description'] = description
+        goal_fields['perspective'] = perspective
+
+        try:
+            status = BMTObjects.create_new_custom_goal(goal_fields)
+        except Exception as e:
+            print "Ошибка при создании CUSTOM_GOAL. %s" % str(e)
+            return ShowError(e)
+
+        if linked:
+            print "CREATE LINKS for %s and %s." % (status[1], linked)
+            try:
+                BMTObjects.create_custom_link_for_goals(status[1], linked)
+            except Exception as e:
+                print "Ошибка при создании LINK_FOR_CUSTOM_GOAL. %s" % str(e)
+                return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3delete(self, code=None):
+        print "DELETE DEPT KPI."
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3update(self, code=None, name=None, description=None, perspective=None, linked=None):
+        print "UPDATE DEPT KPI."
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+
 
     @cherrypy.expose
     @require(member_of("users"))
     def step4(self, goal_one=None, goal_two=None):
-        # добавление показателей
+
         tmpl = lookup.get_template("wizardfordepartment_step2_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
@@ -905,7 +1004,7 @@ class Wizard(object):
 
         try:
             org, shift = BMTObjects.get_structure_sorted()
-            current_map = BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map)
+            current_map = BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map)
         except Exception as e:
             ShowError(e)
 
@@ -1076,7 +1175,7 @@ class Root(object):
             return ShowError(e)
 
         try:
-            current_map = BMTObjects.get_current_strategic_map_object(BMTObjects.current_strategic_map)
+            current_map = BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map)
         except Exception as e:
             return ShowError(e)
 
@@ -1093,7 +1192,7 @@ class Root(object):
         step_desc['next_step'] = ""
 
         try:
-            current_map = BMTObjects.get_current_strategic_map_object(code)
+            current_map = BMTObjects.get_strategic_map_object(code)
         except Exception as e:
             return ShowError(e)
 

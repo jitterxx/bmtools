@@ -1184,7 +1184,7 @@ def get_all_maps():
         session.close()
 
 
-def get_current_strategic_map_object(current_map_code):
+def get_strategic_map_object(current_map_code):
     # Возвращает объект катры по коду
 
     session = Session()
@@ -1192,14 +1192,14 @@ def get_current_strategic_map_object(current_map_code):
     try:
         query = session.query(StrategicMapDescription).filter(StrategicMapDescription.code == current_map_code).one()
     except sqlalchemy.orm.exc.NoResultFound as e:
-        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_current_strategic_map_object(). %s" % str(e)
+        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_strategic_map_object(). %s" % str(e)
         return None
     except sqlalchemy.orm.exc.MultipleResultsFound as e:
-        print "Ошибка в функции BMTObjects.get_current_strategic_map_object(). НАйдено много карт для кода: %s. %s" %\
+        print "Ошибка в функции BMTObjects.get_strategic_map_object(). НАйдено много карт для кода: %s. %s" %\
               (current_map_code, str(e))
         raise e
     except Exception as e:
-        print "Ошибка в функции get_current_strategic_map_object(). %s" % str(e)
+        print "Ошибка в функции get_strategic_map_object(). %s" % str(e)
         raise e
     else:
         return query
