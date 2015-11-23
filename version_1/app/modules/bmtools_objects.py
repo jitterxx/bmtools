@@ -523,12 +523,17 @@ class Lib_Goal(Base):
     goal_name = sqlalchemy.Column(sqlalchemy.String(256), default="")
     description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
     perspective = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # тип цели, lib|custom - из биб-ки или создана пользователем
+    edit = sqlalchemy.Column(sqlalchemy.Integer, default=0) # можно ли менять привязки KPI к цели.
+
 
     def __init__(self):
         self.code = ""
         self.goal_name = ""
         self.description = ""
         self.perspective = 0
+        self.type = 0
+        self.edit = 0
 
 
 class Lib_KPI(Base):
@@ -577,6 +582,8 @@ class Custom_goal(Base):
     goal_name = sqlalchemy.Column(sqlalchemy.String(256), default="")
     description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
     perspective = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # тип цели, lib|custom - из биб-ки или создана пользователем
+    edit = sqlalchemy.Column(sqlalchemy.Integer, default=0) # можно ли менять привязки KPI к цели.
 
     def __init__(self):
         u = uuid.uuid4().get_hex().__str__()
@@ -584,6 +591,8 @@ class Custom_goal(Base):
         self.goal_name = ""
         self.description = ""
         self.perspective = 0
+        self.type = 0
+        self.edit = 0
 
 
 def create_new_custom_goal(goal_fields):
@@ -914,6 +923,8 @@ def save_picked_goals_to_custom(picked_goals):
             n.goal_name = g.goal_name
             n.description = g.description
             n.perspective = g.perspective
+            n.type = g.type
+            n.edit = g.edit
             session.add(n)
             session.commit()
             # Добавлем запись в стратегическую карту
@@ -1014,7 +1025,7 @@ def save_picked_kpi_links_to_custom():
         req = session.query(Custom_goal.code).all()
         resp1 = [i[0] for i in req]
         lresp = session.query(Lib_linked_kpi_to_goal).filter(and_(Lib_linked_kpi_to_goal.kpi_code.in_(resp),
-                                                            Lib_linked_kpi_to_goal.goal_code.in_(resp1))).all()
+                                                                  Lib_linked_kpi_to_goal.goal_code.in_(resp1))).all()
     except Exception as e:
         raise e
     else:

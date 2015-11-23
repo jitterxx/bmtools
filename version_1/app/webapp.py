@@ -260,6 +260,7 @@ class DepartmentWizard(object):
     def step3(self):
         # добавление показателей
         tmpl = lookup.get_template("wizardfordepartment_step3_page.html")
+
         step_desc = dict()
         step_desc['full_description'] = BMTObjects.get_desc("depwiz_step3_full_description")
         step_desc['name'] = BMTObjects.get_desc("depwiz_step3_name")
@@ -518,6 +519,7 @@ class Wizard(object):
     @require(member_of("users"))
     def step3(self):
         tmpl = lookup.get_template("wizard_step3_page.html")
+        BMTObjects.change_current_startegic_map(BMTObjects.enterprise_strategic_map)
         params = cherrypy.request.headers
         step_desc = dict()
         step_desc['full_description'] = BMTObjects.get_desc("step3_full_description")
@@ -525,14 +527,15 @@ class Wizard(object):
         step_desc['next_step'] = "4"
 
         try:
-            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_goals, custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
         except Exception as e:
             return ShowError(e)
 
         print "Custom goals: %s" % custom_goals.keys()
         print "Custom KPI: %s" % custom_kpi.keys()
 
-        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi)
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map))
 
 
     @cherrypy.expose
@@ -549,7 +552,7 @@ class Wizard(object):
         step_desc['next_step'] = "4"
 
         try:
-            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_goals, custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
             custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
             lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
             lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
@@ -603,7 +606,7 @@ class Wizard(object):
         step_desc['next_step'] = "4"
 
         try:
-            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_goals, custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
             custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
             lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
             lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
@@ -678,7 +681,7 @@ class Wizard(object):
         step_desc['next_step'] = "4"
 
         try:
-            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            custom_goals, custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
             lib_kpi = BMTObjects.load_lib_goals_kpi()[1]
             lib_linked_kpi = BMTObjects.load_lib_links()[1]
         except Exception as e:
@@ -873,7 +876,7 @@ class Wizard(object):
 
         # Получаем список кастомных целей компании
         try:
-            goals = BMTObjects.load_custom_goals_kpi()[0]
+            (goals,) = BMTObjects.load_cur_map_objects()[0:1]
         except Exception as e:
             return ShowError(e)
 
@@ -931,11 +934,12 @@ class Wizard(object):
 
         try:
             events = BMTObjects.get_events()
-            goals = BMTObjects.load_custom_goals_kpi()[0]
+            (goals,) = BMTObjects.load_cur_map_objects()[0:1]
         except Exception as e:
             return ShowError(e)
         event=events[event_code]
         actors = re.split(",", event.actors)
+        print "GOALS FOR EVENT: %s" % goals
 
         return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons,
                            goals=goals, event=event, actors=actors)
