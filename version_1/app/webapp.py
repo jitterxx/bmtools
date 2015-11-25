@@ -102,6 +102,7 @@ class DepartmentWizard(object):
 
         try:
             cur_map_goals, cur_map_kpi, cur_map_events, cur_map_metrics = BMTObjects.load_cur_map_objects()
+            link_goal_kpi = BMTObjects.load_custom_links()[1]
         except Exception as e:
             print "Ошибка %s " % str(e)
             return ShowError(e)
@@ -112,10 +113,33 @@ class DepartmentWizard(object):
         print "Current MAP Events: %s" % cur_map_events
         print "Current MAP Metrics: %s" % cur_map_metrics
 
+        # Создаем список показателей и связанных с ними целей
+        kpi_linked_goals = dict()
+        for goal in link_goal_kpi.keys():
+            pass
+
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            custom_goals=cur_map_goals, custom_kpi=cur_map_kpi, events=cur_map_events,
-                           metrics=cur_map_metrics)
+                           metrics=cur_map_metrics, kpi_linked_goals=kpi_linked_goals)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step1remove(self, code=None):
+        if not code:
+            print "Step1remove code empty. Redirect to step1."
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step1")
+
+        try:
+            BMTObjects.remove_goal_from_map(code, BMTObjects.current_strategic_map)
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step1")
+
+
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -255,9 +279,241 @@ class DepartmentWizard(object):
         raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
 
 
+
+
     @cherrypy.expose
     @require(member_of("users"))
     def step3(self):
+        """
+            Функция добавления целей в кастомные таблицы компании
+        """
+        tmpl = lookup.get_template("wizardfordepartment_step3_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Шаг 3. Добавить цели из библиотеки в карту подразделения"
+        step_desc['next_step'] = "step3stage1"
+
+        try:
+            all_custom_goals, all_custom_kpi = BMTObjects.load_custom_goals_kpi()
+            map_custom_goals, map_custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
+            custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
+            lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
+            lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
+        except Exception as e:
+            return ShowError(e)
+
+        return tmpl.render(params=params, step_desc=step_desc,
+                           all_custom_goals=all_custom_goals, all_custom_kpi=all_custom_kpi,
+                           map_custom_goals=map_custom_goals, map_custom_kpi=map_custom_kpi,
+                           custom_linked_goals=custom_linked_goals, custom_linked_kpi=custom_linked_kpi,
+                           lib_goals=lib_goals, lib_kpi=lib_kpi,
+                           lib_linked_goals=lib_linked_goals, lib_linked_kpi=lib_linked_kpi)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3save(self, picked_lib_goals=None, picked_custom_goals=None):
+        """
+            Сохраняем выбранные цели из библиотеки в кастомные таблицы компании.
+            ДОбавлем выбранные цели в карту подразделения.
+        """
+
+        if picked_lib_goals is None:
+            print "DEPT picked_lib_goals empty. Check the picked_custom_goals."
+        else:
+            if not isinstance(picked_lib_goals, list):
+                picked_lib_goals = [picked_lib_goals]
+            print "DEPT picked_lib_goals not empty. Save data."
+
+            try:
+                BMTObjects.save_picked_goals_to_custom(picked_lib_goals)
+                BMTObjects.save_goals_to_map(picked_lib_goals)
+            except Exception as e:
+                print "DEPT picked_lib_goals SAVE ERROR. %s" % str(e)
+                return ShowError(e)
+            else:
+                print "DEPT picked_lib_goals SAVED."
+
+        if picked_custom_goals is None:
+            print "DEPT picked_custom_goals empty. Redirect to step3."
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step3")
+        else:
+            if not isinstance(picked_custom_goals, list):
+                picked_custom_goals = [picked_custom_goals]
+            print "DEPT picked_custom_goals not empty. Save data."
+
+            try:
+                BMTObjects.save_goals_to_map(picked_custom_goals)
+            except Exception as e:
+                print "DEPT picked_custom_goals SAVE ERROR. %s" % str(e)
+                return ShowError(e)
+            else:
+                print "DEPT picked_custom_goals SAVED."
+
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step3")
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage1(self):
+        """
+            Функция добавления связанных целей в карту подразделения.
+            Ищем для выбранных раннее целей связанные с ними и предлагаем их добавить.
+        """
+        tmpl = lookup.get_template("wizardfordepartment_step3stage1_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = "<p>Функция добавления связанных целей в карту подразделения.</p>" \
+                                        "<p>Ищем для выбранных раннее целей связанные с ними и предлагаем их добавить.</p>"
+        step_desc['name'] = "Шаг 3. Связанные цели."
+        step_desc['subheader'] = BMTObjects.get_desc("step3_subheader")
+        step_desc['next_step'] = "step3stage2"
+
+        try:
+            map_custom_goals = BMTObjects.load_cur_map_objects()[0]
+            all_custom_goals = BMTObjects.load_custom_goals_kpi()[0]
+            custom_linked_goals, custom_linked_kpi = BMTObjects.load_custom_links()
+            lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
+            lib_linked_goals, lib_linked_kpi = BMTObjects.load_lib_links()
+        except Exception as e:
+            return ShowError(e)
+
+        # Опеределяем, надо ли выводить предложение о дополнительных связанных целях
+        # Если нет, то переходим на выбор показателей. Если да, то показываем связанные невыбранные цели. ДЛя этого
+        # формируем список таких целей и с каким из выбранных они связаны.
+        lib_missing_goals = dict()
+        custom_missing_goals = dict()
+        cg = map_custom_goals.keys()
+
+        print "DEPT map goals: %s" % map_custom_goals
+        print "ALL CUSTOM goals: %s" % all_custom_goals
+        print "LIB goals: %s" % lib_goals
+
+        for custom in cg:
+            # Если цель кастомная и ее нет в библиотеке, то пропущенные цели = 0
+            # если цель кастомная и ее связи есть в кастомной таблице, то считаем связи из кастомной
+            if lib_linked_goals.get(custom):
+                missed = list(set(lib_linked_goals[custom]) - set(cg))
+                print "Цели связанные с выбранной ** %s **  : %s" % (custom, lib_linked_goals[custom])
+
+                if custom in lib_linked_goals.keys() and missed:
+                    print "Цели связанные с выбранной ** %s **, но не выбранные: %s" % (custom, missed)
+                    for one in missed:
+                        if lib_missing_goals.get(one):
+                            lib_missing_goals[one].append(custom)
+                        else:
+                            lib_missing_goals[one] = list()
+                            lib_missing_goals[one].append(custom)
+
+            elif custom_linked_goals.get(custom):
+                missed = list(set(custom_linked_goals[custom]) - set(cg))
+                print "Цели связанные с выбранной ** %s **  : %s" % (custom, custom_linked_goals[custom])
+
+                if custom in custom_linked_goals.keys() and missed:
+                    print "Цели связанные с выбранной ** %s **, но не выбранные: %s" % (custom, missed)
+                    for one in missed:
+                        if custom_missing_goals.get(one):
+                            custom_missing_goals[one].append(custom)
+                        else:
+                            custom_missing_goals[one] = list()
+                            custom_missing_goals[one].append(custom)
+
+        if lib_missing_goals or custom_missing_goals:
+            print "Есть пропущенные цели. Выводим список."
+            print lib_missing_goals
+            print custom_missing_goals
+        else:
+            print "Нет пропущенных целей. Переходим на следующий шаг."
+            raise cherrypy.HTTPRedirect("step3stage1")
+
+        return tmpl.render(params=params, step_desc=step_desc, all_custom_goals=all_custom_goals, lib_goals=lib_goals,
+                           lib_missing_goals=lib_missing_goals, map_custom_goals=map_custom_goals,
+                           custom_missing_goals=custom_missing_goals)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage2save(self, picked_goals=None):
+        """
+            Сохраняем добполнительно выбранные цели в кастомные таблицы компании
+        """
+
+        if picked_goals is None:
+            print "picked_goals empty. Redirect to step3stage2."
+            raise cherrypy.HTTPRedirect("step3stage2")
+        else:
+            if not isinstance(picked_goals, list):
+                picked_goals = [picked_goals]
+            print "Picked goals: %s" % picked_goals
+            print "picked_goals not empty. Save data."
+
+        # Проверяем, есть ли уже в кастомных целях выбранные
+        try:
+            BMTObjects.save_picked_goals_to_custom(picked_goals)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("step3stage2")
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage3(self):
+        """
+            Функция добавления связанных целей в кастомные таблицы компании
+        """
+        tmpl = lookup.get_template("wizard_step3stage3_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['stage3_description'] = BMTObjects.get_desc("step3_stage3_description")
+        step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
+        step_desc['subheader'] = BMTObjects.get_desc("step3_stage3_subheader")
+        step_desc['next_step'] = "4"
+
+        try:
+            custom_goals, custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
+            lib_kpi = BMTObjects.load_lib_goals_kpi()[1]
+            lib_linked_kpi = BMTObjects.load_lib_links()[1]
+        except Exception as e:
+            ShowError(e)
+
+        print "Custom goals: %s" % custom_goals
+        print "Custom KPI: %s" % custom_kpi
+        print "LIB KPI: %s" % lib_kpi
+        print "LIB linked KPI: %s" % lib_linked_kpi
+
+        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, lib_kpi=lib_kpi,
+                           lib_linked_kpi=lib_linked_kpi, custom_kpi=custom_kpi)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step3stage3save(self, picked_kpi=None):
+        """
+            Сохраняем выбранные показатели в кастомные таблицы компании
+        """
+
+        if picked_kpi is None:
+            print "picked_kpi empty. Redirect to step3stage3."
+            raise cherrypy.HTTPRedirect("step3stage3")
+        else:
+            if not isinstance(picked_kpi, list):
+                picked_kpi = [picked_kpi]
+            print "picked_kpi not empty. Save data."
+
+        # Проверяем, есть ли уже в кастомных показателях выбранные
+
+        try:
+            BMTObjects.save_picked_kpi_to_custom(picked_kpi)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("step3stage3")
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step4(self):
         # добавление показателей
         tmpl = lookup.get_template("wizardfordepartment_step3_page.html")
 
@@ -284,7 +540,7 @@ class DepartmentWizard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3new(self):
+    def step4new(self):
         # Добавить новый показатель в карту подразделения. Связать его с целью относящейся к подразделению.
         tmpl = lookup.get_template("wizardfordepartment_step3new_page.html")
         step_desc = dict()
@@ -310,7 +566,7 @@ class DepartmentWizard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3save(self, name=None, description=None, perspective=None, linked=None):
+    def step4save(self, name=None, description=None, perspective=None, linked=None):
         """
             Сохраняем новый показатель и добавляем в карту подразделения
         """
@@ -345,30 +601,17 @@ class DepartmentWizard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3delete(self, code=None):
+    def step4delete(self, code=None):
         print "DELETE DEPT KPI."
         raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3update(self, code=None, name=None, description=None, perspective=None, linked=None):
+    def step4update(self, code=None, name=None, description=None, perspective=None, linked=None):
         print "UPDATE DEPT KPI."
         raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
 
 
-    @cherrypy.expose
-    @require(member_of("users"))
-    def step4(self, goal_one=None, goal_two=None):
-
-        tmpl = lookup.get_template("wizardfordepartment_step2_page.html")
-        params = cherrypy.request.headers
-        step_desc = dict()
-        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step3_full_description")
-        step_desc['name'] = BMTObjects.get_desc("depwiz_step3_name")
-        step_desc['next_step'] = "4"
-
-
-        return tmpl.render(params=params, step_desc=step_desc)
 
     @cherrypy.expose
     @require(member_of("users"))

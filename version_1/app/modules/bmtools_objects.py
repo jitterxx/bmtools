@@ -911,9 +911,13 @@ def save_picked_goals_to_custom(picked_goals):
     """
 
     session = Session()
+    custom_goals = load_custom_goals_kpi()[0]
 
     try:
-        resp = session.query(Lib_Goal).filter(Lib_Goal.code.in_(picked_goals)).all()
+        resp = session.query(Lib_Goal).filter(and_(Lib_Goal.code.in_(picked_goals),
+                                                   Lib_Goal.code.notin_(custom_goals.keys()))).all()
+    except sqlalchemy.orm.exc.NoResultFound:
+        return
     except Exception as e:
         raise e
     else:
@@ -1218,7 +1222,6 @@ def get_strategic_map_object(current_map_code):
         session.close()
 
 
-
 class StrategicMap(Base):
     """
     Класс для хранения информации об объектах которые входят в ту или иную карту.
@@ -1314,6 +1317,31 @@ def save_kpi_to_map(picked_kpi):
 
     session.close()
 
+
+def remove_goal_from_map(goal_code=None, map_code=None):
+    """
+    Удаляет вхождение указанной цели из карты. Если код карты не указан, удаляет из текущей.
+
+    :param goal_code: код цели
+    :param map_code: код карты
+    :return:
+    """
+
+    if not goal_code or not map_code:
+        return False
+
+    session = Session()
+    try:
+        resp = session.query(StrategicMap).filter(and_(StrategicMap.goal_code == goal_code),
+                                                  (StrategicMap.map_code == map_code)).delete()
+    except Exception as e:
+        session.close()
+        print "Ошибка в функции BMTObjects.remove_goal_from_map(). При удалении цели из карты. %s" % str(e)
+    else:
+        return True
+    finally:
+        session.commit()
+        session.close()
 
 class KPITargetValue(Base):
     """

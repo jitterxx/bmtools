@@ -17,10 +17,4 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
-session = BMTObjects.Session()
-
-
-o = BMTObjects.Custom_KPI()
-print o.__dict__
-
-session.close()
+BMTObjects.remove_goal_from_map("dg0a4d", "dep7")

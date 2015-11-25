@@ -12,9 +12,12 @@
         <div class="col-lg-8 col-md-6 col-sm-6">
             <h1>${step_desc['name']}</h1>
             <h3>Описание</h3>
-            ${step_desc['full_description']}
+            <div style="margin-left: 2%;">
+                ${step_desc['full_description']}
+            </div>
             <hr>
             <h3>Цели</h3>
+            <div style="margin-left: 2%;">
             % if custom_goals.keys():
                 % for one in custom_goals.keys():
                     <p class=
@@ -27,13 +30,23 @@
                         %endif
                         ">
                         ${custom_goals[one].goal_name}
+                        %if custom_goals[one].type == 1:
+                            <a href="/wizardfordepartment/step1remove?code=${custom_goals[one].code}"
+                               type="button" class="btn btn-warning btn-xs">Убрать из карты</a>
+                        % elif custom_goals[one].type == 0:
+                            <a href="/wizardfordepartment/step1remove?code=${custom_goals[one].code}"
+                               type="button" class="btn btn-warning btn-xs">Убрать из карты</a>
+                        % endif
+
                     </p>
                 % endfor
             % else:
                 <p>Цели не заданы.</p>
             % endif
+            </div>
             <hr>
             <h3>Показатели</h3>
+            <div style="margin-left: 2%;">
             % if custom_kpi.keys():
                 % for one in custom_kpi.keys():
                     <p>${custom_kpi[one].name}</p>
@@ -42,8 +55,10 @@
             % else:
                 <p>Показатели не заданы.</p>
             % endif
+            </div>
             <hr>
             <h3>Мероприятия</h3>
+            <div style="margin-left: 2%;">
             % if events.keys():
                 % for one in events.keys():
                     <p>${events[one].name}</p>
@@ -51,8 +66,10 @@
             % else:
                 <p>Мероприятий нет.</p>
             % endif
+            </div>
             <hr>
             <h3>Операционные показатели</h3>
+            <div style="margin-left: 2%;">
             % if metrics.keys():
                 % for one in metrics.keys():
                     <p>${metrics[one].name}</p>
@@ -60,6 +77,7 @@
             % else:
                 <p>Не заданы.</p>
             % endif
+            </div>
             <hr>
             <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить цель</a>
             <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить показатель</a>
@@ -68,6 +86,7 @@
             <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Дальше</a>
         </div>
     </div>
+
 
 
 </div>

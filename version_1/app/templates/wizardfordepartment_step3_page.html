@@ -11,30 +11,63 @@
     <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-6">
             <h1>${step_desc['name']}</h1>
-            <h3>Описание</h3>
+            <h3>Цели из библиотеки</h3>
             ${step_desc['full_description']}
+            <form method="post" action="/wizardfordepartment/step3save" id="add_lib_goals">
+            <table class="table">
+                <tbody>
+            % for g in lib_goals.values():
+                <tr>
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                % if g.code in map_custom_goals.keys():
+                                    <input type="checkbox" value="" name="picked_lib_goals" checked readonly>
+                                % else:
+                                    <input type="checkbox" value="${g.code}" name="picked_lib_goals">
+                                % endif
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="lead">${g.goal_name}</p>
+                        <p>${g.description}</p>
+                    </td>
+                </tr>
+            % endfor
+                </tbody>
+            </table>
+
+            <h3>Цели созданные самостоятельно</h3>
+            <table class="table">
+                <tbody>
+            % for g in all_custom_goals.values():
+                % if g.type == 1:
+                <tr>
+                    <td>
+                        <div class="checkbox">
+                            <label>
+                                % if g.code in map_custom_goals.keys():
+                                    <input type="checkbox" value="" name="picked_custom_goals" checked readonly>
+                                % else:
+                                    <input type="checkbox" value="${g.code}" name="picked_custom_goals">
+                                % endif
+                            </label>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="lead">${g.goal_name}</p>
+                        <p>${g.description}</p>
+                    </td>
+                </tr>
+                % endif
+            % endfor
+                </tbody>
+            </table>
+                <button type="submit" class="btn btn-default">Сохранить</button>
+            </form>
             <hr>
-            <h3>Показатели компании</h3>
-            % if ent_kpi.keys():
-                % for one in ent_kpi.keys():
-                    <p>${ent_kpi[one].name}</p>
-                % endfor
-            % else:
-                <p>Показатели не заданы.</p>
-            % endif
-            <hr>
-            <h3>Показатели подразделения</h3>
-            % if kpi.keys():
-                % for one in kpi.keys():
-                    <p>${kpi[one].name}</p>
-                % endfor
-            % else:
-                <p>Показатели не заданы.</p>
-            % endif
-            <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step3new" role="button">Создать новый показатель</a>
-            <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Дальше</a>
+            <a class="btn btn-default" href="/wizardfordepartment/${step_desc['next_step']}" role="button">Следующий шаг</a>
         </div>
     </div>
 
