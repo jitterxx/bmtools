@@ -38,6 +38,16 @@ CREATE TABLE `custom_goals` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `custom_goals`
+--
+
+LOCK TABLES `custom_goals` WRITE;
+/*!40000 ALTER TABLE `custom_goals` DISABLE KEYS */;
+INSERT INTO `custom_goals` VALUES (1,'g1','Увеличение прибыли','В условиях рыночной экономики значение прибыли огромно. Стремление к ее получению ориентирует товаропроизводителей на увеличение объема производства продукции, нужной потребителю, снижение затрат на производство.',0,0,0),(2,'g3','Рост доли рынка','Объемы первичных продаж компании  (данные о собственных продажах) не могут дать точной информации для понимания того, что реально производит с компанией и ее брендами на рынке. Данные о продажах могут расти, но на рынках, которые растут более быстрыми темп',1,0,0),(3,'g2','Снижение дебиторской задолженности','Дебиторская задолженность - задолженность организаций и физических лиц данной организации (например, задолженность покупателей за приобретенный товар или оказанные услуги, задолженность подотчетных лиц за выданные им денежные суммы) Соответственно, организ',0,0,0),(11,'dg0a4d','Цель для подразделения 1','session.add(link)',1,1,1),(13,'hg66gf','Связанная цель для цели подразделения 1','исходящей и входящей точки соответствующих блоков. Прорисовка стрелок происходит на холсте (canvas) расположенном над общим родителем. ',2,1,1);
+/*!40000 ALTER TABLE `custom_goals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `custom_kpi`
 --
 
@@ -61,6 +71,16 @@ CREATE TABLE `custom_kpi` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `custom_kpi`
+--
+
+LOCK TABLES `custom_kpi` WRITE;
+/*!40000 ALTER TABLE `custom_kpi` DISABLE KEYS */;
+INSERT INTO `custom_kpi` VALUES (1,'Прибыль до уплаты процентов, налогов и начисленной амортизации','','ebidta','Доход – Расходы (без процентов и налогов) + Амортизация','',0,0,0,0),(2,'Доля рынка','','ms','','',2,1,2,3),(3,'Показатель для подразделения 1','Создан самостоятельно','5fg045','not defined','',0,0,0,0),(6,'Экономическая добавленная стоимость','Прирост капитализации.','eva','(NP / IC – WACC) * IC = (ROI – WACC) * IC','http://finanalis.ru/litra/324/2293.html',0,0,0,0),(7,'Средневзвешенная цена капитала','(Собственный капитал / Инвестированный капитал) * Ожидаемая доходность от собственного капитала + (Заемные средства / Инвестированный капитал) * Ожидаемая доходность от заёмных средств * (1 – Ставка налога на прибыль для компании)','wacc','(Собственный капитал / Инвестированный капитал) * Ожидаемая доходность от собственного капитала + (Заемные средства / Инвестированный капитал) * Ожидаемая доходность от заёмных средств * (1 – Ставка налога на прибыль для компании)','',0,0,0,0);
+/*!40000 ALTER TABLE `custom_kpi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `custom_linked_goals`
 --
 
@@ -76,6 +96,16 @@ CREATE TABLE `custom_linked_goals` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `custom_linked_goals`
+--
+
+LOCK TABLES `custom_linked_goals` WRITE;
+/*!40000 ALTER TABLE `custom_linked_goals` DISABLE KEYS */;
+INSERT INTO `custom_linked_goals` VALUES (1,'g1','g3'),(2,'g3','g1'),(3,'g3','g2'),(4,'g2','g3'),(9,'dg0a4d','g3'),(10,'g3','dg0a4d'),(11,'dg0a4d','g2'),(12,'g2','dg0a4d'),(13,'hg66gf','dg0a4d'),(14,'dg0a4d','hg66gf');
+/*!40000 ALTER TABLE `custom_linked_goals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `custom_linked_kpi_to_goal`
 --
 
@@ -89,6 +119,16 @@ CREATE TABLE `custom_linked_kpi_to_goal` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `custom_linked_kpi_to_goal`
+--
+
+LOCK TABLES `custom_linked_kpi_to_goal` WRITE;
+/*!40000 ALTER TABLE `custom_linked_kpi_to_goal` DISABLE KEYS */;
+INSERT INTO `custom_linked_kpi_to_goal` VALUES (1,'g3','ms'),(2,'g1','ebidta'),(3,'dg0a4d','5fg045'),(4,'g1','eva'),(5,'g1','wacc');
+/*!40000 ALTER TABLE `custom_linked_kpi_to_goal` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `events`
@@ -114,6 +154,16 @@ CREATE TABLE `events` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `events`
+--
+
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+INSERT INTO `events` VALUES (1,'b7aced','g1','Делаем  все возможное','Надо длелать раз и два.','Сделали раз -два.\r\n                    \r\n                    ','','2015-11-14 00:00:00','2015-11-26 00:00:00',2,'1'),(2,'b550bc','dg0a4d','Мероприятие для цели подразделения 1','цваца','цсмфвсфывсфс\r\nывмцымывмывм\r\nывмыфвмывмым\r\n                    \r\n                    ','','2015-11-27 00:00:00','2015-11-29 00:00:00',1,'3,4'),(3,'883b88','g3','Удали меня','ывмы','ым','','2015-11-27 00:00:00','2015-11-29 00:00:00',4,'3');
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `fact_value`
 --
 
@@ -129,6 +179,15 @@ CREATE TABLE `fact_value` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fact_value`
+--
+
+LOCK TABLES `fact_value` WRITE;
+/*!40000 ALTER TABLE `fact_value` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fact_value` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `kpi_target_values`
@@ -151,6 +210,16 @@ CREATE TABLE `kpi_target_values` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `kpi_target_values`
+--
+
+LOCK TABLES `kpi_target_values` WRITE;
+/*!40000 ALTER TABLE `kpi_target_values` DISABLE KEYS */;
+INSERT INTO `kpi_target_values` VALUES (1,'ms',100,200,1,'1С8.3',0,'2015-11-12 18:33:14');
+/*!40000 ALTER TABLE `kpi_target_values` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `lib_goals`
 --
 
@@ -169,6 +238,16 @@ CREATE TABLE `lib_goals` (
   UNIQUE KEY `code` (`code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lib_goals`
+--
+
+LOCK TABLES `lib_goals` WRITE;
+/*!40000 ALTER TABLE `lib_goals` DISABLE KEYS */;
+INSERT INTO `lib_goals` VALUES (1,'g1','Увеличение прибыли','В условиях рыночной экономики значение прибыли огромно. Стремление к ее получению ориентирует товаропроизводителей на увеличение объема производства продукции, нужной потребителю, снижение затрат на производство.',0,0,0),(2,'g2','Снижение дебиторской задолженности','Дебиторская задолженность - задолженность организаций и физических лиц данной организации (например, задолженность покупателей за приобретенный товар или оказанные услуги, задолженность подотчетных лиц за выданные им денежные суммы) Соответственно, организ',0,0,0),(3,'g3','Рост доли рынка','Объемы первичных продаж компании  (данные о собственных продажах) не могут дать точной информации для понимания того, что реально производит с компанией и ее брендами на рынке. Данные о продажах могут расти, но на рынках, которые растут более быстрыми темп',1,0,0);
+/*!40000 ALTER TABLE `lib_goals` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `lib_kpi`
@@ -194,6 +273,16 @@ CREATE TABLE `lib_kpi` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `lib_kpi`
+--
+
+LOCK TABLES `lib_kpi` WRITE;
+/*!40000 ALTER TABLE `lib_kpi` DISABLE KEYS */;
+INSERT INTO `lib_kpi` VALUES (1,'eva','Экономическая добавленная стоимость','Прирост капитализации.','(NP / IC – WACC) * IC = (ROI – WACC) * IC','http://finanalis.ru/litra/324/2293.html',0,0,0,0),(2,'wacc','Средневзвешенная цена капитала','(Собственный капитал / Инвестированный капитал) * Ожидаемая доходность от собственного капитала + (Заемные средства / Инвестированный капитал) * Ожидаемая доходность от заёмных средств * (1 – Ставка налога на прибыль для компании)','(Собственный капитал / Инвестированный капитал) * Ожидаемая доходность от собственного капитала + (Заемные средства / Инвестированный капитал) * Ожидаемая доходность от заёмных средств * (1 – Ставка налога на прибыль для компании)',NULL,0,0,0,0),(3,'gp','Валовая прибыль','Валовая прибыль = выручка от продаж – (себестоимость проданной продукции т.е. переменные издержки + прямые издержки на продажу продукции)','Выручка – Себестоимость с учетом амортизации',NULL,0,0,0,0),(4,'oi','Операционная прибыль','Операционная прибыль = валовая прибыль – (постоянные издержки + непрямые издержки). ','Выручка – Себестоимость – Постоянные и непрямые издержки',NULL,0,0,0,0),(5,'ebidta','Прибыль до уплаты процентов, налогов и начисленной амортизации','','Доход – Расходы (без процентов и налогов) + Амортизация',NULL,0,0,0,0),(6,'np','Чистая прибыль','Чистая прибыль = прибыль до налогообложения — налог на прибыль. Доход с учетом всех произведенных затрат. МСФО: валовая прибыль – издержки – проценты к уплате ','Валовая прибыль + Прочая операционная прибыль + Прибыль от финансовых операций – Налоги',NULL,0,0,0,0),(7,'ms','Доля рынка','','',NULL,0,0,0,0);
+/*!40000 ALTER TABLE `lib_kpi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `lib_linked_goals`
 --
 
@@ -207,6 +296,16 @@ CREATE TABLE `lib_linked_goals` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lib_linked_goals`
+--
+
+LOCK TABLES `lib_linked_goals` WRITE;
+/*!40000 ALTER TABLE `lib_linked_goals` DISABLE KEYS */;
+INSERT INTO `lib_linked_goals` VALUES (1,'g1','g3'),(2,'g3','g1'),(3,'g3','g2'),(4,'g2','g3');
+/*!40000 ALTER TABLE `lib_linked_goals` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `lib_linked_kpi_to_goal`
@@ -224,6 +323,16 @@ CREATE TABLE `lib_linked_kpi_to_goal` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `lib_linked_kpi_to_goal`
+--
+
+LOCK TABLES `lib_linked_kpi_to_goal` WRITE;
+/*!40000 ALTER TABLE `lib_linked_kpi_to_goal` DISABLE KEYS */;
+INSERT INTO `lib_linked_kpi_to_goal` VALUES (1,'g1','eva'),(2,'g1','wacc'),(3,'g1','gp'),(4,'g3','ms'),(5,'g1','np'),(6,'g1','oi'),(7,'g1','ebidta');
+/*!40000 ALTER TABLE `lib_linked_kpi_to_goal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `org_structure`
 --
 
@@ -238,6 +347,16 @@ CREATE TABLE `org_structure` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `org_structure`
+--
+
+LOCK TABLES `org_structure` WRITE;
+/*!40000 ALTER TABLE `org_structure` DISABLE KEYS */;
+INSERT INTO `org_structure` VALUES (3,0,'Director',1),(5,3,'Операционный отдел',2),(6,3,'Маркетинг',2),(7,3,'Производство',2),(9,5,'Логистика',2),(10,6,'PR',1),(11,5,'Уборщики',2);
+/*!40000 ALTER TABLE `org_structure` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `strategic_maps`
@@ -258,6 +377,16 @@ CREATE TABLE `strategic_maps` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `strategic_maps`
+--
+
+LOCK TABLES `strategic_maps` WRITE;
+/*!40000 ALTER TABLE `strategic_maps` DISABLE KEYS */;
+INSERT INTO `strategic_maps` VALUES (1,'ent0','g1','','','',0,'2015-11-12 16:40:19'),(2,'ent0','g3','','','',0,'2015-11-12 16:40:24'),(3,'ent0','','ebidta','','',0,'2015-11-12 16:40:35'),(4,'ent0','','ms','','',0,'2015-11-12 16:40:36'),(5,'ent0','','','','b7aced',0,'2015-11-14 23:53:39'),(34,'dep7','g3','','','',0,'2015-11-25 19:07:11'),(35,'dep7','','ms','','',0,'2015-11-25 19:07:11'),(37,'dep7','dg0a4d','','','',0,'2015-11-25 19:49:35'),(39,'dep7','g1','','','',0,'2015-11-26 17:35:44'),(40,'dep7','','ebidta','','',0,'2015-11-26 18:49:04'),(41,'dep7','','eva','','',0,'2015-11-26 18:50:23'),(43,'dep7','','wacc','','',0,'2015-11-26 18:54:27'),(44,'dep7','','5fg045','','',0,'2015-11-26 18:54:27'),(45,'dep7','','','','b550bc',0,'2015-11-26 19:31:10'),(46,'dep7','','','','883b88',0,'2015-11-26 19:34:21');
+/*!40000 ALTER TABLE `strategic_maps` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `strategic_maps_desc`
@@ -281,6 +410,16 @@ CREATE TABLE `strategic_maps_desc` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `strategic_maps_desc`
+--
+
+LOCK TABLES `strategic_maps_desc` WRITE;
+/*!40000 ALTER TABLE `strategic_maps_desc` DISABLE KEYS */;
+INSERT INTO `strategic_maps_desc` VALUES (1,'ent0','Стратегическая карта компании','Стратегическая карта компании верхнего уровня.',0,0,'2015-11-07 00:52:39',0),(5,'dep7','Стратегическая карта: Производство','',2,0,'2015-11-18 18:23:58',7),(6,'dep9','Стратегическая карта: Логистика','',2,0,'2015-11-18 18:24:20',9);
+/*!40000 ALTER TABLE `strategic_maps_desc` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `text_messages`
 --
 
@@ -295,6 +434,16 @@ CREATE TABLE `text_messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `text_messages`
+--
+
+LOCK TABLES `text_messages` WRITE;
+/*!40000 ALTER TABLE `text_messages` DISABLE KEYS */;
+INSERT INTO `text_messages` VALUES (1,'step1_full_description','<p>Выберите отрасль в которой работает компания.</p>\n<p>Выбор влияет на формирование списков перспектив, целей, подцелей, показателей и мероприятий.\n</p>','Первая страница мастера. Полное описание.'),(2,'step1_name','Отрасль работы компании.','Первый шаг мастера'),(3,'step2_full_description','<p>\nДерево отражающее организационную структуру компании, в которое можно добавлять подчиненные единицы.\n</p>\n<p>\nКаждая ветка означает организационную единицу. </p>\n<p>\nПереход на следующий шаг, после составления структуры. Должна быть создана хотя бы одна организационная единица. \n</p>','Второй шаг мастера'),(4,'step2_name','Оганизационная структура компании.','Второй шаг мастера'),(5,'step3_full_description','<p>Выбрать из списка целей наиболее подходящие для компании.</p>\n<p>Сразу во время выбора, предлагаются цели которые связаны с выбранными.</p>','Третья страница мастера. Полное описание.'),(6,'step3_name','Формирование стратегической карты компании.','Третий шаг мастера'),(7,'step3_stage1_description','<p>Добавьте цели которые вам подходят. Поставьте галочки и нажмите \"Добавить\" </p>','Добавление новых целей и показателей.'),(8,'step3_subheader','<p>\nдля выбранных целей существуют связанные цели. Рекомендуем добавить их в стратегическую карту\n</p>',''),(9,'step3_stage3_description','<p>Для каждой цели подобраны показатели по которым можно измерять прогресс. </p> <p> Вы можете не использовать их, для этого снимите галочки напротив.</p>',''),(10,'step3_stage3_subheader','Добавьте к целям показатели',NULL),(11,'step5_name','Выбор целевых значений',NULL),(12,'step5_full_description','<p>Для каждого показателя необходимо определить:  ответственного за достижение целевого значения, единицу измерения, периодичность сбора данных, шкалу оценки целевого значения.</p>\n<p>\nШкала оценки может быть выбрана из пяти разных видов.\n</p>\n',NULL),(13,'step5_subheader','',NULL),(14,'step6_full_description','<p>Действия по достижению целей описываются в формате мероприятий.</p>\n<p>Это действия надо выполнить, чтобы цели были достигнуты.</p>\n<p>Для каждой цели в стратегической карте выбирается набор мероприятий из списка или добавляются новые. </p>\n<p>Каждое мероприятие может быть связано с одной целью.</p>\n<p>Цель может быть связана с несколькими мероприятиями, если необходима последоватьельность действий.</p>',NULL),(15,'step6_name','План достижения целей',NULL),(16,'step6_subheader','Мероприятия',NULL),(17,'step7_full_description','<p>Выберите подразделения компании для которых необходимо составить счетные/стратегические карты</p>\n<p>Если карта подразделения уже создана, она будет доступна для просмотра. </p>',NULL),(18,'step7_name','Счетные/стратегические карты подразделений',NULL),(19,'step7_subheader','Подразделения',NULL),(20,'depwiz_start_full_description','<p>Выберите карту подразделения для работы.</p>',NULL),(21,'depwiz_start_name','Доступные карты подразделений',NULL),(22,'depwiz_step1_full_description','<p>Добавить цели из Стратегической карты компании.</p>\n<p>Добавить собственые цели и связать их.</p>\n<p>Добавить KPI для целей.</p>\n<p>Настроить KPI, указать целевые значения.</p>\n<p>Добавить мероприятия.</p>',NULL),(23,'depwiz_step1_name','Шаг 1. Мастер по настройке карты департамента',NULL),(24,'depwiz_step2_full_description','<p>Чтобы добавить цели и показатель нажмите на соответствущие кнопки.</p>\n<p>Вместе с выбранными целями в карту подразделения будут добавлены их показатели.</p>\n',NULL),(25,'depwiz_step2_name','Шаг 2. Добавьте цели из стратегичекой карты.',NULL),(26,'depwiz_step2new_full_description','<p>Добавьте в карту подразделения дополнительные цели, которые не вошли в карту компании.</p>\n<p>Вы можете связать их между собой и обозначить взаимное влияние.</p>\n<p></p>',NULL),(27,'depwiz_step2new_name','Добавьте новую цель в карту подразделения',NULL),(28,'depwiz_step3_full_description','Добавьте показатели',NULL),(29,'depwiz_step3_name','Добавьте показатели в карту подразделения',NULL),(30,'depwiz_step3new_full_description','<p>Введите данные нового показателя.</p>\n<p>Вы сможете привязать его только к целям подразделения.</p>',NULL),(31,'depwiz_step3new_name','Добавить новый показатель',NULL),(32,'depwiz_step4_full_description','desc',NULL),(33,'depwiz_step4_name','name',NULL),(34,'depwiz_step4_subheader','subheader',NULL);
+/*!40000 ALTER TABLE `text_messages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -317,6 +466,16 @@ CREATE TABLE `users` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'e0408fae-7c97-11e5-b5f1-f46d04d35cbd','Иван','Шишкин','sergey','Cthutq123','users,admin',0),(2,'e0408fae-7c97-11e5-b5f1-f46d04d38866','Лев','Толстой','test','Cthutq123','users,admin',0);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `wizard_configuration`
 --
 
@@ -332,6 +491,16 @@ CREATE TABLE `wizard_configuration` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wizard_configuration`
+--
+
+LOCK TABLES `wizard_configuration` WRITE;
+/*!40000 ALTER TABLE `wizard_configuration` DISABLE KEYS */;
+INSERT INTO `wizard_configuration` VALUES (4,'1','step7','ent0','new');
+/*!40000 ALTER TABLE `wizard_configuration` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -342,4 +511,4 @@ CREATE TABLE `wizard_configuration` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-26 19:51:07
+-- Dump completed on 2015-11-26 20:16:48

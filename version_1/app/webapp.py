@@ -1450,7 +1450,19 @@ class Wizard(object):
 
         return tmpl.render(params=params, step_desc=step_desc)
 
+class Library(object):
 
+    @cherrypy.expose
+    @require(member_of("users"))
+    def index(self):
+        # Работа с бибилиотекой данных: просмотр
+        # Работа с касмтоными данными: просмотр, добавление, редактирование, удаление, связывание
+        tmpl = lookup.get_template("library_main_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = "Работа с данными: просмотр, добавление, редактирование, удаление, связывание."
+        step_desc['name'] = "Бибилиотека данных"
+
+        return tmpl.render(step_desc=step_desc)
 
 
 class Root(object):
@@ -1458,14 +1470,20 @@ class Root(object):
     auth = AuthController()
     wizard = Wizard()
     wizardfordepartment = DepartmentWizard()
+    library = Library()
 
     @cherrypy.expose
     @require(member_of("users"))
     def index(self):
         tmpl = lookup.get_template("main_page.html")
-        params = cherrypy.request.headers
+        maps = dict()
+        try:
+            maps = BMTObjects.get_all_maps()
+        except Exception as e:
+            return ShowError(e)
 
-        return tmpl.render(params=params)
+        return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           maps=maps, ent_map=BMTObjects.enterprise_strategic_map)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -1504,19 +1522,36 @@ class Root(object):
     @cherrypy.expose
     @require(member_of("users"))
     def maps(self, code=None):
-        tmpl = lookup.get_template("maps_page.html")
         step_desc = dict()
         step_desc['full_description'] = ""
         step_desc['name'] = "Просмотр карты"
         step_desc['next_step'] = ""
+        print "Show MAP: %s" % code
 
-        try:
-            current_map = BMTObjects.get_strategic_map_object(code)
-        except Exception as e:
-            return ShowError(e)
+        if code:
+            tmpl = lookup.get_template("show_map_page.html")
+            try:
+                current_map = BMTObjects.get_strategic_map_object(code)
+                map_goals, map_kpi, map_events, map_metrics = BMTObjects.load_cur_map_objects(code)
+            except Exception as e:
+                return ShowError(e)
 
-        return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map,
-                           current_map=current_map)
+            print "MAP goals: %s " % map_goals
+            print "MAP kpi: %s " % map_kpi
+
+            return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map, current_map=current_map,
+                               map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics)
+
+        else:
+            tmpl = lookup.get_template("maps_page.html")
+            maps = dict()
+            try:
+                maps = BMTObjects.get_all_maps()
+            except Exception as e:
+                return ShowError(e)
+
+            return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                               maps=maps, ent_map=BMTObjects.enterprise_strategic_map)
 
 
 

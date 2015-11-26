@@ -33107,3 +33107,449 @@ INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Bus STOPPED
 INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Bus EXITING
 INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Bus EXITED
 INFO     [2015-11-26 19:44:35,534] [26/Nov/2015:19:44:35] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 20:25:20,616] [26/Nov/2015:20:25:20] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 20:25:20,616] [26/Nov/2015:20:25:20] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 20:25:20,616] [26/Nov/2015:20:25:20] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 20:25:20,617] [26/Nov/2015:20:25:20] ENGINE Bus STARTING
+INFO     [2015-11-26 20:25:20,617] [26/Nov/2015:20:25:20] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 20:25:20,618] [26/Nov/2015:20:25:20] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:25:20,721] [26/Nov/2015:20:25:20] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 20:25:20,722] [26/Nov/2015:20:25:20] ENGINE Bus STARTED
+INFO     [2015-11-26 20:28:30,312] [26/Nov/2015:20:28:30] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 20:28:30,313] [26/Nov/2015:20:28:30] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 20:28:30,313] [26/Nov/2015:20:28:30] ENGINE Bus STOPPING
+INFO     [2015-11-26 20:28:30,315] [26/Nov/2015:20:28:30] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 20:28:30,315] [26/Nov/2015:20:28:30] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:28:30,315] [26/Nov/2015:20:28:30] ENGINE Bus STOPPED
+INFO     [2015-11-26 20:28:30,316] [26/Nov/2015:20:28:30] ENGINE Bus EXITING
+INFO     [2015-11-26 20:28:30,316] [26/Nov/2015:20:28:30] ENGINE Bus EXITED
+INFO     [2015-11-26 20:28:30,375] [26/Nov/2015:20:28:30] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 20:28:30,375] [26/Nov/2015:20:28:30] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 20:28:30,796] [26/Nov/2015:20:28:30] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 20:28:30,796] [26/Nov/2015:20:28:30] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 20:28:30,796] [26/Nov/2015:20:28:30] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 20:28:30,796] [26/Nov/2015:20:28:30] ENGINE Bus STARTING
+INFO     [2015-11-26 20:28:30,797] [26/Nov/2015:20:28:30] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 20:28:30,798] [26/Nov/2015:20:28:30] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:28:30,902] [26/Nov/2015:20:28:30] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 20:28:30,902] [26/Nov/2015:20:28:30] ENGINE Bus STARTED
+INFO     [2015-11-26 20:28:43,932] [26/Nov/2015:20:28:43] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 20:28:43,933] [26/Nov/2015:20:28:43] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 20:28:43,933] [26/Nov/2015:20:28:43] ENGINE Bus STOPPING
+INFO     [2015-11-26 20:28:43,936] [26/Nov/2015:20:28:43] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 20:28:43,937] [26/Nov/2015:20:28:43] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:28:43,937] [26/Nov/2015:20:28:43] ENGINE Bus STOPPED
+INFO     [2015-11-26 20:28:43,937] [26/Nov/2015:20:28:43] ENGINE Bus EXITING
+INFO     [2015-11-26 20:28:43,937] [26/Nov/2015:20:28:43] ENGINE Bus EXITED
+INFO     [2015-11-26 20:28:44,033] [26/Nov/2015:20:28:44] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 20:28:44,033] [26/Nov/2015:20:28:44] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 20:36:23,057] [26/Nov/2015:20:36:23] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 20:36:23,057] [26/Nov/2015:20:36:23] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 20:36:23,057] [26/Nov/2015:20:36:23] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 20:36:23,057] [26/Nov/2015:20:36:23] ENGINE Bus STARTING
+INFO     [2015-11-26 20:36:23,058] [26/Nov/2015:20:36:23] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 20:36:23,059] [26/Nov/2015:20:36:23] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:36:23,284] [26/Nov/2015:20:36:23] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 20:36:23,284] [26/Nov/2015:20:36:23] ENGINE Bus STARTED
+INFO     [2015-11-26 20:36:24,782] [26/Nov/2015:20:36:24] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 20:36:24,783] 127.0.0.1 - - [26/Nov/2015:20:36:24] "GET / HTTP/1.1" 303 106 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:36:24,863] 127.0.0.1 - - [26/Nov/2015:20:36:24] "GET /auth/login?from_page=/ HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:36:24,949] 127.0.0.1 - - [26/Nov/2015:20:36:24] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:36:24,973] 127.0.0.1 - - [26/Nov/2015:20:36:24] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:36:24,975] 127.0.0.1 - - [26/Nov/2015:20:36:24] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:36:27,386] Пользователь с логином test найден
+INFO     [2015-11-26 20:36:27,387] 127.0.0.1 - test [26/Nov/2015:20:36:27] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:36:27,431] Пользователь с логином test найден
+INFO     [2015-11-26 20:36:27,457] [26/Nov/2015:20:36:27] HTTP 
+Request Headers:
+  REFERER: http://localhost:8080/auth/login?from_page=/
+  HOST: localhost:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _octo=GH1.1.334700583.1439303472; m=34e2:|77cb:t|47ba:t|18c3:t|64b8:t; _ga=GA1.1.1361496196.1448317131; ZCallbackWidget=%7B%22sId%22%3A%22%22%2C%22ref%22%3A%22%22%2C%22start%22%3A1448533302498%2C%22show%22%3A1%2C%22rate%22%3A8.5%2C%22pages%22%3A%5B%22http%3A%2F%2Flocalhost%3A8585%2F%22%5D%7D; session_id=d0e3275ba6ddf655a070421a4e4891a7722d74ac
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-26 20:36:27,458] [26/Nov/2015:20:36:27] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 1473, in index
+    maps=maps, ent_map=BMTObjects.enterprise_strategic_map)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "main_page_html", line 40, in render_body
+AttributeError: 'list' object has no attribute 'values'
+INFO     [2015-11-26 20:36:27,460] 127.0.0.1 - test [26/Nov/2015:20:36:27] "GET / HTTP/1.1" 500 2152 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:36:43,365] Пользователь с логином test найден
+INFO     [2015-11-26 20:36:43,379] 127.0.0.1 - test [26/Nov/2015:20:36:43] "GET / HTTP/1.1" 200 1477 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:36:43,419] 127.0.0.1 - - [26/Nov/2015:20:36:43] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:36:43,421] 127.0.0.1 - - [26/Nov/2015:20:36:43] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:36:43,422] 127.0.0.1 - - [26/Nov/2015:20:36:43] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:37:07,873] Пользователь с логином test найден
+INFO     [2015-11-26 20:37:07,884] 127.0.0.1 - test [26/Nov/2015:20:37:07] "GET / HTTP/1.1" 200 1487 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:37:07,903] 127.0.0.1 - - [26/Nov/2015:20:37:07] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:37:07,905] 127.0.0.1 - - [26/Nov/2015:20:37:07] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:37:07,910] 127.0.0.1 - - [26/Nov/2015:20:37:07] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:37:15,610] Пользователь с логином test найден
+WARNING  [2015-11-26 20:37:15,615] Конфигурация найдена.
+INFO     [2015-11-26 20:37:15,616] 127.0.0.1 - test [26/Nov/2015:20:37:15] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:37:19,305] Пользователь с логином test найден
+INFO     [2015-11-26 20:37:19,309] 127.0.0.1 - test [26/Nov/2015:20:37:19] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:37:19,325] Пользователь с логином test найден
+WARNING  [2015-11-26 20:37:19,340] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 20:37:19,376] 127.0.0.1 - test [26/Nov/2015:20:37:19] "GET /wizardfordepartment/step1 HTTP/1.1" 200 2055 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:37:22,776] Пользователь с логином test найден
+INFO     [2015-11-26 20:37:22,778] 127.0.0.1 - test [26/Nov/2015:20:37:22] "GET /wizardfordepartment/start?code=dep9 HTTP/1.1" 303 108 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:37:22,790] Пользователь с логином test найден
+WARNING  [2015-11-26 20:37:22,792] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 20:37:22,803] 127.0.0.1 - test [26/Nov/2015:20:37:22] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1728 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:44:15,632] Пользователь с логином test найден
+WARNING  [2015-11-26 20:44:15,634] Конфигурация найдена.
+INFO     [2015-11-26 20:44:15,635] 127.0.0.1 - test [26/Nov/2015:20:44:15] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:44:17,953] Пользователь с логином test найден
+INFO     [2015-11-26 20:44:17,956] 127.0.0.1 - test [26/Nov/2015:20:44:17] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:44:17,965] Пользователь с логином test найден
+WARNING  [2015-11-26 20:44:17,966] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 20:44:17,997] 127.0.0.1 - test [26/Nov/2015:20:44:17] "GET /wizardfordepartment/step1 HTTP/1.1" 200 2055 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:45:02,755] Пользователь с логином test найден
+INFO     [2015-11-26 20:45:02,768] 127.0.0.1 - test [26/Nov/2015:20:45:02] "GET / HTTP/1.1" 200 1478 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:45:02,786] 127.0.0.1 - - [26/Nov/2015:20:45:02] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:45:02,788] 127.0.0.1 - - [26/Nov/2015:20:45:02] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:45:02,793] 127.0.0.1 - - [26/Nov/2015:20:45:02] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:45:06,466] Пользователь с логином test найден
+INFO     [2015-11-26 20:45:06,470] 127.0.0.1 - test [26/Nov/2015:20:45:06] "GET / HTTP/1.1" 200 1478 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:45:07,613] Пользователь с логином test найден
+WARNING  [2015-11-26 20:45:07,615] Конфигурация найдена.
+INFO     [2015-11-26 20:45:07,616] 127.0.0.1 - test [26/Nov/2015:20:45:07] "GET /wizard/ HTTP/1.1" 200 1668 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:45:09,696] Пользователь с логином test найден
+INFO     [2015-11-26 20:45:09,702] 127.0.0.1 - test [26/Nov/2015:20:45:09] "GET / HTTP/1.1" 200 1478 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:46:42,050] Пользователь с логином test найден
+INFO     [2015-11-26 20:46:42,052] 127.0.0.1 - test [26/Nov/2015:20:46:42] "GET /wizardfordepartment/start?code=dep9 HTTP/1.1" 303 108 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:46:42,062] Пользователь с логином test найден
+WARNING  [2015-11-26 20:46:42,064] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 20:46:42,081] 127.0.0.1 - test [26/Nov/2015:20:46:42] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1739 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:46:44,466] Пользователь с логином test найден
+INFO     [2015-11-26 20:46:44,466] 127.0.0.1 - test [26/Nov/2015:20:46:44] "GET /wizardfordepartment HTTP/1.1" 301 110 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:46:44,568] Пользователь с логином test найден
+WARNING  [2015-11-26 20:46:44,607] Описание с кодом depwiz_start_full_description найдено
+WARNING  [2015-11-26 20:46:44,608] Описание с кодом depwiz_start_name найдено
+INFO     [2015-11-26 20:46:44,611] 127.0.0.1 - test [26/Nov/2015:20:46:44] "GET /wizardfordepartment/ HTTP/1.1" 200 1554 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:47:21,224] Пользователь с логином test найден
+WARNING  [2015-11-26 20:47:21,225] Описание с кодом depwiz_start_full_description найдено
+WARNING  [2015-11-26 20:47:21,227] Описание с кодом depwiz_start_name найдено
+INFO     [2015-11-26 20:47:21,240] 127.0.0.1 - test [26/Nov/2015:20:47:21] "GET /wizardfordepartment/ HTTP/1.1" 200 1550 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:47:21,263] 127.0.0.1 - - [26/Nov/2015:20:47:21] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:47:21,264] 127.0.0.1 - - [26/Nov/2015:20:47:21] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:47:21,265] 127.0.0.1 - - [26/Nov/2015:20:47:21] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:47:25,525] Пользователь с логином test найден
+INFO     [2015-11-26 20:47:25,531] 127.0.0.1 - test [26/Nov/2015:20:47:25] "GET / HTTP/1.1" 200 1520 "http://localhost:8080/wizardfordepartment/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:47:30,350] Пользователь с логином test найден
+WARNING  [2015-11-26 20:47:30,351] Конфигурация найдена.
+INFO     [2015-11-26 20:47:30,352] 127.0.0.1 - test [26/Nov/2015:20:47:30] "GET /wizard/ HTTP/1.1" 200 1713 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:47:31,592] Пользователь с логином test найден
+WARNING  [2015-11-26 20:47:31,594] Описание с кодом depwiz_start_full_description найдено
+WARNING  [2015-11-26 20:47:31,595] Описание с кодом depwiz_start_name найдено
+INFO     [2015-11-26 20:47:31,597] 127.0.0.1 - test [26/Nov/2015:20:47:31] "GET /wizardfordepartment/ HTTP/1.1" 200 1550 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:47:43,256] Пользователь с логином test найден
+INFO     [2015-11-26 20:47:43,261] 127.0.0.1 - test [26/Nov/2015:20:47:43] "GET / HTTP/1.1" 200 1520 "http://localhost:8080/wizardfordepartment/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:48:39,052] Пользователь с логином test найден
+INFO     [2015-11-26 20:48:39,065] 127.0.0.1 - test [26/Nov/2015:20:48:39] "GET / HTTP/1.1" 200 1543 "http://localhost:8080/wizardfordepartment/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:48:39,079] 127.0.0.1 - - [26/Nov/2015:20:48:39] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:48:39,080] 127.0.0.1 - - [26/Nov/2015:20:48:39] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:48:39,089] 127.0.0.1 - - [26/Nov/2015:20:48:39] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:48:47,022] 127.0.0.1 - - [26/Nov/2015:20:48:47] "GET /library HTTP/1.1" 404 627 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:48:49,720] Пользователь с логином test найден
+INFO     [2015-11-26 20:48:49,727] 127.0.0.1 - test [26/Nov/2015:20:48:49] "GET / HTTP/1.1" 200 1543 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:48:54,299] Пользователь с логином test найден
+INFO     [2015-11-26 20:48:54,303] 127.0.0.1 - test [26/Nov/2015:20:48:54] "GET / HTTP/1.1" 200 1543 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:52:31,815] [26/Nov/2015:20:52:31] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 20:52:31,815] [26/Nov/2015:20:52:31] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 20:52:31,816] [26/Nov/2015:20:52:31] ENGINE Bus STOPPING
+INFO     [2015-11-26 20:52:31,819] [26/Nov/2015:20:52:31] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 20:52:31,819] [26/Nov/2015:20:52:31] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 20:52:31,819] [26/Nov/2015:20:52:31] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:52:31,819] [26/Nov/2015:20:52:31] ENGINE Bus STOPPED
+INFO     [2015-11-26 20:52:31,819] [26/Nov/2015:20:52:31] ENGINE Bus EXITING
+INFO     [2015-11-26 20:52:31,819] [26/Nov/2015:20:52:31] ENGINE Bus EXITED
+INFO     [2015-11-26 20:52:31,915] [26/Nov/2015:20:52:31] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 20:52:31,915] [26/Nov/2015:20:52:31] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 20:52:32,367] [26/Nov/2015:20:52:32] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 20:52:32,368] [26/Nov/2015:20:52:32] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 20:52:32,368] [26/Nov/2015:20:52:32] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 20:52:32,368] [26/Nov/2015:20:52:32] ENGINE Bus STARTING
+INFO     [2015-11-26 20:52:32,369] [26/Nov/2015:20:52:32] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 20:52:32,369] [26/Nov/2015:20:52:32] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:52:32,573] [26/Nov/2015:20:52:32] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 20:52:32,574] [26/Nov/2015:20:52:32] ENGINE Bus STARTED
+INFO     [2015-11-26 20:53:14,749] [26/Nov/2015:20:53:14] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 20:53:14,749] [26/Nov/2015:20:53:14] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 20:53:14,749] [26/Nov/2015:20:53:14] ENGINE Bus STOPPING
+INFO     [2015-11-26 20:53:14,752] [26/Nov/2015:20:53:14] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 20:53:14,752] [26/Nov/2015:20:53:14] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:53:14,752] [26/Nov/2015:20:53:14] ENGINE Bus STOPPED
+INFO     [2015-11-26 20:53:14,752] [26/Nov/2015:20:53:14] ENGINE Bus EXITING
+INFO     [2015-11-26 20:53:14,753] [26/Nov/2015:20:53:14] ENGINE Bus EXITED
+INFO     [2015-11-26 20:53:14,852] [26/Nov/2015:20:53:14] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 20:53:14,852] [26/Nov/2015:20:53:14] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 20:53:15,274] [26/Nov/2015:20:53:15] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 20:53:15,275] [26/Nov/2015:20:53:15] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 20:53:15,275] [26/Nov/2015:20:53:15] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 20:53:15,275] [26/Nov/2015:20:53:15] ENGINE Bus STARTING
+INFO     [2015-11-26 20:53:15,276] [26/Nov/2015:20:53:15] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 20:53:15,276] [26/Nov/2015:20:53:15] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:53:15,480] [26/Nov/2015:20:53:15] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 20:53:15,480] [26/Nov/2015:20:53:15] ENGINE Bus STARTED
+INFO     [2015-11-26 20:55:04,217] [26/Nov/2015:20:55:04] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 20:55:04,218] [26/Nov/2015:20:55:04] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 20:55:04,218] [26/Nov/2015:20:55:04] ENGINE Bus STOPPING
+INFO     [2015-11-26 20:55:04,221] [26/Nov/2015:20:55:04] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 20:55:04,221] [26/Nov/2015:20:55:04] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:55:04,221] [26/Nov/2015:20:55:04] ENGINE Bus STOPPED
+INFO     [2015-11-26 20:55:04,221] [26/Nov/2015:20:55:04] ENGINE Bus EXITING
+INFO     [2015-11-26 20:55:04,221] [26/Nov/2015:20:55:04] ENGINE Bus EXITED
+INFO     [2015-11-26 20:55:04,300] [26/Nov/2015:20:55:04] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 20:55:04,300] [26/Nov/2015:20:55:04] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 20:55:04,688] [26/Nov/2015:20:55:04] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 20:55:04,689] [26/Nov/2015:20:55:04] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 20:55:04,689] [26/Nov/2015:20:55:04] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 20:55:04,689] [26/Nov/2015:20:55:04] ENGINE Bus STARTING
+INFO     [2015-11-26 20:55:04,690] [26/Nov/2015:20:55:04] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 20:55:04,690] [26/Nov/2015:20:55:04] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:55:04,794] [26/Nov/2015:20:55:04] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 20:55:04,795] [26/Nov/2015:20:55:04] ENGINE Bus STARTED
+INFO     [2015-11-26 20:55:32,973] [26/Nov/2015:20:55:32] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 20:55:32,973] [26/Nov/2015:20:55:32] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 20:55:32,974] [26/Nov/2015:20:55:32] ENGINE Bus STOPPING
+INFO     [2015-11-26 20:55:32,978] [26/Nov/2015:20:55:32] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 20:55:32,978] [26/Nov/2015:20:55:32] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:55:32,978] [26/Nov/2015:20:55:32] ENGINE Bus STOPPED
+INFO     [2015-11-26 20:55:32,978] [26/Nov/2015:20:55:32] ENGINE Bus EXITING
+INFO     [2015-11-26 20:55:32,978] [26/Nov/2015:20:55:32] ENGINE Bus EXITED
+INFO     [2015-11-26 20:55:33,053] [26/Nov/2015:20:55:33] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 20:55:33,054] [26/Nov/2015:20:55:33] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 20:55:33,482] [26/Nov/2015:20:55:33] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 20:55:33,482] [26/Nov/2015:20:55:33] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 20:55:33,483] [26/Nov/2015:20:55:33] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 20:55:33,483] [26/Nov/2015:20:55:33] ENGINE Bus STARTING
+INFO     [2015-11-26 20:55:33,484] [26/Nov/2015:20:55:33] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 20:55:33,484] [26/Nov/2015:20:55:33] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 20:55:33,688] [26/Nov/2015:20:55:33] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 20:55:33,689] [26/Nov/2015:20:55:33] ENGINE Bus STARTED
+INFO     [2015-11-26 20:58:18,622] [26/Nov/2015:20:58:18] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 20:58:18,623] 127.0.0.1 - - [26/Nov/2015:20:58:18] "GET / HTTP/1.1" 303 106 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:58:18,647] 127.0.0.1 - - [26/Nov/2015:20:58:18] "GET /auth/login?from_page=/ HTTP/1.1" 200 1192 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:58:18,676] 127.0.0.1 - - [26/Nov/2015:20:58:18] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:58:18,682] 127.0.0.1 - - [26/Nov/2015:20:58:18] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:58:18,687] 127.0.0.1 - - [26/Nov/2015:20:58:18] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:58:21,286] Пользователь с логином test найден
+INFO     [2015-11-26 20:58:21,287] 127.0.0.1 - test [26/Nov/2015:20:58:21] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:58:21,324] Пользователь с логином test найден
+INFO     [2015-11-26 20:58:21,355] 127.0.0.1 - test [26/Nov/2015:20:58:21] "GET / HTTP/1.1" 200 1541 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:58:28,754] Пользователь с логином test найден
+INFO     [2015-11-26 20:58:28,758] 127.0.0.1 - test [26/Nov/2015:20:58:28] "GET / HTTP/1.1" 200 1541 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:58:47,719] Пользователь с логином test найден
+INFO     [2015-11-26 20:58:47,733] 127.0.0.1 - test [26/Nov/2015:20:58:47] "GET / HTTP/1.1" 200 1543 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:58:47,755] 127.0.0.1 - - [26/Nov/2015:20:58:47] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:58:47,761] 127.0.0.1 - - [26/Nov/2015:20:58:47] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:58:47,767] 127.0.0.1 - - [26/Nov/2015:20:58:47] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:58:50,078] Пользователь с логином test найден
+INFO     [2015-11-26 20:58:50,088] 127.0.0.1 - test [26/Nov/2015:20:58:50] "GET /maps HTTP/1.1" 200 1543 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:59:32,985] Пользователь с логином test найден
+INFO     [2015-11-26 20:59:32,992] 127.0.0.1 - test [26/Nov/2015:20:59:32] "GET /maps HTTP/1.1" 200 1534 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:59:33,013] 127.0.0.1 - - [26/Nov/2015:20:59:33] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:59:33,021] 127.0.0.1 - - [26/Nov/2015:20:59:33] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 20:59:33,022] 127.0.0.1 - - [26/Nov/2015:20:59:33] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:59:36,091] Пользователь с логином test найден
+INFO     [2015-11-26 20:59:36,111] 127.0.0.1 - test [26/Nov/2015:20:59:36] "GET /maps/code=ent0 HTTP/1.1" 200 1564 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:59:43,028] Пользователь с логином test найден
+INFO     [2015-11-26 20:59:43,036] 127.0.0.1 - test [26/Nov/2015:20:59:43] "GET /maps/code=dep7 HTTP/1.1" 200 1564 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:59:46,585] Пользователь с логином test найден
+INFO     [2015-11-26 20:59:46,589] 127.0.0.1 - test [26/Nov/2015:20:59:46] "GET /maps/code=dep9 HTTP/1.1" 200 1564 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 20:59:53,512] Пользователь с логином test найден
+INFO     [2015-11-26 20:59:53,517] 127.0.0.1 - test [26/Nov/2015:20:59:53] "GET /maps/code=ent0 HTTP/1.1" 200 1564 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:00:12,033] Пользователь с логином test найден
+INFO     [2015-11-26 21:00:12,037] 127.0.0.1 - test [26/Nov/2015:21:00:12] "GET /maps/code=ent0 HTTP/1.1" 200 1564 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:01:51,796] [26/Nov/2015:21:01:51] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 21:01:51,796] [26/Nov/2015:21:01:51] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 21:01:51,797] [26/Nov/2015:21:01:51] ENGINE Bus STOPPING
+INFO     [2015-11-26 21:01:51,800] [26/Nov/2015:21:01:51] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 21:01:51,800] [26/Nov/2015:21:01:51] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 21:01:51,800] [26/Nov/2015:21:01:51] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 21:01:51,800] [26/Nov/2015:21:01:51] ENGINE Bus STOPPED
+INFO     [2015-11-26 21:01:51,801] [26/Nov/2015:21:01:51] ENGINE Bus EXITING
+INFO     [2015-11-26 21:01:51,801] [26/Nov/2015:21:01:51] ENGINE Bus EXITED
+INFO     [2015-11-26 21:01:51,822] [26/Nov/2015:21:01:51] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 21:01:51,822] [26/Nov/2015:21:01:51] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 21:01:52,213] [26/Nov/2015:21:01:52] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 21:01:52,213] [26/Nov/2015:21:01:52] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 21:01:52,214] [26/Nov/2015:21:01:52] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 21:01:52,214] [26/Nov/2015:21:01:52] ENGINE Bus STARTING
+INFO     [2015-11-26 21:01:52,215] [26/Nov/2015:21:01:52] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 21:01:52,215] [26/Nov/2015:21:01:52] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 21:01:52,419] [26/Nov/2015:21:01:52] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 21:01:52,420] [26/Nov/2015:21:01:52] ENGINE Bus STARTED
+INFO     [2015-11-26 21:02:03,337] [26/Nov/2015:21:02:03] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 21:02:03,339] [26/Nov/2015:21:02:03] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 21:02:03,339] [26/Nov/2015:21:02:03] ENGINE Bus STOPPING
+INFO     [2015-11-26 21:02:03,341] [26/Nov/2015:21:02:03] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 21:02:03,342] [26/Nov/2015:21:02:03] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 21:02:03,342] [26/Nov/2015:21:02:03] ENGINE Bus STOPPED
+INFO     [2015-11-26 21:02:03,342] [26/Nov/2015:21:02:03] ENGINE Bus EXITING
+INFO     [2015-11-26 21:02:03,342] [26/Nov/2015:21:02:03] ENGINE Bus EXITED
+INFO     [2015-11-26 21:02:03,394] [26/Nov/2015:21:02:03] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 21:02:03,394] [26/Nov/2015:21:02:03] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 21:02:03,799] [26/Nov/2015:21:02:03] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 21:02:03,799] [26/Nov/2015:21:02:03] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 21:02:03,799] [26/Nov/2015:21:02:03] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 21:02:03,800] [26/Nov/2015:21:02:03] ENGINE Bus STARTING
+INFO     [2015-11-26 21:02:03,800] [26/Nov/2015:21:02:03] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 21:02:03,801] [26/Nov/2015:21:02:03] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 21:02:04,005] [26/Nov/2015:21:02:04] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 21:02:04,006] [26/Nov/2015:21:02:04] ENGINE Bus STARTED
+INFO     [2015-11-26 21:03:00,662] [26/Nov/2015:21:03:00] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 21:03:00,663] 127.0.0.1 - - [26/Nov/2015:21:03:00] "GET /maps/code=ent0 HTTP/1.1" 303 120 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:03:00,693] 127.0.0.1 - - [26/Nov/2015:21:03:00] "GET /auth/login?from_page=/maps/code%3Dent0 HTTP/1.1" 200 1192 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:03:00,710] 127.0.0.1 - - [26/Nov/2015:21:03:00] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/maps/code%3Dent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:03:00,714] 127.0.0.1 - - [26/Nov/2015:21:03:00] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/maps/code%3Dent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:03:00,719] 127.0.0.1 - - [26/Nov/2015:21:03:00] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/maps/code%3Dent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:03:02,955] Пользователь с логином test найден
+INFO     [2015-11-26 21:03:02,956] 127.0.0.1 - test [26/Nov/2015:21:03:02] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/maps/code%3Dent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:03:03,001] Пользователь с логином test найден
+INFO     [2015-11-26 21:03:03,029] 127.0.0.1 - test [26/Nov/2015:21:03:03] "GET / HTTP/1.1" 200 1543 "http://localhost:8080/auth/login?from_page=/maps/code%3Dent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:03:04,438] Пользователь с логином test найден
+INFO     [2015-11-26 21:03:04,447] 127.0.0.1 - test [26/Nov/2015:21:03:04] "GET /maps HTTP/1.1" 200 1534 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:03:07,338] Пользователь с логином test найден
+INFO     [2015-11-26 21:03:07,355] [26/Nov/2015:21:03:07] HTTP 
+Request Headers:
+  REFERER: http://localhost:8080/maps
+  HOST: localhost:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _octo=GH1.1.334700583.1439303472; m=34e2:|77cb:t|47ba:t|18c3:t|64b8:t; _ga=GA1.1.1361496196.1448317131; ZCallbackWidget=%7B%22sId%22%3A%22%22%2C%22ref%22%3A%22%22%2C%22start%22%3A1448533302498%2C%22show%22%3A1%2C%22rate%22%3A8.5%2C%22pages%22%3A%5B%22http%3A%2F%2Flocalhost%3A8585%2F%22%5D%7D; session_id=c2768ee0b63479df0710212d5e22539dacb2bd9c
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-26 21:03:07,355] [26/Nov/2015:21:03:07] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 1530, in maps
+    map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "show_map_page_html", line 43, in render_body
+AttributeError: 'NoneType' object has no attribute 'name'
+INFO     [2015-11-26 21:03:07,357] 127.0.0.1 - test [26/Nov/2015:21:03:07] "GET /maps/code=ent0 HTTP/1.1" 500 2187 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:03:21,478] Пользователь с логином test найден
+INFO     [2015-11-26 21:03:21,493] 127.0.0.1 - test [26/Nov/2015:21:03:21] "GET /maps/code=ent0 HTTP/1.1" 200 1567 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:03:21,574] 127.0.0.1 - - [26/Nov/2015:21:03:21] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps/code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:03:21,581] 127.0.0.1 - - [26/Nov/2015:21:03:21] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps/code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:03:21,585] 127.0.0.1 - - [26/Nov/2015:21:03:21] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps/code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:04:14,943] Пользователь с логином test найден
+INFO     [2015-11-26 21:04:14,951] 127.0.0.1 - test [26/Nov/2015:21:04:14] "GET /maps HTTP/1.1" 200 1534 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:04:14,981] 127.0.0.1 - - [26/Nov/2015:21:04:14] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:04:14,982] 127.0.0.1 - - [26/Nov/2015:21:04:14] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:04:14,983] 127.0.0.1 - - [26/Nov/2015:21:04:14] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:04:22,661] Пользователь с логином test найден
+INFO     [2015-11-26 21:04:22,674] 127.0.0.1 - test [26/Nov/2015:21:04:22] "GET /maps HTTP/1.1" 200 1533 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:04:22,720] 127.0.0.1 - - [26/Nov/2015:21:04:22] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:04:22,722] 127.0.0.1 - - [26/Nov/2015:21:04:22] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:04:22,723] 127.0.0.1 - - [26/Nov/2015:21:04:22] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:04:24,562] Пользователь с логином test найден
+INFO     [2015-11-26 21:04:24,588] 127.0.0.1 - test [26/Nov/2015:21:04:24] "GET /maps?code=ent0 HTTP/1.1" 200 1857 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:05:13,451] Пользователь с логином test найден
+INFO     [2015-11-26 21:05:13,480] 127.0.0.1 - test [26/Nov/2015:21:05:13] "GET /maps?code=ent0 HTTP/1.1" 200 1849 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:05:15,206] Пользователь с логином test найден
+INFO     [2015-11-26 21:05:15,223] 127.0.0.1 - test [26/Nov/2015:21:05:15] "GET /maps?code=ent0 HTTP/1.1" 200 1849 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:05:15,238] 127.0.0.1 - - [26/Nov/2015:21:05:15] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:05:15,240] 127.0.0.1 - - [26/Nov/2015:21:05:15] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:05:15,243] 127.0.0.1 - - [26/Nov/2015:21:05:15] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:06:27,271] Пользователь с логином test найден
+INFO     [2015-11-26 21:06:27,299] 127.0.0.1 - test [26/Nov/2015:21:06:27] "GET /maps?code=ent0 HTTP/1.1" 200 1763 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:06:27,315] 127.0.0.1 - - [26/Nov/2015:21:06:27] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:06:27,322] 127.0.0.1 - - [26/Nov/2015:21:06:27] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:06:27,326] 127.0.0.1 - - [26/Nov/2015:21:06:27] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:06:29,734] Пользователь с логином test найден
+INFO     [2015-11-26 21:06:29,739] 127.0.0.1 - test [26/Nov/2015:21:06:29] "GET /maps HTTP/1.1" 200 1533 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:06:30,810] Пользователь с логином test найден
+INFO     [2015-11-26 21:06:30,843] 127.0.0.1 - test [26/Nov/2015:21:06:30] "GET /maps?code=dep7 HTTP/1.1" 200 1839 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:06:41,201] Пользователь с логином test найден
+INFO     [2015-11-26 21:06:41,205] 127.0.0.1 - test [26/Nov/2015:21:06:41] "GET /maps HTTP/1.1" 200 1533 "http://localhost:8080/maps?code=dep7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:06:42,141] Пользователь с логином test найден
+INFO     [2015-11-26 21:06:42,145] 127.0.0.1 - test [26/Nov/2015:21:06:42] "GET /maps?code=dep9 HTTP/1.1" 200 1580 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:06:45,246] Пользователь с логином test найден
+INFO     [2015-11-26 21:06:45,251] 127.0.0.1 - test [26/Nov/2015:21:06:45] "GET /maps HTTP/1.1" 200 1533 "http://localhost:8080/maps?code=dep9" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:06:46,598] 127.0.0.1 - - [26/Nov/2015:21:06:46] "GET /library HTTP/1.1" 404 627 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:07:09,535] [26/Nov/2015:21:07:09] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 21:07:09,536] [26/Nov/2015:21:07:09] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 21:07:09,536] [26/Nov/2015:21:07:09] ENGINE Bus STOPPING
+INFO     [2015-11-26 21:07:09,539] [26/Nov/2015:21:07:09] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 21:07:09,539] [26/Nov/2015:21:07:09] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 21:07:09,539] [26/Nov/2015:21:07:09] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 21:07:09,540] [26/Nov/2015:21:07:09] ENGINE Bus STOPPED
+INFO     [2015-11-26 21:07:09,540] [26/Nov/2015:21:07:09] ENGINE Bus EXITING
+INFO     [2015-11-26 21:07:09,540] [26/Nov/2015:21:07:09] ENGINE Bus EXITED
+INFO     [2015-11-26 21:07:09,594] [26/Nov/2015:21:07:09] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 21:07:09,595] [26/Nov/2015:21:07:09] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 21:11:19,374] [26/Nov/2015:21:11:19] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 21:11:19,374] [26/Nov/2015:21:11:19] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 21:11:19,374] [26/Nov/2015:21:11:19] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 21:11:19,374] [26/Nov/2015:21:11:19] ENGINE Bus STARTING
+INFO     [2015-11-26 21:11:19,375] [26/Nov/2015:21:11:19] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 21:11:19,375] [26/Nov/2015:21:11:19] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 21:11:19,479] [26/Nov/2015:21:11:19] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 21:11:19,480] [26/Nov/2015:21:11:19] ENGINE Bus STARTED
+INFO     [2015-11-26 21:11:20,593] [26/Nov/2015:21:11:20] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 21:11:20,594] 127.0.0.1 - - [26/Nov/2015:21:11:20] "GET /maps HTTP/1.1" 303 109 "http://localhost:8080/maps?code=dep9" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:11:20,621] 127.0.0.1 - - [26/Nov/2015:21:11:20] "GET /auth/login?from_page=/maps HTTP/1.1" 200 1192 "http://localhost:8080/maps?code=dep9" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:11:20,649] 127.0.0.1 - - [26/Nov/2015:21:11:20] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:11:20,652] 127.0.0.1 - - [26/Nov/2015:21:11:20] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 21:11:20,668] 127.0.0.1 - - [26/Nov/2015:21:11:20] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:23,069] Пользователь с логином test найден
+INFO     [2015-11-26 21:11:23,070] 127.0.0.1 - test [26/Nov/2015:21:11:23] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:23,161] Пользователь с логином test найден
+INFO     [2015-11-26 21:11:23,187] 127.0.0.1 - test [26/Nov/2015:21:11:23] "GET / HTTP/1.1" 200 1543 "http://localhost:8080/auth/login?from_page=/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:24,214] Пользователь с логином test найден
+INFO     [2015-11-26 21:11:24,221] 127.0.0.1 - test [26/Nov/2015:21:11:24] "GET /maps HTTP/1.1" 200 1533 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:25,413] Пользователь с логином test найден
+INFO     [2015-11-26 21:11:25,415] 127.0.0.1 - test [26/Nov/2015:21:11:25] "GET /library HTTP/1.1" 301 102 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:25,432] Пользователь с логином test найден
+INFO     [2015-11-26 21:11:25,440] 127.0.0.1 - test [26/Nov/2015:21:11:25] "GET /library/ HTTP/1.1" 200 1537 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:34,000] Пользователь с логином test найден
+INFO     [2015-11-26 21:11:34,006] 127.0.0.1 - test [26/Nov/2015:21:11:34] "GET /maps HTTP/1.1" 200 1533 "http://localhost:8080/library/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:38,614] Пользователь с логином test найден
+WARNING  [2015-11-26 21:11:38,620] Конфигурация найдена.
+INFO     [2015-11-26 21:11:38,622] 127.0.0.1 - test [26/Nov/2015:21:11:38] "GET /wizard/ HTTP/1.1" 200 1738 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:40,697] Пользователь с логином test найден
+WARNING  [2015-11-26 21:11:40,704] Описание с кодом depwiz_start_full_description найдено
+WARNING  [2015-11-26 21:11:40,705] Описание с кодом depwiz_start_name найдено
+INFO     [2015-11-26 21:11:40,708] 127.0.0.1 - test [26/Nov/2015:21:11:40] "GET /wizardfordepartment/ HTTP/1.1" 200 1579 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 21:11:45,853] Пользователь с логином test найден
+INFO     [2015-11-26 21:11:45,854] 127.0.0.1 - test [26/Nov/2015:21:11:45] "GET /library/ HTTP/1.1" 200 1537 "http://localhost:8080/wizardfordepartment/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"

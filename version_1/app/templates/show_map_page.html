@@ -1,0 +1,78 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-6">
+            <h1>${current_map.name}</h1>
+            <h3>Описание</h3>
+            <div style="margin-left: 2%;">
+                ${current_map.description}
+            </div>
+            <hr>
+            <h3>Цели</h3>
+            <div style="margin-left: 2%;">
+            % if map_goals.keys():
+                % for one in map_goals.keys():
+                    <p class=
+                        % if map_goals[one].perspective == 0:
+                        "text-success"
+                        % elif map_goals[one].perspective == 1:
+                        "text-danger"
+                        %else:
+                        "text-default"
+                        %endif
+                        ">
+                        ${map_goals[one].goal_name}
+                    </p>
+                % endfor
+            % else:
+                <p>Цели не заданы.</p>
+            % endif
+            </div>
+            <hr>
+            <h3>Показатели</h3>
+            <div style="margin-left: 2%;">
+            % if map_kpi.keys():
+                % for one in map_kpi.keys():
+                    <p>${map_kpi[one].name}</p>
+                % endfor
+            % else:
+                <p>Показатели не заданы.</p>
+            % endif
+            </div>
+            <hr>
+            <h3>Мероприятия</h3>
+            <div style="margin-left: 2%;">
+            % if map_events.keys():
+                % for one in map_events.keys():
+                    <p>${map_events[one].name}</p>
+                % endfor
+            % else:
+                <p>Мероприятий нет.</p>
+            % endif
+            </div>
+            <hr>
+            <h3>Операционные показатели</h3>
+            <div style="margin-left: 2%;">
+            % if map_metrics.keys():
+                % for one in map_metrics.keys():
+                    <p>${map_metrics[one].name}</p>
+                % endfor
+            % else:
+                <p>Не заданы.</p>
+            % endif
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
