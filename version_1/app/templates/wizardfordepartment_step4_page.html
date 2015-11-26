@@ -1,0 +1,45 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <h1>${step_desc['name']}</h1>
+            <h3>Описание</h3>
+            <div style="margin-left: 3%;">
+                ${step_desc['full_description']}
+            </div>
+            <h3>
+                ${step_desc['subheader']}
+                <small></small>
+            </h3>
+            <hr>
+            <a class="btn btn-default" href="/wizardfordepartment/step4new" role="button">Создать новое</a>
+            <hr>
+            <div style="margin-left: 3%;">
+            % if map_custom_events:
+                % for e in map_custom_events.values():
+                    <p>
+                        ${e.name} - ${map_custom_goals[e.linked_goal_code].goal_name}
+                        <a role="button" class="btn btn-xs btn-warning"  href="step4edit?event_code=${e.event_code}">Редактировать</a>
+                        <a role="button" class="btn btn-xs btn-danger" href="step4delete?event_code=${e.event_code}">Удалить</a>
+                    </p>
+                % endfor
+            % else:
+                Нет мероприятий.
+            % endif
+            </div>
+            <hr>
+            <a class="btn btn-default btn-block" href="/wizardfordepartment/${step_desc['next_step']}" role="button">Дальше</a>
+        </div>
+    </div>
+
+
+</div>
+

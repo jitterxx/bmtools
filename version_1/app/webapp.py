@@ -549,118 +549,155 @@ class DepartmentWizard(object):
     @cherrypy.expose
     @require(member_of("users"))
     def step4(self):
-        # добавление показателей
-        tmpl = lookup.get_template("wizardfordepartment_step3_page.html")
+        # добавление мероприятий
+        tmpl = lookup.get_template("wizardfordepartment_step4_page.html")
 
         step_desc = dict()
-        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step3_full_description")
-        step_desc['name'] = BMTObjects.get_desc("depwiz_step3_name")
-        step_desc['next_step'] = "4"
+        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step4_full_description")
+        step_desc['name'] = BMTObjects.get_desc("depwiz_step4_name")
+        step_desc['subheader'] = BMTObjects.get_desc("depwiz_step4_subheader")
+        step_desc['next_step'] = "step5"
 
-        # Получаем показатели которые уже есть в карте
         try:
-            kpi = BMTObjects.load_custom_goals_kpi()[1]
-            ent_kpi = BMTObjects.load_cur_map_objects(BMTObjects.enterprise_strategic_map)[1]
+            events = BMTObjects.get_events()
+            map_custom_goals, a, map_custom_events = BMTObjects.load_cur_map_objects()[0:3]
         except Exception as e:
-            print "Ошибка. %s" % str(e)
             return ShowError(e)
 
-        print "Current MAP : %s" % BMTObjects.current_strategic_map
-        print "Current MAP KPI's: %s" % kpi
-        print "Enterprise KPI's: %s" % ent_kpi
+        print events
 
-        return tmpl.render(step_desc=step_desc,
-                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
-                           kpi=kpi, ent_kpi=ent_kpi)
+        return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           step_desc=step_desc, events=events, map_custom_goals=map_custom_goals,
+                           map_custom_events=map_custom_events)
 
     @cherrypy.expose
     @require(member_of("users"))
     def step4new(self):
-        # Добавить новый показатель в карту подразделения. Связать его с целью относящейся к подразделению.
-        tmpl = lookup.get_template("wizardfordepartment_step3new_page.html")
+        tmpl = lookup.get_template("wizardfordepartment_step4new_page.html")
         step_desc = dict()
-        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step3new_full_description")
-        step_desc['name'] = BMTObjects.get_desc("depwiz_step3new_name")
-        step_desc['next_step'] = "4"
+        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step4_full_description")
+        step_desc['name'] = BMTObjects.get_desc("depwiz_step4_name")
+        step_desc['next_step'] = "step5"
+        step_desc['subheader'] = BMTObjects.get_desc("depwiz_step4_subheader")
 
+        # Получаем список кастомных целей компании
         try:
-            cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
-            ent_goals = BMTObjects.load_cur_map_objects(BMTObjects.enterprise_strategic_map)[0]
+            (map_goals,) = BMTObjects.load_cur_map_objects()[0:1]
         except Exception as e:
-            print "Ошибка %s " % str(e)
             return ShowError(e)
 
-        print "Current MAP : %s" % BMTObjects.current_strategic_map
-        print "Current MAP goals: %s" % cur_map_goals
-        print "Enterprise goals: %s" % ent_goals
-
-        return tmpl.render(step_desc=step_desc,
-                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
-                           cur_map_goals=cur_map_goals, ent_goals=ent_goals)
-
+        return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           step_desc=step_desc, persons=BMTObjects.persons, map_goals=map_goals)
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step4save(self, name=None, description=None, perspective=None, linked=None):
+    def step4save(self, goal=None, name=None, description=None, planres=None,
+                  responsible=None, actors=None, start_date=None, end_date=None):
         """
-            Сохраняем новый показатель и добавляем в карту подразделения
+            Сохраняем выбранные значения
         """
+        print "DEPT Step 4 SAVE : %s " % cherrypy.request.params
 
-        print "Wizard for DEP. Step 2 SAVE : %s " % cherrypy.request.params
+        if None in cherrypy.request.params.values():
+            print "DEPT. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step4new")
+        event_fields = dict()
 
-        if None in [name, description, perspective]:
+        event_fields['actors'] = ",".join(actors)
+        event_fields['description'] = description
+        event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
+        event_fields['start_date'] = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+        event_fields['name'] = name
+        event_fields['plan_result'] = planres
+        event_fields['linked_goal_code'] = goal
+        event_fields['responsible'] = responsible
+
+        try:
+            BMTObjects.create_new_event(event_fields)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step4")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def step4edit(self, event_code=None):
+        """
+            Сохраняем выбранные значения
+        """
+        print "DEPT Step 4 EDIT : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step4")
 
-        goal_fields = dict()
-
-        goal_fields['goal_name'] = name
-        goal_fields['description'] = description
-        goal_fields['perspective'] = perspective
+        tmpl = lookup.get_template("wizardfordepartment_step4edit_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = BMTObjects.get_desc("step4_full_description")
+        step_desc['name'] = BMTObjects.get_desc("step4_name")
+        step_desc['next_step'] = "step5"
+        step_desc['subheader'] = BMTObjects.get_desc("step6_subheader")
 
         try:
-            status = BMTObjects.create_new_custom_goal(goal_fields)
+            (goals, a, events) = BMTObjects.load_cur_map_objects()[0:3]
         except Exception as e:
-            print "Ошибка при создании CUSTOM_GOAL. %s" % str(e)
             return ShowError(e)
 
-        if linked:
-            print "CREATE LINKS for %s and %s." % (status[1], linked)
-            try:
-                BMTObjects.create_custom_link_for_goals(status[1], linked)
-            except Exception as e:
-                print "Ошибка при создании LINK_FOR_CUSTOM_GOAL. %s" % str(e)
-                return ShowError(e)
+        event=events[event_code]
+        actors = re.split(",", event.actors)
+        print "GOALS FOR EVENT: %s" % goals
 
-        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+        return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           step_desc=step_desc, persons=BMTObjects.persons,
+                           goals=goals, event=event, actors=actors)
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step4delete(self, code=None):
-        print "DELETE DEPT KPI."
-        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+    def step4update(self, event_code=None, goal=None, name=None, description=None, planres=None,
+                  responsible=None, actors=None, start_date=None, end_date=None):
+        """
+            Сохраняем выбранные значения
+        """
+        print "DEPT Step 4 UPDATE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Step4 UPDATE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step4")
+        event_fields = dict()
+
+        event_fields['actors'] = ",".join(actors)
+        event_fields['description'] = description
+        event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
+        event_fields['start_date'] = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+        event_fields['name'] = name
+        event_fields['plan_result'] = planres
+        event_fields['linked_goal_code'] = goal
+        event_fields['responsible'] = responsible
+
+        try:
+            BMTObjects.update_event(event_code, event_fields)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step4")
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step4update(self, code=None, name=None, description=None, perspective=None, linked=None):
-        print "UPDATE DEPT KPI."
-        raise cherrypy.HTTPRedirect("/wizardfordepartment/step2")
+    def step4delete(self, event_code=None):
 
+        print "DEPT Step 4 DELETE : %s " % cherrypy.request.params
 
+        if None in cherrypy.request.params.values():
+            print "DEPT Step4 DELETE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("step6")
 
-    @cherrypy.expose
-    @require(member_of("users"))
-    def step5(self):
-        # добавление мероприятий в карту подразделения
-        tmpl = lookup.get_template("wizardfordepartment_step2_page.html")
-        params = cherrypy.request.headers
-        step_desc = dict()
-        step_desc['full_description'] = BMTObjects.get_desc("depwiz_step3_full_description")
-        step_desc['name'] = BMTObjects.get_desc("depwiz_step3_name")
-        step_desc['next_step'] = "4"
+        try:
+            BMTObjects.delete_event(event_code)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step4")
 
-
-        return tmpl.render(params=params, step_desc=step_desc)
 
 class Wizard(object):
 
