@@ -33097,3 +33097,13 @@ INFO     [2015-11-26 19:35:20,574] 127.0.0.1 - test [26/Nov/2015:19:35:20] "GET 
 INFO     [2015-11-26 19:35:20,602] 127.0.0.1 - - [26/Nov/2015:19:35:20] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
 INFO     [2015-11-26 19:35:20,606] 127.0.0.1 - - [26/Nov/2015:19:35:20] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
 INFO     [2015-11-26 19:35:20,609] 127.0.0.1 - - [26/Nov/2015:19:35:20] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 19:44:35,529] [26/Nov/2015:19:44:35] ENGINE Keyboard Interrupt: shutting down bus
+INFO     [2015-11-26 19:44:35,529] [26/Nov/2015:19:44:35] ENGINE Bus STOPPING
+INFO     [2015-11-26 19:44:35,532] [26/Nov/2015:19:44:35] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 19:44:35,532] [26/Nov/2015:19:44:35] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Bus STOPPED
+INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Bus EXITING
+INFO     [2015-11-26 19:44:35,533] [26/Nov/2015:19:44:35] ENGINE Bus EXITED
+INFO     [2015-11-26 19:44:35,534] [26/Nov/2015:19:44:35] ENGINE Waiting for child threads to terminate...
