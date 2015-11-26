@@ -424,7 +424,7 @@ class DepartmentWizard(object):
             print custom_missing_goals
         else:
             print "Нет пропущенных целей. Переходим на следующий шаг."
-            raise cherrypy.HTTPRedirect("step3stage1")
+            #raise cherrypy.HTTPRedirect("step3stage2")
 
         return tmpl.render(params=params, step_desc=step_desc, all_custom_goals=all_custom_goals, lib_goals=lib_goals,
                            lib_missing_goals=lib_missing_goals, map_custom_goals=map_custom_goals,
@@ -433,83 +433,118 @@ class DepartmentWizard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3stage2save(self, picked_goals=None):
+    def step3stage1save(self, picked_lib_goals=None, picked_custom_goals=None):
         """
-            Сохраняем добполнительно выбранные цели в кастомные таблицы компании
+            Сохраняем выбранные цели из библиотеки в кастомные таблицы компании.
+            ДОбавлем выбранные цели в карту подразделения.
         """
 
-        if picked_goals is None:
-            print "picked_goals empty. Redirect to step3stage2."
-            raise cherrypy.HTTPRedirect("step3stage2")
+        if picked_lib_goals is None:
+            print "DEPT picked_lib_goals empty. Check the picked_custom_goals."
         else:
-            if not isinstance(picked_goals, list):
-                picked_goals = [picked_goals]
-            print "Picked goals: %s" % picked_goals
-            print "picked_goals not empty. Save data."
+            if not isinstance(picked_lib_goals, list):
+                picked_lib_goals = [picked_lib_goals]
+            print "DEPT picked_lib_goals not empty. Save data."
 
-        # Проверяем, есть ли уже в кастомных целях выбранные
-        try:
-            BMTObjects.save_picked_goals_to_custom(picked_goals)
-        except Exception as e:
-            return ShowError(e)
+            try:
+                BMTObjects.save_picked_goals_to_custom(picked_lib_goals)
+                BMTObjects.save_goals_to_map(picked_lib_goals)
+            except Exception as e:
+                print "DEPT picked_lib_goals SAVE ERROR. %s" % str(e)
+                return ShowError(e)
+            else:
+                print "DEPT picked_lib_goals SAVED."
+
+        if picked_custom_goals is None:
+            print "DEPT picked_custom_goals empty. Redirect to step3."
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step3stage1")
         else:
-            raise cherrypy.HTTPRedirect("step3stage2")
+            if not isinstance(picked_custom_goals, list):
+                picked_custom_goals = [picked_custom_goals]
+            print "DEPT picked_custom_goals not empty. Save data."
+
+            try:
+                BMTObjects.save_goals_to_map(picked_custom_goals)
+            except Exception as e:
+                print "DEPT picked_custom_goals SAVE ERROR. %s" % str(e)
+                return ShowError(e)
+            else:
+                print "DEPT picked_custom_goals SAVED."
+
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step3stage1")
 
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3stage3(self):
+    def step3stage2(self):
         """
             Функция добавления связанных целей в кастомные таблицы компании
         """
-        tmpl = lookup.get_template("wizard_step3stage3_page.html")
+        tmpl = lookup.get_template("wizardfordepartment_step3stage2_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
         step_desc['stage3_description'] = BMTObjects.get_desc("step3_stage3_description")
         step_desc['name'] = "Шаг 3." + BMTObjects.get_desc("step3_name")
         step_desc['subheader'] = BMTObjects.get_desc("step3_stage3_subheader")
-        step_desc['next_step'] = "4"
+        step_desc['next_step'] = "step4"
 
         try:
-            custom_goals, custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
+            map_custom_goals, map_custom_kpi = BMTObjects.load_cur_map_objects()[0:2]
+            all_custom_goals, all_custom_kpi = BMTObjects.load_custom_goals_kpi()
             lib_kpi = BMTObjects.load_lib_goals_kpi()[1]
             lib_linked_kpi = BMTObjects.load_lib_links()[1]
+            custom_linked_kpi = BMTObjects.load_custom_links()[1]
         except Exception as e:
             ShowError(e)
 
-        print "Custom goals: %s" % custom_goals
-        print "Custom KPI: %s" % custom_kpi
+        print "Custom MAP goals: %s" % map_custom_goals
+        print "Custom MAP KPI: %s" % map_custom_kpi
+        print "Custom linked KPI: %s" % custom_linked_kpi
         print "LIB KPI: %s" % lib_kpi
         print "LIB linked KPI: %s" % lib_linked_kpi
 
-        return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, lib_kpi=lib_kpi,
-                           lib_linked_kpi=lib_linked_kpi, custom_kpi=custom_kpi)
+        return tmpl.render(params=params, step_desc=step_desc, map_custom_goals=map_custom_goals, lib_kpi=lib_kpi,
+                           lib_linked_kpi=lib_linked_kpi, map_custom_kpi=map_custom_kpi,
+                           custom_linked_kpi=custom_linked_kpi,
+                           all_custom_goals=all_custom_goals, all_custom_kpi=all_custom_kpi)
 
 
     @cherrypy.expose
     @require(member_of("users"))
-    def step3stage3save(self, picked_kpi=None):
+    def step3stage2save(self, picked_lib_kpi=None, picked_custom_kpi=None):
         """
             Сохраняем выбранные показатели в кастомные таблицы компании
         """
 
-        if picked_kpi is None:
-            print "picked_kpi empty. Redirect to step3stage3."
-            raise cherrypy.HTTPRedirect("step3stage3")
+        if picked_lib_kpi is None:
+            print "picked_lib_kpi empty. Check picked_custom_kpi."
         else:
-            if not isinstance(picked_kpi, list):
-                picked_kpi = [picked_kpi]
-            print "picked_kpi not empty. Save data."
+            if not isinstance(picked_lib_kpi, list):
+                picked_lib_kpi = [picked_lib_kpi]
+            print "picked_lib_kpi not empty. Save data."
 
-        # Проверяем, есть ли уже в кастомных показателях выбранные
+            try:
+                BMTObjects.save_picked_kpi_to_custom(picked_lib_kpi)
+                BMTObjects.save_kpi_to_map(picked_lib_kpi)
+            except Exception as e:
+                return ShowError(e)
 
-        try:
-            BMTObjects.save_picked_kpi_to_custom(picked_kpi)
-        except Exception as e:
-            return ShowError(e)
+        if picked_custom_kpi is None:
+            print "picked_custom_kpi empty. Redirect to step3stage3."
+            raise cherrypy.HTTPRedirect("/wizardfordepartment/step3stage2")
         else:
-            raise cherrypy.HTTPRedirect("step3stage3")
+            if not isinstance(picked_custom_kpi, list):
+                picked_custom_kpi = [picked_custom_kpi]
+            print "picked_custom_kpi not empty. Save data."
 
+            try:
+                BMTObjects.save_kpi_to_map(picked_custom_kpi)
+            except Exception as e:
+                return ShowError(e)
+            else:
+                raise cherrypy.HTTPRedirect("/wizardfordepartment/step3stage2")
+
+        raise cherrypy.HTTPRedirect("/wizardfordepartment/step3stage2")
 
     @cherrypy.expose
     @require(member_of("users"))

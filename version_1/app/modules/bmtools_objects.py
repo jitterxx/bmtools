@@ -988,9 +988,11 @@ def save_picked_kpi_to_custom(picked_kpi):
     """
 
     session = Session()
+    custom_kpi = load_custom_goals_kpi()[1]
 
     try:
-        resp = session.query(Lib_KPI).filter(Lib_KPI.code.in_(picked_kpi)).all()
+        resp = session.query(Lib_KPI).filter(and_(Lib_KPI.code.in_(picked_kpi),
+                                                  Lib_KPI.code.notin_(custom_kpi.keys()))).all()
     except Exception as e:
         raise e
     else:
@@ -1293,6 +1295,11 @@ def save_kpi_to_map(picked_kpi):
     """
 
     session = Session()
+
+    print "save_kpi_to_map()"
+    print current_strategic_map
+    print picked_kpi
+
     for g in picked_kpi:
         try:
             query = session.query(StrategicMap).filter(and_(StrategicMap.map_code == current_strategic_map,

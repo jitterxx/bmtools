@@ -22,7 +22,7 @@
             <h3>${step_desc['subheader']}</h3>
 
 
-            <form method="post" action="/wizard/step3stage1save" id="picked_goals">
+            <form method="post" action="/wizardfordepartment/step3stage1save" id="picked_goals">
                    <table class="table">
                        <tbody>
                        % for one in lib_missing_goals.keys():
@@ -30,7 +30,7 @@
                                     <td>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" value="${one}" name="picked_goals">
+                                                <input type="checkbox" value="${one}" name="picked_lib_goals">
                                             </label>
                                         </div>
                                     </td>
@@ -57,7 +57,7 @@
                                     <td>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" value="${one}" name="picked_goals">
+                                                <input type="checkbox" value="${one}" name="picked_custom_goals">
                                             </label>
                                         </div>
                                     </td>
@@ -80,7 +80,7 @@
                 <button type="submit" class="btn btn-default">Сохранить</button>
             </form>
             <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Следующий шаг</a>
+            <a class="btn btn-default" href="/wizardfordepartment/${step_desc['next_step']}" role="button">Следующий шаг</a>
         </div>
     </div>
 

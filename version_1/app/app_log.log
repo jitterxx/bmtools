@@ -30725,3 +30725,1367 @@ INFO     [2015-11-25 21:18:32,040] 127.0.0.1 - - [25/Nov/2015:21:18:32] "GET /au
 INFO     [2015-11-25 21:18:32,075] 127.0.0.1 - - [25/Nov/2015:21:18:32] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
 INFO     [2015-11-25 21:18:32,098] 127.0.0.1 - - [25/Nov/2015:21:18:32] "GET /static/css/signin.css HTTP/1.1" 200 792 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
 INFO     [2015-11-25 21:18:32,122] 127.0.0.1 - - [25/Nov/2015:21:18:32] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 01:22:06,092] [26/Nov/2015:01:22:06] ENGINE Keyboard Interrupt: shutting down bus
+INFO     [2015-11-26 01:22:06,092] [26/Nov/2015:01:22:06] ENGINE Bus STOPPING
+INFO     [2015-11-26 01:22:06,095] [26/Nov/2015:01:22:06] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 01:22:06,095] [26/Nov/2015:01:22:06] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 01:22:06,096] [26/Nov/2015:01:22:06] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 01:22:06,096] [26/Nov/2015:01:22:06] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 01:22:06,096] [26/Nov/2015:01:22:06] ENGINE Bus STOPPED
+INFO     [2015-11-26 01:22:06,096] [26/Nov/2015:01:22:06] ENGINE Bus EXITING
+INFO     [2015-11-26 01:22:06,096] [26/Nov/2015:01:22:06] ENGINE Bus EXITED
+INFO     [2015-11-26 01:22:06,097] [26/Nov/2015:01:22:06] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:18:27,603] [26/Nov/2015:17:18:27] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:18:27,623] [26/Nov/2015:17:18:27] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:18:27,624] [26/Nov/2015:17:18:27] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:18:27,624] [26/Nov/2015:17:18:27] ENGINE Bus STARTING
+INFO     [2015-11-26 17:18:27,625] [26/Nov/2015:17:18:27] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:18:27,625] [26/Nov/2015:17:18:27] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:18:27,729] [26/Nov/2015:17:18:27] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:18:27,729] [26/Nov/2015:17:18:27] ENGINE Bus STARTED
+INFO     [2015-11-26 17:18:35,391] [26/Nov/2015:17:18:35] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 17:18:35,392] 127.0.0.1 - - [26/Nov/2015:17:18:35] "GET / HTTP/1.1" 303 106 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:18:35,436] 127.0.0.1 - - [26/Nov/2015:17:18:35] "GET /auth/login?from_page=/ HTTP/1.1" 200 1192 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:18:39,548] Пользователь с логином test найден
+INFO     [2015-11-26 17:18:39,549] 127.0.0.1 - test [26/Nov/2015:17:18:39] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:18:39,584] Пользователь с логином test найден
+INFO     [2015-11-26 17:18:39,679] 127.0.0.1 - test [26/Nov/2015:17:18:39] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:18:40,833] Пользователь с логином test найден
+WARNING  [2015-11-26 17:18:40,854] Конфигурация найдена.
+INFO     [2015-11-26 17:18:40,855] 127.0.0.1 - test [26/Nov/2015:17:18:40] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:18:41,868] Пользователь с логином test найден
+WARNING  [2015-11-26 17:18:41,896] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 17:18:41,899] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 17:18:41,901] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 17:18:41,923] 127.0.0.1 - test [26/Nov/2015:17:18:41] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:18:43,712] Пользователь с логином test найден
+INFO     [2015-11-26 17:18:43,714] 127.0.0.1 - test [26/Nov/2015:17:18:43] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:18:43,788] Пользователь с логином test найден
+WARNING  [2015-11-26 17:18:43,802] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 17:18:43,823] 127.0.0.1 - test [26/Nov/2015:17:18:43] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1918 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:19:00,794] Пользователь с логином test найден
+WARNING  [2015-11-26 17:19:00,804] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 17:19:00,805] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 17:19:00,848] 127.0.0.1 - test [26/Nov/2015:17:19:00] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:19:31,275] Пользователь с логином test найден
+INFO     [2015-11-26 17:19:31,310] 127.0.0.1 - test [26/Nov/2015:17:19:31] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2519 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:19:41,096] Пользователь с логином test найден
+WARNING  [2015-11-26 17:19:41,125] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:19:41,151] 127.0.0.1 - test [26/Nov/2015:17:19:41] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2331 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:19:48,207] 127.0.0.1 - - [26/Nov/2015:17:19:48] "GET /wizardfordepartment/stepstep3stage2 HTTP/1.1" 404 645 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:21:54,045] Пользователь с логином test найден
+WARNING  [2015-11-26 17:21:54,048] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:21:54,072] 127.0.0.1 - test [26/Nov/2015:17:21:54] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2331 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:22:06,121] 127.0.0.1 - - [26/Nov/2015:17:22:06] "GET /wizardfordepartment/stepstep3stage2 HTTP/1.1" 404 645 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:22:46,412] Пользователь с логином test найден
+INFO     [2015-11-26 17:22:46,432] 127.0.0.1 - test [26/Nov/2015:17:22:46] "POST /wizard/step3stage1save HTTP/1.1" 303 105 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:22:46,459] Пользователь с логином test найден
+WARNING  [2015-11-26 17:22:46,486] Описание с кодом step3_stage1_description найдено
+WARNING  [2015-11-26 17:22:46,487] Описание с кодом step3_name найдено
+INFO     [2015-11-26 17:22:46,508] 127.0.0.1 - test [26/Nov/2015:17:22:46] "GET /wizard/step3stage1 HTTP/1.1" 200 2392 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:22:56,221] Пользователь с логином test найден
+WARNING  [2015-11-26 17:22:56,223] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:22:56,247] 127.0.0.1 - test [26/Nov/2015:17:22:56] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2331 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:22:56,280] 127.0.0.1 - - [26/Nov/2015:17:22:56] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:22:56,280] 127.0.0.1 - - [26/Nov/2015:17:22:56] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:22:56,303] 127.0.0.1 - - [26/Nov/2015:17:22:56] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:22:59,722] Пользователь с логином test найден
+WARNING  [2015-11-26 17:22:59,724] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:22:59,748] 127.0.0.1 - test [26/Nov/2015:17:22:59] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2331 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:22:59,777] 127.0.0.1 - - [26/Nov/2015:17:22:59] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:22:59,787] 127.0.0.1 - - [26/Nov/2015:17:22:59] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:22:59,788] 127.0.0.1 - - [26/Nov/2015:17:22:59] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:23:26,249] [26/Nov/2015:17:23:26] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:23:26,250] [26/Nov/2015:17:23:26] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:23:26,250] [26/Nov/2015:17:23:26] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:23:26,255] [26/Nov/2015:17:23:26] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:23:26,255] [26/Nov/2015:17:23:26] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 17:23:26,256] [26/Nov/2015:17:23:26] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:23:26,256] [26/Nov/2015:17:23:26] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:23:26,256] [26/Nov/2015:17:23:26] ENGINE Bus EXITING
+INFO     [2015-11-26 17:23:26,256] [26/Nov/2015:17:23:26] ENGINE Bus EXITED
+INFO     [2015-11-26 17:23:26,298] [26/Nov/2015:17:23:26] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:23:26,298] [26/Nov/2015:17:23:26] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:23:26,703] [26/Nov/2015:17:23:26] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:23:26,703] [26/Nov/2015:17:23:26] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:23:26,703] [26/Nov/2015:17:23:26] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:23:26,703] [26/Nov/2015:17:23:26] ENGINE Bus STARTING
+INFO     [2015-11-26 17:23:26,704] [26/Nov/2015:17:23:26] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:23:26,704] [26/Nov/2015:17:23:26] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:23:26,908] [26/Nov/2015:17:23:26] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:23:26,908] [26/Nov/2015:17:23:26] ENGINE Bus STARTED
+INFO     [2015-11-26 17:33:12,997] [26/Nov/2015:17:33:12] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:33:12,998] [26/Nov/2015:17:33:12] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:33:12,998] [26/Nov/2015:17:33:12] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:33:13,001] [26/Nov/2015:17:33:13] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:33:13,001] [26/Nov/2015:17:33:13] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:33:13,001] [26/Nov/2015:17:33:13] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:33:13,002] [26/Nov/2015:17:33:13] ENGINE Bus EXITING
+INFO     [2015-11-26 17:33:13,002] [26/Nov/2015:17:33:13] ENGINE Bus EXITED
+INFO     [2015-11-26 17:33:13,024] [26/Nov/2015:17:33:13] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:33:13,024] [26/Nov/2015:17:33:13] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:33:13,494] [26/Nov/2015:17:33:13] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:33:13,494] [26/Nov/2015:17:33:13] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:33:13,495] [26/Nov/2015:17:33:13] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:33:13,495] [26/Nov/2015:17:33:13] ENGINE Bus STARTING
+INFO     [2015-11-26 17:33:13,497] [26/Nov/2015:17:33:13] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:33:13,498] [26/Nov/2015:17:33:13] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:33:13,702] [26/Nov/2015:17:33:13] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:33:13,702] [26/Nov/2015:17:33:13] ENGINE Bus STARTED
+INFO     [2015-11-26 17:33:48,822] [26/Nov/2015:17:33:48] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:33:48,823] [26/Nov/2015:17:33:48] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:33:48,823] [26/Nov/2015:17:33:48] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:33:48,825] [26/Nov/2015:17:33:48] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:33:48,825] [26/Nov/2015:17:33:48] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:33:48,825] [26/Nov/2015:17:33:48] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:33:48,825] [26/Nov/2015:17:33:48] ENGINE Bus EXITING
+INFO     [2015-11-26 17:33:48,826] [26/Nov/2015:17:33:48] ENGINE Bus EXITED
+INFO     [2015-11-26 17:33:48,879] [26/Nov/2015:17:33:48] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:33:48,879] [26/Nov/2015:17:33:48] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:33:49,307] [26/Nov/2015:17:33:49] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:33:49,307] [26/Nov/2015:17:33:49] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:33:49,307] [26/Nov/2015:17:33:49] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:33:49,308] [26/Nov/2015:17:33:49] ENGINE Bus STARTING
+INFO     [2015-11-26 17:33:49,308] [26/Nov/2015:17:33:49] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:33:49,309] [26/Nov/2015:17:33:49] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:33:49,513] [26/Nov/2015:17:33:49] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:33:49,513] [26/Nov/2015:17:33:49] ENGINE Bus STARTED
+INFO     [2015-11-26 17:34:31,717] [26/Nov/2015:17:34:31] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:34:31,718] [26/Nov/2015:17:34:31] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:34:31,718] [26/Nov/2015:17:34:31] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:34:31,719] [26/Nov/2015:17:34:31] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:34:31,720] [26/Nov/2015:17:34:31] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:34:31,720] [26/Nov/2015:17:34:31] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:34:31,720] [26/Nov/2015:17:34:31] ENGINE Bus EXITING
+INFO     [2015-11-26 17:34:31,720] [26/Nov/2015:17:34:31] ENGINE Bus EXITED
+INFO     [2015-11-26 17:34:31,792] [26/Nov/2015:17:34:31] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:34:31,792] [26/Nov/2015:17:34:31] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:34:32,173] [26/Nov/2015:17:34:32] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:34:32,174] [26/Nov/2015:17:34:32] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:34:32,174] [26/Nov/2015:17:34:32] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:34:32,174] [26/Nov/2015:17:34:32] ENGINE Bus STARTING
+INFO     [2015-11-26 17:34:32,175] [26/Nov/2015:17:34:32] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:34:32,175] [26/Nov/2015:17:34:32] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:34:32,279] [26/Nov/2015:17:34:32] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:34:32,280] [26/Nov/2015:17:34:32] ENGINE Bus STARTED
+INFO     [2015-11-26 17:34:52,373] [26/Nov/2015:17:34:52] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:34:52,373] [26/Nov/2015:17:34:52] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:34:52,373] [26/Nov/2015:17:34:52] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:34:52,377] [26/Nov/2015:17:34:52] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:34:52,378] [26/Nov/2015:17:34:52] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:34:52,378] [26/Nov/2015:17:34:52] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:34:52,379] [26/Nov/2015:17:34:52] ENGINE Bus EXITING
+INFO     [2015-11-26 17:34:52,379] [26/Nov/2015:17:34:52] ENGINE Bus EXITED
+INFO     [2015-11-26 17:34:52,425] [26/Nov/2015:17:34:52] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:34:52,426] [26/Nov/2015:17:34:52] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:34:52,836] [26/Nov/2015:17:34:52] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:34:52,836] [26/Nov/2015:17:34:52] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:34:52,836] [26/Nov/2015:17:34:52] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:34:52,837] [26/Nov/2015:17:34:52] ENGINE Bus STARTING
+INFO     [2015-11-26 17:34:52,837] [26/Nov/2015:17:34:52] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:34:52,838] [26/Nov/2015:17:34:52] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:34:53,042] [26/Nov/2015:17:34:53] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:34:53,042] [26/Nov/2015:17:34:53] ENGINE Bus STARTED
+INFO     [2015-11-26 17:35:06,301] [26/Nov/2015:17:35:06] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 17:35:06,302] 127.0.0.1 - - [26/Nov/2015:17:35:06] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 131 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:35:06,364] 127.0.0.1 - - [26/Nov/2015:17:35:06] "GET /auth/login?from_page=/wizardfordepartment/step3stage1 HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:35:06,431] 127.0.0.1 - - [26/Nov/2015:17:35:06] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:35:06,432] 127.0.0.1 - - [26/Nov/2015:17:35:06] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:35:06,434] 127.0.0.1 - - [26/Nov/2015:17:35:06] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:09,262] Пользователь с логином test найден
+INFO     [2015-11-26 17:35:09,264] 127.0.0.1 - test [26/Nov/2015:17:35:09] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:09,404] Пользователь с логином test найден
+INFO     [2015-11-26 17:35:09,423] 127.0.0.1 - test [26/Nov/2015:17:35:09] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:10,484] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:10,493] Конфигурация найдена.
+INFO     [2015-11-26 17:35:10,495] 127.0.0.1 - test [26/Nov/2015:17:35:10] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:11,810] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:11,822] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 17:35:11,827] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 17:35:11,829] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 17:35:11,850] 127.0.0.1 - test [26/Nov/2015:17:35:11] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:13,630] Пользователь с логином test найден
+INFO     [2015-11-26 17:35:13,633] 127.0.0.1 - test [26/Nov/2015:17:35:13] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:13,655] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:13,668] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 17:35:13,687] 127.0.0.1 - test [26/Nov/2015:17:35:13] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1918 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:15,882] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:15,892] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 17:35:15,894] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 17:35:15,926] 127.0.0.1 - test [26/Nov/2015:17:35:15] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:17,771] Пользователь с логином test найден
+INFO     [2015-11-26 17:35:17,818] 127.0.0.1 - test [26/Nov/2015:17:35:17] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2519 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:21,628] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:21,642] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:21,670] 127.0.0.1 - test [26/Nov/2015:17:35:21] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2338 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:38,197] Пользователь с логином test найден
+INFO     [2015-11-26 17:35:38,238] 127.0.0.1 - test [26/Nov/2015:17:35:38] "POST /wizardfordepartment/step3stage1save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:38,271] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:38,272] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:38,302] 127.0.0.1 - test [26/Nov/2015:17:35:38] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2186 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:44,561] Пользователь с логином test найден
+INFO     [2015-11-26 17:35:44,622] 127.0.0.1 - test [26/Nov/2015:17:35:44] "POST /wizardfordepartment/step3stage1save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:44,641] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:44,643] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:44,673] 127.0.0.1 - test [26/Nov/2015:17:35:44] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:44,693] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:44,695] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:44,727] 127.0.0.1 - test [26/Nov/2015:17:35:44] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:44,749] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:44,751] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:44,780] 127.0.0.1 - test [26/Nov/2015:17:35:44] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:44,839] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:44,840] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:44,877] 127.0.0.1 - test [26/Nov/2015:17:35:44] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:44,895] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:44,896] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:44,930] 127.0.0.1 - test [26/Nov/2015:17:35:44] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:44,956] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:44,958] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:44,988] 127.0.0.1 - test [26/Nov/2015:17:35:44] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,007] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,008] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,038] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,086] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,088] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,126] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,149] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,151] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,184] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,206] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,207] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,242] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,272] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,274] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,304] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,325] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,326] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,358] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,362] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,364] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,401] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,414] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,416] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,443] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,468] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,469] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,499] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,525] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,527] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,560] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,586] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,587] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,617] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,639] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,641] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,668] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,695] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,696] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,727] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:35:45,756] Пользователь с логином test найден
+WARNING  [2015-11-26 17:35:45,758] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:35:45,788] 127.0.0.1 - test [26/Nov/2015:17:35:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:09,947] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:09,949] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:09,981] 127.0.0.1 - test [26/Nov/2015:17:36:09] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:09,990] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:09,992] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,025] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,032] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,034] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,071] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,080] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,081] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,116] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,125] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,127] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,159] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,166] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,168] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,203] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,214] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,215] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,244] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,254] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,256] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,287] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,297] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,298] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,331] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,339] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,342] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,373] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,383] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,385] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,417] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,518] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,520] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,562] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,620] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,622] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,654] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,662] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,664] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,695] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,752] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,754] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,789] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,798] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,801] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,832] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,841] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,843] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,876] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,887] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,889] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,921] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,931] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,933] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,963] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:10,970] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:10,972] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:10,999] 127.0.0.1 - test [26/Nov/2015:17:36:10] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:11,006] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:11,008] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:11,037] 127.0.0.1 - test [26/Nov/2015:17:36:11] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:21,721] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:21,723] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:21,749] 127.0.0.1 - test [26/Nov/2015:17:36:21] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:21,783] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:21,784] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:21,815] 127.0.0.1 - test [26/Nov/2015:17:36:21] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:21,825] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:21,827] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:21,859] 127.0.0.1 - test [26/Nov/2015:17:36:21] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:21,869] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:21,873] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:21,901] 127.0.0.1 - test [26/Nov/2015:17:36:21] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:21,911] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:21,913] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:21,942] 127.0.0.1 - test [26/Nov/2015:17:36:21] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,025] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,027] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,060] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,072] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,074] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,105] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,149] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,151] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,211] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,249] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,251] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,287] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,297] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,299] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,333] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,348] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,350] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,385] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,465] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,467] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,502] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,614] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,615] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,647] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,659] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,669] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,700] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,709] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,710] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,741] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,751] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,752] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,777] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,788] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,789] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,818] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,829] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,831] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,863] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,875] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,877] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,904] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,915] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,918] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,952] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:22,963] Пользователь с логином test найден
+WARNING  [2015-11-26 17:36:22,965] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:36:22,997] 127.0.0.1 - test [26/Nov/2015:17:36:22] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:36:47,928] [26/Nov/2015:17:36:47] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:36:47,928] [26/Nov/2015:17:36:47] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:36:47,929] [26/Nov/2015:17:36:47] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:36:47,933] [26/Nov/2015:17:36:47] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:36:47,933] [26/Nov/2015:17:36:47] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 17:36:47,933] [26/Nov/2015:17:36:47] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:36:47,933] [26/Nov/2015:17:36:47] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:36:47,934] [26/Nov/2015:17:36:47] ENGINE Bus EXITING
+INFO     [2015-11-26 17:36:47,934] [26/Nov/2015:17:36:47] ENGINE Bus EXITED
+INFO     [2015-11-26 17:36:47,982] [26/Nov/2015:17:36:47] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:36:47,982] [26/Nov/2015:17:36:47] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:36:48,400] [26/Nov/2015:17:36:48] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:36:48,400] [26/Nov/2015:17:36:48] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:36:48,400] [26/Nov/2015:17:36:48] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:36:48,400] [26/Nov/2015:17:36:48] ENGINE Bus STARTING
+INFO     [2015-11-26 17:36:48,401] [26/Nov/2015:17:36:48] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:36:48,401] [26/Nov/2015:17:36:48] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:36:48,505] [26/Nov/2015:17:36:48] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:36:48,506] [26/Nov/2015:17:36:48] ENGINE Bus STARTED
+INFO     [2015-11-26 17:36:52,457] [26/Nov/2015:17:36:52] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:36:52,457] [26/Nov/2015:17:36:52] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:36:52,457] [26/Nov/2015:17:36:52] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:36:52,459] [26/Nov/2015:17:36:52] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:36:52,459] [26/Nov/2015:17:36:52] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:36:52,459] [26/Nov/2015:17:36:52] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:36:52,459] [26/Nov/2015:17:36:52] ENGINE Bus EXITING
+INFO     [2015-11-26 17:36:52,460] [26/Nov/2015:17:36:52] ENGINE Bus EXITED
+INFO     [2015-11-26 17:36:52,513] [26/Nov/2015:17:36:52] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:36:52,513] [26/Nov/2015:17:36:52] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:36:52,938] [26/Nov/2015:17:36:52] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:36:52,938] [26/Nov/2015:17:36:52] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:36:52,939] [26/Nov/2015:17:36:52] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:36:52,939] [26/Nov/2015:17:36:52] ENGINE Bus STARTING
+INFO     [2015-11-26 17:36:52,939] [26/Nov/2015:17:36:52] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:36:52,940] [26/Nov/2015:17:36:52] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:36:53,143] [26/Nov/2015:17:36:53] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:36:53,144] [26/Nov/2015:17:36:53] ENGINE Bus STARTED
+INFO     [2015-11-26 17:36:56,183] [26/Nov/2015:17:36:56] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 17:36:56,184] 127.0.0.1 - - [26/Nov/2015:17:36:56] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 303 131 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:36:56,212] 127.0.0.1 - - [26/Nov/2015:17:36:56] "GET /auth/login?from_page=/wizardfordepartment/step3stage1 HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:36:56,247] 127.0.0.1 - - [26/Nov/2015:17:36:56] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:36:56,262] 127.0.0.1 - - [26/Nov/2015:17:36:56] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:36:56,271] 127.0.0.1 - - [26/Nov/2015:17:36:56] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:59,030] Пользователь с логином test найден
+INFO     [2015-11-26 17:36:59,031] 127.0.0.1 - test [26/Nov/2015:17:36:59] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:36:59,083] Пользователь с логином test найден
+INFO     [2015-11-26 17:36:59,104] 127.0.0.1 - test [26/Nov/2015:17:36:59] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:00,446] Пользователь с логином test найден
+WARNING  [2015-11-26 17:37:00,453] Конфигурация найдена.
+INFO     [2015-11-26 17:37:00,455] 127.0.0.1 - test [26/Nov/2015:17:37:00] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:01,744] Пользователь с логином test найден
+WARNING  [2015-11-26 17:37:01,758] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 17:37:01,761] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 17:37:01,762] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 17:37:01,783] 127.0.0.1 - test [26/Nov/2015:17:37:01] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:03,092] Пользователь с логином test найден
+INFO     [2015-11-26 17:37:03,094] 127.0.0.1 - test [26/Nov/2015:17:37:03] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:03,107] Пользователь с логином test найден
+WARNING  [2015-11-26 17:37:03,121] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 17:37:03,148] 127.0.0.1 - test [26/Nov/2015:17:37:03] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1976 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:06,592] Пользователь с логином test найден
+INFO     [2015-11-26 17:37:06,677] 127.0.0.1 - test [26/Nov/2015:17:37:06] "GET /wizardfordepartment/step1remove?code=hg66gf HTTP/1.1" 303 108 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:06,691] Пользователь с логином test найден
+WARNING  [2015-11-26 17:37:06,692] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 17:37:06,726] 127.0.0.1 - test [26/Nov/2015:17:37:06] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1929 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:59,653] Пользователь с логином test найден
+INFO     [2015-11-26 17:37:59,697] 127.0.0.1 - test [26/Nov/2015:17:37:59] "GET /wizardfordepartment/step1remove?code=g2 HTTP/1.1" 303 108 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:37:59,857] Пользователь с логином test найден
+WARNING  [2015-11-26 17:37:59,859] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 17:37:59,877] 127.0.0.1 - test [26/Nov/2015:17:37:59] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:38:02,117] Пользователь с логином test найден
+WARNING  [2015-11-26 17:38:02,128] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 17:38:02,130] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 17:38:02,162] 127.0.0.1 - test [26/Nov/2015:17:38:02] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2348 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:38:14,254] Пользователь с логином test найден
+INFO     [2015-11-26 17:38:14,289] 127.0.0.1 - test [26/Nov/2015:17:38:14] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:38:25,642] Пользователь с логином test найден
+INFO     [2015-11-26 17:38:25,666] 127.0.0.1 - test [26/Nov/2015:17:38:25] "POST /wizardfordepartment/step3save HTTP/1.1" 303 109 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:38:25,684] Пользователь с логином test найден
+INFO     [2015-11-26 17:38:25,712] 127.0.0.1 - test [26/Nov/2015:17:38:25] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:38:27,922] Пользователь с логином test найден
+WARNING  [2015-11-26 17:38:27,933] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:38:27,954] 127.0.0.1 - test [26/Nov/2015:17:38:27] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:38:59,086] Пользователь с логином test найден
+WARNING  [2015-11-26 17:38:59,088] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:38:59,124] 127.0.0.1 - test [26/Nov/2015:17:38:59] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:38:59,156] 127.0.0.1 - - [26/Nov/2015:17:38:59] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:38:59,157] 127.0.0.1 - - [26/Nov/2015:17:38:59] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:38:59,179] 127.0.0.1 - - [26/Nov/2015:17:38:59] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:39:00,194] Пользователь с логином test найден
+WARNING  [2015-11-26 17:39:00,196] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 17:39:00,219] 127.0.0.1 - test [26/Nov/2015:17:39:00] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:39:00,284] 127.0.0.1 - - [26/Nov/2015:17:39:00] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:39:00,287] 127.0.0.1 - - [26/Nov/2015:17:39:00] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:39:00,290] 127.0.0.1 - - [26/Nov/2015:17:39:00] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 17:44:48,294] Пользователь с логином test найден
+WARNING  [2015-11-26 17:44:48,317] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 17:44:48,320] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 17:44:48,322] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 17:44:48,338] 127.0.0.1 - test [26/Nov/2015:17:44:48] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2668 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 17:54:01,165] [26/Nov/2015:17:54:01] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:54:01,165] [26/Nov/2015:17:54:01] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:54:01,165] [26/Nov/2015:17:54:01] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:54:01,168] [26/Nov/2015:17:54:01] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:54:01,169] [26/Nov/2015:17:54:01] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:54:01,169] [26/Nov/2015:17:54:01] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 17:54:01,169] [26/Nov/2015:17:54:01] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:54:01,169] [26/Nov/2015:17:54:01] ENGINE Bus EXITING
+INFO     [2015-11-26 17:54:01,169] [26/Nov/2015:17:54:01] ENGINE Bus EXITED
+INFO     [2015-11-26 17:54:01,198] [26/Nov/2015:17:54:01] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:54:01,198] [26/Nov/2015:17:54:01] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:54:01,651] [26/Nov/2015:17:54:01] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:54:01,651] [26/Nov/2015:17:54:01] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:54:01,651] [26/Nov/2015:17:54:01] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:54:01,652] [26/Nov/2015:17:54:01] ENGINE Bus STARTING
+INFO     [2015-11-26 17:54:01,652] [26/Nov/2015:17:54:01] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:54:01,653] [26/Nov/2015:17:54:01] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:54:01,857] [26/Nov/2015:17:54:01] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:54:01,857] [26/Nov/2015:17:54:01] ENGINE Bus STARTED
+INFO     [2015-11-26 17:58:20,961] [26/Nov/2015:17:58:20] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:58:20,961] [26/Nov/2015:17:58:20] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:58:20,962] [26/Nov/2015:17:58:20] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:58:20,965] [26/Nov/2015:17:58:20] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:58:20,965] [26/Nov/2015:17:58:20] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:58:20,965] [26/Nov/2015:17:58:20] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:58:20,965] [26/Nov/2015:17:58:20] ENGINE Bus EXITING
+INFO     [2015-11-26 17:58:20,965] [26/Nov/2015:17:58:20] ENGINE Bus EXITED
+INFO     [2015-11-26 17:58:21,051] [26/Nov/2015:17:58:21] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:58:21,051] [26/Nov/2015:17:58:21] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:58:21,522] [26/Nov/2015:17:58:21] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:58:21,522] [26/Nov/2015:17:58:21] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:58:21,522] [26/Nov/2015:17:58:21] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:58:21,522] [26/Nov/2015:17:58:21] ENGINE Bus STARTING
+INFO     [2015-11-26 17:58:21,526] [26/Nov/2015:17:58:21] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:58:21,526] [26/Nov/2015:17:58:21] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:58:21,730] [26/Nov/2015:17:58:21] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:58:21,730] [26/Nov/2015:17:58:21] ENGINE Bus STARTED
+INFO     [2015-11-26 17:58:38,683] [26/Nov/2015:17:58:38] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:58:38,684] [26/Nov/2015:17:58:38] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:58:38,684] [26/Nov/2015:17:58:38] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:58:38,686] [26/Nov/2015:17:58:38] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:58:38,686] [26/Nov/2015:17:58:38] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:58:38,686] [26/Nov/2015:17:58:38] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:58:38,687] [26/Nov/2015:17:58:38] ENGINE Bus EXITING
+INFO     [2015-11-26 17:58:38,687] [26/Nov/2015:17:58:38] ENGINE Bus EXITED
+INFO     [2015-11-26 17:58:38,762] [26/Nov/2015:17:58:38] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:58:38,763] [26/Nov/2015:17:58:38] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:58:39,174] [26/Nov/2015:17:58:39] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:58:39,174] [26/Nov/2015:17:58:39] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:58:39,174] [26/Nov/2015:17:58:39] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:58:39,174] [26/Nov/2015:17:58:39] ENGINE Bus STARTING
+INFO     [2015-11-26 17:58:39,175] [26/Nov/2015:17:58:39] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:58:39,176] [26/Nov/2015:17:58:39] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:58:39,380] [26/Nov/2015:17:58:39] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:58:39,380] [26/Nov/2015:17:58:39] ENGINE Bus STARTED
+INFO     [2015-11-26 17:58:52,320] [26/Nov/2015:17:58:52] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 17:58:52,321] [26/Nov/2015:17:58:52] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 17:58:52,321] [26/Nov/2015:17:58:52] ENGINE Bus STOPPING
+INFO     [2015-11-26 17:58:52,322] [26/Nov/2015:17:58:52] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 17:58:52,323] [26/Nov/2015:17:58:52] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:58:52,323] [26/Nov/2015:17:58:52] ENGINE Bus STOPPED
+INFO     [2015-11-26 17:58:52,323] [26/Nov/2015:17:58:52] ENGINE Bus EXITING
+INFO     [2015-11-26 17:58:52,323] [26/Nov/2015:17:58:52] ENGINE Bus EXITED
+INFO     [2015-11-26 17:58:52,410] [26/Nov/2015:17:58:52] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 17:58:52,410] [26/Nov/2015:17:58:52] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 17:58:52,836] [26/Nov/2015:17:58:52] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 17:58:52,836] [26/Nov/2015:17:58:52] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 17:58:52,837] [26/Nov/2015:17:58:52] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 17:58:52,837] [26/Nov/2015:17:58:52] ENGINE Bus STARTING
+INFO     [2015-11-26 17:58:52,838] [26/Nov/2015:17:58:52] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 17:58:52,838] [26/Nov/2015:17:58:52] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 17:58:53,042] [26/Nov/2015:17:58:53] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 17:58:53,043] [26/Nov/2015:17:58:53] ENGINE Bus STARTED
+INFO     [2015-11-26 18:00:12,657] [26/Nov/2015:18:00:12] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 18:00:12,657] 127.0.0.1 - - [26/Nov/2015:18:00:12] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 303 131 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:00:12,694] 127.0.0.1 - - [26/Nov/2015:18:00:12] "GET /auth/login?from_page=/wizardfordepartment/step3stage2 HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:00:12,724] 127.0.0.1 - - [26/Nov/2015:18:00:12] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:00:12,732] 127.0.0.1 - - [26/Nov/2015:18:00:12] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:00:12,733] 127.0.0.1 - - [26/Nov/2015:18:00:12] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:00:15,216] Пользователь с логином test найден
+INFO     [2015-11-26 18:00:15,217] 127.0.0.1 - test [26/Nov/2015:18:00:15] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:00:15,246] Пользователь с логином test найден
+INFO     [2015-11-26 18:00:15,266] 127.0.0.1 - test [26/Nov/2015:18:00:15] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:00:16,374] Пользователь с логином test найден
+WARNING  [2015-11-26 18:00:16,381] Конфигурация найдена.
+INFO     [2015-11-26 18:00:16,383] 127.0.0.1 - test [26/Nov/2015:18:00:16] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:00:17,291] Пользователь с логином test найден
+WARNING  [2015-11-26 18:00:17,303] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:00:17,306] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:00:17,307] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:00:17,329] 127.0.0.1 - test [26/Nov/2015:18:00:17] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:00:18,864] Пользователь с логином test найден
+INFO     [2015-11-26 18:00:18,866] 127.0.0.1 - test [26/Nov/2015:18:00:18] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:00:18,893] Пользователь с логином test найден
+WARNING  [2015-11-26 18:00:18,905] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:00:18,926] 127.0.0.1 - test [26/Nov/2015:18:00:18] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:00:25,256] 127.0.0.1 - - [26/Nov/2015:18:00:25] "GET /wizardfordepartment/step1stage3 HTTP/1.1" 404 642 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:00:30,324] 127.0.0.1 - - [26/Nov/2015:18:00:30] "GET /wizardfordepartment/step3stage3 HTTP/1.1" 404 642 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:00:32,954] Пользователь с логином test найден
+WARNING  [2015-11-26 18:00:32,971] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:00:32,972] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:00:32,973] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:00:32,999] 127.0.0.1 - test [26/Nov/2015:18:00:32] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2688 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:02:43,394] Пользователь с логином test найден
+WARNING  [2015-11-26 18:02:43,395] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:02:43,397] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:02:43,399] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:02:43,420] 127.0.0.1 - test [26/Nov/2015:18:02:43] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2688 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:02:43,446] 127.0.0.1 - - [26/Nov/2015:18:02:43] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:02:43,455] 127.0.0.1 - - [26/Nov/2015:18:02:43] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:02:43,461] 127.0.0.1 - - [26/Nov/2015:18:02:43] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:02:45,834] Пользователь с логином test найден
+WARNING  [2015-11-26 18:02:45,836] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:02:45,837] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:02:45,840] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:02:45,861] 127.0.0.1 - test [26/Nov/2015:18:02:45] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2688 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:02:45,881] 127.0.0.1 - - [26/Nov/2015:18:02:45] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:02:45,883] 127.0.0.1 - - [26/Nov/2015:18:02:45] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:02:45,886] 127.0.0.1 - - [26/Nov/2015:18:02:45] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:05:12,202] [26/Nov/2015:18:05:12] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:05:12,202] [26/Nov/2015:18:05:12] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:05:12,202] [26/Nov/2015:18:05:12] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:05:12,204] [26/Nov/2015:18:05:12] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:05:12,204] [26/Nov/2015:18:05:12] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:05:12,205] [26/Nov/2015:18:05:12] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 18:05:12,205] [26/Nov/2015:18:05:12] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:05:12,205] [26/Nov/2015:18:05:12] ENGINE Bus EXITING
+INFO     [2015-11-26 18:05:12,205] [26/Nov/2015:18:05:12] ENGINE Bus EXITED
+INFO     [2015-11-26 18:05:12,278] [26/Nov/2015:18:05:12] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:05:12,279] [26/Nov/2015:18:05:12] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:05:12,695] [26/Nov/2015:18:05:12] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:05:12,696] [26/Nov/2015:18:05:12] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:05:12,696] [26/Nov/2015:18:05:12] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:05:12,696] [26/Nov/2015:18:05:12] ENGINE Bus STARTING
+INFO     [2015-11-26 18:05:12,697] [26/Nov/2015:18:05:12] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:05:12,697] [26/Nov/2015:18:05:12] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:05:12,901] [26/Nov/2015:18:05:12] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:05:12,902] [26/Nov/2015:18:05:12] ENGINE Bus STARTED
+INFO     [2015-11-26 18:06:22,294] [26/Nov/2015:18:06:22] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:06:22,295] [26/Nov/2015:18:06:22] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:06:22,295] [26/Nov/2015:18:06:22] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:06:22,299] [26/Nov/2015:18:06:22] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:06:22,299] [26/Nov/2015:18:06:22] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:06:22,299] [26/Nov/2015:18:06:22] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:06:22,299] [26/Nov/2015:18:06:22] ENGINE Bus EXITING
+INFO     [2015-11-26 18:06:22,299] [26/Nov/2015:18:06:22] ENGINE Bus EXITED
+INFO     [2015-11-26 18:06:22,326] [26/Nov/2015:18:06:22] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:06:22,326] [26/Nov/2015:18:06:22] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:06:22,725] [26/Nov/2015:18:06:22] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:06:22,725] [26/Nov/2015:18:06:22] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:06:22,730] [26/Nov/2015:18:06:22] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:06:22,730] [26/Nov/2015:18:06:22] ENGINE Bus STARTING
+INFO     [2015-11-26 18:06:22,731] [26/Nov/2015:18:06:22] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:06:22,731] [26/Nov/2015:18:06:22] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:06:22,935] [26/Nov/2015:18:06:22] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:06:22,935] [26/Nov/2015:18:06:22] ENGINE Bus STARTED
+INFO     [2015-11-26 18:10:39,777] [26/Nov/2015:18:10:39] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 18:10:39,778] 127.0.0.1 - - [26/Nov/2015:18:10:39] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 303 131 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:10:39,841] 127.0.0.1 - - [26/Nov/2015:18:10:39] "GET /auth/login?from_page=/wizardfordepartment/step3stage2 HTTP/1.1" 200 1192 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:10:39,927] 127.0.0.1 - - [26/Nov/2015:18:10:39] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:10:39,928] 127.0.0.1 - - [26/Nov/2015:18:10:39] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:10:39,929] 127.0.0.1 - - [26/Nov/2015:18:10:39] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:42,529] Пользователь с логином test найден
+INFO     [2015-11-26 18:10:42,530] 127.0.0.1 - test [26/Nov/2015:18:10:42] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:42,558] Пользователь с логином test найден
+INFO     [2015-11-26 18:10:42,578] 127.0.0.1 - test [26/Nov/2015:18:10:42] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:43,799] Пользователь с логином test найден
+WARNING  [2015-11-26 18:10:43,806] Конфигурация найдена.
+INFO     [2015-11-26 18:10:43,807] 127.0.0.1 - test [26/Nov/2015:18:10:43] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:44,884] Пользователь с логином test найден
+WARNING  [2015-11-26 18:10:44,896] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:10:44,898] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:10:44,900] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:10:44,926] 127.0.0.1 - test [26/Nov/2015:18:10:44] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:46,432] Пользователь с логином test найден
+INFO     [2015-11-26 18:10:46,434] 127.0.0.1 - test [26/Nov/2015:18:10:46] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:46,464] Пользователь с логином test найден
+WARNING  [2015-11-26 18:10:46,477] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:10:46,496] 127.0.0.1 - test [26/Nov/2015:18:10:46] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:48,846] Пользователь с логином test найден
+WARNING  [2015-11-26 18:10:48,857] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 18:10:48,858] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 18:10:48,902] 127.0.0.1 - test [26/Nov/2015:18:10:48] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2348 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:49,953] Пользователь с логином test найден
+INFO     [2015-11-26 18:10:49,990] 127.0.0.1 - test [26/Nov/2015:18:10:49] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:51,720] Пользователь с логином test найден
+WARNING  [2015-11-26 18:10:51,737] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 18:10:51,763] 127.0.0.1 - test [26/Nov/2015:18:10:51] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:10:54,817] Пользователь с логином test найден
+WARNING  [2015-11-26 18:10:54,832] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:10:54,834] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:10:54,836] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:10:54,861] [26/Nov/2015:18:10:54] HTTP 
+Request Headers:
+  REFERER: http://localhost:8080/wizardfordepartment/step3stage1
+  HOST: localhost:8080
+  CONNECTION: keep-alive
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _octo=GH1.1.334700583.1439303472; m=34e2:|77cb:t|47ba:t|18c3:t|64b8:t; _ga=GA1.1.1361496196.1448317131; ZCallbackWidget=%7B%22sId%22%3A%22%22%2C%22ref%22%3A%22%22%2C%22start%22%3A1448533302498%2C%22show%22%3A1%2C%22rate%22%3A8.5%2C%22pages%22%3A%5B%22http%3A%2F%2Flocalhost%3A8585%2F%22%5D%7D; session_id=9aca00f93f1187d7976c019dced87d3b830c5f0f
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-11-26 18:10:54,861] [26/Nov/2015:18:10:54] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 509, in step3stage2
+    all_custom_goals=all_custom_goals, all_custom_kpi=all_custom_kpi)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "wizardfordepartment_step3stage2_page_html", line 85, in render_body
+TypeError: 'Undefined' object has no attribute '__getitem__'
+INFO     [2015-11-26 18:10:54,904] 127.0.0.1 - test [26/Nov/2015:18:10:54] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 500 2199 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:11:35,314] Пользователь с логином test найден
+WARNING  [2015-11-26 18:11:35,331] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:11:35,333] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:11:35,334] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:11:35,358] 127.0.0.1 - test [26/Nov/2015:18:11:35] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2721 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:11:35,411] 127.0.0.1 - - [26/Nov/2015:18:11:35] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:11:35,440] 127.0.0.1 - - [26/Nov/2015:18:11:35] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:11:35,450] 127.0.0.1 - - [26/Nov/2015:18:11:35] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:16:53,324] Пользователь с логином test найден
+WARNING  [2015-11-26 18:16:53,351] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:16:53,353] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:16:53,355] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:16:53,376] 127.0.0.1 - test [26/Nov/2015:18:16:53] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:16:53,392] 127.0.0.1 - - [26/Nov/2015:18:16:53] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:16:53,396] 127.0.0.1 - - [26/Nov/2015:18:16:53] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:16:53,406] 127.0.0.1 - - [26/Nov/2015:18:16:53] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:19:32,991] [26/Nov/2015:18:19:32] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:19:32,992] [26/Nov/2015:18:19:32] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:19:32,992] [26/Nov/2015:18:19:32] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:19:32,995] [26/Nov/2015:18:19:32] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:19:32,995] [26/Nov/2015:18:19:32] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 18:19:32,995] [26/Nov/2015:18:19:32] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:19:32,995] [26/Nov/2015:18:19:32] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:19:32,995] [26/Nov/2015:18:19:32] ENGINE Bus EXITING
+INFO     [2015-11-26 18:19:32,995] [26/Nov/2015:18:19:32] ENGINE Bus EXITED
+INFO     [2015-11-26 18:19:33,038] [26/Nov/2015:18:19:33] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:19:33,038] [26/Nov/2015:18:19:33] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:19:33,492] [26/Nov/2015:18:19:33] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:19:33,493] [26/Nov/2015:18:19:33] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:19:33,493] [26/Nov/2015:18:19:33] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:19:33,493] [26/Nov/2015:18:19:33] ENGINE Bus STARTING
+INFO     [2015-11-26 18:19:33,494] [26/Nov/2015:18:19:33] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:19:33,494] [26/Nov/2015:18:19:33] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:19:33,698] [26/Nov/2015:18:19:33] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:19:33,698] [26/Nov/2015:18:19:33] ENGINE Bus STARTED
+INFO     [2015-11-26 18:21:12,351] [26/Nov/2015:18:21:12] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:21:12,352] [26/Nov/2015:18:21:12] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:21:12,352] [26/Nov/2015:18:21:12] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:21:12,354] [26/Nov/2015:18:21:12] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:21:12,354] [26/Nov/2015:18:21:12] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:21:12,354] [26/Nov/2015:18:21:12] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:21:12,354] [26/Nov/2015:18:21:12] ENGINE Bus EXITING
+INFO     [2015-11-26 18:21:12,354] [26/Nov/2015:18:21:12] ENGINE Bus EXITED
+INFO     [2015-11-26 18:21:12,385] [26/Nov/2015:18:21:12] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:21:12,385] [26/Nov/2015:18:21:12] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:21:12,792] [26/Nov/2015:18:21:12] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:21:12,793] [26/Nov/2015:18:21:12] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:21:12,793] [26/Nov/2015:18:21:12] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:21:12,793] [26/Nov/2015:18:21:12] ENGINE Bus STARTING
+INFO     [2015-11-26 18:21:12,794] [26/Nov/2015:18:21:12] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:21:12,794] [26/Nov/2015:18:21:12] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:21:12,998] [26/Nov/2015:18:21:12] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:21:12,998] [26/Nov/2015:18:21:12] ENGINE Bus STARTED
+INFO     [2015-11-26 18:21:45,093] [26/Nov/2015:18:21:45] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:21:45,093] [26/Nov/2015:18:21:45] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:21:45,094] [26/Nov/2015:18:21:45] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:21:45,097] [26/Nov/2015:18:21:45] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:21:45,097] [26/Nov/2015:18:21:45] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:21:45,098] [26/Nov/2015:18:21:45] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:21:45,098] [26/Nov/2015:18:21:45] ENGINE Bus EXITING
+INFO     [2015-11-26 18:21:45,098] [26/Nov/2015:18:21:45] ENGINE Bus EXITED
+INFO     [2015-11-26 18:21:45,158] [26/Nov/2015:18:21:45] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:21:45,158] [26/Nov/2015:18:21:45] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:21:45,548] [26/Nov/2015:18:21:45] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:21:45,548] [26/Nov/2015:18:21:45] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:21:45,548] [26/Nov/2015:18:21:45] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:21:45,548] [26/Nov/2015:18:21:45] ENGINE Bus STARTING
+INFO     [2015-11-26 18:21:45,549] [26/Nov/2015:18:21:45] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:21:45,550] [26/Nov/2015:18:21:45] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:21:45,754] [26/Nov/2015:18:21:45] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:21:45,754] [26/Nov/2015:18:21:45] ENGINE Bus STARTED
+INFO     [2015-11-26 18:22:39,027] [26/Nov/2015:18:22:39] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:22:39,027] [26/Nov/2015:18:22:39] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:22:39,027] [26/Nov/2015:18:22:39] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:22:39,030] [26/Nov/2015:18:22:39] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:22:39,031] [26/Nov/2015:18:22:39] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:22:39,031] [26/Nov/2015:18:22:39] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:22:39,031] [26/Nov/2015:18:22:39] ENGINE Bus EXITING
+INFO     [2015-11-26 18:22:39,031] [26/Nov/2015:18:22:39] ENGINE Bus EXITED
+INFO     [2015-11-26 18:22:39,051] [26/Nov/2015:18:22:39] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:22:39,051] [26/Nov/2015:18:22:39] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:22:39,449] [26/Nov/2015:18:22:39] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:22:39,450] [26/Nov/2015:18:22:39] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:22:39,450] [26/Nov/2015:18:22:39] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:22:39,450] [26/Nov/2015:18:22:39] ENGINE Bus STARTING
+INFO     [2015-11-26 18:22:39,451] [26/Nov/2015:18:22:39] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:22:39,451] [26/Nov/2015:18:22:39] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:22:39,575] [26/Nov/2015:18:22:39] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:22:39,575] [26/Nov/2015:18:22:39] ENGINE Bus STARTED
+INFO     [2015-11-26 18:26:01,204] [26/Nov/2015:18:26:01] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:26:01,205] [26/Nov/2015:18:26:01] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:26:01,205] [26/Nov/2015:18:26:01] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:26:01,208] [26/Nov/2015:18:26:01] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:26:01,208] [26/Nov/2015:18:26:01] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:26:01,208] [26/Nov/2015:18:26:01] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:26:01,209] [26/Nov/2015:18:26:01] ENGINE Bus EXITING
+INFO     [2015-11-26 18:26:01,209] [26/Nov/2015:18:26:01] ENGINE Bus EXITED
+INFO     [2015-11-26 18:26:01,268] [26/Nov/2015:18:26:01] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:26:01,268] [26/Nov/2015:18:26:01] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:26:01,648] [26/Nov/2015:18:26:01] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:26:01,648] [26/Nov/2015:18:26:01] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:26:01,648] [26/Nov/2015:18:26:01] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:26:01,648] [26/Nov/2015:18:26:01] ENGINE Bus STARTING
+INFO     [2015-11-26 18:26:01,649] [26/Nov/2015:18:26:01] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:26:01,649] [26/Nov/2015:18:26:01] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:26:01,753] [26/Nov/2015:18:26:01] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:26:01,753] [26/Nov/2015:18:26:01] ENGINE Bus STARTED
+INFO     [2015-11-26 18:26:10,759] [26/Nov/2015:18:26:10] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:26:10,759] [26/Nov/2015:18:26:10] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:26:10,759] [26/Nov/2015:18:26:10] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:26:10,764] [26/Nov/2015:18:26:10] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:26:10,764] [26/Nov/2015:18:26:10] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:26:10,764] [26/Nov/2015:18:26:10] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:26:10,764] [26/Nov/2015:18:26:10] ENGINE Bus EXITING
+INFO     [2015-11-26 18:26:10,764] [26/Nov/2015:18:26:10] ENGINE Bus EXITED
+INFO     [2015-11-26 18:26:10,773] [26/Nov/2015:18:26:10] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:26:10,773] [26/Nov/2015:18:26:10] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:26:11,183] [26/Nov/2015:18:26:11] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:26:11,183] [26/Nov/2015:18:26:11] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:26:11,183] [26/Nov/2015:18:26:11] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:26:11,184] [26/Nov/2015:18:26:11] ENGINE Bus STARTING
+INFO     [2015-11-26 18:26:11,184] [26/Nov/2015:18:26:11] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:26:11,185] [26/Nov/2015:18:26:11] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:26:11,389] [26/Nov/2015:18:26:11] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:26:11,390] [26/Nov/2015:18:26:11] ENGINE Bus STARTED
+INFO     [2015-11-26 18:26:27,341] [26/Nov/2015:18:26:27] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:26:27,341] [26/Nov/2015:18:26:27] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:26:27,341] [26/Nov/2015:18:26:27] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:26:27,345] [26/Nov/2015:18:26:27] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:26:27,345] [26/Nov/2015:18:26:27] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:26:27,345] [26/Nov/2015:18:26:27] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:26:27,345] [26/Nov/2015:18:26:27] ENGINE Bus EXITING
+INFO     [2015-11-26 18:26:27,345] [26/Nov/2015:18:26:27] ENGINE Bus EXITED
+INFO     [2015-11-26 18:26:27,421] [26/Nov/2015:18:26:27] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:26:27,421] [26/Nov/2015:18:26:27] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:26:27,863] [26/Nov/2015:18:26:27] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:26:27,863] [26/Nov/2015:18:26:27] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:26:27,863] [26/Nov/2015:18:26:27] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:26:27,863] [26/Nov/2015:18:26:27] ENGINE Bus STARTING
+INFO     [2015-11-26 18:26:27,865] [26/Nov/2015:18:26:27] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:26:27,866] [26/Nov/2015:18:26:27] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:26:28,090] [26/Nov/2015:18:26:28] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:26:28,091] [26/Nov/2015:18:26:28] ENGINE Bus STARTED
+INFO     [2015-11-26 18:26:59,270] [26/Nov/2015:18:26:59] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 18:26:59,271] 127.0.0.1 - - [26/Nov/2015:18:26:59] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 303 131 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:26:59,307] 127.0.0.1 - - [26/Nov/2015:18:26:59] "GET /auth/login?from_page=/wizardfordepartment/step3stage2 HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:26:59,328] 127.0.0.1 - - [26/Nov/2015:18:26:59] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:26:59,337] 127.0.0.1 - - [26/Nov/2015:18:26:59] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:26:59,351] 127.0.0.1 - - [26/Nov/2015:18:26:59] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:03,869] Пользователь с логином test найден
+INFO     [2015-11-26 18:27:03,870] 127.0.0.1 - test [26/Nov/2015:18:27:03] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:03,933] Пользователь с логином test найден
+INFO     [2015-11-26 18:27:03,950] 127.0.0.1 - test [26/Nov/2015:18:27:03] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:05,315] Пользователь с логином test найден
+WARNING  [2015-11-26 18:27:05,322] Конфигурация найдена.
+INFO     [2015-11-26 18:27:05,324] 127.0.0.1 - test [26/Nov/2015:18:27:05] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:06,640] Пользователь с логином test найден
+WARNING  [2015-11-26 18:27:06,653] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:27:06,656] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:27:06,658] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:27:06,677] 127.0.0.1 - test [26/Nov/2015:18:27:06] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:07,674] Пользователь с логином test найден
+INFO     [2015-11-26 18:27:07,676] 127.0.0.1 - test [26/Nov/2015:18:27:07] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:07,689] Пользователь с логином test найден
+WARNING  [2015-11-26 18:27:07,703] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:27:07,730] 127.0.0.1 - test [26/Nov/2015:18:27:07] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:10,038] Пользователь с логином test найден
+WARNING  [2015-11-26 18:27:10,048] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 18:27:10,049] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 18:27:10,089] 127.0.0.1 - test [26/Nov/2015:18:27:10] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2348 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:11,049] Пользователь с логином test найден
+INFO     [2015-11-26 18:27:11,088] 127.0.0.1 - test [26/Nov/2015:18:27:11] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:13,343] Пользователь с логином test найден
+WARNING  [2015-11-26 18:27:13,355] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 18:27:13,380] 127.0.0.1 - test [26/Nov/2015:18:27:13] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:15,968] Пользователь с логином test найден
+WARNING  [2015-11-26 18:27:16,003] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:27:16,005] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:27:16,007] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:27:16,030] 127.0.0.1 - test [26/Nov/2015:18:27:16] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:27:24,540] Пользователь с логином test найден
+INFO     [2015-11-26 18:27:24,604] 127.0.0.1 - test [26/Nov/2015:18:27:24] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 200 1779 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:28:42,043] [26/Nov/2015:18:28:42] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:28:42,043] [26/Nov/2015:18:28:42] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:28:42,043] [26/Nov/2015:18:28:42] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:28:42,047] [26/Nov/2015:18:28:42] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:28:42,047] [26/Nov/2015:18:28:42] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 18:28:42,047] [26/Nov/2015:18:28:42] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:28:42,047] [26/Nov/2015:18:28:42] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:28:42,047] [26/Nov/2015:18:28:42] ENGINE Bus EXITING
+INFO     [2015-11-26 18:28:42,047] [26/Nov/2015:18:28:42] ENGINE Bus EXITED
+INFO     [2015-11-26 18:28:42,053] [26/Nov/2015:18:28:42] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:28:42,054] [26/Nov/2015:18:28:42] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:28:42,457] [26/Nov/2015:18:28:42] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:28:42,457] [26/Nov/2015:18:28:42] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:28:42,457] [26/Nov/2015:18:28:42] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:28:42,457] [26/Nov/2015:18:28:42] ENGINE Bus STARTING
+INFO     [2015-11-26 18:28:42,458] [26/Nov/2015:18:28:42] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:28:42,458] [26/Nov/2015:18:28:42] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:28:42,662] [26/Nov/2015:18:28:42] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:28:42,662] [26/Nov/2015:18:28:42] ENGINE Bus STARTED
+INFO     [2015-11-26 18:30:19,352] [26/Nov/2015:18:30:19] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-26 18:30:19,353] [26/Nov/2015:18:30:19] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:30:19,353] [26/Nov/2015:18:30:19] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:30:19,356] [26/Nov/2015:18:30:19] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:30:19,356] [26/Nov/2015:18:30:19] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:30:19,356] [26/Nov/2015:18:30:19] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:30:19,357] [26/Nov/2015:18:30:19] ENGINE Bus EXITING
+INFO     [2015-11-26 18:30:19,357] [26/Nov/2015:18:30:19] ENGINE Bus EXITED
+INFO     [2015-11-26 18:30:19,454] [26/Nov/2015:18:30:19] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:30:19,454] [26/Nov/2015:18:30:19] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:30:19,846] [26/Nov/2015:18:30:19] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:30:19,847] [26/Nov/2015:18:30:19] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:30:19,847] [26/Nov/2015:18:30:19] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:30:19,847] [26/Nov/2015:18:30:19] ENGINE Bus STARTING
+INFO     [2015-11-26 18:30:19,848] [26/Nov/2015:18:30:19] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:30:19,848] [26/Nov/2015:18:30:19] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:30:20,052] [26/Nov/2015:18:30:20] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:30:20,052] [26/Nov/2015:18:30:20] ENGINE Bus STARTED
+INFO     [2015-11-26 18:31:16,344] [26/Nov/2015:18:31:16] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-26 18:31:16,345] [26/Nov/2015:18:31:16] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:31:16,345] [26/Nov/2015:18:31:16] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:31:16,352] [26/Nov/2015:18:31:16] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:31:16,352] [26/Nov/2015:18:31:16] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:31:16,352] [26/Nov/2015:18:31:16] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:31:16,352] [26/Nov/2015:18:31:16] ENGINE Bus EXITING
+INFO     [2015-11-26 18:31:16,353] [26/Nov/2015:18:31:16] ENGINE Bus EXITED
+INFO     [2015-11-26 18:31:16,355] [26/Nov/2015:18:31:16] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:31:16,355] [26/Nov/2015:18:31:16] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:31:16,839] [26/Nov/2015:18:31:16] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:31:16,839] [26/Nov/2015:18:31:16] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:31:16,839] [26/Nov/2015:18:31:16] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:31:16,839] [26/Nov/2015:18:31:16] ENGINE Bus STARTING
+INFO     [2015-11-26 18:31:16,840] [26/Nov/2015:18:31:16] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:31:16,840] [26/Nov/2015:18:31:16] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:31:17,045] [26/Nov/2015:18:31:17] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:31:17,045] [26/Nov/2015:18:31:17] ENGINE Bus STARTED
+INFO     [2015-11-26 18:31:26,648] [26/Nov/2015:18:31:26] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 18:31:26,649] 127.0.0.1 - - [26/Nov/2015:18:31:26] "GET /wizard/ HTTP/1.1" 303 114 "http://localhost:8080/wizardfordepartment/step3stage2save" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:31:26,703] 127.0.0.1 - - [26/Nov/2015:18:31:26] "GET /auth/login?from_page=/wizard/ HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step3stage2save" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:29,103] Пользователь с логином test найден
+INFO     [2015-11-26 18:31:29,104] 127.0.0.1 - test [26/Nov/2015:18:31:29] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:29,143] Пользователь с логином test найден
+INFO     [2015-11-26 18:31:29,161] 127.0.0.1 - test [26/Nov/2015:18:31:29] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:30,571] Пользователь с логином test найден
+WARNING  [2015-11-26 18:31:30,580] Конфигурация найдена.
+INFO     [2015-11-26 18:31:30,581] 127.0.0.1 - test [26/Nov/2015:18:31:30] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:31,853] Пользователь с логином test найден
+WARNING  [2015-11-26 18:31:31,866] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:31:31,869] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:31:31,871] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:31:31,890] 127.0.0.1 - test [26/Nov/2015:18:31:31] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:34,304] Пользователь с логином test найден
+INFO     [2015-11-26 18:31:34,308] 127.0.0.1 - test [26/Nov/2015:18:31:34] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:34,321] Пользователь с логином test найден
+WARNING  [2015-11-26 18:31:34,334] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:31:34,356] 127.0.0.1 - test [26/Nov/2015:18:31:34] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:36,478] Пользователь с логином test найден
+WARNING  [2015-11-26 18:31:36,489] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 18:31:36,490] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 18:31:36,528] 127.0.0.1 - test [26/Nov/2015:18:31:36] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2348 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:37,553] Пользователь с логином test найден
+INFO     [2015-11-26 18:31:37,595] 127.0.0.1 - test [26/Nov/2015:18:31:37] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:39,496] Пользователь с логином test найден
+WARNING  [2015-11-26 18:31:39,518] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 18:31:39,541] 127.0.0.1 - test [26/Nov/2015:18:31:39] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:41,549] Пользователь с логином test найден
+WARNING  [2015-11-26 18:31:41,571] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:31:41,573] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:31:41,574] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:31:41,597] 127.0.0.1 - test [26/Nov/2015:18:31:41] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:49,960] Пользователь с логином test найден
+INFO     [2015-11-26 18:31:49,973] 127.0.0.1 - test [26/Nov/2015:18:31:49] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:31:50,031] Пользователь с логином test найден
+WARNING  [2015-11-26 18:31:50,033] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:31:50,035] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:31:50,037] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:31:50,069] 127.0.0.1 - test [26/Nov/2015:18:31:50] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:32:58,226] Пользователь с логином test найден
+WARNING  [2015-11-26 18:32:58,228] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:32:58,230] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:32:58,231] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:32:58,267] 127.0.0.1 - test [26/Nov/2015:18:32:58] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:32:58,307] 127.0.0.1 - - [26/Nov/2015:18:32:58] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:32:58,307] 127.0.0.1 - - [26/Nov/2015:18:32:58] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:32:58,309] 127.0.0.1 - - [26/Nov/2015:18:32:58] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:33:06,364] Пользователь с логином test найден
+INFO     [2015-11-26 18:33:06,379] 127.0.0.1 - test [26/Nov/2015:18:33:06] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:33:06,406] Пользователь с логином test найден
+WARNING  [2015-11-26 18:33:06,408] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:33:06,409] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:33:06,410] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:33:06,433] 127.0.0.1 - test [26/Nov/2015:18:33:06] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:38:49,646] Пользователь с логином test найден
+WARNING  [2015-11-26 18:38:49,647] Конфигурация найдена.
+INFO     [2015-11-26 18:38:49,649] 127.0.0.1 - test [26/Nov/2015:18:38:49] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:38:50,706] Пользователь с логином test найден
+WARNING  [2015-11-26 18:38:50,707] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:38:50,709] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:38:50,710] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:38:50,731] 127.0.0.1 - test [26/Nov/2015:18:38:50] "GET /wizard/step7 HTTP/1.1" 200 2158 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:38:52,107] Пользователь с логином test найден
+INFO     [2015-11-26 18:38:52,109] 127.0.0.1 - test [26/Nov/2015:18:38:52] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:38:52,131] Пользователь с логином test найден
+WARNING  [2015-11-26 18:38:52,133] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:38:52,151] 127.0.0.1 - test [26/Nov/2015:18:38:52] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:39:28,339] [26/Nov/2015:18:39:28] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:39:28,339] [26/Nov/2015:18:39:28] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:39:28,339] [26/Nov/2015:18:39:28] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:39:28,342] [26/Nov/2015:18:39:28] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:39:28,343] [26/Nov/2015:18:39:28] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 18:39:28,343] [26/Nov/2015:18:39:28] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:39:28,343] [26/Nov/2015:18:39:28] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:39:28,343] [26/Nov/2015:18:39:28] ENGINE Bus EXITING
+INFO     [2015-11-26 18:39:28,343] [26/Nov/2015:18:39:28] ENGINE Bus EXITED
+INFO     [2015-11-26 18:39:28,381] [26/Nov/2015:18:39:28] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:39:28,381] [26/Nov/2015:18:39:28] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:39:28,814] [26/Nov/2015:18:39:28] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:39:28,814] [26/Nov/2015:18:39:28] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:39:28,815] [26/Nov/2015:18:39:28] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:39:28,815] [26/Nov/2015:18:39:28] ENGINE Bus STARTING
+INFO     [2015-11-26 18:39:28,815] [26/Nov/2015:18:39:28] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:39:28,816] [26/Nov/2015:18:39:28] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:39:28,922] [26/Nov/2015:18:39:28] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:39:28,922] [26/Nov/2015:18:39:28] ENGINE Bus STARTED
+INFO     [2015-11-26 18:39:34,184] [26/Nov/2015:18:39:34] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 18:39:34,185] 127.0.0.1 - - [26/Nov/2015:18:39:34] "GET /wizardfordepartment/step1 HTTP/1.1" 303 126 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:39:34,261] 127.0.0.1 - - [26/Nov/2015:18:39:34] "GET /auth/login?from_page=/wizardfordepartment/step1 HTTP/1.1" 200 1192 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:39:34,287] 127.0.0.1 - - [26/Nov/2015:18:39:34] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:39:34,288] 127.0.0.1 - - [26/Nov/2015:18:39:34] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:39:34,297] 127.0.0.1 - - [26/Nov/2015:18:39:34] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:36,740] Пользователь с логином test найден
+INFO     [2015-11-26 18:39:36,741] 127.0.0.1 - test [26/Nov/2015:18:39:36] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:36,780] Пользователь с логином test найден
+INFO     [2015-11-26 18:39:36,800] 127.0.0.1 - test [26/Nov/2015:18:39:36] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:37,955] Пользователь с логином test найден
+WARNING  [2015-11-26 18:39:37,962] Конфигурация найдена.
+INFO     [2015-11-26 18:39:37,964] 127.0.0.1 - test [26/Nov/2015:18:39:37] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:39,141] Пользователь с логином test найден
+WARNING  [2015-11-26 18:39:39,154] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:39:39,156] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:39:39,158] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:39:39,180] 127.0.0.1 - test [26/Nov/2015:18:39:39] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:40,255] Пользователь с логином test найден
+INFO     [2015-11-26 18:39:40,257] 127.0.0.1 - test [26/Nov/2015:18:39:40] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:40,290] Пользователь с логином test найден
+WARNING  [2015-11-26 18:39:40,303] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:39:40,331] 127.0.0.1 - test [26/Nov/2015:18:39:40] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:42,508] Пользователь с логином test найден
+WARNING  [2015-11-26 18:39:42,518] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 18:39:42,520] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 18:39:42,554] 127.0.0.1 - test [26/Nov/2015:18:39:42] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2348 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:43,691] Пользователь с логином test найден
+INFO     [2015-11-26 18:39:43,729] 127.0.0.1 - test [26/Nov/2015:18:39:43] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:45,238] Пользователь с логином test найден
+WARNING  [2015-11-26 18:39:45,251] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 18:39:45,274] 127.0.0.1 - test [26/Nov/2015:18:39:45] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:46,730] Пользователь с логином test найден
+WARNING  [2015-11-26 18:39:46,759] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:39:46,761] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:39:46,762] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:39:46,791] 127.0.0.1 - test [26/Nov/2015:18:39:46] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:39:54,223] Пользователь с логином test найден
+INFO     [2015-11-26 18:39:54,244] 127.0.0.1 - test [26/Nov/2015:18:39:54] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 200 1442 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:42:21,390] [26/Nov/2015:18:42:21] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-26 18:42:21,390] [26/Nov/2015:18:42:21] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:42:21,390] [26/Nov/2015:18:42:21] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:42:21,393] [26/Nov/2015:18:42:21] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:42:21,394] [26/Nov/2015:18:42:21] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 18:42:21,394] [26/Nov/2015:18:42:21] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:42:21,394] [26/Nov/2015:18:42:21] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:42:21,394] [26/Nov/2015:18:42:21] ENGINE Bus EXITING
+INFO     [2015-11-26 18:42:21,394] [26/Nov/2015:18:42:21] ENGINE Bus EXITED
+INFO     [2015-11-26 18:42:21,474] [26/Nov/2015:18:42:21] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:42:21,474] [26/Nov/2015:18:42:21] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:42:21,929] [26/Nov/2015:18:42:21] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:42:21,929] [26/Nov/2015:18:42:21] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:42:21,930] [26/Nov/2015:18:42:21] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:42:21,930] [26/Nov/2015:18:42:21] ENGINE Bus STARTING
+INFO     [2015-11-26 18:42:21,930] [26/Nov/2015:18:42:21] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:42:21,931] [26/Nov/2015:18:42:21] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:42:22,135] [26/Nov/2015:18:42:22] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:42:22,135] [26/Nov/2015:18:42:22] ENGINE Bus STARTED
+INFO     [2015-11-26 18:42:34,059] [26/Nov/2015:18:42:34] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-26 18:42:34,059] [26/Nov/2015:18:42:34] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:42:34,059] [26/Nov/2015:18:42:34] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:42:34,063] [26/Nov/2015:18:42:34] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:42:34,064] [26/Nov/2015:18:42:34] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:42:34,064] [26/Nov/2015:18:42:34] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:42:34,064] [26/Nov/2015:18:42:34] ENGINE Bus EXITING
+INFO     [2015-11-26 18:42:34,064] [26/Nov/2015:18:42:34] ENGINE Bus EXITED
+INFO     [2015-11-26 18:42:34,163] [26/Nov/2015:18:42:34] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:42:34,163] [26/Nov/2015:18:42:34] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:42:34,588] [26/Nov/2015:18:42:34] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:42:34,588] [26/Nov/2015:18:42:34] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:42:34,588] [26/Nov/2015:18:42:34] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:42:34,589] [26/Nov/2015:18:42:34] ENGINE Bus STARTING
+INFO     [2015-11-26 18:42:34,589] [26/Nov/2015:18:42:34] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:42:34,590] [26/Nov/2015:18:42:34] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:42:34,794] [26/Nov/2015:18:42:34] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:42:34,794] [26/Nov/2015:18:42:34] ENGINE Bus STARTED
+INFO     [2015-11-26 18:42:42,680] [26/Nov/2015:18:42:42] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-11-26 18:42:42,680] [26/Nov/2015:18:42:42] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:42:42,680] [26/Nov/2015:18:42:42] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:42:42,686] [26/Nov/2015:18:42:42] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:42:42,687] [26/Nov/2015:18:42:42] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:42:42,687] [26/Nov/2015:18:42:42] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:42:42,687] [26/Nov/2015:18:42:42] ENGINE Bus EXITING
+INFO     [2015-11-26 18:42:42,687] [26/Nov/2015:18:42:42] ENGINE Bus EXITED
+INFO     [2015-11-26 18:42:42,714] [26/Nov/2015:18:42:42] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:42:42,715] [26/Nov/2015:18:42:42] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:42:43,110] [26/Nov/2015:18:42:43] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:42:43,110] [26/Nov/2015:18:42:43] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:42:43,110] [26/Nov/2015:18:42:43] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:42:43,110] [26/Nov/2015:18:42:43] ENGINE Bus STARTING
+INFO     [2015-11-26 18:42:43,111] [26/Nov/2015:18:42:43] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:42:43,112] [26/Nov/2015:18:42:43] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:42:43,315] [26/Nov/2015:18:42:43] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:42:43,316] [26/Nov/2015:18:42:43] ENGINE Bus STARTED
+INFO     [2015-11-26 18:44:06,666] [26/Nov/2015:18:44:06] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 18:44:06,666] 127.0.0.1 - - [26/Nov/2015:18:44:06] "GET /wizard/ HTTP/1.1" 303 114 "http://localhost:8080/wizardfordepartment/step3stage2save" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:44:06,700] 127.0.0.1 - - [26/Nov/2015:18:44:06] "GET /auth/login?from_page=/wizard/ HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step3stage2save" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:09,321] Пользователь с логином test найден
+INFO     [2015-11-26 18:44:09,322] 127.0.0.1 - test [26/Nov/2015:18:44:09] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:09,360] Пользователь с логином test найден
+INFO     [2015-11-26 18:44:09,378] 127.0.0.1 - test [26/Nov/2015:18:44:09] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:10,462] Пользователь с логином test найден
+WARNING  [2015-11-26 18:44:10,469] Конфигурация найдена.
+INFO     [2015-11-26 18:44:10,471] 127.0.0.1 - test [26/Nov/2015:18:44:10] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:12,106] Пользователь с логином test найден
+WARNING  [2015-11-26 18:44:12,120] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:44:12,123] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:44:12,124] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:44:12,142] 127.0.0.1 - test [26/Nov/2015:18:44:12] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:13,629] Пользователь с логином test найден
+INFO     [2015-11-26 18:44:13,631] 127.0.0.1 - test [26/Nov/2015:18:44:13] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:13,645] Пользователь с логином test найден
+WARNING  [2015-11-26 18:44:13,659] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:44:13,684] 127.0.0.1 - test [26/Nov/2015:18:44:13] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1906 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:15,564] Пользователь с логином test найден
+WARNING  [2015-11-26 18:44:15,577] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 18:44:15,579] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 18:44:15,607] 127.0.0.1 - test [26/Nov/2015:18:44:15] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2348 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:16,556] Пользователь с логином test найден
+INFO     [2015-11-26 18:44:16,597] 127.0.0.1 - test [26/Nov/2015:18:44:16] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:18,295] Пользователь с логином test найден
+WARNING  [2015-11-26 18:44:18,307] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 18:44:18,332] 127.0.0.1 - test [26/Nov/2015:18:44:18] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:19,849] Пользователь с логином test найден
+WARNING  [2015-11-26 18:44:19,870] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:44:19,872] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:44:19,873] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:44:19,906] 127.0.0.1 - test [26/Nov/2015:18:44:19] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2737 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:44:56,970] Пользователь с логином test найден
+INFO     [2015-11-26 18:44:56,989] 127.0.0.1 - test [26/Nov/2015:18:44:56] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 200 1442 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:46:48,958] Пользователь с логином test найден
+WARNING  [2015-11-26 18:46:48,979] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:46:48,980] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:46:48,981] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:46:49,001] 127.0.0.1 - test [26/Nov/2015:18:46:49] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2735 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:46:49,027] 127.0.0.1 - - [26/Nov/2015:18:46:49] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:46:49,040] 127.0.0.1 - - [26/Nov/2015:18:46:49] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:46:49,054] 127.0.0.1 - - [26/Nov/2015:18:46:49] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:46:53,629] Пользователь с логином test найден
+WARNING  [2015-11-26 18:46:53,631] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:46:53,632] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:46:53,634] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:46:53,662] 127.0.0.1 - test [26/Nov/2015:18:46:53] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2735 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:46:53,684] 127.0.0.1 - - [26/Nov/2015:18:46:53] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:46:53,685] 127.0.0.1 - - [26/Nov/2015:18:46:53] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:46:53,689] 127.0.0.1 - - [26/Nov/2015:18:46:53] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:47:12,589] Пользователь с логином test найден
+WARNING  [2015-11-26 18:47:12,612] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:47:12,614] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:47:12,615] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:47:12,636] 127.0.0.1 - test [26/Nov/2015:18:47:12] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2720 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:12,655] 127.0.0.1 - - [26/Nov/2015:18:47:12] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:12,656] 127.0.0.1 - - [26/Nov/2015:18:47:12] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:12,658] 127.0.0.1 - - [26/Nov/2015:18:47:12] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:47:46,310] Пользователь с логином test найден
+WARNING  [2015-11-26 18:47:46,335] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:47:46,336] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:47:46,338] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:47:46,366] 127.0.0.1 - test [26/Nov/2015:18:47:46] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2730 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:46,392] 127.0.0.1 - - [26/Nov/2015:18:47:46] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:46,403] 127.0.0.1 - - [26/Nov/2015:18:47:46] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:46,431] 127.0.0.1 - - [26/Nov/2015:18:47:46] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:47:53,279] Пользователь с логином test найден
+WARNING  [2015-11-26 18:47:53,301] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:47:53,303] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:47:53,305] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:47:53,332] 127.0.0.1 - test [26/Nov/2015:18:47:53] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2734 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:53,355] 127.0.0.1 - - [26/Nov/2015:18:47:53] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:53,364] 127.0.0.1 - - [26/Nov/2015:18:47:53] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:47:53,383] 127.0.0.1 - - [26/Nov/2015:18:47:53] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:48:05,876] Пользователь с логином test найден
+WARNING  [2015-11-26 18:48:05,896] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:48:05,898] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:48:05,899] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:48:05,922] 127.0.0.1 - test [26/Nov/2015:18:48:05] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2734 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:05,950] 127.0.0.1 - - [26/Nov/2015:18:48:05] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:05,963] 127.0.0.1 - - [26/Nov/2015:18:48:05] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:05,981] 127.0.0.1 - - [26/Nov/2015:18:48:05] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:48:45,042] Пользователь с логином test найден
+WARNING  [2015-11-26 18:48:45,060] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:48:45,062] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:48:45,064] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:48:45,088] 127.0.0.1 - test [26/Nov/2015:18:48:45] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2734 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:45,112] 127.0.0.1 - - [26/Nov/2015:18:48:45] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:45,127] 127.0.0.1 - - [26/Nov/2015:18:48:45] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:45,141] 127.0.0.1 - - [26/Nov/2015:18:48:45] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:48:46,631] Пользователь с логином test найден
+WARNING  [2015-11-26 18:48:46,633] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:48:46,636] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:48:46,637] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:48:46,663] 127.0.0.1 - test [26/Nov/2015:18:48:46] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2734 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:46,684] 127.0.0.1 - - [26/Nov/2015:18:48:46] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:46,689] 127.0.0.1 - - [26/Nov/2015:18:48:46] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:46,691] 127.0.0.1 - - [26/Nov/2015:18:48:46] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:48:58,182] Пользователь с логином test найден
+WARNING  [2015-11-26 18:48:58,206] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:48:58,207] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:48:58,209] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:48:58,235] 127.0.0.1 - test [26/Nov/2015:18:48:58] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2735 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:58,268] 127.0.0.1 - - [26/Nov/2015:18:48:58] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:58,311] 127.0.0.1 - - [26/Nov/2015:18:48:58] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:48:58,312] 127.0.0.1 - - [26/Nov/2015:18:48:58] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:49:04,341] Пользователь с логином test найден
+INFO     [2015-11-26 18:49:04,400] 127.0.0.1 - test [26/Nov/2015:18:49:04] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:49:04,418] Пользователь с логином test найден
+WARNING  [2015-11-26 18:49:04,419] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:49:04,421] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:49:04,423] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:49:04,457] 127.0.0.1 - test [26/Nov/2015:18:49:04] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2739 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:50:23,238] Пользователь с логином test найден
+INFO     [2015-11-26 18:50:23,377] 127.0.0.1 - test [26/Nov/2015:18:50:23] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:50:23,499] Пользователь с логином test найден
+WARNING  [2015-11-26 18:50:23,501] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:50:23,503] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:50:23,505] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:50:23,540] 127.0.0.1 - test [26/Nov/2015:18:50:23] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2733 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:51:03,119] Пользователь с логином test найден
+INFO     [2015-11-26 18:51:03,119] 127.0.0.1 - test [26/Nov/2015:18:51:03] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:51:03,173] Пользователь с логином test найден
+WARNING  [2015-11-26 18:51:03,174] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:51:03,176] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:51:03,177] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:51:03,207] 127.0.0.1 - test [26/Nov/2015:18:51:03] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2733 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:52:17,265] [26/Nov/2015:18:52:17] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:52:17,266] [26/Nov/2015:18:52:17] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:52:17,266] [26/Nov/2015:18:52:17] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:52:17,268] [26/Nov/2015:18:52:17] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:52:17,268] [26/Nov/2015:18:52:17] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-11-26 18:52:17,269] [26/Nov/2015:18:52:17] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:52:17,269] [26/Nov/2015:18:52:17] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:52:17,269] [26/Nov/2015:18:52:17] ENGINE Bus EXITING
+INFO     [2015-11-26 18:52:17,269] [26/Nov/2015:18:52:17] ENGINE Bus EXITED
+INFO     [2015-11-26 18:52:17,338] [26/Nov/2015:18:52:17] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:52:17,338] [26/Nov/2015:18:52:17] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:52:17,756] [26/Nov/2015:18:52:17] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:52:17,756] [26/Nov/2015:18:52:17] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:52:17,756] [26/Nov/2015:18:52:17] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:52:17,757] [26/Nov/2015:18:52:17] ENGINE Bus STARTING
+INFO     [2015-11-26 18:52:17,757] [26/Nov/2015:18:52:17] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:52:17,758] [26/Nov/2015:18:52:17] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:52:17,861] [26/Nov/2015:18:52:17] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:52:17,862] [26/Nov/2015:18:52:17] ENGINE Bus STARTED
+INFO     [2015-11-26 18:52:30,881] [26/Nov/2015:18:52:30] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-11-26 18:52:30,881] [26/Nov/2015:18:52:30] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-11-26 18:52:30,882] [26/Nov/2015:18:52:30] ENGINE Bus STOPPING
+INFO     [2015-11-26 18:52:30,885] [26/Nov/2015:18:52:30] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-11-26 18:52:30,886] [26/Nov/2015:18:52:30] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:52:30,886] [26/Nov/2015:18:52:30] ENGINE Bus STOPPED
+INFO     [2015-11-26 18:52:30,886] [26/Nov/2015:18:52:30] ENGINE Bus EXITING
+INFO     [2015-11-26 18:52:30,886] [26/Nov/2015:18:52:30] ENGINE Bus EXITED
+INFO     [2015-11-26 18:52:30,985] [26/Nov/2015:18:52:30] ENGINE Waiting for child threads to terminate...
+INFO     [2015-11-26 18:52:30,985] [26/Nov/2015:18:52:30] ENGINE Re-spawning webapp.py
+INFO     [2015-11-26 18:52:31,366] [26/Nov/2015:18:52:31] ENGINE Listening for SIGHUP.
+INFO     [2015-11-26 18:52:31,366] [26/Nov/2015:18:52:31] ENGINE Listening for SIGTERM.
+INFO     [2015-11-26 18:52:31,366] [26/Nov/2015:18:52:31] ENGINE Listening for SIGUSR1.
+INFO     [2015-11-26 18:52:31,366] [26/Nov/2015:18:52:31] ENGINE Bus STARTING
+INFO     [2015-11-26 18:52:31,367] [26/Nov/2015:18:52:31] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-11-26 18:52:31,367] [26/Nov/2015:18:52:31] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-11-26 18:52:31,472] [26/Nov/2015:18:52:31] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-11-26 18:52:31,472] [26/Nov/2015:18:52:31] ENGINE Bus STARTED
+INFO     [2015-11-26 18:52:45,892] [26/Nov/2015:18:52:45] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-11-26 18:52:45,893] 127.0.0.1 - - [26/Nov/2015:18:52:45] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 303 131 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:52:45,954] 127.0.0.1 - - [26/Nov/2015:18:52:45] "GET /auth/login?from_page=/wizardfordepartment/step3stage2 HTTP/1.1" 200 1192 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:52:46,028] 127.0.0.1 - - [26/Nov/2015:18:52:46] "GET /static/css/signin.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:52:46,029] 127.0.0.1 - - [26/Nov/2015:18:52:46] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:52:46,030] 127.0.0.1 - - [26/Nov/2015:18:52:46] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:48,384] Пользователь с логином test найден
+INFO     [2015-11-26 18:52:48,385] 127.0.0.1 - test [26/Nov/2015:18:52:48] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:48,453] Пользователь с логином test найден
+INFO     [2015-11-26 18:52:48,471] 127.0.0.1 - test [26/Nov/2015:18:52:48] "GET / HTTP/1.1" 200 1375 "http://localhost:8080/auth/login?from_page=/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:49,668] Пользователь с логином test найден
+WARNING  [2015-11-26 18:52:49,677] Конфигурация найдена.
+INFO     [2015-11-26 18:52:49,680] 127.0.0.1 - test [26/Nov/2015:18:52:49] "GET /wizard/ HTTP/1.1" 200 1682 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:50,767] Пользователь с логином test найден
+WARNING  [2015-11-26 18:52:50,782] Описание с кодом step7_full_description найдено
+WARNING  [2015-11-26 18:52:50,785] Описание с кодом step7_name найдено
+WARNING  [2015-11-26 18:52:50,787] Описание с кодом step7_subheader найдено
+INFO     [2015-11-26 18:52:50,805] 127.0.0.1 - test [26/Nov/2015:18:52:50] "GET /wizard/step7 HTTP/1.1" 200 2162 "http://localhost:8080/wizard/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:52,521] Пользователь с логином test найден
+INFO     [2015-11-26 18:52:52,524] 127.0.0.1 - test [26/Nov/2015:18:52:52] "GET /wizardfordepartment/start?code=dep7 HTTP/1.1" 303 108 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:52,552] Пользователь с логином test найден
+WARNING  [2015-11-26 18:52:52,565] Описание с кодом depwiz_step1_full_description найдено
+INFO     [2015-11-26 18:52:52,600] 127.0.0.1 - test [26/Nov/2015:18:52:52] "GET /wizardfordepartment/step1 HTTP/1.1" 200 1998 "http://localhost:8080/wizard/step7" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:56,280] Пользователь с логином test найден
+WARNING  [2015-11-26 18:52:56,292] Описание с кодом depwiz_step2_full_description найдено
+WARNING  [2015-11-26 18:52:56,294] Описание с кодом depwiz_step2_name найдено
+INFO     [2015-11-26 18:52:56,329] 127.0.0.1 - test [26/Nov/2015:18:52:56] "GET /wizardfordepartment/step2 HTTP/1.1" 200 2348 "http://localhost:8080/wizardfordepartment/step1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:57,229] Пользователь с логином test найден
+INFO     [2015-11-26 18:52:57,278] 127.0.0.1 - test [26/Nov/2015:18:52:57] "GET /wizardfordepartment/step3 HTTP/1.1" 200 2518 "http://localhost:8080/wizardfordepartment/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:52:58,745] Пользователь с логином test найден
+WARNING  [2015-11-26 18:52:58,758] Описание с кодом step3_subheader найдено
+INFO     [2015-11-26 18:52:58,783] 127.0.0.1 - test [26/Nov/2015:18:52:58] "GET /wizardfordepartment/step3stage1 HTTP/1.1" 200 2372 "http://localhost:8080/wizardfordepartment/step3" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:53:00,184] Пользователь с логином test найден
+WARNING  [2015-11-26 18:53:00,204] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:53:00,206] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:53:00,208] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:53:00,246] 127.0.0.1 - test [26/Nov/2015:18:53:00] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2733 "http://localhost:8080/wizardfordepartment/step3stage1" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:53:02,999] Пользователь с логином test найден
+INFO     [2015-11-26 18:53:03,049] 127.0.0.1 - test [26/Nov/2015:18:53:03] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:53:03,077] Пользователь с логином test найден
+WARNING  [2015-11-26 18:53:03,079] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:53:03,081] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:53:03,084] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:53:03,114] 127.0.0.1 - test [26/Nov/2015:18:53:03] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2725 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:54:23,067] Пользователь с логином test найден
+WARNING  [2015-11-26 18:54:23,068] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:54:23,070] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:54:23,071] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:54:23,111] 127.0.0.1 - test [26/Nov/2015:18:54:23] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2733 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:54:23,133] 127.0.0.1 - - [26/Nov/2015:18:54:23] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:54:23,135] 127.0.0.1 - - [26/Nov/2015:18:54:23] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:54:23,153] 127.0.0.1 - - [26/Nov/2015:18:54:23] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:54:27,162] Пользователь с логином test найден
+INFO     [2015-11-26 18:54:27,357] 127.0.0.1 - test [26/Nov/2015:18:54:27] "POST /wizardfordepartment/step3stage2save HTTP/1.1" 303 115 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:54:27,369] Пользователь с логином test найден
+WARNING  [2015-11-26 18:54:27,370] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:54:27,371] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:54:27,373] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:54:27,411] 127.0.0.1 - test [26/Nov/2015:18:54:27] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2721 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-11-26 18:54:30,342] Пользователь с логином test найден
+WARNING  [2015-11-26 18:54:30,345] Описание с кодом step3_stage3_description найдено
+WARNING  [2015-11-26 18:54:30,346] Описание с кодом step3_name найдено
+WARNING  [2015-11-26 18:54:30,348] Описание с кодом step3_stage3_subheader найдено
+INFO     [2015-11-26 18:54:30,386] 127.0.0.1 - test [26/Nov/2015:18:54:30] "GET /wizardfordepartment/step3stage2 HTTP/1.1" 200 2721 "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:54:30,411] 127.0.0.1 - - [26/Nov/2015:18:54:30] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:54:30,418] 127.0.0.1 - - [26/Nov/2015:18:54:30] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-11-26 18:54:30,420] 127.0.0.1 - - [26/Nov/2015:18:54:30] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/wizardfordepartment/step3stage2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
