@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand"> > </span>
       % if current_map:
-        <a class="navbar-brand" href="/map?code=${current_map.code}">${current_map.name}</a>
+        <a class="navbar-brand" href="/maps?code=${current_map.code}">${current_map.name}</a>
       % else:
         <a class="navbar-brand" href="/changemap">Карта не указана</a>
       % endif

@@ -14,13 +14,132 @@
             <h3>Описание</h3>
             ${step_desc['full_description']}
             <hr>
-            <p>
-                пока все ))
-            </p>
 
+            <div>
+
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#lib" aria-controls="lib" role="tab" data-toggle="tab">Данные из каталога</a>
+                </li>
+                <li role="presentation">
+                    <a href="#custom" aria-controls="custom" role="tab" data-toggle="tab">Данные компании</a>
+                </li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="lib">
+                    <h3>Цели</h3>
+                    <div style="margin-left: 2%;">
+                        % for one in lib_goals.values():
+                            <p>
+                            % if one.perspective == 0:
+                                <span class="glyphicon glyphicon-screenshot text-danger" aria-hidden="true"></span>
+                            % elif one.perspective == 1:
+                                <span class="glyphicon glyphicon-screenshot text-success" aria-hidden="true"></span>
+                            % elif one.perspective == 2:
+                                <span class="glyphicon glyphicon-screenshot text-info" aria-hidden="true"></span>
+                            % elif one.perspective == 3:
+                                <span class="glyphicon glyphicon-screenshot text-warning" aria-hidden="true"></span>
+                            % else:
+                                <span class="glyphicon glyphicon-screenshot text-muted" aria-hidden="true"></span>
+                            % endif
+                                <button class="btn-link" data-toggle="modal tooltip"
+                                        title="Перспектива ${perspectives[one.perspective]}"
+                                        data-target="#modal_lib_${one.code}">${one.goal_name} </button></p>
+                        % endfor
+                    </div>
+                    <h3>Показатели</h3>
+
+                    <div style="margin-left: 2%;">
+                        % for one in lib_kpi.values():
+                            <p>${one.name}</p>
+                        % endfor
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="custom">
+                    <h3>Цели</h3>
+                    <div style="margin-left: 2%;">
+                        % for one in custom_goals.values():
+                            <p>
+                            % if one.perspective == 0:
+                                <span class="glyphicon glyphicon-screenshot text-danger" aria-hidden="true"></span>
+                            % elif one.perspective == 1:
+                                <span class="glyphicon glyphicon-screenshot text-success" aria-hidden="true"></span>
+                            % elif one.perspective == 2:
+                                <span class="glyphicon glyphicon-screenshot text-info" aria-hidden="true"></span>
+                            % elif one.perspective == 3:
+                                <span class="glyphicon glyphicon-screenshot text-warning" aria-hidden="true"></span>
+                            % else:
+                                <span class="glyphicon glyphicon-screenshot text-muted" aria-hidden="true"></span>
+                            % endif
+                                <button class="btn-link" data-toggle="modal tooltip"
+                                        title="Перспектива ${perspectives[one.perspective]}"
+                                        data-target="#modal_custom_${one.code}">${one.goal_name} </button></p>
+                        % endfor
+                    </div>
+                    <h3>Показатели</h3>
+                    <div style="margin-left: 2%;">
+                        % for one in custom_kpi.values():
+                            <p>${one.name}</p>
+                        % endfor
+                    </div>
+                    <h3>Мероприятия</h3>
+                    <div style="margin-left: 2%;">
+                        % for one in events.values():
+                            <p>${one.name}</p>
+                        % endfor
+                    </div>
+                </div>
+              </div>
+
+            </div>
         </div>
     </div>
 
+    % for one in lib_goals.values():
+        <div class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal_lib_${one.code}">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h3>Цель - ${one.goal_name}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p class="lead">Перспектива</p>
+                        <p>${perspectives[one.perspective]}</p>
+
+                        <p class="lead">Описание</p>
+                        <p>${one.description}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    % endfor
+    % for one in custom_goals.values():
+        <div class="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="modal_custom_${one.code}">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-success">
+                        <h3>Цель - ${one.goal_name}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p class="lead">Перспектива</p>
+                        <p>${perspectives[one.perspective]}</p>
+
+                        <p class="lead">Описание</p>
+                        <p>${one.description}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    % endfor
 
 </div>
 

@@ -1450,6 +1450,7 @@ class Wizard(object):
 
         return tmpl.render(params=params, step_desc=step_desc)
 
+
 class Library(object):
 
     @cherrypy.expose
@@ -1460,9 +1461,17 @@ class Library(object):
         tmpl = lookup.get_template("library_main_page.html")
         step_desc = dict()
         step_desc['full_description'] = "Работа с данными: просмотр, добавление, редактирование, удаление, связывание."
-        step_desc['name'] = "Бибилиотека данных"
+        step_desc['name'] = "Бибилиотека"
+        try:
+            lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
+            custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
+            events = BMTObjects.get_events()
+        except Exception as e:
+            return ShowError(e)
 
-        return tmpl.render(step_desc=step_desc)
+        return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           step_desc=step_desc, lib_goals=lib_goals, lib_kpi=lib_kpi, events=events,
+                           custom_kpi=custom_kpi, custom_goals=custom_goals, perspectives=BMTObjects.perspectives)
 
 
 class Root(object):
