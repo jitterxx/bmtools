@@ -1120,6 +1120,7 @@ class StrategicMapDescription(Base):
         self.status = 0
         self.department = 0
         self.date = datetime.datetime.now()
+        self.draw_data = ""
 
     def create_enterprise_map(self):
         session = Session()
@@ -1131,6 +1132,7 @@ class StrategicMapDescription(Base):
         self.status = 0
         self.department = 0
         self.date = datetime.datetime.now()
+        self.draw_data = ""
 
         try:
             session.add(self)
@@ -1223,6 +1225,40 @@ def get_strategic_map_object(current_map_code):
         return query
     finally:
         session.close()
+
+
+def save_map_draw_data(map_code, json_string):
+    """
+    Записываем данные о расположении объектов для отрисовки карты на странице.
+    Храним json строку с данными для fabric.js
+
+    :param map_code: код карты
+    :param json_string: строка в формате json с данными об объектах на карте для fabric.js
+
+    :return: ничего. Лови исключение.
+    """
+
+    session = Session()
+    try:
+        resp = session.query(StrategicMapDescription).filter(StrategicMapDescription.code == map_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.save_map_draw_data(). %s" % str(e)
+        return None
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.save_map_draw_data(). НАйдено много карт для кода: %s. %s" %\
+              (map_code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции save_map_draw_data(). %s" % str(e)
+        raise e
+    else:
+        resp.draw_data = json_string
+        session.commit()
+    finally:
+        session.close()
+
+    session.close()
+
 
 
 class StrategicMap(Base):

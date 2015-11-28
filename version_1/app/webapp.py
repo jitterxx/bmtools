@@ -1587,8 +1587,15 @@ class Root(object):
     def save_map_draw(self, json_string=None, map_code=None):
         # Сохранение данных для отрисовки карты. Координаты объектов.
         print cherrypy.request.params
-        print "Строка для сохранения: %s " % json.loads(json_string)
+        print "Строка для сохранения: %s " % json_string
         print "Код карты: %s " % map_code
+
+        try:
+            BMTObjects.save_map_draw_data(map_code, json_string)
+        except Exception as e:
+            print "Ошибка сохранения данных отрисовки. %s" % str(e)
+            return "Ошибка сохранения данных отрисовки. %s" % str(e)
+
         return "ok"
 
 
