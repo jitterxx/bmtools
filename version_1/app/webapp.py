@@ -13,6 +13,7 @@ sys.setdefaultencoding("utf-8")
 import modules.bmtools_objects as BMTObjects
 import cherrypy
 import datetime
+import json
 import re
 from bs4 import BeautifulSoup
 from auth import AuthController, require, member_of, name_is, all_of, any_of
@@ -1548,8 +1549,20 @@ class Root(object):
             print "MAP goals: %s " % map_goals
             print "MAP kpi: %s " % map_kpi
 
+            goals_in_json = dict()
+            for one in map_goals.values():
+                goals_in_json[one.code] = {
+                    "code": one.code,
+                    "name": one.goal_name,
+                    "perspective": one.perspective
+                }
+
+            goals_in_json = json.dumps(goals_in_json)
+            print "MAP goals in JSON: %s" % goals_in_json
+
             return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map, current_map=current_map,
-                               map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics)
+                               map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
+                               goals_in_json=goals_in_json)
 
         else:
             tmpl = lookup.get_template("maps_page.html")

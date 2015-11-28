@@ -3,7 +3,7 @@
 <%block name="title">
     <title>Главная</title>
     <link href="/static/css/dashboard.css" rel="stylesheet">
-
+    <script src="/static/js/fabric.min.js"></script>
 </%block>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -15,6 +15,17 @@
             <div style="margin-left: 2%;">
                 ${current_map.description}
             </div>
+            <hr>
+            <h3>Графическая карта</h3>
+            <canvas id="graph_map" width="800" height="500"></canvas>
+            <script>
+                var financial_map_color = '#d9534f';
+                var client_map_color = '#5cb85c';
+                var process_map_color = '#428bca';
+                var hr_map_color = '#f0ad4e';
+                var goals_in_json = '${goals_in_json}';
+            </script>
+            <script src="/static/js/graphics_for_strategic_map.js"></script>
             <hr>
             <h3>Цели</h3>
             <div style="margin-left: 2%;">
