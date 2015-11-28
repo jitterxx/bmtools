@@ -25,9 +25,14 @@
                 var goals_in_json = '${goals_in_json}';
                 var linked_goals_in_json = '${custom_linked_goals_in_json}';
                 var map_code = '${current_map.code}';
+            % if draw_data:
+                var draw_data = JSON.parse('${draw_data}');
+            % else:
+                var draw_data = {};
+            % endif
             </script>
             <script src="/static/js/graphics_for_strategic_map.js"></script>
-            <button class="btn btn-success" onclick="sendDrawData(draw_goals);">Сохранить</button>
+            <button class="btn btn-success" onclick="sendDrawData(draw_data);">Сохранить</button>
             <hr>
             <h3>Цели</h3>
             <div style="margin-left: 2%;">

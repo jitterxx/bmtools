@@ -1544,6 +1544,7 @@ class Root(object):
                 current_map = BMTObjects.get_strategic_map_object(code)
                 map_goals, map_kpi, map_events, map_metrics = BMTObjects.load_cur_map_objects(code)
                 custom_linked_goals = BMTObjects.load_custom_links()[0]
+                draw_data = BMTObjects.load_map_draw_data(code)
             except Exception as e:
                 return ShowError(e)
 
@@ -1569,7 +1570,8 @@ class Root(object):
 
             return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map, current_map=current_map,
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
-                               goals_in_json=goals_in_json, custom_linked_goals_in_json=custom_linked_goals_in_json)
+                               goals_in_json=goals_in_json, custom_linked_goals_in_json=custom_linked_goals_in_json,
+                               draw_data=draw_data)
 
         else:
             tmpl = lookup.get_template("maps_page.html")

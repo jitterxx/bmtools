@@ -1260,6 +1260,34 @@ def save_map_draw_data(map_code, json_string):
     session.close()
 
 
+def load_map_draw_data(map_code):
+    """
+    Загружаем данные о расположении объектов для отрисовки карты на странице.
+    Храним json строку с данными для fabric.js
+
+    :param map_code: код карты
+
+    :return: json строка для fabric.js
+    """
+
+    session = Session()
+    try:
+        resp = session.query(StrategicMapDescription).filter(StrategicMapDescription.code == map_code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено для StrategicMapDescription(). BMTObjects.load_map_draw_data(). %s" % str(e)
+        return None
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.load_map_draw_data(). НАйдено много карт для кода: %s. %s" %\
+              (map_code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции load_map_draw_data(). %s" % str(e)
+        raise e
+    else:
+        return resp.draw_data
+    finally:
+        session.close()
+
 
 class StrategicMap(Base):
     """
