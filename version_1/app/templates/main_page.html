@@ -10,17 +10,12 @@
 
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8">
-            <h3>Стратегические карты</h3>
+            <h3>Последние обновления</h3>
             <div style="margin-left: 3%;">
-                % for map in maps:
-                 <p>
-                    % if map.code == ent_map:
-                        <a class="btn btn-link" href="/wizard">${map.name}</a>
-                    % else:
-                        <a class="btn btn-link" href="/wizardfordepartment/start?code=${map.code}">${map.name}</a>
-                    % endif
-                 </p>
-                % endfor
+                <p class="lead">28.11.15</p>
+                <p>Добавлена графическая визуализаци стратегических карт. Для любой карты можно на поле мышкой расположить цели и
+                сохранить их расположение. Цели при наличии связей соединены между собой линиями.</p>
+                <p>Посмотреть можно в <a href="/maps">картах</a>, выбрать любую.</p>
             </div>
             <hr>
         </div>
