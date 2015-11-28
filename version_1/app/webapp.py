@@ -1543,26 +1543,33 @@ class Root(object):
             try:
                 current_map = BMTObjects.get_strategic_map_object(code)
                 map_goals, map_kpi, map_events, map_metrics = BMTObjects.load_cur_map_objects(code)
+                custom_linked_goals = BMTObjects.load_custom_links()[0]
             except Exception as e:
                 return ShowError(e)
 
             print "MAP goals: %s " % map_goals
             print "MAP kpi: %s " % map_kpi
+            print "MAP linked goals: %s" % custom_linked_goals
 
             goals_in_json = dict()
+            custom_linked_goals_in_json = dict()
             for one in map_goals.values():
                 goals_in_json[one.code] = {
                     "code": one.code,
                     "name": one.goal_name,
                     "perspective": one.perspective
                 }
+                if one.code in custom_linked_goals.keys():
+                    custom_linked_goals_in_json[one.code] = custom_linked_goals[one.code]
 
             goals_in_json = json.dumps(goals_in_json)
+            custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
             print "MAP goals in JSON: %s" % goals_in_json
+            print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
 
             return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map, current_map=current_map,
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
-                               goals_in_json=goals_in_json)
+                               goals_in_json=goals_in_json, custom_linked_goals_in_json=custom_linked_goals_in_json)
 
         else:
             tmpl = lookup.get_template("maps_page.html")
@@ -1574,6 +1581,15 @@ class Root(object):
 
             return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                                maps=maps, ent_map=BMTObjects.enterprise_strategic_map)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def save_map_draw(self, json_string=None, map_code=None):
+        # Сохранение данных для отрисовки карты. Координаты объектов.
+        print cherrypy.request.params
+        print "Строка для сохранения: %s " % json.loads(json_string)
+        print "Код карты: %s " % map_code
+        return "ok"
 
 
 

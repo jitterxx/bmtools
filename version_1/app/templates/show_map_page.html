@@ -16,16 +16,18 @@
                 ${current_map.description}
             </div>
             <hr>
-            <h3>Графическая карта</h3>
-            <canvas id="graph_map" width="800" height="500"></canvas>
+            <canvas id="graph_map" width="800" height="500" onmouseout="sendDrawData(draw_goals);"></canvas>
             <script>
                 var financial_map_color = '#d9534f';
                 var client_map_color = '#5cb85c';
                 var process_map_color = '#428bca';
                 var hr_map_color = '#f0ad4e';
                 var goals_in_json = '${goals_in_json}';
+                var linked_goals_in_json = '${custom_linked_goals_in_json}';
+                var map_code = '${current_map.code}';
             </script>
             <script src="/static/js/graphics_for_strategic_map.js"></script>
+            <button class="btn btn-success" onclick="sendDrawData(draw_goals);">Сохранить</button>
             <hr>
             <h3>Цели</h3>
             <div style="margin-left: 2%;">

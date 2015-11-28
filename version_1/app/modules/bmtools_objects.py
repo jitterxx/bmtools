@@ -1110,6 +1110,7 @@ class StrategicMapDescription(Base):
     status = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     department = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+    draw_data = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
 
     def __init__(self):
         self.code = ""
