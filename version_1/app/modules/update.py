@@ -9,7 +9,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-import modules.bmtools_objects as BMTObjects
+import bmtools_objects as BMTObjects
 import cherrypy
 import datetime
 import json
@@ -17,7 +17,7 @@ import re
 
 sql = "ALTER TABLE strategic_maps_desc ADD COLUMN draw_data TEXT NULL AFTER department;"
 
-connection = BMTObjects.engine.connect()
+connection = BMTObjects.Engine.connect()
 result = connection.execute(sql)
 print result
 
