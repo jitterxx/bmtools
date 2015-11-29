@@ -1462,7 +1462,7 @@ class Library(object):
         tmpl = lookup.get_template("library_main_page.html")
         step_desc = dict()
         step_desc['full_description'] = "Работа с данными: просмотр, добавление, редактирование, удаление, связывание."
-        step_desc['name'] = "Бибилиотека"
+        step_desc['name'] = "Библиотека"
         try:
             lib_goals, lib_kpi = BMTObjects.load_lib_goals_kpi()
             custom_goals, custom_kpi = BMTObjects.load_custom_goals_kpi()
