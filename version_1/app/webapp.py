@@ -1542,7 +1542,31 @@ class Goals(object):
     def edit(self, code=None):
         # выводим страницу редактирования цели
         print "EDIT GOAL."
-        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+        tmpl = lookup.get_template("goals_edit_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = "Редактирование цели"
+        step_desc['name'] = "Редактирование цели"
+        step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
+
+        if not code:
+            print "Параметр code указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+        try:
+            cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
+            linked_goals = BMTObjects.load_custom_links()[0]
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+
+        print "Current MAP : %s" % BMTObjects.current_strategic_map
+        print "Current MAP goals: %s" % cur_map_goals
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
+                           goal=cur_map_goals[code], linked_goals=linked_goals[code])
+
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -1566,7 +1590,34 @@ class Goals(object):
     def update(self, code=None, name=None, description=None, perspective=None, linked=None):
         # Сохраняем данные после редактирования цели
         print "UPDATE GOAL."
+
+        if None in [code, name, description, perspective]:
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+        goal_fields = dict()
+
+        goal_fields['goal_name'] = name
+        goal_fields['description'] = description
+        goal_fields['perspective'] = perspective
+
+        try:
+            # Записываем новую цель и ждем возврата ее кода
+            BMTObjects.update_custom_goal(code, goal_fields)
+        except Exception as e:
+            print "Ошибка при обновлении CUSTOM GOAL %s. Ошибка: %s" % (code, str(e))
+            return ShowError(e)
+
+        if linked:
+            print "CREATE LINKS for %s and %s." % (code, linked)
+            try:
+                BMTObjects.update_custom_link_for_goals(code, linked)
+            except Exception as e:
+                print "Ошибка при обновлении LINK_FOR_CUSTOM_GOAL. %s" % str(e)
+                return ShowError(e)
+
         raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
 
 
 class Root(object):
