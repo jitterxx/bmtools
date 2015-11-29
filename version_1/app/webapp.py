@@ -1549,7 +1549,17 @@ class Goals(object):
     def delete(self, code=None):
         # Удаляем цель из текущей карты. Цель не удаляется из базы, остается в кастомных и видна в библиотеке.
         print "DELETE GOAL."
-        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+        if not code:
+            print "GOAL code empty. Redirect to /maps?code=%s" % BMTObjects.current_strategic_map
+            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+        try:
+            BMTObjects.remove_goal_from_map(code, BMTObjects.current_strategic_map)
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
     @cherrypy.expose
     @require(member_of("users"))

@@ -63,14 +63,14 @@
                         %else:
                         "text-default"
                         %endif
-                        ">
+                        >
                             ${map_goals[one].goal_name}
                             <span class="caret"></span>
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="dLabel">
                             <li><a href="/goals/edit?code=${map_goals[one].code}">Редактировать</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="/goals/delete?code=${map_goals[one].code}">Удалить</a></li>
+                            <li><a href="/goals/delete?code=${map_goals[one].code}">Удалить из карты</a></li>
                           </ul>
                     </div>
                 % endfor
