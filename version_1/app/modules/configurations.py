@@ -9,7 +9,10 @@ sql_uri = 'mysql://bmtools:Cthutq123@localhost/bmtools?charset=utf8'
 def_industry = {"1": "Дистрибьюция"}
 industry_goals = {"1": ["g1", "g2", "g3", "g4"]}
 persons = {0: "", 1: "Шишкин Иван", 2: "Толстой Лев", 3: "Достоевский Федор", 4: "Пушкин Александр"}
+
 perspectives = {0: "Финансы", 1: "Клиенты", 2: "Процессы", 3: "Персонал"}
+PERSPECTIVE_COLORS = ["#d9534f", "#5cb85c", "#428bca", "#f0ad4e"]
+
 enterprise_strategic_map = "ent0"
 current_strategic_map = enterprise_strategic_map
 KPI_SCALE_TYPE = {0: "Красный/Зеленый", 1: "Зеленый/Красный", 2: "Шкала (Красный/Желтый/Зеленый)",

@@ -1571,7 +1571,7 @@ class Root(object):
             return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map, current_map=current_map,
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
                                goals_in_json=goals_in_json, custom_linked_goals_in_json=custom_linked_goals_in_json,
-                               draw_data=draw_data)
+                               draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS)
 
         else:
             tmpl = lookup.get_template("maps_page.html")
