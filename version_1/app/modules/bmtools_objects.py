@@ -1705,7 +1705,7 @@ def check_access(subject, person):
     return [True, True]
 
 
-def change_current_startegic_map(smap):
+def change_current_strategic_map(smap):
     # меняем текущую стратегическую карту
-
+    global current_strategic_map
     current_strategic_map = smap

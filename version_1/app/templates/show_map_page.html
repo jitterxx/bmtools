@@ -11,7 +11,8 @@
     <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-6">
             <h1>${current_map.name}</h1>
-            <h3>Описание</h3>
+            <a class="btn btn-default" href="/goals/new" role="button">Добавить цель</a>
+
             <div style="margin-left: 2%;">
                 ${current_map.description}
             </div>
@@ -40,9 +41,13 @@
                 % for one in map_goals.keys():
                     <p class=
                         % if map_goals[one].perspective == 0:
-                        "text-success"
-                        % elif map_goals[one].perspective == 1:
                         "text-danger"
+                        % elif map_goals[one].perspective == 1:
+                        "text-success"
+                        % elif map_goals[one].perspective == 2:
+                        "text-info"
+                        % elif map_goals[one].perspective == 3:
+                        "text-warning"
                         %else:
                         "text-default"
                         %endif

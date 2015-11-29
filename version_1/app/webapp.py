@@ -835,7 +835,7 @@ class Wizard(object):
     @require(member_of("users"))
     def step3(self):
         tmpl = lookup.get_template("wizard_step3_page.html")
-        BMTObjects.change_current_startegic_map(BMTObjects.enterprise_strategic_map)
+        BMTObjects.change_current_strategic_map(BMTObjects.enterprise_strategic_map)
         params = cherrypy.request.headers
         step_desc = dict()
         step_desc['full_description'] = BMTObjects.get_desc("step3_full_description")
@@ -1475,12 +1475,97 @@ class Library(object):
                            custom_kpi=custom_kpi, custom_goals=custom_goals, perspectives=BMTObjects.perspectives)
 
 
+class Goals(object):
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def new(self):
+        # Создание новой цели
+        tmpl = lookup.get_template("goals_new_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = "Создание новой цели"
+        step_desc['name'] = "Создание новой цели"
+        step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
+
+        try:
+            cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+
+        print "Current MAP : %s" % BMTObjects.current_strategic_map
+        print "Current MAP goals: %s" % cur_map_goals
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives)
+
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def save(self, name=None, description=None, perspective=None, linked=None):
+        """
+            Сохраняем новую цель в кастомные цели и добавляем в текущую карту
+        """
+
+        print "New GOAL SAVE : %s " % cherrypy.request.params
+
+        if None in [name, description, perspective]:
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+        goal_fields = dict()
+
+        goal_fields['goal_name'] = name
+        goal_fields['description'] = description
+        goal_fields['perspective'] = perspective
+
+        try:
+            # Записываем новую цель и ждем возврата ее кода
+            status = BMTObjects.create_new_custom_goal(goal_fields)
+        except Exception as e:
+            print "Ошибка при создании CUSTOM_GOAL. %s" % str(e)
+            return ShowError(e)
+
+        if linked:
+            print "CREATE LINKS for %s and %s." % (status[1], linked)
+            try:
+                BMTObjects.create_custom_link_for_goals(status[1], linked)
+            except Exception as e:
+                print "Ошибка при создании LINK_FOR_CUSTOM_GOAL. %s" % str(e)
+                return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def edit(self, code=None):
+        # выводим страницу редактирования цели
+        print "EDIT GOAL."
+        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def delete(self, code=None):
+        # Удаляем цель из текущей карты. Цель не удаляется из базы, остается в кастомных и видна в библиотеке.
+        print "DELETE GOAL."
+        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def update(self, code=None, name=None, description=None, perspective=None, linked=None):
+        # Сохраняем данные после редактирования цели
+        print "UPDATE GOAL."
+        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+
 class Root(object):
 
     auth = AuthController()
     wizard = Wizard()
     wizardfordepartment = DepartmentWizard()
     library = Library()
+    goals = Goals()
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -1541,7 +1626,7 @@ class Root(object):
         if code:
             tmpl = lookup.get_template("show_map_page.html")
             try:
-                current_map = BMTObjects.get_strategic_map_object(code)
+                BMTObjects.change_current_strategic_map(code)
                 map_goals, map_kpi, map_events, map_metrics = BMTObjects.load_cur_map_objects(code)
                 custom_linked_goals = BMTObjects.load_custom_links()[0]
                 draw_data = BMTObjects.load_map_draw_data(code)
@@ -1568,7 +1653,7 @@ class Root(object):
             print "MAP goals in JSON: %s" % goals_in_json
             print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
 
-            return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map, current_map=current_map,
+            return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
                                goals_in_json=goals_in_json, custom_linked_goals_in_json=custom_linked_goals_in_json,
                                draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS)

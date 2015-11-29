@@ -3,29 +3,29 @@ var draw_goals = {};
 (function() {
     var canvas = this.__canvas = new fabric.Canvas('graph_map');
     fabric.Object.prototype.transparentCorners = false;
-    var p = 120;
+    var top_start = 120;
     var left_start = 30;
     line_color = '#eee';
 
-    canvas.add(new fabric.Line([0,p,800,p], {
+    canvas.add(new fabric.Line([0, top_start,800, top_start], {
         fill: '#eee',
         stroke: '#eee',
         strokeWidth: 2,
         selectable: false
     }));
-    canvas.add(new fabric.Line([0,p*2,800,p*2], {
+    canvas.add(new fabric.Line([0, top_start*2,800, top_start*2], {
         fill: '#eee',
         stroke: '#eee',
         strokeWidth: 2,
         selectable: false
     }));
-    canvas.add(new fabric.Line([0,p*3,800,p*3], {
+    canvas.add(new fabric.Line([0, top_start*3,800, top_start*3], {
         fill: '#eee',
         stroke: '#eee',
         strokeWidth: 2,
         selectable: false
     }));
-    canvas.add(new fabric.Line([0,p*4,800,p*4], {
+    canvas.add(new fabric.Line([0, top_start*4,800,top_start*4], {
         fill: '#eee',
         stroke: '#eee',
         strokeWidth: 2,
@@ -40,15 +40,15 @@ var draw_goals = {};
         fontWeight: 'bold',
         angle: -90,
         left: 0,
-        top: p-20
+        top: top_start - 20
     };
 
     canvas.add(new fabric.Text('Финансы', text_options));
-    text_options.top = p*2 -10;
+    text_options.top = top_start*2 -10;
     canvas.add(new fabric.Text('Клиенты', text_options));
-    text_options.top = p*3 -10;
+    text_options.top = top_start*3 -10;
     canvas.add(new fabric.Text('Процессы', text_options));
-    text_options.top = p*4 -10;
+    text_options.top = top_start*4 -10;
     canvas.add(new fabric.Text('Персонал', text_options));
 
     var original_color = 'red';
@@ -130,7 +130,7 @@ var draw_goals = {};
             };
             var group_options = {
               left: left_start + c*140,
-              top: 100
+              top: top_start + 30
             }
             c++
         }
@@ -140,12 +140,13 @@ var draw_goals = {};
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 30,
+                  radius: 60,
+                  scaleY: 0.5,
                   fill: process_map_color
             };
             var group_options = {
               left: left_start + p*120,
-              top: 200
+              top: top_start*2 + 30
             }
             p++
         }
@@ -155,12 +156,13 @@ var draw_goals = {};
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 30,
+                  radius: 60,
+                  scaleY: 0.5,
                   fill: hr_map_color
             };
             var group_options = {
               left: left_start + h*120,
-              top: 300
+              top: top_start*3 + 30
             }
             h++
         }
@@ -170,12 +172,13 @@ var draw_goals = {};
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 30,
+                  radius: 60,
+                  scaleY: 0.5,
                   fill: '#eee'
             };
             var group_options = {
               left: left_start + i*120,
-              top: 400
+              top: top_start*4 + 30
             }
             i++
         }
