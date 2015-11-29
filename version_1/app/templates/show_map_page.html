@@ -9,15 +9,25 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-6">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <h1>${current_map.name}</h1>
-            <a class="btn btn-default" href="/goals/new" role="button">Добавить цель</a>
-
+            <a class="btn btn-link" href="/goals/new" role="button">
+                <span class="text-muted">Добавить цель</span>
+            </a>
             <div style="margin-left: 2%;">
                 ${current_map.description}
             </div>
-            <hr>
+
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <div><br><br><br></div>
             <canvas id="graph_map" width="800" height="500"></canvas>
+            <button class="btn btn-link btn-xs" onclick="sendDrawData(draw_data);">
+                <span class="text-muted">Сохранить расположение целей</span>
+            </button>
+
             <script>
                 var financial_map_color = '${colors[0]}';
                 var client_map_color = '${colors[1]}';
@@ -33,13 +43,15 @@
             % endif
             </script>
             <script src="/static/js/graphics_for_strategic_map.js"></script>
-            <button class="btn btn-success" onclick="sendDrawData(draw_data);">Сохранить</button>
-            <hr>
+
+            </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
             <h3>Цели</h3>
             <div style="margin-left: 2%;">
             % if map_goals.keys():
                 % for one in map_goals.keys():
-                    <p class=
+                    <div class="dropdown">
+                        <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class=
                         % if map_goals[one].perspective == 0:
                         "text-danger"
                         % elif map_goals[one].perspective == 1:
@@ -52,8 +64,15 @@
                         "text-default"
                         %endif
                         ">
-                        ${map_goals[one].goal_name}
-                    </p>
+                            ${map_goals[one].goal_name}
+                            <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li><a href="/goals/edit?code=${map_goals[one].code}">Редактировать</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/goals/delete?code=${map_goals[one].code}">Удалить</a></li>
+                          </ul>
+                    </div>
                 % endfor
             % else:
                 <p>Цели не заданы.</p>
@@ -94,7 +113,6 @@
             </div>
         </div>
     </div>
-
 
 
 </div>
