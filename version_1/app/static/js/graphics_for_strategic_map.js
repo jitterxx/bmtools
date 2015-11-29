@@ -3,9 +3,11 @@ var draw_goals = {};
 (function() {
     var canvas = this.__canvas = new fabric.Canvas('graph_map');
     fabric.Object.prototype.transparentCorners = false;
-    var top_start = 120;
+
+    var top_start = 200;
     var left_start = 30;
-    line_color = '#eee';
+    var line_color = '#eee';
+    var radius = 65;
 
     canvas.add(new fabric.Line([0, top_start,800, top_start], {
         fill: '#eee',
@@ -40,15 +42,15 @@ var draw_goals = {};
         fontWeight: 'bold',
         angle: -90,
         left: 0,
-        top: top_start - 20
+        top: top_start - top_start*0.2
     };
 
     canvas.add(new fabric.Text('Финансы', text_options));
-    text_options.top = top_start*2 -10;
+    text_options.top = top_start*2 - top_start*0.2;
     canvas.add(new fabric.Text('Клиенты', text_options));
-    text_options.top = top_start*3 -10;
+    text_options.top = top_start*3 - top_start*0.2;
     canvas.add(new fabric.Text('Процессы', text_options));
-    text_options.top = top_start*4 -10;
+    text_options.top = top_start*4 - top_start*0.2;
     canvas.add(new fabric.Text('Персонал', text_options));
 
     var original_color = 'red';
@@ -90,9 +92,12 @@ var draw_goals = {};
         canvas.renderAll();
     });
 
-    var goals = JSON.parse(goals_in_json);
+    //console.log(goals_in_json);
+    //var goals = JSON.parse(goals_in_json);
+    var goals = goals_in_json;
+
     var linked_goals = JSON.parse(linked_goals_in_json);
-    console.log(draw_data);
+    //console.log(draw_data);
 
     //for (var key in goals) {
     //  console.log(goals[key].code, goals[key].perspective, goals[key].name);
@@ -108,7 +113,7 @@ var draw_goals = {};
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 60,
+                  radius: radius,
                   scaleY: 0.5,
                   fill: financial_map_color
             };
@@ -124,7 +129,7 @@ var draw_goals = {};
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 60,
+                  radius: radius,
                   scaleY: 0.5,
                   fill: client_map_color
             };
@@ -140,7 +145,7 @@ var draw_goals = {};
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 60,
+                  radius: radius,
                   scaleY: 0.5,
                   fill: process_map_color
             };
@@ -156,7 +161,7 @@ var draw_goals = {};
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 60,
+                  radius: radius,
                   scaleY: 0.5,
                   fill: hr_map_color
             };
@@ -185,13 +190,22 @@ var draw_goals = {};
 
         var goal = new fabric[klass](options);
 
-        goals_name = goals[key].name
+        console.log(key, goals[key].name)
+        goals_name = goals[key].name;
+        var j = i = 0;
         text = goals_name.replace(/\s/g, function(str, offset, s) {
           //console.log(offset/8, Math.floor(offset/8));
-          if ((offset/8 - Math.floor(offset/8)) < 0.20) {
+          //if ((offset/8 - Math.floor(offset/8)) < 0.20) {
+          console.log(j ,offset);
+          j = j + (offset - i);
+          i = offset;
+          if (j < 8) {
+            console.log('Печатаем пробел');
             return(' ');
             }
           else {
+            console.log('Печатаем перенос');
+            j = 0;
             return '\n';
             }
           })

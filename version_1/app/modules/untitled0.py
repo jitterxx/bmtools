@@ -17,14 +17,19 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
-s = "Цель для подразделения 1 ее надо перенести"
-ss = ""
-print len(s)
-for m in s.split(" "):
-    print m
-    if len(m) > 10:
-        ss += "\n" + m
-    else:
-        ss += " " + m
 
-print ss
+goal = BMTObjects.load_custom_goals_kpi("dg7cd3")[0]
+
+dd = {"name": str(goal.goal_name)}
+
+print dd['name']
+s = str(dd['name'])
+
+j = 0
+for i in s:
+    print i
+if j > 9 and s[i] == " ":
+    j = 0
+    print i, s[i]
+else:
+    j += 1

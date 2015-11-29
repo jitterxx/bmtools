@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <div><br><br><br></div>
-            <canvas id="graph_map" width="800" height="500"></canvas>
+            <canvas id="graph_map" width="800" height="800"></canvas>
             <button class="btn btn-link btn-xs" onclick="sendDrawData(draw_data);">
                 <span class="text-muted">Сохранить расположение целей</span>
             </button>
@@ -33,9 +33,15 @@
                 var client_map_color = '${colors[1]}';
                 var process_map_color = '${colors[2]}';
                 var hr_map_color = '${colors[3]}';
-                var goals_in_json = '${goals_in_json}';
                 var linked_goals_in_json = '${custom_linked_goals_in_json}';
                 var map_code = '${current_map.code}';
+                var goals_in_json = {
+                 % for code in goals_in_json.keys():
+                    ${code}: {code: '${code}', name: '${goals_in_json[code]["name"]}', perspective: ${goals_in_json[code]["perspective"]}},
+                 % endfor
+                    ${code}: {code: '${code}', name: '${goals_in_json[code]["name"]}', perspective: ${goals_in_json[code]["perspective"]}}
+                };
+
             % if draw_data:
                 var draw_data = JSON.parse('${draw_data}');
             % else:

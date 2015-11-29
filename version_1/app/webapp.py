@@ -1709,7 +1709,7 @@ class Root(object):
                 if one.code in custom_linked_goals.keys():
                     custom_linked_goals_in_json[one.code] = custom_linked_goals[one.code]
 
-            goals_in_json = json.dumps(goals_in_json)
+            # goals_in_json = json.dumps(goals_in_json)
             custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
             print "MAP goals in JSON: %s" % goals_in_json
             print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
