@@ -1698,25 +1698,17 @@ class Root(object):
             print "MAP kpi: %s " % map_kpi
             print "MAP linked goals: %s" % custom_linked_goals
 
-            goals_in_json = dict()
             custom_linked_goals_in_json = dict()
             for one in map_goals.values():
-                goals_in_json[one.code] = {
-                    "code": one.code,
-                    "name": one.goal_name,
-                    "perspective": one.perspective
-                }
                 if one.code in custom_linked_goals.keys():
                     custom_linked_goals_in_json[one.code] = custom_linked_goals[one.code]
 
-            # goals_in_json = json.dumps(goals_in_json)
             custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
-            print "MAP goals in JSON: %s" % goals_in_json
             print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
 
             return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
-                               goals_in_json=goals_in_json, custom_linked_goals_in_json=custom_linked_goals_in_json,
+                               custom_linked_goals_in_json=custom_linked_goals_in_json,
                                draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS)
 
         else:

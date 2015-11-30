@@ -36,10 +36,12 @@
                 var linked_goals_in_json = '${custom_linked_goals_in_json}';
                 var map_code = '${current_map.code}';
                 var goals_in_json = {
-                 % for code in goals_in_json.keys():
-                    ${code}: {code: '${code}', name: '${goals_in_json[code]["name"]}', perspective: ${goals_in_json[code]["perspective"]}},
+                % if map_goals:
+                 % for code in map_goals.keys():
+                    ${code}: {code: '${code}', name: '${map_goals[code].goal_name}', perspective: ${map_goals[code].perspective}},
                  % endfor
-                    ${code}: {code: '${code}', name: '${goals_in_json[code]["name"]}', perspective: ${goals_in_json[code]["perspective"]}}
+                    ${code}: {code: '${code}', name: '${map_goals[code].goal_name}', perspective: ${map_goals[code].perspective}}
+                % endif
                 };
 
             % if draw_data:
