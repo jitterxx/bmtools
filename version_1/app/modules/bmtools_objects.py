@@ -30,7 +30,7 @@ sys.setdefaultencoding("utf-8")
 Подключение БД
 """
 Base = sqlalchemy.ext.declarative.declarative_base()
-Engine = sqlalchemy.create_engine(sql_uri, pool_size=20)
+Engine = sqlalchemy.create_engine(sql_uri, pool_size=20, pool_recycle=3600)
 Session = sqlalchemy.orm.sessionmaker(bind=Engine)
 
 
