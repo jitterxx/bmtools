@@ -1602,7 +1602,7 @@ class Goals(object):
         goal_fields['perspective'] = perspective
 
         try:
-            # Записываем новую цель и ждем возврата ее кода
+            # Обновляем цель
             BMTObjects.update_custom_goal(code, goal_fields)
         except Exception as e:
             print "Ошибка при обновлении CUSTOM GOAL %s. Ошибка: %s" % (code, str(e))

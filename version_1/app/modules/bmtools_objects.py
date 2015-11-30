@@ -701,27 +701,29 @@ def update_custom_link_for_goals(code, linked):
             else:
                 for_delete.append(one.child_code)
 
-        # Удаляем лишние связи из старых
-        try:
-            resp = session.query(Custom_linked_goals).filter(or_(and_(Custom_linked_goals.parent_code == code,
-                                                                      Custom_linked_goals.child_code.in_(for_delete)),
-                                                                 and_(Custom_linked_goals.parent_code.in_(for_delete),
-                                                                      Custom_linked_goals.child_code == code))).all()
-        except Exception as e:
-            print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Сохранение изменений. %s" % str(e)
-            raise e
-        else:
-            print "Удаляем связи: "
-            for one in resp:
-                print one.parent_code, one.child_code
-
-        # Создаем новые
-        for one in linked:
+        # Если в linked не пусто, создаем новые связи или возвращаемся
+        if linked:
+            # Удаляем лишние связи из старых
             try:
-                create_custom_link_for_goals(code, one)
+                resp = session.query(Custom_linked_goals).filter(or_(and_(Custom_linked_goals.parent_code == code,
+                                                                          Custom_linked_goals.child_code.in_(for_delete)),
+                                                                     and_(Custom_linked_goals.parent_code.in_(for_delete),
+                                                                          Custom_linked_goals.child_code == code))).all()
             except Exception as e:
-                print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Создание новых связей. %s" % str(e)
+                print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Сохранение изменений. %s" % str(e)
                 raise e
+            else:
+                print "Удаляем связи: "
+                for one in resp:
+                    print one.parent_code, one.child_code
+
+            # Создаем новые
+            for one in linked:
+                try:
+                    create_custom_link_for_goals(code, one)
+                except Exception as e:
+                    print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Создание новых связей. %s" % str(e)
+                    raise e
     finally:
         session.close()
 
