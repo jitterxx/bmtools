@@ -17,19 +17,12 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
+session = BMTObjects.Session()
 
-goal = BMTObjects.load_custom_goals_kpi("dg7cd3")[0]
+resp = session.query(BMTObjects.Custom_goal).filter(BMTObjects.Custom_goal.code == "dg0a4d").all()
 
-dd = {"name": str(goal.goal_name)}
+for one in resp:
+    print one
 
-print dd['name']
-s = str(dd['name'])
+session.close()
 
-j = 0
-for i in s:
-    print i
-if j > 9 and s[i] == " ":
-    j = 0
-    print i, s[i]
-else:
-    j += 1

@@ -634,6 +634,98 @@ def create_new_custom_goal(goal_fields):
         session.close()
 
 
+def update_custom_goal(code, goal_fields):
+    """
+    Обновление свойств цели.
+
+    :param code: код цели
+    :param goal_fields: свойства цели
+    :return:
+    """
+
+    session = Session()
+    try:
+        resp = session.query(Custom_goal).filter(Custom_goal.code == code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "BMTObjects.update_custom_goal(). Не найдена цель с кодом: %s. %s" % (code, str(e))
+        raise e
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции BMTObjects.update_custom_goal(). НАйдено много целей с кодом: %s. %s" % (code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.update_custom_goal(). %s" % str(e)
+        raise e
+    else:
+        resp.goal_name = goal_fields.get('goal_name')
+        resp.description = goal_fields.get('description')
+        resp.perspective = goal_fields.get('perspective')
+
+        try:
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.update_custom_goal(). Сохранение изменений. %s" % str(e)
+            raise e
+    finally:
+        session.close()
+
+
+def update_custom_link_for_goals(code, linked):
+    """
+    Обновление связей для цели.
+
+    :param code: код цели
+    :param linked: новые связи
+    :return:
+    """
+
+    session = Session()
+
+    if not isinstance(linked, list):
+        linked = [linked]
+
+    for_delete = []
+
+    # ищем все связи редактируемой цели и проверяем их наличие в linked
+    # если ответ положительный, убираем ее из linked и ищем дальше, если отрицательный - то удалем связь.
+    # В конце в линкед должны остатьтся только новые связи, их создаем.
+    try:
+        resp = session.query(Custom_linked_goals).filter(Custom_linked_goals.parent_code == code).all()
+        # resp1 = session.query(Custom_linked_goals).filter(Custom_linked_goals.child_code == code).all()
+    except Exception as e:
+        print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Сохранение изменений. %s" % str(e)
+        raise e
+    else:
+        for one in resp:
+            if one.child_code in linked:
+                linked.remove(one.child_code)
+            else:
+                for_delete.append(one.child_code)
+
+        # Удаляем лишние связи из старых
+        try:
+            resp = session.query(Custom_linked_goals).filter(or_(and_(Custom_linked_goals.parent_code == code,
+                                                                      Custom_linked_goals.child_code.in_(for_delete)),
+                                                                 and_(Custom_linked_goals.parent_code.in_(for_delete),
+                                                                      Custom_linked_goals.child_code == code))).all()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Сохранение изменений. %s" % str(e)
+            raise e
+        else:
+            print "Удаляем связи: "
+            for one in resp:
+                print one.parent_code, one.child_code
+
+        # Создаем новые
+        for one in linked:
+            try:
+                create_custom_link_for_goals(code, one)
+            except Exception as e:
+                print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Создание новых связей. %s" % str(e)
+                raise e
+    finally:
+        session.close()
+
+
 class Custom_KPI(Base):
     __tablename__ = "custom_kpi"
 
