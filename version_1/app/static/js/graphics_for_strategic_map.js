@@ -292,3 +292,11 @@ function sendDrawData(data) {
     }
     xhr.send(body);
 };
+
+var download_button = document.getElementById('download_draw');
+
+function SaveDraw() {
+    var canvas = document.getElementById('graph_map');
+    var dataURL = canvas.toDataURL('image/png');
+    download_button.href = dataURL;
+};
