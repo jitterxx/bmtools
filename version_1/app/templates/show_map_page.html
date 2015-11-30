@@ -11,6 +11,9 @@
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <h1>${current_map.name}</h1>
+            <a class="btn btn-link" href="/goals/new" role="button">
+                <span class="text-muted">Добавить цель</span>
+            </a>
             <div style="margin-left: 2%;">
                 ${current_map.description}
             </div>
@@ -51,13 +54,7 @@
 
             </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
-            <h3>Цели
-                <small>
-                    <a href="/goals/new">
-                       Добавить цель
-                    </a>
-                </small>
-            </h3>
+            <h3>Цели</h3>
             <div style="margin-left: 2%;">
             % if map_goals.keys():
                 % for one in map_goals.keys():
