@@ -1566,6 +1566,10 @@ class Goals(object):
             else:
                 linked_goals = []
 
+        # Удалем выбранную цель из списка целей
+        goal = cur_map_goals[code]
+        del cur_map_goals[code]
+
         print "Current MAP : %s" % BMTObjects.current_strategic_map
         print "Current MAP goals: %s" % cur_map_goals
         print "Linked goals: %s" % linked_goals
@@ -1573,7 +1577,7 @@ class Goals(object):
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
-                           goal=cur_map_goals[code], linked_goals=linked_goals)
+                           goal=goal, linked_goals=linked_goals)
 
 
     @cherrypy.expose
