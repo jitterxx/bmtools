@@ -1542,7 +1542,6 @@ class Goals(object):
     #@require(member_of("users"))
     def edit(self, code=None):
         # TODO: Переделать форму выбора связанных целей, из select на галки.
-        # TODO: Рещить проблему вывода названий целей с кавычками.
         # выводим страницу редактирования цели
         print "EDIT GOAL."
         tmpl = lookup.get_template("goals_edit_page.html")
@@ -1578,7 +1577,7 @@ class Goals(object):
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
-                           goal=goal, linked_goals=linked_goals)
+                           goal=goal, linked_goals=linked_goals, escapef=BMTObjects.escape)
 
 
     @cherrypy.expose

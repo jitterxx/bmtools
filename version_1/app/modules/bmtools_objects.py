@@ -41,6 +41,18 @@ logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s', level=l
                     filename="app_log.log")
 
 
+def escape(t):
+    """
+    Экранирование специальных символов при выводе на экран.
+
+    :param t: строка
+    :return: экранированная строка
+    """
+
+    return (t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            .replace("'", "&#39;").replace('"', "&quot;"))
+
+
 def add_to_log(message, msg_type=None):
     if msg_type == "w":
         logging.warning(message)
