@@ -669,7 +669,7 @@ def update_custom_goal(code, goal_fields):
         session.close()
 
 
-def update_custom_link_for_goals(code, linked):
+def update_custom_link_for_goals(code, linked, delete_all=False):
     """
     Обновление связей для цели.
 
@@ -680,11 +680,27 @@ def update_custom_link_for_goals(code, linked):
 
     session = Session()
 
+    # Проверяем условие "Удалить все связи"
+    if delete_all:
+        try:
+            resp = session.query(Custom_linked_goals).filter(or_(Custom_linked_goals.parent_code == code,
+                                                                 Custom_linked_goals.child_code == code)).all()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Сохранение изменений. %s" % str(e)
+            raise e
+        else:
+            for one in resp:
+                session.delete(one)
+            session.commit()
+            return
+        finally:
+            session.close()
+
+
     if not isinstance(linked, list):
         linked = [linked]
 
     for_delete = []
-
     # ищем все связи редактируемой цели и проверяем их наличие в linked
     # если ответ положительный, убираем ее из linked и ищем дальше, если отрицательный - то удалем связь.
     # В конце в линкед должны остатьтся только новые связи, их создаем.
@@ -701,14 +717,17 @@ def update_custom_link_for_goals(code, linked):
             else:
                 for_delete.append(one.child_code)
 
-        # Если в linked не пусто, создаем новые связи или возвращаемся
-        if linked:
+        print for_delete
+        print linked
+
+        if for_delete:
             # Удаляем лишние связи из старых
             try:
                 resp = session.query(Custom_linked_goals).filter(or_(and_(Custom_linked_goals.parent_code == code,
                                                                           Custom_linked_goals.child_code.in_(for_delete)),
                                                                      and_(Custom_linked_goals.parent_code.in_(for_delete),
                                                                           Custom_linked_goals.child_code == code))).all()
+                print resp
             except Exception as e:
                 print "Ошибка в функции BMTObjects. update_custom_link_for_goals(). Сохранение изменений. %s" % str(e)
                 raise e
@@ -716,6 +735,12 @@ def update_custom_link_for_goals(code, linked):
                 print "Удаляем связи: "
                 for one in resp:
                     print one.parent_code, one.child_code
+                    session.delete(one)
+
+                session.commit()
+
+        # Если в linked не пусто, создаем новые связи или возвращаемся
+        if linked:
 
             # Создаем новые
             for one in linked:

@@ -1539,9 +1539,10 @@ class Goals(object):
         raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
     @cherrypy.expose
-    @require(member_of("users"))
+    #@require(member_of("users"))
     def edit(self, code=None):
         # TODO: Переделать форму выбора связанных целей, из select на галки.
+        # TODO: Рещить проблему вывода названий целей с кавычками.
         # выводим страницу редактирования цели
         print "EDIT GOAL."
         tmpl = lookup.get_template("goals_edit_page.html")
@@ -1598,7 +1599,7 @@ class Goals(object):
             raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
     @cherrypy.expose
-    @require(member_of("users"))
+    #@require(member_of("users"))
     def update(self, code=None, name=None, description=None, perspective=None, linked=None):
         # Сохраняем данные после редактирования цели
         print "UPDATE GOAL."
@@ -1613,6 +1614,9 @@ class Goals(object):
         goal_fields['description'] = description
         goal_fields['perspective'] = perspective
 
+        print "UPDATE FIELDS: %s" % goal_fields
+        print "UPDATE linked: %s" % linked
+
         try:
             # Обновляем цель
             BMTObjects.update_custom_goal(code, goal_fields)
@@ -1622,11 +1626,16 @@ class Goals(object):
 
         if linked:
             print "CREATE LINKS for %s and %s." % (code, linked)
-            try:
-                BMTObjects.update_custom_link_for_goals(code, linked)
-            except Exception as e:
-                print "Ошибка при обновлении LINK_FOR_CUSTOM_GOAL. %s" % str(e)
-                return ShowError(e)
+            delete_all = False
+        else:
+            print "DELETE ALL links for %s." % code
+            delete_all = True
+
+        try:
+            BMTObjects.update_custom_link_for_goals(code, linked, delete_all=delete_all)
+        except Exception as e:
+            print "Ошибка при обновлении LINK_FOR_CUSTOM_GOAL. %s" % str(e)
+            return ShowError(e)
 
         raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
@@ -1856,7 +1865,7 @@ class Root(object):
                            current_map=current_map)
 
     @cherrypy.expose
-    @require(member_of("users"))
+    # @require(member_of("users"))
     def maps(self, code=None):
         step_desc = dict()
         step_desc['full_description'] = ""
