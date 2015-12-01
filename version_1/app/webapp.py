@@ -1558,14 +1558,20 @@ class Goals(object):
         except Exception as e:
             print "Ошибка %s " % str(e)
             return ShowError(e)
+        else:
+            if code in linked_goals.keys():
+                linked_goals = linked_goals[code]
+            else:
+                linked_goals = []
 
         print "Current MAP : %s" % BMTObjects.current_strategic_map
         print "Current MAP goals: %s" % cur_map_goals
+        print "Linked goals: %s" % linked_goals
 
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
-                           goal=cur_map_goals[code], linked_goals=linked_goals[code])
+                           goal=cur_map_goals[code], linked_goals=linked_goals)
 
 
     @cherrypy.expose

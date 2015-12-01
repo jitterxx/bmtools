@@ -905,6 +905,7 @@ def update_custom_kpi(custom_kpi_update):
 def load_custom_goals_kpi(goal_code=None, kpi_code=None):
     """
     Функция загрузки из базы всех целей и показателей компании.
+
     :parameter goal_code: код цели
     :parameter kpi_code: код показателя
 
@@ -1018,8 +1019,7 @@ def load_lib_links():
 def load_custom_links():
     """
     Функция возвращает словари целей и показателей связанных с целями.
-    Ключами в обеих структурах являются goal_code, значениями объекты классов Custom_linked_goals или \
-    Custom_linked_kpi_to_goal.
+    Ключами в обеих структурах являются goal_code, значениями списки кодов связанных объектов.
 
     :return: linked_goals, linked_kpi - словари.
     """
