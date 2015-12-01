@@ -115,6 +115,8 @@ var draw_goals = {};
                   originY: 'center',
                   radius: radius,
                   scaleY: 0.5,
+                  //weight: 2*radius,
+                  //height: radius,
                   fill: financial_map_color
             };
             var group_options = {
@@ -190,21 +192,21 @@ var draw_goals = {};
 
         var goal = new fabric[klass](options);
 
-        console.log(key, goals[key].name)
+        //console.log(key, goals[key].name)
         goals_name = goals[key].name;
         var j = i = 0;
         text = goals_name.replace(/\s/g, function(str, offset, s) {
           //console.log(offset/8, Math.floor(offset/8));
           //if ((offset/8 - Math.floor(offset/8)) < 0.20) {
-          console.log(j ,offset);
+          //console.log(j ,offset);
           j = j + (offset - i);
           i = offset;
           if (j < 8) {
-            console.log('Печатаем пробел');
+            //console.log('Печатаем пробел');
             return(' ');
             }
           else {
-            console.log('Печатаем перенос');
+            //console.log('Печатаем перенос');
             j = 0;
             return '\n';
             }
@@ -240,7 +242,7 @@ var draw_goals = {};
         }
         group.centerX = group.left + group.width/2;
         group.centerY = group.top + group.height/2;
-        console.log(group.code, group.centerX, group.centerY);
+        //console.log(group.code, group.centerX, group.centerY);
         canvas.add(group);
       };
 
@@ -254,7 +256,7 @@ var draw_goals = {};
                 //console.log('Связанная цель: ', yy);
                 //console.log('Координаты: ', draw_goals[yy].centerX, draw_goals[yy].centerY);
                 var line = makeLine([ draw_goals[x].centerX, draw_goals[x].centerY,
-                 draw_goals[yy].centerX, draw_goals[yy].centerY ]);
+                draw_goals[yy].centerX, draw_goals[yy].centerY ]);
                 canvas.add(line);
                 draw_goals[x].out_lines.push(line);
                 draw_goals[yy].in_lines.push(line);
@@ -272,12 +274,12 @@ var draw_goals = {};
         });
     }
 
-    console.log(draw_data);
+    //console.log(draw_data);
 
 })();
 
 function sendDrawData(data) {
-    console.log('Выполняем запрос');
+    //console.log('Выполняем запрос');
     var xhr = new XMLHttpRequest();
     var body = 'json_string=' + encodeURIComponent(JSON.stringify(data)) + '&map_code=' + encodeURIComponent(map_code);
     xhr.open('POST', '/save_map_draw', true);

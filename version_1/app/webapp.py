@@ -1480,6 +1480,7 @@ class Goals(object):
     @cherrypy.expose
     @require(member_of("users"))
     def new(self):
+        # TODO: Переделать форму выбора связанных целей, из select на галки.
         # Создание новой цели
         tmpl = lookup.get_template("goals_new_page.html")
         step_desc = dict()
@@ -1540,10 +1541,7 @@ class Goals(object):
     @cherrypy.expose
     @require(member_of("users"))
     def edit(self, code=None):
-        """
-        TODO: Переделать форму выбора связанных целей, из select на галки.
-
-        """
+        # TODO: Переделать форму выбора связанных целей, из select на галки.
         # выводим страницу редактирования цели
         print "EDIT GOAL."
         tmpl = lookup.get_template("goals_edit_page.html")
@@ -1863,6 +1861,8 @@ class Root(object):
         print "Show MAP: %s" % code
 
         if code:
+            # TODO: Переделать овалы на прямоугольники со скругленными краями. При выводе изображения.
+            # TODO: по двойному клику на цель переходить к показу свойств.
             tmpl = lookup.get_template("show_map_page.html")
             try:
                 BMTObjects.change_current_strategic_map(code)
