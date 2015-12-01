@@ -1874,10 +1874,24 @@ class Root(object):
             custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
             print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
 
+            try:
+                custom_kpi_links = BMTObjects.load_custom_links()[1]
+            except Exception as e:
+                return ShowError(e)
+
+            kpi_target_values = dict()
+            for one in map_kpi.keys():
+                target = BMTObjects.get_kpi_target_value(one)
+                if target:
+                    kpi_target_values[one] = target
+
             return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
                                custom_linked_goals_in_json=custom_linked_goals_in_json,
-                               draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS)
+                               draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS,
+                               persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                               kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                               kpi_target_values=kpi_target_values)
 
         else:
             tmpl = lookup.get_template("maps_page.html")

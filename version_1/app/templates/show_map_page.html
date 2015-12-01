@@ -128,6 +128,60 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <hr>
+            <h3>Счетная карта</h3>
+            <table class="table table-condensed table-hover">
+            <caption></caption>
+               <thead>
+               <tr>
+                   <th></th>
+                   <th><small>Показатель</small></th>
+                   <th><small>Источник данных</small></th>
+                   <th><small>Ответственный за достижение целевых значений</small></th>
+                   <th><small>Ответственный за сбор данных</small></th>
+                   <th><small>Ед. изм.</small></th>
+                   <th><small>Периодичность</small></th>
+                   <th><small>Шкала</small></th>
+                   <th><small>Целевое значение1</small></th>
+                   <th><small>Целевое значение2</small></th>
+                   <th></th>
+               </tr>
+               </thead>
+               <tbody>
+               % for one in map_goals.keys():
+                % if custom_kpi_links.get(one):
+                    % for kpi in custom_kpi_links.get(one):
+                        % if map_kpi.get(kpi):
+                           <tr>
+                               <th scope="row">${map_goals[one].goal_name}</th>
+                               <td>${map_kpi.get(kpi).name}</td>
+                               % if kpi_target_values.get(kpi):
+                               <td>${kpi_target_values.get(kpi).data_source}</td>
+                               %else:
+                               <td>-</td>
+                               % endif
+                               <td>${persons[map_kpi.get(kpi).target_responsible]}</td>
+                               <td>${persons[map_kpi.get(kpi).fact_responsible]}</td>
+                               <td>-</td>
+                               <td>-</td>
+                               <td>-</td>
+                               <td>-</td>
+                               <td>-</td>
+
+                               <td><a href="#" role="button" class="btn btn-default btn-xs">
+                                   Изменить</a></td>
+                           </tr>
+                        % endif
+                    % endfor
+                % endif
+               % endfor
+               </tbody>
+            </table>
+
+        </div>
+    </div>
 
 
 </div>
