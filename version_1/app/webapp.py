@@ -1540,6 +1540,10 @@ class Goals(object):
     @cherrypy.expose
     @require(member_of("users"))
     def edit(self, code=None):
+        """
+        TODO: Переделать форму выбора связанных целей, из select на галки.
+
+        """
         # выводим страницу редактирования цели
         print "EDIT GOAL."
         tmpl = lookup.get_template("goals_edit_page.html")

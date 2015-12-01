@@ -26,10 +26,6 @@
                     <input type="text" name="name" id="goal_name" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="goal_desc" class="control-label">Описание</label>
-                    <textarea rows="5" name="description" id="goal_desc" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
                     <label for="goal_persp">Перспектива</label>
                     <select name="perspective" id="goal_persp" class="form-control">
                         % for one in perspectives.keys():
@@ -44,6 +40,10 @@
                             <option value="${one}">${cur_map_goals[one].goal_name}</option>
                         % endfor
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="goal_desc" class="control-label">Описание</label>
+                    <textarea rows="5" name="description" id="goal_desc" class="form-control"></textarea>
                 </div>
                 <hr>
                 <div class="form-group">
