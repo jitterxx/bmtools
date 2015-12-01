@@ -745,13 +745,53 @@ class Custom_KPI(Base):
     def __init__(self):
         self.name = ""
         self.description = ""
-        self.code = ""
+        u = uuid.uuid4().get_hex().__str__()
+        self.code = "kp" + "".join(random.sample(u, 4))
         self.formula = ""
         self.link_to_desc = "#"
         self.measure = 0
         self.cycle = 0
         self.target_responsible = 0
         self.fact_responsible = 0
+
+
+def create_new_custom_kpi(kpi_fields):
+    """
+    Создаем новый кастомный показатель, добавлем его в таблицу и в текущую карту.
+
+    :param kpi_fields: список полей нового показателя
+    :return: код новго показателя
+
+    """
+
+    kpi = Custom_KPI()
+
+    session = Session()
+    try:
+        for key in kpi_fields.keys():
+            kpi.__dict__[key] = kpi_fields[key]
+        session.add(kpi)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.create_new_custom_kpi(). Показатель не записан. %s" % str(e)
+        raise e
+    else:
+        # Добавляем запись в стратегическую карту
+        smap = StrategicMap()
+        smap.kpi_code = kpi.code
+        smap.date = datetime.datetime.now()
+        smap.map_code = current_strategic_map
+        smap.version = VERSION
+        try:
+            session.add(smap)
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.create_new_custom_kpi(). Strategic map не записана. %s" % str(e)
+            raise e
+        else:
+            return [True, kpi.code]
+    finally:
+        session.close()
 
 
 class Custom_linked_goals(Base):
@@ -804,6 +844,28 @@ class Custom_linked_kpi_to_goal(Base):
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     goal_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
     kpi_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
+
+
+def create_custom_link_kpi_to_goal(goal, kpi):
+    """
+
+    :param goal:
+    :param kpi:
+    :return:
+    """
+
+    session = Session()
+    link = Custom_linked_kpi_to_goal()
+    link.goal_code = goal
+    link.kpi_code = kpi
+    try:
+        session.add(link)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции create_custom_link_kpi_to_goal(). %s" % str(e)
+        raise e
+    finally:
+        session.close()
 
 
 def update_custom_kpi(custom_kpi_update):

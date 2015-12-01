@@ -1649,37 +1649,59 @@ class KPIs(object):
 
     @cherrypy.expose
     @require(member_of("users"))
-    def save(self, name=None, description=None, perspective=None, linked=None):
+    def save(self, name=None, description=None, kpi_linked_goal=None, first_value=None, data_source=None,
+             target_responsible=None, fact_responsible=None, formula=None, link_to_desc=None,
+             measures=None, cycles=None, kpi_scale_type=None):
         """
             Сохраняем новый показатель и добавляем в текущую карту
         """
 
         print "New KPI SAVE : %s " % cherrypy.request.params
 
-        if None in [name, description, perspective]:
+        if None in [name, description, kpi_linked_goal]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
             raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
-        goal_fields = dict()
+        kpi_fields = dict()
+        kpi_target = dict()
 
-        goal_fields['goal_name'] = name
-        goal_fields['description'] = description
-        goal_fields['perspective'] = perspective
+        kpi_fields['name'] = name
+        kpi_fields['description'] = description
+        kpi_fields['formula'] = formula
+        kpi_fields['link_to_desc'] = link_to_desc
+        kpi_fields['measures'] = measures
+        kpi_fields['target_responsible'] = target_responsible
+        kpi_fields['fact_responsible'] = fact_responsible
+        kpi_fields['cycles'] = cycles
 
         try:
             # Записываем новый показатель и ждем возврата его кода
-            status = BMTObjects.create_new_custom_goal(goal_fields)
+            status = BMTObjects.create_new_custom_kpi(kpi_fields)
         except Exception as e:
             print "Ошибка при создании CUSTOM KPI. %s" % str(e)
             return ShowError(e)
-
-        if linked:
-            print "CREATE LINKS for %s and %s." % (status[1], linked)
+        else:
+            # привязываем новый показатель к цели
             try:
-                BMTObjects.create_custom_link_for_goals(status[1], linked)
+                BMTObjects.create_custom_link_kpi_to_goal(kpi_linked_goal, status[1])
             except Exception as e:
-                print "Ошибка при создании LINK_FOR_CUSTOM_GOAL. %s" % str(e)
+                print "Ошибка при создании связи KPI to GOAL. %s" % str(e)
                 return ShowError(e)
+
+            kpi_target['kpi_code'] = status[1]
+            kpi_target['first_value'] = first_value
+            kpi_target['second_value'] = 0
+            kpi_target['data_source'] = data_source
+            kpi_target['kpi_scale_type'] = kpi_scale_type
+            kpi_target['version'] = BMTObjects.VERSION
+            kpi_target['date'] = datetime.datetime.now()
+            # Создаем kpi target
+            try:
+                BMTObjects.save_kpi_target_value(kpi_target)
+            except Exception as e:
+                print "Ошибка при создании KPI TARGET. %s" % str(e)
+                return ShowError(e)
+
 
         raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
