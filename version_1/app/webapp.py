@@ -1875,6 +1875,8 @@ class Root(object):
         if code:
             # TODO: Переделать овалы на прямоугольники со скругленными краями. При выводе изображения.
             # TODO: по двойному клику на цель переходить к показу свойств.
+            # TODO: Список целей, показателей, мероприятий выводить после рисунка, вариант с Табами
+
             tmpl = lookup.get_template("show_map_page.html")
             try:
                 BMTObjects.change_current_strategic_map(code)
