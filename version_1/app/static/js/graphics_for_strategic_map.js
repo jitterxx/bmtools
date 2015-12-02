@@ -3,7 +3,6 @@ var draw_goals = {};
 (function() {
     var canvas = this.__canvas = new fabric.Canvas('graph_map');
     fabric.Object.prototype.transparentCorners = false;
-
     var top_start = 200;
     var left_start = 30;
     var line_color = '#eee';
@@ -109,14 +108,13 @@ var draw_goals = {};
     for (var key in goals) {
         if (goals[key].perspective == 0) {
         // если перспектива финансы
-            var klass = 'Circle';
+            var klass = 'Rect';
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: radius,
-                  scaleY: 0.5,
-                  //weight: 2*radius,
-                  //height: radius,
+                  rx: 5,
+                  width: 2*radius,
+                  height: radius,
                   fill: financial_map_color
             };
             var group_options = {
@@ -127,12 +125,13 @@ var draw_goals = {};
         }
         else if (goals[key].perspective == 1) {
         // если перспектива клиенты
-            var klass = 'Circle';
+            var klass = 'Rect';
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: radius,
-                  scaleY: 0.5,
+                  rx: 5,
+                  width: 2*radius,
+                  height: radius,
                   fill: client_map_color
             };
             var group_options = {
@@ -143,12 +142,13 @@ var draw_goals = {};
         }
         else if (goals[key].perspective == 2) {
         // если перспектива процессы
-            var klass = 'Circle';
+            var klass = 'Rect';
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: radius,
-                  scaleY: 0.5,
+                  rx: 5,
+                  width: 2*radius,
+                  height: radius,
                   fill: process_map_color
             };
             var group_options = {
@@ -159,12 +159,13 @@ var draw_goals = {};
         }
         else if (goals[key].perspective == 3) {
         // если перспектива персонал
-            var klass = 'Circle';
+            var klass = 'Rect';
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: radius,
-                  scaleY: 0.5,
+                  rx: 5,
+                  width: 2*radius,
+                  height: radius,
                   fill: hr_map_color
             };
             var group_options = {
@@ -175,12 +176,13 @@ var draw_goals = {};
         }
         else {
         // если перспектива не определена
-            var klass = 'Circle';
+            var klass = 'Rect';
             var options = {
                   originX: 'center',
                   originY: 'center',
-                  radius: 60,
-                  scaleY: 0.5,
+                  rx: 5,
+                  width: 2*radius,
+                  height: radius,
                   fill: '#eee'
             };
             var group_options = {
@@ -214,7 +216,7 @@ var draw_goals = {};
         //console.log(goals_name, text)
 
         var text_options1 = {
-            fill: '#ffffff',
+            fill: '#fff',
             fontSize: 11,
             fontFamily: 'Arial',
             originX: 'center',
@@ -244,6 +246,7 @@ var draw_goals = {};
         group.centerY = group.top + group.height/2;
         //console.log(group.code, group.centerX, group.centerY);
         canvas.add(group);
+
       };
 
     for (var x in draw_goals){
