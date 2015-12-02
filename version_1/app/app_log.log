@@ -649,3 +649,39 @@ INFO     [2015-12-02 14:33:17,971] [02/Dec/2015:14:33:17] ENGINE Started monitor
 INFO     [2015-12-02 14:33:17,971] [02/Dec/2015:14:33:17] ENGINE Started monitor thread '_TimeoutMonitor'.
 INFO     [2015-12-02 14:33:18,092] [02/Dec/2015:14:33:18] ENGINE Serving on http://127.0.0.1:8080
 INFO     [2015-12-02 14:33:18,092] [02/Dec/2015:14:33:18] ENGINE Bus STARTED
+INFO     [2015-12-02 14:41:03,395] 127.0.0.1 - - [02/Dec/2015:14:41:03] "GET /maps?code=ent0 HTTP/1.1" 200 4493 "http://localhost:8080/goals/edit?code=dg4fd6" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:03,427] 127.0.0.1 - - [02/Dec/2015:14:41:03] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:03,429] 127.0.0.1 - - [02/Dec/2015:14:41:03] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:03,431] 127.0.0.1 - - [02/Dec/2015:14:41:03] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:03,434] 127.0.0.1 - - [02/Dec/2015:14:41:03] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:03,435] 127.0.0.1 - - [02/Dec/2015:14:41:03] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:42,564] 127.0.0.1 - - [02/Dec/2015:14:41:42] "GET /maps?code=ent0 HTTP/1.1" 200 4392 "http://localhost:8080/goals/edit?code=dg4fd6" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:42,608] 127.0.0.1 - - [02/Dec/2015:14:41:42] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:42,610] 127.0.0.1 - - [02/Dec/2015:14:41:42] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:42,612] 127.0.0.1 - - [02/Dec/2015:14:41:42] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:42,613] 127.0.0.1 - - [02/Dec/2015:14:41:42] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:41:42,615] 127.0.0.1 - - [02/Dec/2015:14:41:42] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:42:16,499] 127.0.0.1 - - [02/Dec/2015:14:42:16] "GET /maps?code=ent0 HTTP/1.1" 200 4400 "http://localhost:8080/goals/edit?code=dg4fd6" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:42:16,575] 127.0.0.1 - - [02/Dec/2015:14:42:16] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:42:16,624] 127.0.0.1 - - [02/Dec/2015:14:42:16] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:42:16,627] 127.0.0.1 - - [02/Dec/2015:14:42:16] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:42:16,630] 127.0.0.1 - - [02/Dec/2015:14:42:16] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:42:16,634] 127.0.0.1 - - [02/Dec/2015:14:42:16] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-02 14:45:26,454] [02/Dec/2015:14:45:26] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-12-02 14:45:26,454] [02/Dec/2015:14:45:26] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-02 14:45:26,454] [02/Dec/2015:14:45:26] ENGINE Bus STOPPING
+INFO     [2015-12-02 14:45:26,459] [02/Dec/2015:14:45:26] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-02 14:45:26,459] [02/Dec/2015:14:45:26] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-02 14:45:26,460] [02/Dec/2015:14:45:26] ENGINE Bus STOPPED
+INFO     [2015-12-02 14:45:26,460] [02/Dec/2015:14:45:26] ENGINE Bus EXITING
+INFO     [2015-12-02 14:45:26,460] [02/Dec/2015:14:45:26] ENGINE Bus EXITED
+INFO     [2015-12-02 14:45:26,531] [02/Dec/2015:14:45:26] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-02 14:45:26,531] [02/Dec/2015:14:45:26] ENGINE Re-spawning webapp.py
+INFO     [2015-12-02 14:45:26,952] [02/Dec/2015:14:45:26] ENGINE Listening for SIGHUP.
+INFO     [2015-12-02 14:45:26,953] [02/Dec/2015:14:45:26] ENGINE Listening for SIGTERM.
+INFO     [2015-12-02 14:45:26,953] [02/Dec/2015:14:45:26] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-02 14:45:26,953] [02/Dec/2015:14:45:26] ENGINE Bus STARTING
+INFO     [2015-12-02 14:45:26,954] [02/Dec/2015:14:45:26] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-02 14:45:26,954] [02/Dec/2015:14:45:26] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-02 14:45:27,176] [02/Dec/2015:14:45:27] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-02 14:45:27,176] [02/Dec/2015:14:45:27] ENGINE Bus STARTED

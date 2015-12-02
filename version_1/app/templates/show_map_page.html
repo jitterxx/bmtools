@@ -58,127 +58,135 @@
             % endif
             </script>
             <script src="/static/js/graphics_for_strategic_map.js"></script>
-
             </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-            <h3>Цели</h3>
-            <div style="margin-left: 2%;">
-            % if map_goals.keys():
-                % for one in map_goals.keys():
-                    <div class="dropdown">
-                        <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class=
-                        % if map_goals[one].perspective == 0:
-                        "text-danger"
-                        % elif map_goals[one].perspective == 1:
-                        "text-success"
-                        % elif map_goals[one].perspective == 2:
-                        "text-info"
-                        % elif map_goals[one].perspective == 3:
-                        "text-warning"
-                        %else:
-                        "text-default"
-                        %endif
-                        >
-                            ${map_goals[one].goal_name}
-                            <span class="caret"></span>
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="dLabel">
-                            <li><a href="/goals/edit?code=${map_goals[one].code}">Редактировать</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/goals/delete?code=${map_goals[one].code}">Удалить из карты</a></li>
-                          </ul>
-                    </div>
-                % endfor
-            % else:
-                <p>Цели не заданы.</p>
-            % endif
-            </div>
-            <hr>
-            <h3>Показатели</h3>
-            <div style="margin-left: 2%;">
-            % if map_kpi.keys():
-                % for one in map_kpi.keys():
-                    <p>${map_kpi[one].name}</p>
-                % endfor
-            % else:
-                <p>Показатели не заданы.</p>
-            % endif
-            </div>
-            <hr>
-            <h3>Мероприятия</h3>
-            <div style="margin-left: 2%;">
-            % if map_events.keys():
-                % for one in map_events.keys():
-                    <p>${map_events[one].name}</p>
-                % endfor
-            % else:
-                <p>Мероприятий нет.</p>
-            % endif
-            </div>
-            <hr>
-            <h3>Операционные показатели</h3>
-            <div style="margin-left: 2%;">
-            % if map_metrics.keys():
-                % for one in map_metrics.keys():
-                    <p>${map_metrics[one].name}</p>
-                % endfor
-            % else:
-                <p>Не заданы.</p>
-            % endif
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <hr>
-            <h3>Счетная карта</h3>
-            <table class="table table-condensed table-hover">
-            <caption></caption>
-               <thead>
-               <tr>
-                   <th></th>
-                   <th><small>Показатель</small></th>
-                   <th><small>Источник данных</small></th>
-                   <th><small>Ответственный за достижение целевых значений</small></th>
-                   <th><small>Ответственный за сбор данных</small></th>
-                   <th><small>Ед. изм.</small></th>
-                   <th><small>Периодичность</small></th>
-                   <th><small>Шкала</small></th>
-                   <th><small>Целевое значение1</small></th>
-                   <th><small>Целевое значение2</small></th>
-                   <th></th>
-               </tr>
-               </thead>
-               <tbody>
-               % for one in map_goals.keys():
-                % if custom_kpi_links.get(one):
-                    % for kpi in custom_kpi_links.get(one):
-                        % if map_kpi.get(kpi):
-                           <tr>
-                               <th scope="row">${map_goals[one].goal_name}</th>
-                               <td>${map_kpi.get(kpi).name}</td>
-                               % if kpi_target_values.get(kpi):
-                               <td>${kpi_target_values.get(kpi).data_source}</td>
-                               %else:
-                               <td>-</td>
-                               % endif
-                               <td>${persons[map_kpi.get(kpi).target_responsible]}</td>
-                               <td>${persons[map_kpi.get(kpi).fact_responsible]}</td>
-                               <td>-</td>
-                               <td>-</td>
-                               <td>-</td>
-                               <td>-</td>
-                               <td>-</td>
+            <div>
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#goals" aria-controls="goals" role="tab" data-toggle="tab">Цели</a>
+                </li>
+                <li role="presentation">
+                    <a href="#kpi" aria-controls="kpi" role="tab" data-toggle="tab">Ключевые показатели</a>
+                </li>
+                <li role="presentation">
+                    <a href="#events" aria-controls="events" role="tab" data-toggle="tab">Мероприятия</a>
+                </li>
+                <li role="presentation">
+                    <a href="#metrics" aria-controls="metrics" role="tab" data-toggle="tab">Операционные показатели</a>
+                </li>
+              </ul>
 
-                               <td><a href="#" role="button" class="btn btn-default btn-xs">
-                                   Изменить</a></td>
-                           </tr>
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="goals">
+                    <h3>Цели</h3>
+                    <div style="margin-left: 2%;">
+                    % if map_goals.keys():
+                        % for one in map_goals.keys():
+                            <div class="dropdown">
+                                <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class=
+                                % if map_goals[one].perspective == 0:
+                                "text-danger"
+                                % elif map_goals[one].perspective == 1:
+                                "text-success"
+                                % elif map_goals[one].perspective == 2:
+                                "text-info"
+                                % elif map_goals[one].perspective == 3:
+                                "text-warning"
+                                %else:
+                                "text-default"
+                                %endif
+                                >
+                                    ${map_goals[one].goal_name}
+                                    <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                    <li><a href="/goals/edit?code=${map_goals[one].code}">Редактировать</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/goals/delete?code=${map_goals[one].code}">Удалить из карты</a></li>
+                                  </ul>
+                            </div>
+                        % endfor
+                    % else:
+                        <p>Цели не заданы.</p>
+                    % endif
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="kpi">
+                    <h3>Показатели</h3>
+                    <div style="margin-left: 2%;">
+                    % if map_kpi.keys():
+                        % for one in map_kpi.keys():
+                            <p>${map_kpi[one].name}</p>
+                        % endfor
+                    % else:
+                        <p>Показатели не заданы.</p>
+                    % endif
+                    </div>
+                    <hr>
+                    <h3>Счетная карта</h3>
+                    <table class="table table-condensed table-hover">
+                    <caption></caption>
+                       <thead>
+                       <tr>
+                           <th></th>
+                           <th><small>Показатель</small></th>
+                           <th><small>Источник данных</small></th>
+                           <th><small>Ответственный за достижение целевых значений</small></th>
+                           <th><small>Ответственный за сбор данных</small></th>
+                           <th><small>Ед. изм.</small></th>
+                           <th><small>Периодичность</small></th>
+                           <th><small>Шкала</small></th>
+                           <th><small>Целевое значение1</small></th>
+                           <th><small>Целевое значение2</small></th>
+                           <th></th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       % for one in map_goals.keys():
+                        % if custom_kpi_links.get(one):
+                            % for kpi in custom_kpi_links.get(one):
+                                % if map_kpi.get(kpi):
+                                   <tr>
+                                       <th scope="row">${map_goals[one].goal_name}</th>
+                                       <td>${map_kpi.get(kpi).name}</td>
+                                       % if kpi_target_values.get(kpi):
+                                       <td>${kpi_target_values.get(kpi).data_source}</td>
+                                       %else:
+                                       <td>-</td>
+                                       % endif
+                                       <td>${persons[map_kpi.get(kpi).target_responsible]}</td>
+                                       <td>${persons[map_kpi.get(kpi).fact_responsible]}</td>
+                                       <td>-</td>
+                                       <td>-</td>
+                                       <td>-</td>
+                                       <td>-</td>
+                                       <td>-</td>
+
+                                       <td><a href="#" role="button" class="btn btn-default btn-xs">
+                                           Изменить</a></td>
+                                   </tr>
+                                % endif
+                            % endfor
                         % endif
-                    % endfor
-                % endif
-               % endfor
-               </tbody>
-            </table>
+                       % endfor
+                       </tbody>
+                    </table>
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="events">
+                    Мероприятия
+                </div>
+                <div role="tabpanel" class="tab-pane" id="metrics">
+                    Операционные показатели
+                </div>
+
+              </div>
+            </div>
 
         </div>
     </div>
