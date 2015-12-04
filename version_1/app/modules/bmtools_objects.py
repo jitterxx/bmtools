@@ -1694,6 +1694,33 @@ def remove_goal_from_map(goal_code=None, map_code=None):
         session.commit()
         session.close()
 
+
+def remove_kpi_from_map(kpi_code=None, map_code=None):
+    """
+    Удаляет вхождение указанного показателя из карты. Если код карты не указан, удаляет из текущей.
+
+    :param kpi_code: код показателя
+    :param map_code: код карты
+    :return:
+    """
+
+    if not kpi_code or not map_code:
+        return False
+
+    session = Session()
+    try:
+        resp = session.query(StrategicMap).filter(and_(StrategicMap.kpi_code == kpi_code),
+                                                  (StrategicMap.map_code == map_code)).delete()
+    except Exception as e:
+        session.close()
+        print "Ошибка в функции BMTObjects.remove_kpi_from_map(). При удалении kpi из карты. %s" % str(e)
+    else:
+        return True
+    finally:
+        session.commit()
+        session.close()
+
+
 class KPITargetValue(Base):
     """
     Класс для хранения целевых значений показателей и их типов.
