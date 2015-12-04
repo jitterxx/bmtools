@@ -151,11 +151,13 @@
                                         <td width="5%" class="text-center">
                                             ${measures[map_kpi.get(kpi).measure]}
                                         </td>
+                                        % if kpi_target_values.get(kpi):
                                         % for one in kpi_target_values.get(kpi):
                                         <td width="7%" class="text-center">
                                             ${"{:,}".format(one.first_value)}
                                         </td>
                                         % endfor
+                                        % endif
                                         <td></td>
                                     </tr>
                             % endfor

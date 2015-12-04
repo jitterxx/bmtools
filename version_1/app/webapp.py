@@ -2111,12 +2111,14 @@ class Root(object):
                     custom_linked_goals_in_json[one.code] = custom_linked_goals[one.code]
 
             custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
-            print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
+            # print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
 
             try:
                 custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
             except Exception as e:
                 return ShowError(e)
+
+            print "KPI links: %s" % custom_kpi_links
 
             kpi_target_values = dict()
             for one in map_kpi.keys():
@@ -2124,8 +2126,11 @@ class Root(object):
                 if target:
                     kpi_target_values[one] = target
 
+            print "KPI targets: %s" % kpi_target_values
+
             # Группируем цели по перспективами и порядку расположения
             group_goals = BMTObjects.group_goals(map_goals)
+            print "Grouped goals: %s" % group_goals
 
             return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
