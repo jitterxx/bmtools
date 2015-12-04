@@ -1745,6 +1745,7 @@ class KPIs(object):
         for one in period_date.keys():
             kpi_target['kpi_code'] = status[1]
             kpi_target['date'] = period_date[one]
+            kpi_target['period_code'] = one
             try:
                 BMTObjects.save_kpi_target_value(kpi_target)
             except Exception as e:
@@ -1797,6 +1798,34 @@ class KPIs(object):
                            persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
 
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def savestage2(self, kpi_code=None, period_code=None, target_value=None):
+        """
+        Сохраняем новый показатель,добавляем в текущую карту,
+        готовим объекты целевых значений для заполнения на втором шаге
+
+        :param kpi_code:
+        :param period_code:
+        :param target_value:
+        :return:
+        """
+
+        print kpi_code
+        print period_code
+        print target_value
+
+        kpi_target = dict()
+        kpi_target['kpi_code'] = str(kpi_code)
+        kpi_target['period_code'] = str(re.split("_",period_code)[1])
+        kpi_target['first_value'] = float(target_value)
+        try:
+            BMTObjects.save_kpi_target_value(kpi_target)
+        except Exception as e:
+            print "Ошибка при обновлении KPI TARGET. %s" % str(e)
+            return ShowError(e)
+
+        return "ok"
 
 
     @cherrypy.expose

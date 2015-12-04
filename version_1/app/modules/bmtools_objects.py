@@ -1652,6 +1652,7 @@ class KPITargetValue(Base):
     # data_source = sqlalchemy.Column(sqlalchemy.String(256), default="")
     version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+    period_code = sqlalchemy.Column(sqlalchemy.Integer, default=0) # Код периода к которому относится значение
 
     def __init__(self):
         self.kpi_code = 0
@@ -1659,6 +1660,7 @@ class KPITargetValue(Base):
         self.second_value = 0
         self.version = 0
         self.date = datetime.datetime.now()
+        self.period_code = 0
 
 
 def get_kpi_target_value(kpi_code):
@@ -1697,7 +1699,7 @@ def save_kpi_target_value(kpi_target_value):
     # check exist
     try:
         exist = session.query(KPITargetValue).filter(and_(KPITargetValue.kpi_code == kpi_target_value['kpi_code'],
-                                                          KPITargetValue.date == kpi_target_value['date'])).one()
+                                                          KPITargetValue.period_code == kpi_target_value['period_code'])).one()
     except sqlalchemy.orm.exc.NoResultFound:
         exist = None
     except Exception as e:
@@ -1710,10 +1712,10 @@ def save_kpi_target_value(kpi_target_value):
         print "KPI TARGET такой объект существует, обновляем"
         try:
             exist.first_value = kpi_target_value["first_value"]
-            exist.second_value = kpi_target_value["second_value"]
+            # exist.second_value = kpi_target_value["second_value"]
             # exist.kpi_scale_type = kpi_target_value["kpi_scale_type"]
             # exist.data_source = kpi_target_value["data_source"]
-            exist.version = kpi_target_value["version"]
+            # exist.version = kpi_target_value["version"]
             # exist.date = datetime.datetime.now()
             session.commit()
         except Exception as e:
