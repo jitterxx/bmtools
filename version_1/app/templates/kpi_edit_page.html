@@ -13,49 +13,117 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h1>${step_desc['name']}</h1>
-            <h3>${goal.goal_name}</h3>
+            <h3>${kpi.name}</h3>
             <hr>
-            <form action="/goals/update" method="post">
-                <input type="hidden" name="code" value="${goal.code}">
+            <form action="/kpi/update" method="post">
+                <input type="hidden" name="code" value="${kpi.code}">
                 <div class="form-group">
-                    <label for="goal_name">Название цели</label>
-                    <input type="text" name="name" id="goal_name" class="form-control" value="${goal.goal_name}">
-                </div>
-                <div class="form-group">
-                    <label for="goal_desc" class="control-label">Описание</label>
-                    <textarea rows="5" name="description" id="goal_desc" class="form-control">${goal.description}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="goal_persp">Перспектива</label>
-                    <select name="perspective" id="goal_persp" class="form-control">
-                        % for one in perspectives.keys():
-                            % if one == goal.perspective:
-                                <option value="${one}" selected>${perspectives[one]}</option>
-                            % else:
-                                <option value="${one}">${perspectives[one]}</option>
+                    <label for="kpi_linked_goal">Для цели*</label>
+                    <select name="kpi_linked_goal" id="kpi_linked_goal" class="form-control" required>
+                        % for one in cur_map_goals.keys():
+                            % if one == goal.code:
+                            <option selected value="${one}">${cur_map_goals[one].goal_name}</option>
+                            %else:
+                            <option value="${one}">${cur_map_goals[one].goal_name}</option>
                             % endif
-
                         % endfor
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="linked">Связать с целями</label>
-                    <select name="linked" id="linked" class="form-control" multiple size="${len(cur_map_goals.keys())}">
-                        % for one in cur_map_goals.keys():
-                            %if one in linked_goals:
-                                <option value="${one}" selected>${cur_map_goals[one].goal_name}</option>
+                    <label for="kpi_name">Название показателя*</label>
+                    <input type="text" name="name" id="kpi_name" class="form-control" required value="${kpi.name}">
+                </div>
+                <div class="form-group">
+                    <label for="measures">Единица измерения*</label>
+                    <select name="measures" id="measures" class="form-control">
+                        % for one in measures.keys():
+                            % if one == kpi.measure:
+                            <option value="${one}" selected>${measures[one]}</option>
                             % else:
-                                <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                            <option value="${one}">${measures[one]}</option>
+                            % endif
+                        % endfor
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="formula" class="control-label">Формула расчета</label>
+                    <textarea rows="3" name="formula" id="formula" class="form-control">${kpi.formula}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="data_source" class="control-label">Источник данных*</label>
+                     <input type="text" name="data_source" id="data_source" class="form-control" value="${kpi.data_source}">
+                </div>
+                <div class="form-group">
+                    <label for="target_responsible">Ответственный за достижение*</label>
+                    <select name="target_responsible" id="target_responsible" class="form-control">
+                        % for one in persons.keys():
+                            % if one == kpi.target_responsible:
+                            <option selected value="${one}">${persons[one]}</option>
+                            %else:
+                            <option value="${one}">${persons[one]}</option>
+                            % endif
+                        % endfor
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="cycles">*Период</label>
+                    <select name="cycles" id="cycles" class="form-control">
+                        % for one in cycles.keys():
+                            % if one == kpi.cycle:
+                                <option value="${one}" selected>${cycles[one]}</option>
+                            % else:
+                                <option value="${one}">${cycles[one]}</option>
                             % endif
                         % endfor
                     </select>
                 </div>
                 <hr>
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Дополнительные свойства</h3>
+                  </div>
+                  <div class="panel-body ">
+                    <div class="form-group">
+                        <label for="fact_responsible">Ответственный за ввод данных</label>
+                        <select name="fact_responsible" id="fact_responsible" class="form-control">
+                            % for one in persons.keys():
+                            % if one == kpi.fact_responsible:
+                            <option selected value="${one}">${persons[one]}</option>
+                            %else:
+                            <option value="${one}">${persons[one]}</option>
+                            % endif
+                            % endfor
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kpi_scale_type">Тип шкалы</label>
+                        <select name="kpi_scale_type" id="kpi_scale_type" class="form-control">
+                            % for one in kpi_scale_type.keys():
+                                % if one == kpi.kpi_scale_type:
+                                <option selected value="${one}">${kpi_scale_type[one]}</option>
+                                %else:
+                                <option value="${one}">${kpi_scale_type[one]}</option>
+                                % endif
+                            % endfor
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kpi_desc" class="control-label">Описание</label>
+                        <textarea rows="5" name="description" id="kpi_desc" class="form-control">${kpi.description}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="link_to_desc" class="control-label">Ссылка на описание</label>
+                         <input type="text" name="link_to_desc" id="link_to_desc" class="form-control" value="${kpi.link_to_desc}">
+                    </div>
+                  </div>
+                </div>
+                <hr>
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">Сохранить</button>
                 </div>
+
             </form>
             <hr>
             <a class="btn btn-default" href="${step_desc['next_step']}" role="button">Вернуться</a>

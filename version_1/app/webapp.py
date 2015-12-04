@@ -1700,16 +1700,16 @@ class KPIs(object):
         kpi_fields = dict()
         kpi_target = dict()
 
-        kpi_fields['name'] = name
-        kpi_fields['description'] = description
-        kpi_fields['formula'] = formula
-        kpi_fields['link_to_desc'] = link_to_desc
-        kpi_fields['measures'] = measures
-        kpi_fields['target_responsible'] = target_responsible
-        kpi_fields['fact_responsible'] = fact_responsible
-        kpi_fields['cycles'] = cycles
-        kpi_fields['data_source'] = data_source
-        kpi_fields['kpi_scale_type'] = kpi_scale_type
+        kpi_fields['name'] = str(name)
+        kpi_fields['description'] = str(description)
+        kpi_fields['formula'] = str(formula)
+        kpi_fields['link_to_desc'] = str(link_to_desc)
+        kpi_fields['measures'] = int(measures)
+        kpi_fields['target_responsible'] = int(target_responsible)
+        kpi_fields['fact_responsible'] = int(fact_responsible)
+        kpi_fields['cycles'] = int(cycles)
+        kpi_fields['data_source'] = str(data_source)
+        kpi_fields['kpi_scale_type'] = int(kpi_scale_type)
 
         try:
             # Записываем новый показатель и ждем возврата его кода
@@ -1743,7 +1743,7 @@ class KPIs(object):
         # следующего месяца.
 
         for one in period_date.keys():
-            kpi_target['kpi_code'] = status[1]
+            kpi_target['kpi_code'] = str(status[1])
             kpi_target['date'] = period_date[one]
             kpi_target['period_code'] = one
             try:
@@ -1782,7 +1782,7 @@ class KPIs(object):
 
         try:
             goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code,
-                                                   goal_code=BMTObjects.load_custom_links(for_kpi=code).goal_code)
+                                                         goal_code=BMTObjects.load_custom_links(for_kpi=code).goal_code)
             target_values = BMTObjects.get_kpi_target_value(code)
         except Exception as e:
             print "Ошибка %s " % str(e)
@@ -1827,12 +1827,11 @@ class KPIs(object):
 
         return "ok"
 
-
     @cherrypy.expose
-    @require(member_of("users"))
+    #@require(member_of("users"))
     def edit(self, code=None):
-        # выводим страницу редактирования показателя
-        print "EDIT GOAL."
+        # выводим страницу редактирования показателя, без целевых значений 0 это отдельный этап
+        print "EDIT KPI."
         tmpl = lookup.get_template("kpi_edit_page.html")
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -1845,7 +1844,9 @@ class KPIs(object):
 
         try:
             cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
-            linked_goals = BMTObjects.load_custom_links()[0]
+            goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code,
+                                                         goal_code=BMTObjects.load_custom_links(for_kpi=code).goal_code)
+
         except Exception as e:
             print "Ошибка %s " % str(e)
             return ShowError(e)
@@ -1856,7 +1857,8 @@ class KPIs(object):
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
-                           goal=cur_map_goals[code], linked_goals=linked_goals[code])
+                           goal=goal, kpi=kpi, persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
+                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
 
 
     @cherrypy.expose
@@ -1877,35 +1879,55 @@ class KPIs(object):
             raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
     @cherrypy.expose
-    @require(member_of("users"))
-    def update(self, code=None, name=None, description=None, perspective=None, linked=None):
-        # Сохраняем данные после редактирования показателя
+    #@require(member_of("users"))
+    def update(self, code=None, name=None, description=None, kpi_linked_goal=None, data_source=None,
+               target_responsible=None, fact_responsible=None, formula=None, link_to_desc=None,
+               measures=None, cycles=None, kpi_scale_type=None):
+        """
+        Обновление свойств показателя.
+        Сохраняем данные после редактирования показателя.
+
+        :param name:
+        :param description:
+        :param kpi_linked_goal:
+        :param data_source:
+        :param target_responsible:
+        :param fact_responsible:
+        :param formula:
+        :param link_to_desc:
+        :param measures:
+        :param cycles:
+        :param kpi_scale_type:
+        :return:
+        """
+
         print "UPDATE KPI."
 
-        if None in [code, name, description, perspective]:
+        if None in [code, name, kpi_linked_goal, measures, data_source, target_responsible, cycles]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect("/kpi/edit?code=%s" % code)
 
-        goal_fields = dict()
+        kpi_fields = dict()
 
-        goal_fields['goal_name'] = name
-        goal_fields['description'] = description
-        goal_fields['perspective'] = perspective
+        kpi_fields['code'] = str(code)
+        kpi_fields['linked_goal'] = str(kpi_linked_goal)
+        kpi_fields['name'] = str(name)
+        kpi_fields['description'] = str(description)
+        kpi_fields['formula'] = str(formula)
+        kpi_fields['link_to_desc'] = str(link_to_desc)
+        kpi_fields['measure'] = int(measures)
+        kpi_fields['target_responsible'] = int(target_responsible)
+        kpi_fields['fact_responsible'] = int(fact_responsible)
+        kpi_fields['cycle'] = int(cycles)
+        kpi_fields['data_source'] = str(data_source)
+        kpi_fields['kpi_scale_type'] = int(kpi_scale_type)
 
         try:
-            # Обновляем цель
-            BMTObjects.update_custom_goal(code, goal_fields)
+            # Обновляем показатель
+            BMTObjects.update_custom_kpi(kpi_fields)
         except Exception as e:
-            print "Ошибка при обновлении CUSTOM KPI %s. Ошибка: %s" % (code, str(e))
+            print "Ошибка при обновлении CUSTOM KPI. %s" % str(e)
             return ShowError(e)
-
-        if linked:
-            print "CREATE LINKS for %s and %s." % (code, linked)
-            try:
-                BMTObjects.update_custom_link_for_goals(code, linked)
-            except Exception as e:
-                print "Ошибка при обновлении LINK_FOR_CUSTOM_GOAL. %s" % str(e)
-                return ShowError(e)
 
         raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
@@ -1999,7 +2021,7 @@ class Root(object):
             print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
 
             try:
-                custom_kpi_links = BMTObjects.load_custom_links()[1]
+                custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
             except Exception as e:
                 return ShowError(e)
 

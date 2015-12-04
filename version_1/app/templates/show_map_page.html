@@ -117,18 +117,54 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="kpi">
-                    <h3>Показатели</h3>
+                    <h3>Счетная карта</h3>
                     <div style="margin-left: 2%;">
-                    % if map_kpi.keys():
-                        % for one in map_kpi.keys():
-                            <p>${map_kpi[one].name}</p>
+                    % if custom_kpi_links.keys():
+                    % for goal in custom_kpi_links.keys():
+                        <h4>${map_goals.get(goal).goal_name}</h4>
+                        <div style="margin-left: 2%;">
+                        % for kpi in custom_kpi_links[goal]:
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <td width="2%">
+                                        <div class="dropdown">
+                                            <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                <li><a href="/kpi/edit?code=${kpi}">Свойства</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="/kpi/edittarget?code=${kpi}">Целевые значения</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="/kpi/delete?code=${kpi}">Удалить из карты</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td width="20%">
+                                        ${map_kpi.get(kpi).name}
+                                    </td>
+                                    <td width="10%">
+                                        Ответственный: ${persons[map_kpi.get(kpi).target_responsible]}
+                                    </td>
+                                    <td width="5%">
+                                        ${measures[map_kpi.get(kpi).measure]}
+                                    </td>
+                                    <td width="5%">
+                                        Target: ${kpi_target_values.get(kpi)}
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         % endfor
+                        </div>
+                    % endfor
                     % else:
                         <p>Показатели не заданы.</p>
                     % endif
+
                     </div>
-                    <hr>
-                    <h3>Счетная карта</h3>
 
                 </div>
                 <div role="tabpanel" class="tab-pane" id="events">

@@ -927,19 +927,30 @@ def update_custom_kpi(custom_kpi_update):
     try:
         resp = session.query(Custom_KPI).filter(Custom_KPI.code == custom_kpi_update['code']).one()
     except Exception as e:
+        print "Ошибка в функции  update_custom_kpi(). %s" % str(e)
         raise e
     else:
-        """
-        for key in custom_kpi_update.keys():
-            if custom_kpi_update[key] != resp.__dict__[key]:
-                resp.__dict__[key] = custom_kpi_update[key]
-        """
-        resp.code = custom_kpi_update["code"]
+        # Обновляем связь с целью
+        try:
+            resp1 = session.query(Custom_linked_kpi_to_goal).\
+                filter(Custom_linked_kpi_to_goal.kpi_code == custom_kpi_update["code"]).one_or_none()
+        except Exception as e:
+            print "Ошибка в функции update_custom_kpi() при обновление связи с целью. %s" % str(e)
+        else:
+            resp1.goal_code = custom_kpi_update["linked_goal"]
+
         resp.target_responsible = custom_kpi_update["target_responsible"]
         resp.fact_responsible = custom_kpi_update["fact_responsible"]
         resp.measure = custom_kpi_update["measure"]
         resp.cycle = custom_kpi_update["cycle"]
+        resp.name = custom_kpi_update["name"]
+        resp.description = custom_kpi_update["description"]
+        resp.formula = custom_kpi_update["formula"]
+        resp.link_to_desc = custom_kpi_update["link_to_desc"]
+        resp.data_source = custom_kpi_update["data_source"]
+        resp.kpi_scale_type = custom_kpi_update["kpi_scale_type"]
         session.commit()
+
     finally:
         session.close()
 
@@ -1058,12 +1069,57 @@ def load_lib_links():
     session.close()
 
 
+def load_map_links(for_goals=None, for_kpi=None):
+    """
+    Получить связи между указанными целями и показателями.
+
+    :param for_goals:
+    :param for_kpi:
+    :return: словарь списков, где ключ - код цели, значние - список kpi. Если нет kpi, то цель не включается.
+    """
+
+    session = Session()
+
+    if for_goals and for_kpi:
+        # ищем связанные с указанными целями kpi и возвращаем словарь списков
+        if not isinstance(for_goals, list):
+            for_goals = [for_goals]
+        if not isinstance(for_kpi, list):
+            for_kpi = [for_kpi]
+
+        try:
+            resp = session.query(Custom_linked_kpi_to_goal).\
+                filter(and_(Custom_linked_kpi_to_goal.goal_code.in_(for_goals),
+                            Custom_linked_kpi_to_goal.kpi_code.in_(for_kpi))).all()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "Ничего не найдено load_custom_links() для GOALS: %s. %s" % (for_goals, str(e))
+            return None
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.load_custom_links(). %s" % str(e)
+            raise e
+        else:
+            linked_kpi = dict()
+            for g in resp:
+                if g.goal_code in linked_kpi.keys():
+                    linked_kpi[g.goal_code].append(g.kpi_code)
+                else:
+                    linked_kpi[g.goal_code] = list()
+                    linked_kpi[g.goal_code].append(g.kpi_code)
+            return linked_kpi
+        finally:
+            session.close()
+
+        return None
+
+
+
 def load_custom_links(for_kpi=None):
     """
     Функция возвращает словари целей и показателей связанных с целями.
     Ключами в обеих структурах являются goal_code, значениями списки кодов связанных объектов.
 
     :param for_kpi:
+    :param for_goals:
 
     :return: linked_goals, linked_kpi - словари.
     """
