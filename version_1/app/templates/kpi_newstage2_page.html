@@ -1,0 +1,41 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-datepicker3.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/static/locales/bootstrap-datepicker.ru.min.js" charset="UTF-8"></script>
+
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <h1>${step_desc['name']}</h1>
+            <h3>Описание</h3>
+            <div style="margin-left: 3%;">
+                ${step_desc['full_description']}
+            </div>
+            <hr>
+            <h3>${kpi.name}</h3>
+            <div style="margin-left: 3%;">
+                ${goal.goal_name}
+                ${kpi.cycle}
+                ${kpi.target_responsible}
+                ${kpi.measure}
+            </div>
+            <hr>
+            % for one in target_values:
+                ${one.date} - ${one.first_value}<br>
+            % endfor
+            <hr>
+            <a class="btn btn-default" href="${step_desc['next_step']}" role="button">Вернуться</a>
+        </div>
+    </div>
+
+
+</div>
+

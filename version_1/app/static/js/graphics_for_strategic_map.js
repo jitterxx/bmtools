@@ -86,10 +86,21 @@ var draw_goals = {};
         };
 
         //console.log(p.code, p.centerX, p.centerY);
-
-
         canvas.renderAll();
     });
+
+    /*
+    canvas.on('mouse:doubleclick', function(e) {
+        if (e.target instanceof fabric.Group) {
+            original_color = e.target.getFill();
+            original_text_color = e.target.item(1).getFill();
+            //console.log(e.target);
+            e.target.setFill('#eee');
+            e.target.item(1).setFill('#000000');
+        }
+        canvas.renderAll();
+    });
+    */
 
     //console.log(goals_in_json);
     //var goals = JSON.parse(goals_in_json);

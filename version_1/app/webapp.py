@@ -1539,7 +1539,7 @@ class Goals(object):
         raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
     @cherrypy.expose
-    #@require(member_of("users"))
+    @require(member_of("users"))
     def edit(self, code=None):
         # TODO: Переделать форму выбора связанных целей, из select на галки.
         # выводим страницу редактирования цели
@@ -1598,7 +1598,7 @@ class Goals(object):
             raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
 
     @cherrypy.expose
-    #@require(member_of("users"))
+    @require(member_of("users"))
     def update(self, code=None, name=None, description=None, perspective=None, linked=None):
         # Сохраняем данные после редактирования цели
         print "UPDATE GOAL."
@@ -1642,7 +1642,7 @@ class Goals(object):
 class KPIs(object):
 
     @cherrypy.expose
-    @require(member_of("users"))
+    # @require(member_of("users"))
     def new(self):
         # Создание нового показателя
         tmpl = lookup.get_template("kpi_new_page.html")
@@ -1666,21 +1666,36 @@ class KPIs(object):
                            persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
 
-
     @cherrypy.expose
-    @require(member_of("users"))
-    def save(self, name=None, description=None, kpi_linked_goal=None, first_value=None, data_source=None,
+    # @require(member_of("users"))
+    def save(self, name=None, description=None, kpi_linked_goal=None, data_source=None,
              target_responsible=None, fact_responsible=None, formula=None, link_to_desc=None,
-             measures=None, cycles=None, kpi_scale_type=None):
+             measures=None, cycles=None, kpi_scale_type=None, plan_period=None, start_date=None):
         """
-            Сохраняем новый показатель и добавляем в текущую карту
+        Сохраняем новый показатель,добавляем в текущую карту,
+        готовим объекты целевых значений для заполнения на втором шаге
+
+        :param name:
+        :param description:
+        :param kpi_linked_goal:
+        :param data_source:
+        :param target_responsible:
+        :param fact_responsible:
+        :param formula:
+        :param link_to_desc:
+        :param measures:
+        :param cycles:
+        :param kpi_scale_type:
+        :param plan_period:
+        :param start_date:
+        :return:
         """
 
         print "New KPI SAVE : %s " % cherrypy.request.params
 
-        if None in [name, description, kpi_linked_goal]:
+        if None in [name, kpi_linked_goal, measures, data_source, target_responsible, plan_period, cycles, start_date]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect("/kpi/new")
 
         kpi_fields = dict()
         kpi_target = dict()
@@ -1693,6 +1708,8 @@ class KPIs(object):
         kpi_fields['target_responsible'] = target_responsible
         kpi_fields['fact_responsible'] = fact_responsible
         kpi_fields['cycles'] = cycles
+        kpi_fields['data_source'] = data_source
+        kpi_fields['kpi_scale_type'] = kpi_scale_type
 
         try:
             # Записываем новый показатель и ждем возврата его кода
@@ -1708,22 +1725,79 @@ class KPIs(object):
                 print "Ошибка при создании связи KPI to GOAL. %s" % str(e)
                 return ShowError(e)
 
+        start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+        print "Количество периодов: %s" % int(plan_period)
+        print "Стартовая дата: %s" % start_date
+        period_date = dict()
+
+        for one in range(1, int(plan_period) + 1):
+            print "Период: %s" % one
+            period_date[one] = datetime.datetime(start_date.year + (start_date.month / 12),
+                                            ((start_date.month % 12) + one), 1)
+            print "Отчетная дата периода: %s" % period_date[one]
+
+        print period_date
+
+        # Считаем даты периодов, создаем записи для KPI Target
+        # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
+        # следующего месяца.
+
+        for one in period_date.keys():
             kpi_target['kpi_code'] = status[1]
-            kpi_target['first_value'] = first_value
-            kpi_target['second_value'] = 0
-            kpi_target['data_source'] = data_source
-            kpi_target['kpi_scale_type'] = kpi_scale_type
-            kpi_target['version'] = BMTObjects.VERSION
-            kpi_target['date'] = datetime.datetime.now()
-            # Создаем kpi target
+            kpi_target['date'] = period_date[one]
             try:
                 BMTObjects.save_kpi_target_value(kpi_target)
             except Exception as e:
                 print "Ошибка при создании KPI TARGET. %s" % str(e)
                 return ShowError(e)
 
+        """
+        kpi_target['kpi_code'] = status[1]
+        kpi_target['first_value'] = 0
+        kpi_target['second_value'] = 0
+        kpi_target['data_source'] = ""
+        kpi_target['kpi_scale_type'] = 0
+        kpi_target['version'] = BMTObjects.VERSION
+        kpi_target['date'] = datetime.datetime.now()
+        # Создаем kpi target
+        try:
+            BMTObjects.save_kpi_target_value(kpi_target)
+        except Exception as e:
+            print "Ошибка при создании KPI TARGET. %s" % str(e)
+            return ShowError(e)
+        """
 
-        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+        raise cherrypy.HTTPRedirect("/kpi/newstage2?code=%s" % status[1])
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def newstage2(self, code=None):
+        # Планирование целевых значений для нового показателя
+        tmpl = lookup.get_template("kpi_newstage2_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Целевые значения"
+        step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
+
+        try:
+            goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code,
+                                                   goal_code=BMTObjects.load_custom_links(for_kpi=code).goal_code)
+            target_values = BMTObjects.get_kpi_target_value(code)
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+
+        print "Current KPI: %s" % kpi
+        print "Goal for KPI: %s" % goal
+        print "Current KPI TARGETS: %s" % target_values
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           kpi=kpi, target_values=target_values, goal=goal, perspectives=BMTObjects.perspectives,
+                           persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
+                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
+
+
 
     @cherrypy.expose
     @require(member_of("users"))

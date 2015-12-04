@@ -767,6 +767,9 @@ def update_custom_link_for_goals(code, linked, delete_all=False):
 
 class Custom_KPI(Base):
     __tablename__ = "custom_kpi"
+    # TODO: Переделать работу с объектами CustomKPI для мастера планирования Карты компании
+    # TODO: Переделать работу с объектами CustomKPI при переносе из LibKPI
+    # TODO: Переделать объекты LibKPI
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     name = sqlalchemy.Column(sqlalchemy.String(256), default="")
@@ -778,6 +781,8 @@ class Custom_KPI(Base):
     target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
     fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
     cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
+    kpi_scale_type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from  KPI_SCALE_TYPE
+    data_source = sqlalchemy.Column(sqlalchemy.String(256), default="")
 
     def __init__(self):
         self.name = ""
@@ -1053,15 +1058,40 @@ def load_lib_links():
     session.close()
 
 
-def load_custom_links():
+def load_custom_links(for_kpi=None):
     """
     Функция возвращает словари целей и показателей связанных с целями.
     Ключами в обеих структурах являются goal_code, значениями списки кодов связанных объектов.
+
+    :param for_kpi:
 
     :return: linked_goals, linked_kpi - словари.
     """
 
     session = Session()
+
+    if for_kpi:
+        # Ищем связанные с kpi цели, возвращаем Объект цели, None или ошибку
+        try:
+            resp = session.query(Custom_linked_kpi_to_goal).filter(Custom_linked_kpi_to_goal.kpi_code == for_kpi).one()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "Ничего не найдено load_custom_links() для KPI: %s. %s" % (for_kpi, str(e))
+            return None
+        except sqlalchemy.orm.exc.MultipleResultsFound as e:
+            print "Ошибка в функции BMTObjects.load_custom_links(). НАйдено много целей для KPI: %s. %s" %\
+                  (for_kpi, str(e))
+            raise e
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.load_custom_links(). %s" % str(e)
+            raise e
+        else:
+            return resp
+        finally:
+            session.close()
+
+        return None
+
+    # Стандартный алгоритм
     try:
         resp = session.query(Custom_linked_goals).all()
     except Exception as e:
@@ -1618,10 +1648,17 @@ class KPITargetValue(Base):
     kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
     first_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
     second_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
-    kpi_scale_type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from  KPI_SCALE_TYPE
-    data_source = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    # kpi_scale_type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from  KPI_SCALE_TYPE
+    # data_source = sqlalchemy.Column(sqlalchemy.String(256), default="")
     version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+
+    def __init__(self):
+        self.kpi_code = 0
+        self.first_value = 0
+        self.second_value = 0
+        self.version = 0
+        self.date = datetime.datetime.now()
 
 
 def get_kpi_target_value(kpi_code):
@@ -1632,7 +1669,8 @@ def get_kpi_target_value(kpi_code):
     session = Session()
 
     try:
-        resp = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_code).one()
+        resp = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_code).\
+            order_by(KPITargetValue.date.asc()).all()
     except sqlalchemy.orm.exc.NoResultFound as e:
         print "BMTObjects.get_kpi_target_value(kpi_code). Ничего не найдено для KPI = %s" % kpi_code
         return None
@@ -1648,8 +1686,9 @@ def get_kpi_target_value(kpi_code):
 def save_kpi_target_value(kpi_target_value):
     """
     Сохраняет объект класса KPITargetValue.
-    Если такой kpi_code встречался, то происходит обновление. Если не встречался, то создается новый.
+    Если такой kpi_code и дата уже встречались, то происходит обновление. Если нет, то создается новый.
     """
+
     session = Session()
     print "SAVE target values"
     for key in kpi_target_value.keys():
@@ -1657,7 +1696,8 @@ def save_kpi_target_value(kpi_target_value):
 
     # check exist
     try:
-        exist = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_target_value['kpi_code']).one()
+        exist = session.query(KPITargetValue).filter(and_(KPITargetValue.kpi_code == kpi_target_value['kpi_code'],
+                                                          KPITargetValue.date == kpi_target_value['date'])).one()
     except sqlalchemy.orm.exc.NoResultFound:
         exist = None
     except Exception as e:
@@ -1671,10 +1711,10 @@ def save_kpi_target_value(kpi_target_value):
         try:
             exist.first_value = kpi_target_value["first_value"]
             exist.second_value = kpi_target_value["second_value"]
-            exist.kpi_scale_type = kpi_target_value["kpi_scale_type"]
-            exist.data_source = kpi_target_value["data_source"]
+            # exist.kpi_scale_type = kpi_target_value["kpi_scale_type"]
+            # exist.data_source = kpi_target_value["data_source"]
             exist.version = kpi_target_value["version"]
-            exist.date = datetime.datetime.now()
+            # exist.date = datetime.datetime.now()
             session.commit()
         except Exception as e:
             print "Ошибка в функции BMTObjects.save_kpi_target_value. Обновление KPITargetValue. " + str(e)

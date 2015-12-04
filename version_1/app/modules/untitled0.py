@@ -17,12 +17,10 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 
-session = BMTObjects.Session()
 
-resp = session.query(BMTObjects.Custom_goal).filter(BMTObjects.Custom_goal.code == "dg0a4d").all()
+answ = BMTObjects.get_kpi_target_value("kp4e85")
 
-for one in resp:
-    print one
+for one in answ:
+    print one.date, one.first_value
 
-session.close()
 
