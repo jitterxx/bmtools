@@ -5,7 +5,7 @@ Created on Wed Jul 22 16:23:47 2015
 @author: sergey
 """
 
-sql_uri = 'mysql://bmtools:Cthutq123@localhost/bmtools?charset=utf8'
+sql_uri = 'mysql://mklegion:MklegioN123@localhost/mklegion?charset=utf8'
 def_industry = {"1": "Дистрибьюция"}
 industry_goals = {"1": ["g1", "g2", "g3", "g4"]}
 persons = {0: "", 1: "Шишкин Иван", 2: "Толстой Лев", 3: "Достоевский Федор", 4: "Пушкин Александр"}
