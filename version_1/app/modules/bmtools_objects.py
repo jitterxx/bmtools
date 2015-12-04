@@ -795,6 +795,8 @@ class Custom_KPI(Base):
         self.cycle = 0
         self.target_responsible = 0
         self.fact_responsible = 0
+        self.data_source = ""
+        self.kpi_scale_type = 0
 
 
 def create_new_custom_kpi(kpi_fields):
@@ -1719,6 +1721,23 @@ def remove_kpi_from_map(kpi_code=None, map_code=None):
     finally:
         session.commit()
         session.close()
+
+
+def group_goals(map_goals):
+    """
+
+    :param map_goals:
+    :return:
+    """
+
+    # Порядок следования как в перспективах
+    grouped_goals = [[], [], [], []]
+    for goal in map_goals.values():
+        p = goal.perspective
+        grouped_goals[p].append(goal.code)
+
+    return grouped_goals
+
 
 
 class KPITargetValue(Base):

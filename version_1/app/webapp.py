@@ -1704,7 +1704,7 @@ class KPIs(object):
         kpi_fields['description'] = str(description)
         kpi_fields['formula'] = str(formula)
         kpi_fields['link_to_desc'] = str(link_to_desc)
-        kpi_fields['measures'] = int(measures)
+        kpi_fields['measure'] = int(measures)
         kpi_fields['target_responsible'] = int(target_responsible)
         kpi_fields['fact_responsible'] = int(fact_responsible)
         kpi_fields['cycles'] = int(cycles)
@@ -2124,13 +2124,17 @@ class Root(object):
                 if target:
                     kpi_target_values[one] = target
 
+            # Группируем цели по перспективами и порядку расположения
+            group_goals = BMTObjects.group_goals(map_goals)
+
             return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
                                custom_linked_goals_in_json=custom_linked_goals_in_json,
                                draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS,
                                persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                                kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
-                               kpi_target_values=kpi_target_values)
+                               kpi_target_values=kpi_target_values, group_goals=group_goals,
+                               perspectives=BMTObjects.perspectives)
 
         else:
             tmpl = lookup.get_template("maps_page.html")
