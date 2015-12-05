@@ -2168,6 +2168,26 @@ class Root(object):
 
         return "ok"
 
+    @cherrypy.expose
+    #@require(member_of("users"))
+    def formulaeditor(self):
+        tmpl = lookup.get_template("formula_editor_test.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Редактор формул"
+        step_desc['next_step'] = ""
+
+        print BMTObjects.current_strategic_map
+
+        try:
+            current_map = BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map)
+            map_goal, map_kpi = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0:2]
+        except Exception as e:
+            print "Ошибка %s" % str(e)
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc, cur_map=BMTObjects.current_strategic_map,
+                           current_map=current_map, map_kpi=map_kpi)
 
 
 """
