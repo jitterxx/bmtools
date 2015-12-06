@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for="kpi_linked_goal">Для цели*</label>
                     <select name="kpi_linked_goal" id="kpi_linked_goal" class="form-control" required>
-                        <option value="" selected disabled>Выберите цель</option>
+                        <option value="0" selected> </option>
                         % for one in cur_map_goals.keys():
                         <option value="${one}">${cur_map_goals[one].goal_name}</option>
                         % endfor

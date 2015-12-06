@@ -21,7 +21,14 @@
                 <input type="hidden" name="code" value="${kpi.code}">
                 <div class="form-group">
                     <label for="kpi_linked_goal">Для цели*</label>
-                    <select name="kpi_linked_goal" id="kpi_linked_goal" class="form-control" required>
+                    <select name="kpi_linked_goal" id="kpi_linked_goal" class="form-control">
+                        % if not goal:
+                        <option value="0" selected>Нет цели</option>
+                        % for one in cur_map_goals.keys():
+                            <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                        % endfor
+                        % elif goal.code not in cur_map_goals.keys():
+                        <option value="0" selected>Нет цели</option>
                         % for one in cur_map_goals.keys():
                             % if one == goal.code:
                             <option selected value="${one}">${cur_map_goals[one].goal_name}</option>
@@ -29,6 +36,16 @@
                             <option value="${one}">${cur_map_goals[one].goal_name}</option>
                             % endif
                         % endfor
+                        %else:
+                        <option value="0">Нет цели</option>
+                        % for one in cur_map_goals.keys():
+                            % if one == goal.code:
+                            <option selected value="${one}">${cur_map_goals[one].goal_name}</option>
+                            %else:
+                            <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                            % endif
+                        % endfor
+                        % endif
                     </select>
                 </div>
                 <div class="form-group">

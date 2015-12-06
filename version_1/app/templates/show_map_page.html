@@ -27,7 +27,11 @@
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <div><br><br><br></div>
-            <canvas id="graph_map" width="800" height="800"></canvas>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <canvas id="graph_map" width="800" height="800"></canvas>
+                </div>
+            </div>
             <button class="btn btn-link btn-xs" onclick="sendDrawData(draw_data);">
                 <span class="text-muted">Сохранить расположение целей</span>
             </button>
@@ -76,7 +80,7 @@
                     <a href="#events" aria-controls="events" role="tab" data-toggle="tab">Мероприятия</a>
                 </li>
                 <li role="presentation">
-                    <a href="#metrics" aria-controls="metrics" role="tab" data-toggle="tab">Операционные показатели</a>
+                    <a href="#opkpi" aria-controls="opkpi" role="tab" data-toggle="tab">Операционные показатели</a>
                 </li>
               </ul>
 
@@ -175,8 +179,24 @@
                 <div role="tabpanel" class="tab-pane" id="events">
                     Мероприятия
                 </div>
-                <div role="tabpanel" class="tab-pane" id="metrics">
-                    Операционные показатели
+                <div role="tabpanel" class="tab-pane" id="opkpi">
+                    <h3> </h3>
+                    % for one in map_opkpi.values():
+                        <div style="margin-left: 2%;">
+                            <div class="dropdown">
+                                <a href="${one.code}"></a>
+                                <a id="${one.code}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                                    ${one.name}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="${one.code}">
+                                    <li><a href="/kpi/edit?code=${one.code}">Свойства</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/kpi/delete?code=${one.code}">Удалить из карты</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    % endfor
                 </div>
 
               </div>

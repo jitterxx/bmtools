@@ -1693,6 +1693,9 @@ class KPIs(object):
 
         print "New KPI SAVE : %s " % cherrypy.request.params
 
+        # Если не указана цель к которой привязан показатель, тогда это операционный показатель. Для него не нужны:
+        #  kpi_linked_goal, target_responsible, plan_period, cycles, start_date.
+
         if None in [name, kpi_linked_goal, measures, data_source, target_responsible, plan_period, cycles, start_date]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
             raise cherrypy.HTTPRedirect("/kpi/new")
@@ -1700,16 +1703,20 @@ class KPIs(object):
         kpi_fields = dict()
         kpi_target = dict()
 
-        kpi_fields['name'] = str(name)
-        kpi_fields['description'] = str(description)
-        kpi_fields['formula'] = str(formula)
-        kpi_fields['link_to_desc'] = str(link_to_desc)
-        kpi_fields['measure'] = int(measures)
-        kpi_fields['target_responsible'] = int(target_responsible)
-        kpi_fields['fact_responsible'] = int(fact_responsible)
-        kpi_fields['cycles'] = int(cycles)
-        kpi_fields['data_source'] = str(data_source)
-        kpi_fields['kpi_scale_type'] = int(kpi_scale_type)
+        try:
+            kpi_fields['name'] = str(name)
+            kpi_fields['description'] = str(description)
+            kpi_fields['formula'] = str(formula)
+            kpi_fields['link_to_desc'] = str(link_to_desc)
+            kpi_fields['measure'] = int(measures)
+            kpi_fields['target_responsible'] = int(target_responsible)
+            kpi_fields['fact_responsible'] = int(fact_responsible)
+            kpi_fields['cycles'] = int(cycles)
+            kpi_fields['data_source'] = str(data_source)
+            kpi_fields['kpi_scale_type'] = int(kpi_scale_type)
+        except Exception as e:
+            print "New KPI SAVE. Ошибка при обработке параметров запроса. %s" % str(e)
+            return ShowError(e)
 
         try:
             # Записываем новый показатель и ждем возврата его кода
@@ -1719,66 +1726,56 @@ class KPIs(object):
             return ShowError(e)
         else:
             # привязываем новый показатель к цели
-            try:
-                BMTObjects.create_custom_link_kpi_to_goal(kpi_linked_goal, status[1])
-            except Exception as e:
-                print "Ошибка при создании связи KPI to GOAL. %s" % str(e)
-                return ShowError(e)
-
-        start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
-        print "Количество периодов: %s" % int(plan_period)
-        print "Стартовая дата: %s" % start_date
-        period_date = dict()
-        period_name = dict()
-
-        for one in range(1, int(plan_period) + 1):
-            print "Период: %s" % one
-            period_date[one] = datetime.datetime(start_date.year + (start_date.month / 12),
-                                                 ((start_date.month % 12) + one), 1)
-            if (period_date[one].month - 1) == 0:
-                period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
-                                   str(period_date[one].year - 1)
+            if kpi_linked_goal == "0":
+                print "Операционный показатель. Возвращаемся обратно."
+                raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
             else:
-                period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
-                                   str(period_date[one].year)
+                print "Стратегический показатель. Создаем связь с целью и целевые значения."
+                try:
+                    BMTObjects.create_custom_link_kpi_to_goal(kpi_linked_goal, status[1])
+                except Exception as e:
+                    print "Ошибка при создании связи KPI to GOAL. %s" % str(e)
+                    return ShowError(e)
 
-            print "Отчетная дата периода: %s" % period_date[one]
-            print "Название отчетного периода: %s" % period_name[one]
+                start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+                print "Количество периодов: %s" % int(plan_period)
+                print "Стартовая дата: %s" % start_date
+                period_date = dict()
+                period_name = dict()
 
-        print period_date
+                for one in range(1, int(plan_period) + 1):
+                    print "Период: %s" % one
+                    period_date[one] = datetime.datetime(start_date.year + (start_date.month / 12),
+                                                         ((start_date.month % 12) + one), 1)
+                    if (period_date[one].month - 1) == 0:
+                        period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                                           str(period_date[one].year - 1)
+                    else:
+                        period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                                           str(period_date[one].year)
 
-        # Считаем даты периодов, создаем записи для KPI Target
-        # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
-        # следующего месяца.
+                    print "Отчетная дата периода: %s" % period_date[one]
+                    print "Название отчетного периода: %s" % period_name[one]
 
-        for one in period_date.keys():
-            kpi_target['kpi_code'] = str(status[1])
-            kpi_target['date'] = period_date[one]
-            kpi_target['period_code'] = one
-            kpi_target['period_name'] = period_name[one]
-            try:
-                BMTObjects.save_kpi_target_value(kpi_target)
-            except Exception as e:
-                print "Ошибка при создании KPI TARGET. %s" % str(e)
-                return ShowError(e)
+                print period_date
 
-        """
-        kpi_target['kpi_code'] = status[1]
-        kpi_target['first_value'] = 0
-        kpi_target['second_value'] = 0
-        kpi_target['data_source'] = ""
-        kpi_target['kpi_scale_type'] = 0
-        kpi_target['version'] = BMTObjects.VERSION
-        kpi_target['date'] = datetime.datetime.now()
-        # Создаем kpi target
-        try:
-            BMTObjects.save_kpi_target_value(kpi_target)
-        except Exception as e:
-            print "Ошибка при создании KPI TARGET. %s" % str(e)
-            return ShowError(e)
-        """
+                # Считаем даты периодов, создаем записи для KPI Target
+                # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
+                # следующего месяца.
 
-        raise cherrypy.HTTPRedirect("/kpi/newstage2?code=%s" % status[1])
+                for one in period_date.keys():
+                    kpi_target['kpi_code'] = str(status[1])
+                    kpi_target['date'] = period_date[one]
+                    kpi_target['period_code'] = one
+                    kpi_target['period_name'] = period_name[one]
+                    try:
+                        BMTObjects.save_kpi_target_value(kpi_target)
+                    except Exception as e:
+                        print "Ошибка при создании KPI TARGET. %s" % str(e)
+                        return ShowError(e)
+
+                raise cherrypy.HTTPRedirect("/kpi/newstage2?code=%s" % status[1])
+
 
     @cherrypy.expose
     # @require(member_of("users"))
@@ -1854,11 +1851,16 @@ class KPIs(object):
 
         try:
             cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
-            goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code,
-                                                         goal_code=BMTObjects.load_custom_links(for_kpi=code).goal_code)
-
+            # Возвращает цель или None
+            g = BMTObjects.load_custom_links(for_kpi=code)
+            if g:
+                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code=g.goal_code)
+            else:
+                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code="0")
+            print "kpi", kpi.code
+            print "goal", goal
         except Exception as e:
-            print "Ошибка %s " % str(e)
+            print "Ошибка при открытии на редактирование показателя %s. Ошибка: %s " % (code, str(e.args))
             return ShowError(e)
 
         # print "Current MAP : %s" % BMTObjects.current_strategic_map
@@ -2106,7 +2108,7 @@ class Root(object):
             tmpl = lookup.get_template("show_map_page.html")
             try:
                 BMTObjects.change_current_strategic_map(code)
-                map_goals, map_kpi, map_events, map_metrics = BMTObjects.load_cur_map_objects(code)
+                map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(code)
                 custom_linked_goals = BMTObjects.load_custom_links()[0]
                 draw_data = BMTObjects.load_map_draw_data(code)
             except Exception as e:
@@ -2144,7 +2146,7 @@ class Root(object):
             # print "Grouped goals: %s" % group_goals
 
             return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
-                               map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
+                               map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
                                custom_linked_goals_in_json=custom_linked_goals_in_json,
                                draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS,
                                persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,

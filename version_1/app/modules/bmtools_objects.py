@@ -912,6 +912,30 @@ def create_custom_link_kpi_to_goal(goal, kpi):
         session.close()
 
 
+def delete_custom_link_kpi_to_goal(goal, kpi):
+    """
+
+    :param goal:
+    :param kpi:
+    :return:
+    """
+
+    session = Session()
+    print goal
+    print kpi
+
+    try:
+        resp = session.query(Custom_linked_kpi_to_goal).filter(and_(Custom_linked_kpi_to_goal.kpi_code == kpi,
+                                                                    Custom_linked_kpi_to_goal.goal_code == goal)).one_or_none()
+        session.delete(resp)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции delete_custom_link_kpi_to_goal(). %s" % str(e)
+        raise e
+    finally:
+        session.close()
+
+
 def update_custom_kpi(custom_kpi_update):
     """
     Обновляет значения полей кастомного KPI.
@@ -936,11 +960,19 @@ def update_custom_kpi(custom_kpi_update):
         try:
             resp1 = session.query(Custom_linked_kpi_to_goal).\
                 filter(Custom_linked_kpi_to_goal.kpi_code == custom_kpi_update["code"]).one()
+        except sqlalchemy.orm.exc.NoResultFound:
+            print "Ни одна цель не связана с KPI: %s" % custom_kpi_update["code"]
+            print "Создаем связь GOAL: %s  --> KPI: %s" % (custom_kpi_update["linked_goal"], custom_kpi_update["code"])
+            create_custom_link_kpi_to_goal(goal=custom_kpi_update["linked_goal"], kpi=custom_kpi_update["code"])
         except Exception as e:
-            print "Ошибка в функции update_custom_kpi() при обновление связи с целью. %s" % str(e)
+            print "Ошибка в функции update_custom_kpi() при поиске связи KPI с целью. %s" % str(e)
         else:
-            print "update_custom_kpi(). Обновлем цель с %s на %s." % (resp1.goal_code, custom_kpi_update["linked_goal"])
-            resp1.goal_code = custom_kpi_update["linked_goal"]
+            if custom_kpi_update["linked_goal"] == "0":
+                print "update_custom_kpi(). Удаляем связь с целью для KPI: %s." % resp1.goal_code
+                delete_custom_link_kpi_to_goal(goal=resp1.goal_code, kpi=custom_kpi_update["code"])
+            else:
+                print "update_custom_kpi(). Обновлем цель с %s на %s." % (resp1.goal_code, custom_kpi_update["linked_goal"])
+                resp1.goal_code = custom_kpi_update["linked_goal"]
 
         resp.target_responsible = custom_kpi_update["target_responsible"]
         resp.fact_responsible = custom_kpi_update["fact_responsible"]
@@ -969,17 +1001,21 @@ def load_custom_goals_kpi(goal_code=None, kpi_code=None):
     """
 
     session = Session()
+
     try:
         if goal_code:
-            resp = session.query(Custom_goal).filter(Custom_goal.code == goal_code).all()
+            resp = session.query(Custom_goal).filter(Custom_goal.code == goal_code).one()
         else:
             resp = session.query(Custom_goal).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Функция load_custom_goals_kpi(). Ничего не найдено для goal %s" % goal_code
+        goals = None
     except Exception as e:
         session.close()
         raise e
     else:
         if goal_code:
-            goals = resp[0]
+            goals = resp
         else:
             goals = dict()
             for g in resp:
@@ -987,25 +1023,26 @@ def load_custom_goals_kpi(goal_code=None, kpi_code=None):
 
     try:
         if kpi_code:
-            resp = session.query(Custom_KPI).filter(Custom_KPI.code == kpi_code).all()
+            resp = session.query(Custom_KPI).filter(Custom_KPI.code == kpi_code).one()
         else:
             resp = session.query(Custom_KPI).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Функция load_custom_goals_kpi(). Ничего не найдено для kpi %s" % goal_code
+        kpi = None
     except Exception as e:
         raise e
     else:
         if kpi_code:
-            kpi = resp[0]
+            kpi = resp
         else:
             kpi = dict()
             for k in resp:
                 kpi[k.code] = k
 
-        return goals, kpi
-
     finally:
         session.close()
 
-
+    return goals, kpi
 
 
 def load_lib_goals_kpi():
@@ -1368,7 +1405,11 @@ def load_cur_map_objects(cur_map=None):
             if each.goal_code:
                 goals[each.goal_code] = load_custom_goals_kpi(each.goal_code, None)[0]
             if each.kpi_code:
-                kpi[each.kpi_code] = load_custom_goals_kpi(None, each.kpi_code)[1]
+                one = load_custom_goals_kpi(None, each.kpi_code)[1]
+                kpi[each.kpi_code] = one
+                # проверяем наличие связанной цели. Если такой нет, то это операционный показатель
+                if not load_custom_links(for_kpi=each.kpi_code):
+                    metrics[each.kpi_code] = one
             if each.event_code:
                 events[each.event_code] = get_events(each.event_code)
             if each.metric_code:
