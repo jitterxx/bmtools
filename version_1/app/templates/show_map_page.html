@@ -161,7 +161,7 @@
                                         <td width="8%" class="text-center">
                                             % if kpi in fval.keys():
                                             <small class="text-muted">
-                                                по формуле<br>${"{:,}".format(fval[kpi][one.period_code])}
+                                                по формуле<br>${"{:,}".format(fval[kpi].get(one.period_code))}
                                             </small><br>
                                             % endif
                                             ${"{:,}".format(one.first_value)}<br>

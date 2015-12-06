@@ -18,9 +18,7 @@ sys.setdefaultencoding("utf-8")
 
 
 
-answ = BMTObjects.get_kpi_target_value("kp4e85")
-
-for one in answ:
-    print one.date, one.first_value
-
+BMTObjects.read_user_info()
+for one in BMTObjects.persons.values():
+    print one
 

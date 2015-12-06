@@ -8,7 +8,7 @@ Created on Wed Jul 22 16:23:47 2015
 sql_uri = 'mysql://bmtools:Cthutq123@localhost/bmtools?charset=utf8'
 def_industry = {"1": "Дистрибьюция"}
 industry_goals = {"1": ["g1", "g2", "g3", "g4"]}
-persons = {0: "", 1: "Шишкин Иван", 2: "Толстой Лев", 3: "Достоевский Федор", 4: "Пушкин Александр"}
+persons = {0: "", 1: "замените меня", 2: "замените меня", 3: "замените меня", 4: "замените меня"}
 
 perspectives = {0: "Финансы", 1: "Клиенты", 2: "Процессы", 3: "Персонал"}
 PERSPECTIVE_COLORS = ["#CC6666", "#669966", "#336699", "#CC9966"]
@@ -32,27 +32,3 @@ VERSION = 0
 QUEUE_NAME = ''
 QUEUE_BROKER = 'amqp://guest@localhost//'
 QUEUE_BROKER_BACKEND = 'rpc://'
-
-users = dict()
-
-
-class User():
-    id = int()
-    name = str()
-    login = str()
-
-    def __init__(self):
-        self.id = 0
-        self.name = ""
-        self.login = ""
-
-    def create(self, id, name, login):
-        self.id = id
-        self.name = name
-        self.login = login
-        return self
-
-users[0] = User()
-users[1] = User().create(1, "Шишкин Иван", "sergey")
-users[2] = User().create(2, "Толстой Лев", "vera")
-users[3] = User().create(3, "Достоевский Федорs", "test")

@@ -2102,3 +2102,23 @@ def change_current_strategic_map(smap):
     # меняем текущую стратегическую карту
     global current_strategic_map
     current_strategic_map = smap
+
+
+def read_user_info():
+    # ЧИтаем данные пользователей и заносим persons
+
+    session = Session()
+    global persons
+
+    try:
+        resp = session.query(User).all()
+    except Exception as e:
+        print "Ошибка чтения пользоваетлей из базы. %s" % str(e)
+    else:
+        for one in resp:
+            persons[one.id] = one.name + " " + one.surname
+
+    finally:
+        session.close()
+
+read_user_info()
