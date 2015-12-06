@@ -15,6 +15,7 @@ import cherrypy
 import datetime
 import json
 import re
+import py_expression_eval
 from bs4 import BeautifulSoup
 from auth import AuthController, require, member_of, name_is, all_of, any_of
 from mako.lookup import TemplateLookup
@@ -1766,7 +1767,7 @@ class KPIs(object):
                 for one in period_date.keys():
                     kpi_target['kpi_code'] = str(status[1])
                     kpi_target['date'] = period_date[one]
-                    kpi_target['period_code'] = one
+                    kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
                     kpi_target['period_name'] = period_name[one]
                     try:
                         BMTObjects.save_kpi_target_value(kpi_target)
@@ -1851,6 +1852,7 @@ class KPIs(object):
 
         try:
             cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
+            (map_kpi, ) = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[1:2]
             # Возвращает цель или None
             g = BMTObjects.load_custom_links(for_kpi=code)
             if g:
@@ -1870,7 +1872,7 @@ class KPIs(object):
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
                            goal=goal, kpi=kpi, persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
-                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
+                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi)
 
     @cherrypy.expose
     # @require(member_of("users"))
@@ -2019,7 +2021,7 @@ class KPIs(object):
             for one in period_date.keys():
                 kpi_target['kpi_code'] = str(kpi_code)
                 kpi_target['date'] = period_date[one]
-                kpi_target['period_code'] = one
+                kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
                 kpi_target['period_name'] = period_name[one]
                 try:
                     BMTObjects.save_kpi_target_value(kpi_target)
@@ -2143,11 +2145,41 @@ class Root(object):
             # print "KPI links: %s" % custom_kpi_links
 
             kpi_target_values = dict()
+            kpi_target_formula_values = dict()
             for one in map_kpi.keys():
                 target = BMTObjects.get_kpi_target_value(one)
                 if target:
                     kpi_target_values[one] = target
 
+            for one in map_kpi.values():
+                # Считаем значения по формуле, если она есть
+                if one.formula:
+                    print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
+                    try:
+                        formula = py_expression_eval.Parser().parse(one.formula)
+                    except Exception as e:
+                        print "Формула некорректная. %s" % str(e)
+                    else:
+                        fsum = dict()
+                        var = dict()
+                        for e in kpi_target_values[one.code]:
+                            fsum[e.period_code] = 0
+                            var[e.period_code] = dict()
+
+                        for v in formula.variables():
+                            print v
+                            for k in kpi_target_values[v]:
+                                var[k.period_code][v] = k.first_value
+                        print var
+
+                        for e in kpi_target_values[one.code]:
+                            fsum[e.period_code] = formula.evaluate(var[e.period_code])
+
+                        kpi_target_formula_values[one.code] = fsum
+
+
+
+            print  kpi_target_formula_values
             # print "KPI targets: %s" % kpi_target_values
 
             # Группируем цели по перспективами и порядку расположения
@@ -2161,7 +2193,7 @@ class Root(object):
                                persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                                kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                                kpi_target_values=kpi_target_values, group_goals=group_goals,
-                               perspectives=BMTObjects.perspectives)
+                               perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
 
         else:
             tmpl = lookup.get_template("maps_page.html")

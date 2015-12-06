@@ -159,6 +159,11 @@
                                         % if kpi_target_values.get(kpi):
                                         % for one in kpi_target_values.get(kpi):
                                         <td width="8%" class="text-center">
+                                            % if kpi in fval.keys():
+                                            <small class="text-muted">
+                                                по формуле<br>${"{:,}".format(fval[kpi][one.period_code])}
+                                            </small><br>
+                                            % endif
                                             ${"{:,}".format(one.first_value)}<br>
                                             <small class="text-muted">${one.period_name}</small>
                                         </td>

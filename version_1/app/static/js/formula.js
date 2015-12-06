@@ -16,17 +16,25 @@ function sendDrawData(data) {
 };
 
 function SendOperation(e) {
-    var formula = document.getElementById('formula');
-    var view = document.getElementById('view');
-    var kpi = document.getElementById('kpi');
+    var formula = document.getElementById('formula_text');
+    var view = document.getElementById('formula_view');
+    var kpi = document.getElementById('formula_kpi');
 
-    //console.log('Выбрана операция : ', e.id, kpi.value);
-    if (e.id == 'off'){
+    console.log('Выбрана: ', e.id, kpi.value);
+    if (e.id == 'add_var') {
         old_formula = formula;
-        formula.innerHTML = old_formula.innerHTML + e.value;
+        formula.value = old_formula.value + ' ' + kpi.value;
+        old_view = view;
+        kpi_name =  document.getElementById(kpi.value);
+        view.innerHTML = old_view.innerHTML + ' ' + kpi_name.innerHTML;
+    } else {
+        old_formula = formula;
+        formula.value = old_formula.value + ' ' + e.value;
         old_view = view;
         view.innerHTML = old_view.innerHTML +  ' ' + e.value;
-
+    };
+    console.log(formula.value);
+    /*
     } else {
         old_formula = formula;
         formula.innerHTML = old_formula.innerHTML + e.value + kpi.value;
@@ -34,6 +42,15 @@ function SendOperation(e) {
         kpi_name =  document.getElementById(kpi.value);
         view.innerHTML = old_view.innerHTML +  ' ' + e.value +  ' ' + kpi_name.innerHTML;
     };
+    */
 
+};
 
+function Reset() {
+    var formula = document.getElementById('formula_text');
+    var view = document.getElementById('formula_view');
+    var kpi = document.getElementById('formula_kpi');
+
+    formula.value = "";
+    view.innerHTML = "";
 };

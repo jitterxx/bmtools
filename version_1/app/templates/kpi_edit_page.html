@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap-datepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="/static/locales/bootstrap-datepicker.ru.min.js" charset="UTF-8"></script>
-
+    <script type="text/javascript" src="/static/js/formula.js" charset="UTF-8"></script>
 </%block>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -65,8 +65,65 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="formula" class="control-label">Формула расчета</label>
-                    <textarea rows="3" name="formula" id="formula" class="form-control">${kpi.formula}</textarea>
+                    <table border="0" width="60%">
+                        <thead>
+                        <th colspan="2">Формула расчета <br>
+                            <p class="text-muted"><small>Вы можете составить формулу расчета показателя используя другие показатели и арифметические операции.</small></p>
+                        </th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td width="20%">
+                            <p class="text-muted text-center"><small>Выберите показатель из списка ниже</small></p>
+                            </td>
+                            <td width="20%">
+                            <p class="text-muted text-center"><small>нажмите знак операции</small></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%">
+                                <div class="input-group">
+                                <select id="formula_kpi"  class="form-control">
+                                    <option selected value=""></option>
+                                    % for one in map_kpi.values():
+                                    <option id="${one.code}" value="${one.code}">${one.name}</option>
+                                    % endfor
+                                </select>
+                                    <div class="input-group-addon" role="button" id="add_var" onclick="SendOperation(this);">
+                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="20%" class="text-center">
+                                <button type="button" class="btn btn-default" id="on" value="(" onclick="SendOperation(this);">(</button>
+                                <button type="button" class="btn btn-default" id="plus" value="+" onclick="SendOperation(this);">+</button>
+                                <button type="button" class="btn btn-default" id="minus" value="-" onclick="SendOperation(this);">-</button>
+                                <button type="button" class="btn btn-default" id="mult" value="*" onclick="SendOperation(this);">*</button>
+                                <button type="button" class="btn btn-default" id="div" value="/" onclick="SendOperation(this);">/</button>
+                                <button type="button" class="btn btn-default" id="off" value=")" onclick="SendOperation(this);">)</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <br>
+                                <input name="formula" id="formula_text" value="${kpi.formula}" class="form-control" type="hidden"/>
+                                <div class="well">
+                                    <p id="formula_view">${kpi.formula}</p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><!--
+                                <button type="button" class="btn btn-default" onclick="Save();">Сохранить</button>
+                                -->
+                            </td>
+                            <td class="text-right">
+                                <button type="button" class="btn btn-default"  onclick="Reset();">Очистить</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
                 </div>
                 <div class="form-group">
                     <label for="data_source" class="control-label">Источник данных*</label>
