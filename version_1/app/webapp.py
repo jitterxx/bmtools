@@ -1729,12 +1729,21 @@ class KPIs(object):
         print "Количество периодов: %s" % int(plan_period)
         print "Стартовая дата: %s" % start_date
         period_date = dict()
+        period_name = dict()
 
         for one in range(1, int(plan_period) + 1):
             print "Период: %s" % one
             period_date[one] = datetime.datetime(start_date.year + (start_date.month / 12),
-                                            ((start_date.month % 12) + one), 1)
+                                                 ((start_date.month % 12) + one), 1)
+            if (period_date[one].month - 1) == 0:
+                period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                                   str(period_date[one].year - 1)
+            else:
+                period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                                   str(period_date[one].year)
+
             print "Отчетная дата периода: %s" % period_date[one]
+            print "Название отчетного периода: %s" % period_name[one]
 
         print period_date
 
@@ -1746,6 +1755,7 @@ class KPIs(object):
             kpi_target['kpi_code'] = str(status[1])
             kpi_target['date'] = period_date[one]
             kpi_target['period_code'] = one
+            kpi_target['period_name'] = period_name[one]
             try:
                 BMTObjects.save_kpi_target_value(kpi_target)
             except Exception as e:

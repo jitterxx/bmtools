@@ -30,6 +30,9 @@ sql3 = "ALTER TABLE strategic_maps_desc " \
        "ADD COLUMN cycle INT(11) NULL DEFAULT 0 AFTER start_date," \
        "ADD COLUMN cycle_count INT(11) NULL DEFAULT 0 AFTER cycle;"
 
+sql4 = "ALTER TABLE `bmtools`.`kpi_target_values`" \
+       "ADD COLUMN `period_name` VARCHAR(256) NULL AFTER `period_code`;"
+
 
 connection = BMTObjects.Engine.connect()
 # result = connection.execute(sql)
@@ -51,5 +54,25 @@ except Exception as e:
 else:
     print result
 
+try:
+    result = connection.execute(sql4)
+except Exception as e:
+    print e.message, e.args
+else:
+    session = BMTObjects.Session()
+
+    resp = session.query(BMTObjects.KPITargetValue).all()
+    for one in resp:
+        if one.period_name:
+            if (one.date.month - 1) == 0:
+                one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year - 1)
+            else:
+                one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year)
+
+    session.commit()
+
+    session.close()
+    print result
 
 connection.close()
+

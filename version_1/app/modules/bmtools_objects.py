@@ -1766,7 +1766,8 @@ class KPITargetValue(Base):
     # data_source = sqlalchemy.Column(sqlalchemy.String(256), default="")
     version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
-    period_code = sqlalchemy.Column(sqlalchemy.Integer, default=0) # Код периода к которому относится значение
+    period_code = sqlalchemy.Column(sqlalchemy.Integer, default=0)  # Код периода к которому относится значение
+    period_name = sqlalchemy.Column(sqlalchemy.String(256), default="")  # Название периода к которому относиться значение
 
     def __init__(self):
         self.kpi_code = 0
@@ -1775,6 +1776,7 @@ class KPITargetValue(Base):
         self.version = 0
         self.date = datetime.datetime.now()
         self.period_code = 0
+        self.period_name = ""
 
 
 def get_kpi_target_value(kpi_code):
@@ -1854,7 +1856,7 @@ def save_kpi_target_value(kpi_target_value):
 
 class FactValue(Base):
     """
-    Хранит фактические значния показателей и метрик.
+    Хранит фактические значения метрик.
     """
     __tablename__ = "fact_value"
 
