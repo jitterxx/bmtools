@@ -2177,9 +2177,7 @@ class Root(object):
 
                         kpi_target_formula_values[one.code] = fsum
 
-
-
-            print  kpi_target_formula_values
+            print  "KPI formula values: %s" % kpi_target_formula_values
             # print "KPI targets: %s" % kpi_target_values
 
             # Группируем цели по перспективами и порядку расположения
