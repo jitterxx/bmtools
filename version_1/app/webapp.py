@@ -1924,6 +1924,7 @@ class KPIs(object):
         Обновление свойств показателя.
         Сохраняем данные после редактирования показателя.
 
+        :param code:
         :param name:
         :param description:
         :param kpi_linked_goal:
@@ -1947,7 +1948,7 @@ class KPIs(object):
         kpi_fields = dict()
 
         kpi_fields['code'] = str(code)
-        kpi_fields['linked_goal'] = str(kpi_linked_goal)
+        kpi_fields['linked_goal'] = kpi_linked_goal
         kpi_fields['name'] = str(name)
         kpi_fields['description'] = str(description)
         kpi_fields['formula'] = str(formula)
