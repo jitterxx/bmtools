@@ -935,10 +935,11 @@ def update_custom_kpi(custom_kpi_update):
         # Обновляем связь с целью
         try:
             resp1 = session.query(Custom_linked_kpi_to_goal).\
-                filter(Custom_linked_kpi_to_goal.kpi_code == custom_kpi_update["code"]).one_or_none()
+                filter(Custom_linked_kpi_to_goal.kpi_code == custom_kpi_update["code"]).one()
         except Exception as e:
             print "Ошибка в функции update_custom_kpi() при обновление связи с целью. %s" % str(e)
         else:
+            print "update_custom_kpi(). Обновлем цель с %s на %s." % (resp1.goal_code, custom_kpi_update["linked_goal"])
             resp1.goal_code = custom_kpi_update["linked_goal"]
 
         resp.target_responsible = custom_kpi_update["target_responsible"]

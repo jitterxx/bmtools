@@ -1861,8 +1861,8 @@ class KPIs(object):
             print "Ошибка %s " % str(e)
             return ShowError(e)
 
-        print "Current MAP : %s" % BMTObjects.current_strategic_map
-        print "Current MAP kpi: %s" % cur_map_goals
+        # print "Current MAP : %s" % BMTObjects.current_strategic_map
+        # print "Current MAP kpi: %s" % cur_map_goals
 
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
@@ -1948,7 +1948,7 @@ class KPIs(object):
         kpi_fields = dict()
 
         kpi_fields['code'] = str(code)
-        kpi_fields['linked_goal'] = kpi_linked_goal
+        kpi_fields['linked_goal'] = str(kpi_linked_goal)
         kpi_fields['name'] = str(name)
         kpi_fields['description'] = str(description)
         kpi_fields['formula'] = str(formula)
@@ -2112,9 +2112,9 @@ class Root(object):
             except Exception as e:
                 return ShowError(e)
 
-            print "MAP goals: %s " % map_goals
-            print "MAP kpi: %s " % map_kpi
-            print "MAP linked goals: %s" % custom_linked_goals
+            # print "MAP goals: %s " % map_goals
+            # print "MAP kpi: %s " % map_kpi
+            # print "MAP linked goals: %s" % custom_linked_goals
 
             custom_linked_goals_in_json = dict()
             for one in map_goals.values():
@@ -2129,7 +2129,7 @@ class Root(object):
             except Exception as e:
                 return ShowError(e)
 
-            print "KPI links: %s" % custom_kpi_links
+            # print "KPI links: %s" % custom_kpi_links
 
             kpi_target_values = dict()
             for one in map_kpi.keys():
@@ -2137,11 +2137,11 @@ class Root(object):
                 if target:
                     kpi_target_values[one] = target
 
-            print "KPI targets: %s" % kpi_target_values
+            # print "KPI targets: %s" % kpi_target_values
 
             # Группируем цели по перспективами и порядку расположения
             group_goals = BMTObjects.group_goals(map_goals)
-            print "Grouped goals: %s" % group_goals
+            # print "Grouped goals: %s" % group_goals
 
             return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                                map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_metrics=map_metrics,
