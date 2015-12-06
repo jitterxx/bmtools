@@ -1990,19 +1990,27 @@ class KPIs(object):
 
         if kpi_code and plan_period and start_date and cycles:
             # Создаем новые таргет
+
             kpi_target = dict()
             start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
             print "Количество периодов: %s" % int(plan_period)
             print "Стартовая дата: %s" % start_date
             period_date = dict()
+            period_name = dict()
 
             for one in range(1, int(plan_period) + 1):
                 print "Период: %s" % one
                 period_date[one] = datetime.datetime(start_date.year + (start_date.month / 12),
-                                                ((start_date.month % 12) + one), 1)
-                print "Отчетная дата периода: %s" % period_date[one]
+                                                     ((start_date.month % 12) + one), 1)
+                if (period_date[one].month - 1) == 0:
+                    period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                                       str(period_date[one].year - 1)
+                else:
+                    period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                                       str(period_date[one].year)
 
-            print period_date
+                print "Отчетная дата периода: %s" % period_date[one]
+                print "Название отчетного периода: %s" % period_name[one]
 
             # Считаем даты периодов, создаем записи для KPI Target
             # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
@@ -2012,6 +2020,7 @@ class KPIs(object):
                 kpi_target['kpi_code'] = str(kpi_code)
                 kpi_target['date'] = period_date[one]
                 kpi_target['period_code'] = one
+                kpi_target['period_name'] = period_name[one]
                 try:
                     BMTObjects.save_kpi_target_value(kpi_target)
                 except Exception as e:

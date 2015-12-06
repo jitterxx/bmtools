@@ -67,10 +67,11 @@
             <div class="form-inline">
             <div class="form-group">
                 <label for="plan_period">*Спланировать целевые значения на </label>
-                <input type="number" name="plan_period" id="plan_period" class="form-control">
+                <input type="number" name="plan_period" id="plan_period" class="form-control"
+                    value="${current_map.cycle_count}">
                 <select name="cycles" id="cycles" class="form-control">
                     % for one in cycles.keys():
-                        % if one == 1:
+                        % if one == current_map.cycle:
                             <option value="${one}" selected>${cycles[one]}</option>
                         % else:
                             <option value="${one}">${cycles[one]}</option>
@@ -79,7 +80,8 @@
                 </select>
                 <label for="plan_period">начиная с</label>
                 <div class='input-group date' id='start_date'>
-                    <input type='text' class="form-control" name="start_date"/>
+                    <input type='text' class="form-control" name="start_date"
+                        value="${current_map.start_date.strftime('%d.%m.%Y')}"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
