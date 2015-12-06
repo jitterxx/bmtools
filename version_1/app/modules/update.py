@@ -30,7 +30,7 @@ sql3 = "ALTER TABLE strategic_maps_desc " \
        "ADD COLUMN cycle INT(11) NULL DEFAULT 0 AFTER start_date," \
        "ADD COLUMN cycle_count INT(11) NULL DEFAULT 0 AFTER cycle;"
 
-sql4 = "ALTER TABLE `bmtools`.`kpi_target_values`" \
+sql4 = "ALTER TABLE `kpi_target_values`" \
        "ADD COLUMN `period_name` VARCHAR(256) NULL AFTER `period_code`;"
 
 
