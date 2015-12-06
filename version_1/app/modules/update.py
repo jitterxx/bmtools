@@ -56,25 +56,26 @@ else:
 
 try:
     result = connection.execute(sql4)
-    pass
 except Exception as e:
     print e.message, e.args
 else:
-    session = BMTObjects.Session()
-
-    resp = session.query(BMTObjects.KPITargetValue).all()
-    for one in resp:
-        one.period_code = str(one.date.month) + str(one.date.year)
-        if one.period_name:
-            if (one.date.month - 1) == 0:
-                one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year - 1)
-            else:
-                one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year)
-
-    session.commit()
-
-    session.close()
     print result
+
+session = BMTObjects.Session()
+
+resp = session.query(BMTObjects.KPITargetValue).all()
+for one in resp:
+    one.period_code = str(one.date.month) + str(one.date.year)
+    if not one.period_name:
+        if (one.date.month - 1) == 0:
+            one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year - 1)
+        else:
+            one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year)
+
+session.commit()
+
+session.close()
+
 
 connection.close()
 
