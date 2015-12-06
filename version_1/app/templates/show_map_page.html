@@ -154,8 +154,9 @@
                                         </td>
                                         % if kpi_target_values.get(kpi):
                                         % for one in kpi_target_values.get(kpi):
-                                        <td width="7%" class="text-center">
-                                            ${"{:,}".format(one.first_value)}
+                                        <td width="8%" class="text-center">
+                                            ${"{:,}".format(one.first_value)}<br>
+                                            <small class="text-muted">${one.period_name}</small>
                                         </td>
                                         % endfor
                                         % endif
