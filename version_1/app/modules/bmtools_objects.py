@@ -1391,6 +1391,9 @@ class StrategicMapDescription(Base):
     status = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     department = sqlalchemy.Column(sqlalchemy.Integer, default=0)
     date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+    start_date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())  # Начало работы карты
+    cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0)  # период используемый при планировании
+    cycle_count = sqlalchemy.Column(sqlalchemy.Integer, default=0)  # количество периодов
     draw_data = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
 
     def __init__(self):
@@ -1401,6 +1404,9 @@ class StrategicMapDescription(Base):
         self.status = 0
         self.department = 0
         self.date = datetime.datetime.now()
+        self.start_date = datetime.datetime.now()
+        self.cycle = 1
+        self.cycle_count = 1
         self.draw_data = ""
 
     def create_enterprise_map(self):
@@ -1413,6 +1419,9 @@ class StrategicMapDescription(Base):
         self.status = 0
         self.department = 0
         self.date = datetime.datetime.now()
+        self.start_date = datetime.datetime.now()
+        self.cycle = 1
+        self.cycle_count = 1
         self.draw_data = ""
 
         try:
@@ -1434,6 +1443,9 @@ def create_strategic_map(department, name="", description="", owner=0, status=0)
     s.owner = owner
     s.status = status
     s.department = department
+    s.start_date = datetime.datetime.now()
+    s.cycle = 1
+    s.cycle_count = 3
     s.date = datetime.datetime.now()
 
     try:
