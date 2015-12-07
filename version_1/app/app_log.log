@@ -11439,3 +11439,487 @@ INFO     [2015-12-07 00:35:26,011] 127.0.0.1 - - [07/Dec/2015:00:35:26] "GET /st
 INFO     [2015-12-07 00:35:26,014] 127.0.0.1 - - [07/Dec/2015:00:35:26] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
 INFO     [2015-12-07 00:36:10,137] 127.0.0.1 - - [07/Dec/2015:00:36:10] "GET /kpi/delete?code=kp4998 HTTP/1.1" 303 99 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
 INFO     [2015-12-07 00:36:10,406] 127.0.0.1 - - [07/Dec/2015:00:36:10] "GET /maps?code=ent0 HTTP/1.1" 200 7119 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 00:54:05,096] [07/Dec/2015:00:54:05] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-12-07 00:54:05,096] [07/Dec/2015:00:54:05] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 00:54:05,096] [07/Dec/2015:00:54:05] ENGINE Bus STOPPING
+INFO     [2015-12-07 00:54:05,099] [07/Dec/2015:00:54:05] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 00:54:05,099] [07/Dec/2015:00:54:05] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 00:54:05,099] [07/Dec/2015:00:54:05] ENGINE Bus STOPPED
+INFO     [2015-12-07 00:54:05,099] [07/Dec/2015:00:54:05] ENGINE Bus EXITING
+INFO     [2015-12-07 00:54:05,100] [07/Dec/2015:00:54:05] ENGINE Bus EXITED
+INFO     [2015-12-07 00:54:05,160] [07/Dec/2015:00:54:05] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 00:54:05,161] [07/Dec/2015:00:54:05] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 00:54:05,563] [07/Dec/2015:00:54:05] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 00:54:05,563] [07/Dec/2015:00:54:05] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 00:54:05,564] [07/Dec/2015:00:54:05] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 00:54:05,564] [07/Dec/2015:00:54:05] ENGINE Bus STARTING
+INFO     [2015-12-07 00:54:05,565] [07/Dec/2015:00:54:05] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 00:54:05,565] [07/Dec/2015:00:54:05] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 00:54:05,768] [07/Dec/2015:00:54:05] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 00:54:05,768] [07/Dec/2015:00:54:05] ENGINE Bus STARTED
+INFO     [2015-12-07 01:01:20,291] [07/Dec/2015:01:01:20] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/webapp.py changed.
+INFO     [2015-12-07 01:01:20,291] [07/Dec/2015:01:01:20] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:01:20,291] [07/Dec/2015:01:01:20] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:01:20,298] [07/Dec/2015:01:01:20] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:01:20,298] [07/Dec/2015:01:01:20] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:01:20,298] [07/Dec/2015:01:01:20] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:01:20,298] [07/Dec/2015:01:01:20] ENGINE Bus EXITING
+INFO     [2015-12-07 01:01:20,299] [07/Dec/2015:01:01:20] ENGINE Bus EXITED
+INFO     [2015-12-07 01:01:20,375] [07/Dec/2015:01:01:20] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 01:01:20,376] [07/Dec/2015:01:01:20] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 01:01:20,849] [07/Dec/2015:01:01:20] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 01:01:20,849] [07/Dec/2015:01:01:20] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 01:01:20,850] [07/Dec/2015:01:01:20] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 01:01:20,850] [07/Dec/2015:01:01:20] ENGINE Bus STARTING
+INFO     [2015-12-07 01:01:20,851] [07/Dec/2015:01:01:20] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 01:01:20,851] [07/Dec/2015:01:01:20] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:01:21,054] [07/Dec/2015:01:01:21] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 01:01:21,054] [07/Dec/2015:01:01:21] ENGINE Bus STARTED
+INFO     [2015-12-07 01:02:16,322] [07/Dec/2015:01:02:16] HTTP 
+Request Headers:
+  REFERER: http://localhost:8080/maps?code=ent0
+  HOST: localhost:8080
+  CONNECTION: keep-alive
+  CACHE-CONTROL: max-age=0
+  Remote-Addr: 127.0.0.1
+  ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+  USER-AGENT: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0
+  COOKIE: _octo=GH1.1.334700583.1439303472; m=34e2:|77cb:t|47ba:t|18c3:t|64b8:t; _ga=GA1.1.1361496196.1448317131; session_id=2aa242bc3352fec9e836d50ea088e844fb5dba59
+  ACCEPT-LANGUAGE: en-US,en;q=0.5
+  ACCEPT-ENCODING: gzip, deflate
+ERROR    [2015-12-07 01:02:16,322] [07/Dec/2015:01:02:16] HTTP 
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cprequest.py", line 670, in respond
+    response.body = self.handler()
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/lib/encoding.py", line 217, in __call__
+    self.body = self.oldhandler(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/cherrypy/_cpdispatch.py", line 61, in __call__
+    return self.callable(*self.args, **self.kwargs)
+  File "webapp.py", line 2194, in maps
+    perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
+  File "/usr/local/lib/python2.7/dist-packages/mako/template.py", line 443, in render
+    return runtime._render(self, self.callable_, args, data)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 803, in _render
+    **_kwargs_for_callable(callable_, data))
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 835, in _render_context
+    _exec_template(inherit, lclcontext, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/mako/runtime.py", line 860, in _exec_template
+    callable_(context, *args, **kwargs)
+  File "base_html", line 48, in render_body
+  File "page_structure_html", line 105, in render_base
+  File "show_map_page_html", line 153, in render_body
+TypeError: unhashable type: 'list'
+INFO     [2015-12-07 01:02:16,324] 127.0.0.1 - - [07/Dec/2015:01:02:16] "GET /maps?code=ent0 HTTP/1.1" 500 2149 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:34,947] 127.0.0.1 - - [07/Dec/2015:01:02:34] "GET /maps?code=ent0 HTTP/1.1" 200 7119 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:34,995] 127.0.0.1 - - [07/Dec/2015:01:02:34] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:34,999] 127.0.0.1 - - [07/Dec/2015:01:02:34] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:35,002] 127.0.0.1 - - [07/Dec/2015:01:02:35] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:35,007] 127.0.0.1 - - [07/Dec/2015:01:02:35] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:35,009] 127.0.0.1 - - [07/Dec/2015:01:02:35] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:54,302] 127.0.0.1 - - [07/Dec/2015:01:02:54] "GET /maps?code=ent0 HTTP/1.1" 200 7150 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:54,324] 127.0.0.1 - - [07/Dec/2015:01:02:54] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:54,327] 127.0.0.1 - - [07/Dec/2015:01:02:54] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:54,330] 127.0.0.1 - - [07/Dec/2015:01:02:54] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:54,334] 127.0.0.1 - - [07/Dec/2015:01:02:54] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:02:54,335] 127.0.0.1 - - [07/Dec/2015:01:02:54] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:03:27,577] 127.0.0.1 - - [07/Dec/2015:01:03:27] "GET /maps?code=ent0 HTTP/1.1" 200 7139 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:03:27,607] 127.0.0.1 - - [07/Dec/2015:01:03:27] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:03:27,613] 127.0.0.1 - - [07/Dec/2015:01:03:27] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:03:27,616] 127.0.0.1 - - [07/Dec/2015:01:03:27] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:03:27,620] 127.0.0.1 - - [07/Dec/2015:01:03:27] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:03:27,621] 127.0.0.1 - - [07/Dec/2015:01:03:27] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:04:18,319] 127.0.0.1 - - [07/Dec/2015:01:04:18] "GET /maps?code=ent0 HTTP/1.1" 200 7119 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:04:18,343] 127.0.0.1 - - [07/Dec/2015:01:04:18] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:04:18,347] 127.0.0.1 - - [07/Dec/2015:01:04:18] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:04:18,352] 127.0.0.1 - - [07/Dec/2015:01:04:18] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:04:18,355] 127.0.0.1 - - [07/Dec/2015:01:04:18] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:04:18,355] 127.0.0.1 - - [07/Dec/2015:01:04:18] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:05:04,812] [07/Dec/2015:01:05:04] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/configurations.py changed.
+INFO     [2015-12-07 01:05:04,812] [07/Dec/2015:01:05:04] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:05:04,813] [07/Dec/2015:01:05:04] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:05:04,815] [07/Dec/2015:01:05:04] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:05:04,815] [07/Dec/2015:01:05:04] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:05:04,816] [07/Dec/2015:01:05:04] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:05:04,816] [07/Dec/2015:01:05:04] ENGINE Bus EXITING
+INFO     [2015-12-07 01:05:04,816] [07/Dec/2015:01:05:04] ENGINE Bus EXITED
+INFO     [2015-12-07 01:05:04,877] [07/Dec/2015:01:05:04] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 01:05:04,877] [07/Dec/2015:01:05:04] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 01:05:05,369] [07/Dec/2015:01:05:05] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 01:05:05,370] [07/Dec/2015:01:05:05] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 01:05:05,370] [07/Dec/2015:01:05:05] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 01:05:05,370] [07/Dec/2015:01:05:05] ENGINE Bus STARTING
+INFO     [2015-12-07 01:05:05,371] [07/Dec/2015:01:05:05] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 01:05:05,372] [07/Dec/2015:01:05:05] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:05:05,577] [07/Dec/2015:01:05:05] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 01:05:05,578] [07/Dec/2015:01:05:05] ENGINE Bus STARTED
+INFO     [2015-12-07 01:16:42,271] [07/Dec/2015:01:16:42] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-12-07 01:16:42,272] [07/Dec/2015:01:16:42] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:16:42,272] [07/Dec/2015:01:16:42] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:16:42,281] [07/Dec/2015:01:16:42] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:16:42,281] [07/Dec/2015:01:16:42] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:16:42,281] [07/Dec/2015:01:16:42] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:16:42,281] [07/Dec/2015:01:16:42] ENGINE Bus EXITING
+INFO     [2015-12-07 01:16:42,282] [07/Dec/2015:01:16:42] ENGINE Bus EXITED
+INFO     [2015-12-07 01:16:42,353] [07/Dec/2015:01:16:42] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 01:16:42,354] [07/Dec/2015:01:16:42] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 01:16:42,865] [07/Dec/2015:01:16:42] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 01:16:42,865] [07/Dec/2015:01:16:42] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 01:16:42,865] [07/Dec/2015:01:16:42] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 01:16:42,865] [07/Dec/2015:01:16:42] ENGINE Bus STARTING
+INFO     [2015-12-07 01:16:42,866] [07/Dec/2015:01:16:42] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 01:16:42,866] [07/Dec/2015:01:16:42] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:16:43,069] [07/Dec/2015:01:16:43] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 01:16:43,070] [07/Dec/2015:01:16:43] ENGINE Bus STARTED
+INFO     [2015-12-07 01:16:47,927] [07/Dec/2015:01:16:47] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-12-07 01:16:47,927] [07/Dec/2015:01:16:47] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:16:47,927] [07/Dec/2015:01:16:47] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:16:47,930] [07/Dec/2015:01:16:47] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:16:47,930] [07/Dec/2015:01:16:47] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:16:47,931] [07/Dec/2015:01:16:47] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:16:47,931] [07/Dec/2015:01:16:47] ENGINE Bus EXITING
+INFO     [2015-12-07 01:16:47,931] [07/Dec/2015:01:16:47] ENGINE Bus EXITED
+INFO     [2015-12-07 01:16:47,979] [07/Dec/2015:01:16:47] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 01:16:47,980] [07/Dec/2015:01:16:47] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 01:16:48,406] [07/Dec/2015:01:16:48] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 01:16:48,406] [07/Dec/2015:01:16:48] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 01:16:48,406] [07/Dec/2015:01:16:48] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 01:16:48,406] [07/Dec/2015:01:16:48] ENGINE Bus STARTING
+INFO     [2015-12-07 01:16:48,407] [07/Dec/2015:01:16:48] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 01:16:48,408] [07/Dec/2015:01:16:48] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:16:48,611] [07/Dec/2015:01:16:48] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 01:16:48,612] [07/Dec/2015:01:16:48] ENGINE Bus STARTED
+INFO     [2015-12-07 01:17:26,770] [07/Dec/2015:01:17:26] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-12-07 01:17:26,770] [07/Dec/2015:01:17:26] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:17:26,771] [07/Dec/2015:01:17:26] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:17:26,773] [07/Dec/2015:01:17:26] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:17:26,773] [07/Dec/2015:01:17:26] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:17:26,773] [07/Dec/2015:01:17:26] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:17:26,773] [07/Dec/2015:01:17:26] ENGINE Bus EXITING
+INFO     [2015-12-07 01:17:26,773] [07/Dec/2015:01:17:26] ENGINE Bus EXITED
+INFO     [2015-12-07 01:17:26,779] [07/Dec/2015:01:17:26] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 01:17:26,779] [07/Dec/2015:01:17:26] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 01:31:27,640] [07/Dec/2015:01:31:27] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 01:31:27,640] [07/Dec/2015:01:31:27] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 01:31:27,642] [07/Dec/2015:01:31:27] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 01:31:27,642] [07/Dec/2015:01:31:27] ENGINE Bus STARTING
+INFO     [2015-12-07 01:31:27,643] [07/Dec/2015:01:31:27] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 01:31:27,643] [07/Dec/2015:01:31:27] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:31:27,847] [07/Dec/2015:01:31:27] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 01:31:27,848] [07/Dec/2015:01:31:27] ENGINE Bus STARTED
+INFO     [2015-12-07 01:31:29,828] 127.0.0.1 - - [07/Dec/2015:01:31:29] "GET /maps?code=ent0 HTTP/1.1" 200 7119 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:31:29,904] 127.0.0.1 - - [07/Dec/2015:01:31:29] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:31:29,906] 127.0.0.1 - - [07/Dec/2015:01:31:29] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:31:29,908] 127.0.0.1 - - [07/Dec/2015:01:31:29] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:31:29,925] 127.0.0.1 - - [07/Dec/2015:01:31:29] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:31:29,927] 127.0.0.1 - - [07/Dec/2015:01:31:29] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:31:44,726] 127.0.0.1 - - [07/Dec/2015:01:31:44] "GET /kpi/edit?code=kp8c06 HTTP/1.1" 200 4303 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:31:44,825] 127.0.0.1 - - [07/Dec/2015:01:31:44] "GET /static/js/formula.js HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:04,997] [07/Dec/2015:01:32:04] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-12-07 01:32:04,998] [07/Dec/2015:01:32:04] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:32:04,998] [07/Dec/2015:01:32:04] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:32:05,000] [07/Dec/2015:01:32:05] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:32:05,000] [07/Dec/2015:01:32:05] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:32:05,000] [07/Dec/2015:01:32:05] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:32:05,000] [07/Dec/2015:01:32:05] ENGINE Bus EXITING
+INFO     [2015-12-07 01:32:05,000] [07/Dec/2015:01:32:05] ENGINE Bus EXITED
+INFO     [2015-12-07 01:32:05,020] [07/Dec/2015:01:32:05] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 01:32:05,021] [07/Dec/2015:01:32:05] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 01:32:05,483] [07/Dec/2015:01:32:05] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 01:32:05,483] [07/Dec/2015:01:32:05] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 01:32:05,483] [07/Dec/2015:01:32:05] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 01:32:05,484] [07/Dec/2015:01:32:05] ENGINE Bus STARTING
+INFO     [2015-12-07 01:32:05,484] [07/Dec/2015:01:32:05] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 01:32:05,485] [07/Dec/2015:01:32:05] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:32:05,689] [07/Dec/2015:01:32:05] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 01:32:05,689] [07/Dec/2015:01:32:05] ENGINE Bus STARTED
+INFO     [2015-12-07 01:32:08,045] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /kpi/edit?code=kp8c06 HTTP/1.1" 200 4346 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:08,118] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /static/js/formula.js HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:08,120] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /static/locales/bootstrap-datepicker.ru.min.js HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:08,121] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /static/js/bootstrap-datepicker.js HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:08,122] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /static/css/bootstrap-datepicker3.css HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:08,124] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:08,128] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:08,143] 127.0.0.1 - - [07/Dec/2015:01:32:08] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:13,961] 127.0.0.1 - - [07/Dec/2015:01:32:13] "GET /maps HTTP/1.1" 200 1531 "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:15,462] 127.0.0.1 - - [07/Dec/2015:01:32:15] "GET /maps?code=ent0 HTTP/1.1" 200 7119 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:27,823] 127.0.0.1 - - [07/Dec/2015:01:32:27] "GET /kpi/edit?code=kp8c06 HTTP/1.1" 200 4346 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:32:50,916] [07/Dec/2015:01:32:50] ENGINE Restarting because /home/sergey/dev/bmtools/version_1/app/modules/bmtools_objects.py changed.
+INFO     [2015-12-07 01:32:50,916] [07/Dec/2015:01:32:50] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:32:50,916] [07/Dec/2015:01:32:50] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:32:50,918] [07/Dec/2015:01:32:50] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:32:50,919] [07/Dec/2015:01:32:50] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:32:50,919] [07/Dec/2015:01:32:50] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:32:50,919] [07/Dec/2015:01:32:50] ENGINE Bus EXITING
+INFO     [2015-12-07 01:32:50,919] [07/Dec/2015:01:32:50] ENGINE Bus EXITED
+INFO     [2015-12-07 01:32:50,987] [07/Dec/2015:01:32:50] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 01:32:50,987] [07/Dec/2015:01:32:50] ENGINE Re-spawning webapp.py
+INFO     [2015-12-07 01:32:51,507] [07/Dec/2015:01:32:51] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 01:32:51,507] [07/Dec/2015:01:32:51] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 01:32:51,507] [07/Dec/2015:01:32:51] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 01:32:51,507] [07/Dec/2015:01:32:51] ENGINE Bus STARTING
+INFO     [2015-12-07 01:32:51,508] [07/Dec/2015:01:32:51] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 01:32:51,508] [07/Dec/2015:01:32:51] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:32:51,714] [07/Dec/2015:01:32:51] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 01:32:51,714] [07/Dec/2015:01:32:51] ENGINE Bus STARTED
+INFO     [2015-12-07 01:33:01,984] [07/Dec/2015:01:33:01] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-12-07 01:33:01,985] 127.0.0.1 - - [07/Dec/2015:01:33:01] "GET /auth/logout HTTP/1.1" 303 90 "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:33:01,997] 127.0.0.1 - - [07/Dec/2015:01:33:01] "GET / HTTP/1.1" 303 106 "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:33:02,031] 127.0.0.1 - - [07/Dec/2015:01:33:02] "GET /auth/login?from_page=/ HTTP/1.1" 200 1192 "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-07 01:33:11,229] Пользователь с логином mikhail найден
+INFO     [2015-12-07 01:33:11,230] 127.0.0.1 - mikhail [07/Dec/2015:01:33:11] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-07 01:33:11,562] Пользователь с логином mikhail найден
+INFO     [2015-12-07 01:33:11,589] 127.0.0.1 - mikhail [07/Dec/2015:01:33:11] "GET / HTTP/1.1" 200 2234 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:33:14,773] 127.0.0.1 - - [07/Dec/2015:01:33:14] "GET /maps HTTP/1.1" 200 1531 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:33:16,134] 127.0.0.1 - - [07/Dec/2015:01:33:16] "GET /maps?code=ent0 HTTP/1.1" 200 7119 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:33:29,579] 127.0.0.1 - - [07/Dec/2015:01:33:29] "GET /kpi/edit?code=kp8c06 HTTP/1.1" 200 4346 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:33:35,639] 127.0.0.1 - - [07/Dec/2015:01:33:35] "POST /kpi/update HTTP/1.1" 303 99 "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:33:35,961] 127.0.0.1 - - [07/Dec/2015:01:33:35] "GET /maps?code=ent0 HTTP/1.1" 200 7140 "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:34:19,324] 127.0.0.1 - - [07/Dec/2015:01:34:19] "GET /kpi/edit?code=kp3d57 HTTP/1.1" 200 4360 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:34:29,381] 127.0.0.1 - - [07/Dec/2015:01:34:29] "POST /kpi/update HTTP/1.1" 303 99 "http://localhost:8080/kpi/edit?code=kp3d57" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:34:29,672] 127.0.0.1 - - [07/Dec/2015:01:34:29] "GET /maps?code=ent0 HTTP/1.1" 200 7080 "http://localhost:8080/kpi/edit?code=kp3d57" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 01:45:59,704] [07/Dec/2015:01:45:59] ENGINE Keyboard Interrupt: shutting down bus
+INFO     [2015-12-07 01:45:59,705] [07/Dec/2015:01:45:59] ENGINE Bus STOPPING
+INFO     [2015-12-07 01:45:59,708] [07/Dec/2015:01:45:59] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-07 01:45:59,708] [07/Dec/2015:01:45:59] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-07 01:45:59,708] [07/Dec/2015:01:45:59] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-07 01:45:59,708] [07/Dec/2015:01:45:59] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-12-07 01:45:59,709] [07/Dec/2015:01:45:59] ENGINE Bus STOPPED
+INFO     [2015-12-07 01:45:59,709] [07/Dec/2015:01:45:59] ENGINE Bus EXITING
+INFO     [2015-12-07 01:45:59,709] [07/Dec/2015:01:45:59] ENGINE Bus EXITED
+INFO     [2015-12-07 01:45:59,709] [07/Dec/2015:01:45:59] ENGINE Waiting for child threads to terminate...
+INFO     [2015-12-07 13:58:35,734] [07/Dec/2015:13:58:35] ENGINE Listening for SIGHUP.
+INFO     [2015-12-07 13:58:35,734] [07/Dec/2015:13:58:35] ENGINE Listening for SIGTERM.
+INFO     [2015-12-07 13:58:35,734] [07/Dec/2015:13:58:35] ENGINE Listening for SIGUSR1.
+INFO     [2015-12-07 13:58:35,734] [07/Dec/2015:13:58:35] ENGINE Bus STARTING
+INFO     [2015-12-07 13:58:35,735] [07/Dec/2015:13:58:35] ENGINE Started monitor thread 'Autoreloader'.
+INFO     [2015-12-07 13:58:35,736] [07/Dec/2015:13:58:35] ENGINE Started monitor thread '_TimeoutMonitor'.
+INFO     [2015-12-07 13:58:35,983] [07/Dec/2015:13:58:35] ENGINE Serving on http://127.0.0.1:8080
+INFO     [2015-12-07 13:58:35,984] [07/Dec/2015:13:58:35] ENGINE Bus STARTED
+INFO     [2015-12-07 13:58:36,662] [07/Dec/2015:13:58:36] ENGINE Started monitor thread 'Session cleanup'.
+INFO     [2015-12-07 13:58:36,663] 127.0.0.1 - - [07/Dec/2015:13:58:36] "GET / HTTP/1.1" 303 106 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 13:58:37,068] 127.0.0.1 - - [07/Dec/2015:13:58:37] "GET /auth/login?from_page=/ HTTP/1.1" 200 1192 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-07 13:58:39,663] Пользователь с логином test найден
+INFO     [2015-12-07 13:58:39,664] 127.0.0.1 - test [07/Dec/2015:13:58:39] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-07 13:58:39,728] Пользователь с логином test найден
+INFO     [2015-12-07 13:58:39,782] 127.0.0.1 - test [07/Dec/2015:13:58:39] "GET / HTTP/1.1" 200 2234 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 13:58:40,896] 127.0.0.1 - - [07/Dec/2015:13:58:40] "GET /maps HTTP/1.1" 200 1531 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 13:58:42,201] 127.0.0.1 - - [07/Dec/2015:13:58:42] "GET /maps?code=ent0 HTTP/1.1" 200 7089 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 13:58:42,353] 127.0.0.1 - - [07/Dec/2015:13:58:42] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 13:58:56,845] 127.0.0.1 - - [07/Dec/2015:13:58:56] "GET /maps?code=ent0 HTTP/1.1" 200 7089 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:02,712] 127.0.0.1 - - [07/Dec/2015:14:01:02] "GET /maps?code=ent0 HTTP/1.1" 200 7084 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:02,733] 127.0.0.1 - - [07/Dec/2015:14:01:02] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:02,733] 127.0.0.1 - - [07/Dec/2015:14:01:02] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:02,735] 127.0.0.1 - - [07/Dec/2015:14:01:02] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:02,736] 127.0.0.1 - - [07/Dec/2015:14:01:02] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:02,737] 127.0.0.1 - - [07/Dec/2015:14:01:02] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:06,056] 127.0.0.1 - - [07/Dec/2015:14:01:06] "GET /maps?code=ent0 HTTP/1.1" 200 7084 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:06,090] 127.0.0.1 - - [07/Dec/2015:14:01:06] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:06,096] 127.0.0.1 - - [07/Dec/2015:14:01:06] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:06,105] 127.0.0.1 - - [07/Dec/2015:14:01:06] "GET /static/js/fabric.min.js HTTP/1.1" 200 228077 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:06,109] 127.0.0.1 - - [07/Dec/2015:14:01:06] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 200 9978 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:01:06,110] 127.0.0.1 - - [07/Dec/2015:14:01:06] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:35,961] 127.0.0.1 - - [07/Dec/2015:14:02:35] "GET /maps?code=ent0 HTTP/1.1" 200 7075 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:35,986] 127.0.0.1 - - [07/Dec/2015:14:02:35] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:35,988] 127.0.0.1 - - [07/Dec/2015:14:02:35] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:35,989] 127.0.0.1 - - [07/Dec/2015:14:02:35] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:35,991] 127.0.0.1 - - [07/Dec/2015:14:02:35] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:35,994] 127.0.0.1 - - [07/Dec/2015:14:02:35] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:39,671] 127.0.0.1 - - [07/Dec/2015:14:02:39] "GET /maps?code=ent0 HTTP/1.1" 200 7075 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:39,685] 127.0.0.1 - - [07/Dec/2015:14:02:39] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:39,689] 127.0.0.1 - - [07/Dec/2015:14:02:39] "GET /static/js/fabric.min.js HTTP/1.1" 200 228077 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:39,689] 127.0.0.1 - - [07/Dec/2015:14:02:39] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 200 9978 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:39,692] 127.0.0.1 - - [07/Dec/2015:14:02:39] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:39,694] 127.0.0.1 - - [07/Dec/2015:14:02:39] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:55,784] 127.0.0.1 - - [07/Dec/2015:14:02:55] "GET /maps?code=ent0 HTTP/1.1" 200 7074 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:55,801] 127.0.0.1 - - [07/Dec/2015:14:02:55] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:55,803] 127.0.0.1 - - [07/Dec/2015:14:02:55] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:55,805] 127.0.0.1 - - [07/Dec/2015:14:02:55] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:55,809] 127.0.0.1 - - [07/Dec/2015:14:02:55] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:55,812] 127.0.0.1 - - [07/Dec/2015:14:02:55] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:58,662] 127.0.0.1 - - [07/Dec/2015:14:02:58] "GET /maps?code=ent0 HTTP/1.1" 200 7074 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:58,687] 127.0.0.1 - - [07/Dec/2015:14:02:58] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:58,688] 127.0.0.1 - - [07/Dec/2015:14:02:58] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:58,694] 127.0.0.1 - - [07/Dec/2015:14:02:58] "GET /static/js/fabric.min.js HTTP/1.1" 200 228077 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:58,696] 127.0.0.1 - - [07/Dec/2015:14:02:58] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 200 9978 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:02:58,703] 127.0.0.1 - - [07/Dec/2015:14:02:58] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:03:15,862] 127.0.0.1 - - [07/Dec/2015:14:03:15] "GET /maps?code=ent0 HTTP/1.1" 200 7072 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:03:15,888] 127.0.0.1 - - [07/Dec/2015:14:03:15] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:03:15,896] 127.0.0.1 - - [07/Dec/2015:14:03:15] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:03:15,897] 127.0.0.1 - - [07/Dec/2015:14:03:15] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:03:15,898] 127.0.0.1 - - [07/Dec/2015:14:03:15] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:03:15,900] 127.0.0.1 - - [07/Dec/2015:14:03:15] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:06:20,976] 127.0.0.1 - - [07/Dec/2015:14:06:20] "GET /maps?code=ent0 HTTP/1.1" 200 7051 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:06:21,015] 127.0.0.1 - - [07/Dec/2015:14:06:21] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:06:21,018] 127.0.0.1 - - [07/Dec/2015:14:06:21] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:06:21,019] 127.0.0.1 - - [07/Dec/2015:14:06:21] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:06:21,020] 127.0.0.1 - - [07/Dec/2015:14:06:21] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:06:21,020] 127.0.0.1 - - [07/Dec/2015:14:06:21] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:08,333] 127.0.0.1 - - [07/Dec/2015:14:08:08] "GET /maps?code=ent0 HTTP/1.1" 200 7058 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:08,360] 127.0.0.1 - - [07/Dec/2015:14:08:08] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:08,363] 127.0.0.1 - - [07/Dec/2015:14:08:08] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:08,366] 127.0.0.1 - - [07/Dec/2015:14:08:08] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:08,368] 127.0.0.1 - - [07/Dec/2015:14:08:08] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:08,369] 127.0.0.1 - - [07/Dec/2015:14:08:08] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:55,071] 127.0.0.1 - - [07/Dec/2015:14:08:55] "GET /maps?code=ent0 HTTP/1.1" 200 7067 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:55,098] 127.0.0.1 - - [07/Dec/2015:14:08:55] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:55,100] 127.0.0.1 - - [07/Dec/2015:14:08:55] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:55,103] 127.0.0.1 - - [07/Dec/2015:14:08:55] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:55,106] 127.0.0.1 - - [07/Dec/2015:14:08:55] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:08:55,108] 127.0.0.1 - - [07/Dec/2015:14:08:55] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:41,800] 127.0.0.1 - - [07/Dec/2015:14:09:41] "GET /maps?code=ent0 HTTP/1.1" 200 7078 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:41,826] 127.0.0.1 - - [07/Dec/2015:14:09:41] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:41,828] 127.0.0.1 - - [07/Dec/2015:14:09:41] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:41,830] 127.0.0.1 - - [07/Dec/2015:14:09:41] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:41,833] 127.0.0.1 - - [07/Dec/2015:14:09:41] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:41,837] 127.0.0.1 - - [07/Dec/2015:14:09:41] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:55,454] 127.0.0.1 - - [07/Dec/2015:14:09:55] "GET /maps?code=ent0 HTTP/1.1" 200 7083 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:55,494] 127.0.0.1 - - [07/Dec/2015:14:09:55] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:55,510] 127.0.0.1 - - [07/Dec/2015:14:09:55] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:55,524] 127.0.0.1 - - [07/Dec/2015:14:09:55] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:55,526] 127.0.0.1 - - [07/Dec/2015:14:09:55] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:09:55,539] 127.0.0.1 - - [07/Dec/2015:14:09:55] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:10:37,363] 127.0.0.1 - - [07/Dec/2015:14:10:37] "GET /maps?code=ent0 HTTP/1.1" 200 7080 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:10:37,400] 127.0.0.1 - - [07/Dec/2015:14:10:37] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:10:37,415] 127.0.0.1 - - [07/Dec/2015:14:10:37] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:10:37,431] 127.0.0.1 - - [07/Dec/2015:14:10:37] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:10:37,431] 127.0.0.1 - - [07/Dec/2015:14:10:37] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:10:37,430] 127.0.0.1 - - [07/Dec/2015:14:10:37] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:13:36,406] 127.0.0.1 - - [07/Dec/2015:14:13:36] "GET /maps?code=ent0 HTTP/1.1" 200 6983 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:13:36,429] 127.0.0.1 - - [07/Dec/2015:14:13:36] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:13:36,435] 127.0.0.1 - - [07/Dec/2015:14:13:36] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:13:36,435] 127.0.0.1 - - [07/Dec/2015:14:13:36] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:13:36,437] 127.0.0.1 - - [07/Dec/2015:14:13:36] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:13:36,438] 127.0.0.1 - - [07/Dec/2015:14:13:36] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:15:15,168] 127.0.0.1 - - [07/Dec/2015:14:15:15] "GET /maps?code=ent0 HTTP/1.1" 200 7003 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:15:15,201] 127.0.0.1 - - [07/Dec/2015:14:15:15] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:15:15,204] 127.0.0.1 - - [07/Dec/2015:14:15:15] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:15:15,206] 127.0.0.1 - - [07/Dec/2015:14:15:15] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:15:15,209] 127.0.0.1 - - [07/Dec/2015:14:15:15] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:15:15,209] 127.0.0.1 - - [07/Dec/2015:14:15:15] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:25,258] 127.0.0.1 - - [07/Dec/2015:14:18:25] "GET /maps?code=ent0 HTTP/1.1" 200 7028 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:25,294] 127.0.0.1 - - [07/Dec/2015:14:18:25] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:25,297] 127.0.0.1 - - [07/Dec/2015:14:18:25] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:25,298] 127.0.0.1 - - [07/Dec/2015:14:18:25] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:25,299] 127.0.0.1 - - [07/Dec/2015:14:18:25] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:25,295] 127.0.0.1 - - [07/Dec/2015:14:18:25] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:46,273] 127.0.0.1 - - [07/Dec/2015:14:18:46] "GET /maps HTTP/1.1" 200 1531 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:55,805] 127.0.0.1 - - [07/Dec/2015:14:18:55] "GET /maps HTTP/1.1" 200 1531 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:18:57,005] 127.0.0.1 - - [07/Dec/2015:14:18:57] "GET /maps?code=ent0 HTTP/1.1" 200 7028 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:19:32,542] 127.0.0.1 - - [07/Dec/2015:14:19:32] "GET /maps?code=ent0 HTTP/1.1" 200 7024 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:19:32,566] 127.0.0.1 - - [07/Dec/2015:14:19:32] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:19:32,569] 127.0.0.1 - - [07/Dec/2015:14:19:32] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:19:32,571] 127.0.0.1 - - [07/Dec/2015:14:19:32] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:19:32,573] 127.0.0.1 - - [07/Dec/2015:14:19:32] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:19:32,575] 127.0.0.1 - - [07/Dec/2015:14:19:32] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:09,254] 127.0.0.1 - - [07/Dec/2015:14:20:09] "GET /maps?code=ent0 HTTP/1.1" 200 7044 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:09,292] 127.0.0.1 - - [07/Dec/2015:14:20:09] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:09,295] 127.0.0.1 - - [07/Dec/2015:14:20:09] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:09,299] 127.0.0.1 - - [07/Dec/2015:14:20:09] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:09,304] 127.0.0.1 - - [07/Dec/2015:14:20:09] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:09,308] 127.0.0.1 - - [07/Dec/2015:14:20:09] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:25,887] 127.0.0.1 - - [07/Dec/2015:14:20:25] "GET /maps?code=ent0 HTTP/1.1" 200 7040 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:25,930] 127.0.0.1 - - [07/Dec/2015:14:20:25] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:25,930] 127.0.0.1 - - [07/Dec/2015:14:20:25] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:25,932] 127.0.0.1 - - [07/Dec/2015:14:20:25] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:25,936] 127.0.0.1 - - [07/Dec/2015:14:20:25] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:25,938] 127.0.0.1 - - [07/Dec/2015:14:20:25] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:28,703] 127.0.0.1 - - [07/Dec/2015:14:20:28] "GET /maps?code=ent0 HTTP/1.1" 200 7040 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:28,723] 127.0.0.1 - - [07/Dec/2015:14:20:28] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:28,723] 127.0.0.1 - - [07/Dec/2015:14:20:28] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:28,725] 127.0.0.1 - - [07/Dec/2015:14:20:28] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:28,724] 127.0.0.1 - - [07/Dec/2015:14:20:28] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:28,733] 127.0.0.1 - - [07/Dec/2015:14:20:28] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:35,575] 127.0.0.1 - - [07/Dec/2015:14:20:35] "GET /maps?code=ent0 HTTP/1.1" 200 7050 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:35,616] 127.0.0.1 - - [07/Dec/2015:14:20:35] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:35,622] 127.0.0.1 - - [07/Dec/2015:14:20:35] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:35,625] 127.0.0.1 - - [07/Dec/2015:14:20:35] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:35,628] 127.0.0.1 - - [07/Dec/2015:14:20:35] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:20:35,632] 127.0.0.1 - - [07/Dec/2015:14:20:35] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:00,512] 127.0.0.1 - - [07/Dec/2015:14:21:00] "GET /maps?code=ent0 HTTP/1.1" 200 7047 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:00,543] 127.0.0.1 - - [07/Dec/2015:14:21:00] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:00,546] 127.0.0.1 - - [07/Dec/2015:14:21:00] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:00,552] 127.0.0.1 - - [07/Dec/2015:14:21:00] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:00,555] 127.0.0.1 - - [07/Dec/2015:14:21:00] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:00,559] 127.0.0.1 - - [07/Dec/2015:14:21:00] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:10,938] 127.0.0.1 - - [07/Dec/2015:14:21:10] "GET /maps?code=ent0 HTTP/1.1" 200 7047 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:10,971] 127.0.0.1 - - [07/Dec/2015:14:21:10] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:10,975] 127.0.0.1 - - [07/Dec/2015:14:21:10] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:10,977] 127.0.0.1 - - [07/Dec/2015:14:21:10] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:10,979] 127.0.0.1 - - [07/Dec/2015:14:21:10] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:10,980] 127.0.0.1 - - [07/Dec/2015:14:21:10] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:55,492] 127.0.0.1 - - [07/Dec/2015:14:21:55] "GET /maps?code=ent0 HTTP/1.1" 200 7037 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:55,528] 127.0.0.1 - - [07/Dec/2015:14:21:55] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:55,531] 127.0.0.1 - - [07/Dec/2015:14:21:55] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:55,534] 127.0.0.1 - - [07/Dec/2015:14:21:55] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:55,537] 127.0.0.1 - - [07/Dec/2015:14:21:55] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:21:55,540] 127.0.0.1 - - [07/Dec/2015:14:21:55] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:22:07,295] 127.0.0.1 - - [07/Dec/2015:14:22:07] "GET /maps?code=ent0 HTTP/1.1" 200 7020 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:22:07,318] 127.0.0.1 - - [07/Dec/2015:14:22:07] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:22:07,321] 127.0.0.1 - - [07/Dec/2015:14:22:07] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:22:07,324] 127.0.0.1 - - [07/Dec/2015:14:22:07] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:22:07,327] 127.0.0.1 - - [07/Dec/2015:14:22:07] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:22:07,331] 127.0.0.1 - - [07/Dec/2015:14:22:07] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:14,877] 127.0.0.1 - - [07/Dec/2015:14:23:14] "GET /maps?code=ent0 HTTP/1.1" 200 7014 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:14,914] 127.0.0.1 - - [07/Dec/2015:14:23:14] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:14,971] 127.0.0.1 - - [07/Dec/2015:14:23:14] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:14,976] 127.0.0.1 - - [07/Dec/2015:14:23:14] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:14,998] 127.0.0.1 - - [07/Dec/2015:14:23:14] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:15,002] 127.0.0.1 - - [07/Dec/2015:14:23:15] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:40,658] 127.0.0.1 - - [07/Dec/2015:14:23:40] "GET /maps?code=ent0 HTTP/1.1" 200 7015 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:40,677] 127.0.0.1 - - [07/Dec/2015:14:23:40] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:40,679] 127.0.0.1 - - [07/Dec/2015:14:23:40] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:40,683] 127.0.0.1 - - [07/Dec/2015:14:23:40] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:40,685] 127.0.0.1 - - [07/Dec/2015:14:23:40] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:23:40,691] 127.0.0.1 - - [07/Dec/2015:14:23:40] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:24:01,353] 127.0.0.1 - - [07/Dec/2015:14:24:01] "GET /maps?code=ent0 HTTP/1.1" 200 7023 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:24:01,376] 127.0.0.1 - - [07/Dec/2015:14:24:01] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:24:01,379] 127.0.0.1 - - [07/Dec/2015:14:24:01] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:24:01,383] 127.0.0.1 - - [07/Dec/2015:14:24:01] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:24:01,385] 127.0.0.1 - - [07/Dec/2015:14:24:01] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:24:01,389] 127.0.0.1 - - [07/Dec/2015:14:24:01] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:02,120] 127.0.0.1 - - [07/Dec/2015:14:25:02] "GET /maps?code=ent0 HTTP/1.1" 200 7028 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:02,144] 127.0.0.1 - - [07/Dec/2015:14:25:02] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:02,147] 127.0.0.1 - - [07/Dec/2015:14:25:02] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:02,151] 127.0.0.1 - - [07/Dec/2015:14:25:02] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:02,155] 127.0.0.1 - - [07/Dec/2015:14:25:02] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:02,159] 127.0.0.1 - - [07/Dec/2015:14:25:02] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:05,983] 127.0.0.1 - - [07/Dec/2015:14:25:05] "GET /maps?code=ent0 HTTP/1.1" 200 7028 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:06,002] 127.0.0.1 - - [07/Dec/2015:14:25:06] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:06,003] 127.0.0.1 - - [07/Dec/2015:14:25:06] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:06,005] 127.0.0.1 - - [07/Dec/2015:14:25:06] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:06,007] 127.0.0.1 - - [07/Dec/2015:14:25:06] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:06,009] 127.0.0.1 - - [07/Dec/2015:14:25:06] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:29,144] 127.0.0.1 - - [07/Dec/2015:14:25:29] "GET /maps?code=ent0 HTTP/1.1" 200 7029 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:29,179] 127.0.0.1 - - [07/Dec/2015:14:25:29] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:29,182] 127.0.0.1 - - [07/Dec/2015:14:25:29] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:29,185] 127.0.0.1 - - [07/Dec/2015:14:25:29] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:29,188] 127.0.0.1 - - [07/Dec/2015:14:25:29] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:25:29,194] 127.0.0.1 - - [07/Dec/2015:14:25:29] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:26:39,931] 127.0.0.1 - - [07/Dec/2015:14:26:39] "GET /maps?code=ent0 HTTP/1.1" 200 7025 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:26:39,953] 127.0.0.1 - - [07/Dec/2015:14:26:39] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:26:39,955] 127.0.0.1 - - [07/Dec/2015:14:26:39] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:26:39,959] 127.0.0.1 - - [07/Dec/2015:14:26:39] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:26:39,960] 127.0.0.1 - - [07/Dec/2015:14:26:39] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:26:39,963] 127.0.0.1 - - [07/Dec/2015:14:26:39] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:27,081] 127.0.0.1 - - [07/Dec/2015:14:27:27] "GET /maps?code=ent0 HTTP/1.1" 200 7030 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:27,113] 127.0.0.1 - - [07/Dec/2015:14:27:27] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:27,118] 127.0.0.1 - - [07/Dec/2015:14:27:27] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:27,124] 127.0.0.1 - - [07/Dec/2015:14:27:27] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:27,124] 127.0.0.1 - - [07/Dec/2015:14:27:27] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:27,125] 127.0.0.1 - - [07/Dec/2015:14:27:27] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:37,811] 127.0.0.1 - - [07/Dec/2015:14:27:37] "GET /maps?code=ent0 HTTP/1.1" 200 7027 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:37,846] 127.0.0.1 - - [07/Dec/2015:14:27:37] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:37,852] 127.0.0.1 - - [07/Dec/2015:14:27:37] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:37,854] 127.0.0.1 - - [07/Dec/2015:14:27:37] "GET /static/js/fabric.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:37,856] 127.0.0.1 - - [07/Dec/2015:14:27:37] "GET /static/js/graphics_for_strategic_map.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:37,860] 127.0.0.1 - - [07/Dec/2015:14:27:37] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:47,011] 127.0.0.1 - - [07/Dec/2015:14:27:47] "GET /maps HTTP/1.1" 200 1531 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:49,185] 127.0.0.1 - - [07/Dec/2015:14:27:49] "GET /maps HTTP/1.1" 200 1531 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:27:50,289] 127.0.0.1 - - [07/Dec/2015:14:27:50] "GET /maps?code=ent0 HTTP/1.1" 200 7027 "http://localhost:8080/maps" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:28:17,606] 127.0.0.1 - - [07/Dec/2015:14:28:17] "GET /kpi/edit?code=kp8c06 HTTP/1.1" 200 4350 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:28:17,842] 127.0.0.1 - - [07/Dec/2015:14:28:17] "GET /static/js/formula.js HTTP/1.1" 304 - "http://localhost:8080/kpi/edit?code=kp8c06" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:28:21,947] 127.0.0.1 - - [07/Dec/2015:14:28:21] "GET /maps?code=ent0 HTTP/1.1" 200 7027 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:28:38,584] 127.0.0.1 - - [07/Dec/2015:14:28:38] "GET /maps?code=ent0& HTTP/1.1" 200 7027 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:28:42,936] 127.0.0.1 - - [07/Dec/2015:14:28:42] "GET /maps?code=ent0 HTTP/1.1" 200 7027 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:30:39,323] 127.0.0.1 - - [07/Dec/2015:14:30:39] "GET /kpi/edit?code=kp1832 HTTP/1.1" 200 4346 "http://localhost:8080/maps?code=ent0" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-07 14:30:50,622] 127.0.0.1 - - [07/Dec/2015:14:30:50] "GET /maps?code=ent0 HTTP/1.1" 200 7027 "http://localhost:8080/kpi/edit?code=kp1832" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"

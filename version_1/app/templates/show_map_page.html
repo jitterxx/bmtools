@@ -6,87 +6,101 @@
     <script src="/static/js/fabric.min.js"></script>
 </%block>
 
+
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar" role="tablist">
+          <li class="active">
+              <a href="#map" role="tab" aria-controls="map" data-toggle="tab">Карта<span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+              <a href="#goals" role="tab" aria-controls="goals" data-toggle="tab">Цели<span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+              <a href="#kpi" role="tab" aria-controls="kpi" data-toggle="tab">Стратегические показатели<span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+              <a href="#events" aria-controls="events" role="tab" data-toggle="tab">
+                  Мероприятия<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="#opkpi" aria-controls="opkpi" role="tab" data-toggle="tab">
+                  Операционные показатели<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="divider"></li>
+          <li>
+              <a href="/maps">
+                  Назад<span class="sr-only">(current)</span>
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
             <h1>${current_map.name}</h1>
-            <a class="btn btn-link" href="/goals/new" role="button">
-                <span class="text-muted">Добавить цель</span>
-            </a>
-            <a class="btn btn-link" href="/kpi/new" role="button">
-                <span class="text-muted">Добавить показатель</span>
-            </a>
-
             <div style="margin-left: 2%;">
                 ${current_map.description}
             </div>
-
-            </div>
         </div>
-    <div class="row">
-        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-            <div><br><br><br></div>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <canvas id="graph_map" width="800" height="800"></canvas>
-                </div>
-            </div>
-            <button class="btn btn-link btn-xs" onclick="sendDrawData(draw_data);">
-                <span class="text-muted">Сохранить расположение целей</span>
-            </button>
-            <a class="btn btn-link btn-xs" onclick="SaveDraw();" href="#" id="download_draw" target="_blank">
-                <span class="text-muted">Скачать изображение</span>
-            </a>
-
-            <script>
-                var financial_map_color = '${colors[0]}';
-                var client_map_color = '${colors[1]}';
-                var process_map_color = '${colors[2]}';
-                var hr_map_color = '${colors[3]}';
-                var linked_goals_in_json = '${custom_linked_goals_in_json}';
-                var map_code = '${current_map.code}';
-                var goals_in_json = {
-                % if map_goals:
-                 % for code in map_goals.keys():
-                    ${code}: {code: '${code}', name: '${map_goals[code].goal_name}', perspective: ${map_goals[code].perspective}},
-                 % endfor
-                    ${code}: {code: '${code}', name: '${map_goals[code].goal_name}', perspective: ${map_goals[code].perspective}}
-                % endif
-                };
-
-            % if draw_data:
-                var draw_data = JSON.parse('${draw_data}');
-            % else:
-                var draw_data = {};
-            % endif
-            </script>
-            <script src="/static/js/graphics_for_strategic_map.js"></script>
-            </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <hr>
             <div>
-              <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="#goals" aria-controls="goals" role="tab" data-toggle="tab">Цели</a>
-                </li>
-                <li role="presentation">
-                    <a href="#kpi" aria-controls="kpi" role="tab" data-toggle="tab">Счетная карта</a>
-                </li>
-                <li role="presentation">
-                    <a href="#events" aria-controls="events" role="tab" data-toggle="tab">Мероприятия</a>
-                </li>
-                <li role="presentation">
-                    <a href="#opkpi" aria-controls="opkpi" role="tab" data-toggle="tab">Операционные показатели</a>
-                </li>
-              </ul>
-
               <!-- Tab panes -->
               <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="goals">
+                  <div role="tabpanel" class="tab-pane active" id="map">
+                      <hr>
+                      <div>
+                        <a class="btn btn-default" href="/goals/new" role="button">
+                            <span class="text-muted">Добавить цель</span>
+                        </a>
+                        <a class="btn btn-default" href="/kpi/new" role="button">
+                            <span class="text-muted">Добавить показатель</span>
+                        </a>
+                        <button class="btn btn-default" onclick="sendDrawData(draw_data);">
+                            <span class="text-muted">Сохранить расположение целей</span>
+                        </button>
+                        <a class="btn btn-default" onclick="SaveDraw();" href="#" id="download_draw" target="_blank">
+                            <span class="text-muted">Скачать изображение</span>
+                        </a>
+                      </div>
+                      <br>
+                      <div class="panel panel-default">
+                            <div class="panel-body">
+                                <canvas id="graph_map" width="800" height="800"></canvas>
+                            </div>
+                        </div>
+                        <script>
+                            var financial_map_color = '${colors[0]}';
+                            var client_map_color = '${colors[1]}';
+                            var process_map_color = '${colors[2]}';
+                            var hr_map_color = '${colors[3]}';
+                            var linked_goals_in_json = '${custom_linked_goals_in_json}';
+                            var map_code = '${current_map.code}';
+                            var goals_in_json = {
+                            % if map_goals:
+                             % for code in map_goals.keys():
+                                ${code}: {code: '${code}', name: '${map_goals[code].goal_name}', perspective: ${map_goals[code].perspective}},
+                             % endfor
+                                ${code}: {code: '${code}', name: '${map_goals[code].goal_name}', perspective: ${map_goals[code].perspective}}
+                            % endif
+                            };
+
+                        % if draw_data:
+                            var draw_data = JSON.parse('${draw_data}');
+                        % else:
+                            var draw_data = {};
+                        % endif
+                        </script>
+                        <script src="/static/js/graphics_for_strategic_map.js"></script>
+                  </div>
+                <div role="tabpanel" class="tab-pane" id="goals">
                     % if map_goals.keys():
                         % for p in range(0, len(group_goals)):
                             <h3>${perspectives.get(p)}</h3>
