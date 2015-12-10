@@ -925,13 +925,16 @@ def delete_custom_link_kpi_to_goal(goal, kpi):
     print kpi
 
     try:
-        resp = session.query(Custom_linked_kpi_to_goal).filter(and_(Custom_linked_kpi_to_goal.kpi_code == kpi,
-                                                                    Custom_linked_kpi_to_goal.goal_code == goal)).one_or_none()
-        session.delete(resp)
-        session.commit()
+        resp = session.query(Custom_linked_kpi_to_goal).\
+            filter(and_(Custom_linked_kpi_to_goal.kpi_code == kpi,
+                        Custom_linked_kpi_to_goal.goal_code == goal)).one()
+
     except Exception as e:
         print "Ошибка в функции delete_custom_link_kpi_to_goal(). %s" % str(e)
         raise e
+    else:
+        session.delete(resp)
+        session.commit()
     finally:
         session.close()
 
