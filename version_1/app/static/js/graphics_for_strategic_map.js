@@ -214,7 +214,7 @@ var draw_goals = {};
           //console.log(j ,offset);
           j = j + (offset - i);
           i = offset;
-          if (j < 15) {
+          if (j < 11) {
             //console.log('Печатаем пробел');
             return(' ');
             }
