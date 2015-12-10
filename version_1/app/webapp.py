@@ -2128,6 +2128,7 @@ class Root(object):
             # print "MAP goals: %s " % map_goals
             # print "MAP kpi: %s " % map_kpi
             # print "MAP linked goals: %s" % custom_linked_goals
+            print "OPKPI : %s" % map_opkpi
 
             custom_linked_goals_in_json = dict()
             for one in map_goals.values():
