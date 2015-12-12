@@ -2049,6 +2049,129 @@ class KPIs(object):
             return "ok"
 
 
+class MotivationCard():
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def index(self):
+        # Вывести все мотивационные карточки
+        tmpl = lookup.get_template("motivation_list_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Мотивационные карты"
+        step_desc['next_step'] = ""
+
+        try:
+            motivation_card = BMTObjects.get_motivation_cards(card_code="mc109a")
+            map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)
+            motivation_records = BMTObjects.get_motivation_card_records("mc109a")
+        except Exception as e:
+            print "Ошибка при получении мотивационных карт. %s" % str(e)
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           persons=BMTObjects.persons, motivation_card=motivation_card,
+                           map_kpi=map_kpi, map_opkpi=map_opkpi, motivation_records=motivation_records)
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def save(self, user_id=None, group_id=None, salary=None, salary_fix_p=None, salary_var_p=None,
+             salary_fix=None, salary_var=None, user_approve=None, boss_approve=None,
+             edge1=None, edge2=None, edge3=None, var_edge_1=None, var_edge_2=None, var_edge_3=None):
+
+        p = cherrypy.request.params
+        if not user_id:
+            print "Один из параметров не указан. Параметры: %s" % p
+            raise cherrypy.HTTPRedirect("/motivation")
+
+        card_fields = dict()
+        try:
+            for k in p.keys():
+                print k, " : ", p[k]
+                card_fields[k] = int(p[k])
+        except Exception as e:
+            print "Ошибка при проверке параметров. %s" % str(e)
+            return ShowError(e)
+
+        try:
+            # Создаем новую карту мотивации
+            status = BMTObjects.create_motivation_card(card_fields)
+        except Exception as e:
+            print "Ошибка при создании MOTIVATION CARD. %s" % str(e)
+            return ShowError(e)
+        else:
+            print "Карта мотивации создана: %s" % status[1]
+
+        raise cherrypy.HTTPRedirect("/motivation")
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def add_kpi(self, motivation_card=None, weight=None, kpi=None):
+
+        p = cherrypy.request.params
+        if None in [motivation_card, weight, kpi]:
+            print "Один из параметров не указан. Параметры: %s" % p
+            raise cherrypy.HTTPRedirect("/motivation")
+
+        try:
+            # добавляем показатель в карту мотивации
+            BMTObjects.add_kpi_to_motivation_card(str(motivation_card), int(weight), str(kpi))
+        except Exception as e:
+            print "Ошибка при добавлении KPI в MOTIVATION CARD. %s" % str(e)
+            return ShowError(e)
+        else:
+            print "Показатель добавлен."
+
+        raise cherrypy.HTTPRedirect("/motivation")
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def update_kpi(self, motivation_card=None, weight=None, kpi=None):
+
+        p = cherrypy.request.params
+
+        print "Парметры: %s " % p
+
+        if None in [motivation_card, weight, kpi]:
+            print "Один из параметров не указан. Параметры: %s" % p
+            raise cherrypy.HTTPRedirect("/motivation")
+
+        try:
+            # обновляем показатель в карте мотивации
+            BMTObjects.update_kpi_in_motivation_card(str(motivation_card), int(weight), str(kpi))
+        except Exception as e:
+            print "Ошибка при обновлении KPI в MOTIVATION CARD. %s" % str(e)
+            return ShowError(e)
+        else:
+            print "Показатель обновлен."
+
+        raise cherrypy.HTTPRedirect("/motivation")
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def remove_kpi(self, motivation_card=None, kpi=None):
+
+        p = cherrypy.request.params
+
+        print "Парметры: %s " % p
+
+        if None in [motivation_card, kpi]:
+            print "Один из параметров не указан. Параметры: %s" % p
+            raise cherrypy.HTTPRedirect("/motivation")
+
+        try:
+            # удаляем показатель из карты мотивации
+            BMTObjects.delete_kpi_from_motivation_card(str(motivation_card), str(kpi))
+        except Exception as e:
+            print "Ошибка при удалении KPI из MOTIVATION CARD. %s" % str(e)
+            return ShowError(e)
+        else:
+            print "Показатель удален."
+
+        raise cherrypy.HTTPRedirect("/motivation")
+
+
 class Root(object):
 
     auth = AuthController()
@@ -2057,6 +2180,7 @@ class Root(object):
     library = Library()
     goals = Goals()
     kpi = KPIs()
+    motivation = MotivationCard()
 
     @cherrypy.expose
     @require(member_of("users"))

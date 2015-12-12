@@ -34,12 +34,27 @@ sql4 = "ALTER TABLE `kpi_target_values`" \
        "ADD COLUMN `period_name` VARCHAR(256) NULL AFTER `period_code`;"
 
 
+sql5 = "CREATE TABLE `motivation_card_data` (  `id` int(11) NOT NULL AUTO_INCREMENT,  `code` varchar(10) DEFAULT NULL," \
+       "  `user_id` int(11) DEFAULT '0',  `group_id` int(11) DEFAULT '0',  `user_approve` int(11) DEFAULT '0'," \
+       "  `boss_approve` int(11) DEFAULT '0',  `salary` int(11) DEFAULT '0',  `salary_fix_p` int(11) DEFAULT '0'," \
+       "  `salary_var_p` int(11) DEFAULT '0',  `salary_fix` int(11) DEFAULT '0',  `salary_var` int(11) DEFAULT '0'," \
+       "  `edge1` int(11) DEFAULT '0',  `edge2` int(11) DEFAULT '0',  `edge3` int(11) DEFAULT '0'," \
+       "  `var_edge_1` int(11) DEFAULT '0',  `var_edge_2` int(11) DEFAULT '0',  `var_edge_3` int(11) DEFAULT '0'," \
+       "  `status` int(11) DEFAULT '0',  `date` datetime DEFAULT NULL,  `version` int(11) DEFAULT '0'," \
+       "  PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8;" \
+       "  CREATE TABLE `motivation_card` ( `id` int(11) NOT NULL AUTO_INCREMENT,  " \
+       "  `kpi_code` varchar(10) DEFAULT NULL,  `weight` int(11) DEFAULT NULL," \
+       "  `motivation_card_code` varchar(10) DEFAULT NULL,  PRIMARY KEY (`id`)" \
+       ") ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;"
+
+
 connection = BMTObjects.Engine.connect()
 # result = connection.execute(sql)
 # print result
 
 # result = connection.execute(sql1)
 # print result
+
 try:
     result = connection.execute(sql2)
 except Exception as e:
@@ -60,21 +75,27 @@ except Exception as e:
     print e.message, e.args
 else:
     print result
+    session = BMTObjects.Session()
 
-session = BMTObjects.Session()
+    resp = session.query(BMTObjects.KPITargetValue).all()
+    for one in resp:
+        one.period_code = str(one.date.month) + str(one.date.year)
+        if not one.period_name:
+            if (one.date.month - 1) == 0:
+                one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year - 1)
+            else:
+                one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year)
 
-resp = session.query(BMTObjects.KPITargetValue).all()
-for one in resp:
-    one.period_code = str(one.date.month) + str(one.date.year)
-    if not one.period_name:
-        if (one.date.month - 1) == 0:
-            one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year - 1)
-        else:
-            one.period_name = str(BMTObjects.PERIOD_NAME[one.date.month - 1]) + " " + str(one.date.year)
+    session.commit()
 
-session.commit()
+    session.close()
 
-session.close()
+try:
+    result = connection.execute(sql5)
+except Exception as e:
+    print e.message, e.args
+else:
+    print result
 
 
 connection.close()

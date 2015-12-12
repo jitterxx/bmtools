@@ -2125,3 +2125,250 @@ def read_user_info():
         session.close()
 
 read_user_info()
+
+
+class MotivationCardData(Base):
+
+    __tablename__="motivation_card_data"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    user_id = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    group_id = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    user_approve = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    boss_approve = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    salary = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    salary_fix_p = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    salary_var_p = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    salary_fix = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    salary_var = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    edge1 = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    edge2 = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    edge3 = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    var_edge_1 = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    var_edge_2 = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    var_edge_3 = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    status = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    date = sqlalchemy.Column(sqlalchemy.DATETIME())
+    version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+
+    def __init__(self):
+        u = uuid.uuid4().get_hex().__str__()
+        self.code = "mc" + "".join(random.sample(u, 4))
+        self.user_id = 0
+        self.group_id = 0
+        self.user_approve = 0
+        self.boss_approve = 0
+        self.salary = 0
+        self.salary_fix = 0
+        self.salary_fix_p = 0
+        self.salary_var = 0
+        self.salary_var_p = 0
+        self.edge1 = 0
+        self.edge2 = 0
+        self.edge3 = 0
+        self.var_edge_1 = 0
+        self.var_edge_2 = 0
+        self.var_edge_3 = 0
+        self.status = 0
+        self.date = datetime.datetime.now()
+        self.version = VERSION
+
+
+def create_motivation_card(card_fields):
+    """
+    Создание карты мотивации
+
+    :param card_fields: поля для заполнения.
+    :return:
+    """
+
+    session = Session()
+    new_card = MotivationCardData()
+    try:
+        for key in card_fields.keys():
+            new_card.__dict__[key] = card_fields[key]
+        session.add(new_card)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.create_motivation_card(). Мотивационная карта не записана. %s" % str(e)
+        raise e
+    else:
+        return ["ok", new_card.id]
+    finally:
+        session.close()
+
+
+def get_motivation_cards(card_code=None, user_code=None):
+    """
+    Возвращает данные мотивационных карт. Если указан card_code, то возвращвет конкретный объект или None.
+
+    :param card_code: код карты
+    :param user_code: ИД пользователя
+    :return:
+    """
+
+    session = Session()
+
+    if card_code:
+        # Ищем карту по коду
+        try:
+            resp = session.query(MotivationCardData).filter(MotivationCardData.code == card_code).one()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "Ничего не найдено get_motivation_cards() для карты: %s. %s" % (card_code, str(e))
+            return None
+        except sqlalchemy.orm.exc.MultipleResultsFound as e:
+            print "Ошибка в функции get_motivation_cards(). Найдено много карт с кодом: %s. %s" %\
+                  (card_code, str(e))
+            raise e
+        except Exception as e:
+            print "Ошибка в функции get_motivation_cards(). %s" % str(e)
+            raise e
+        else:
+            return resp
+        finally:
+            session.close()
+
+    if card_code:
+        # Ищем карту для пользователя
+        try:
+            resp = session.query(MotivationCardData).filter(MotivationCardData.user_id == user_code).all()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "Ничего не найдено get_motivation_cards() для пользователя: %s. %s" % (user_code, str(e))
+            return None
+        except Exception as e:
+            print "Ошибка в функции get_motivation_cards(). %s" % str(e)
+            raise e
+        else:
+            cards = dict()
+            for one in resp:
+                cards[one.code] = one
+            return cards
+        finally:
+            session.close()
+
+    # Ищем и возвращаем конкретную карту
+    try:
+        resp = session.query(MotivationCardData).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено get_motivation_cards() для карты: %s. %s" % (card_code, str(e))
+        return cards
+    except Exception as e:
+        print "Ошибка в функции get_motivation_cards(). %s" % str(e)
+        raise e
+    else:
+        cards = dict()
+        for one in resp:
+            cards[one.code] = one
+        return cards
+    finally:
+        session.close()
+
+
+class MotivationCardRecord(Base):
+    __tablename__ = "motivation_card"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    weight = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    motivation_card_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+
+
+def get_motivation_card_records(motivation_card):
+    """
+    Получить все записи о показателях для карты
+
+    :param motivation_card:
+    :return:
+    """
+
+    session = Session()
+    records = dict()
+    try:
+        resp = session.query(MotivationCardRecord).filter(MotivationCardRecord.motivation_card_code ==
+                                                          motivation_card).all()
+
+    except Exception as e:
+        print "Ошибка в функции update_kpi_in_motivation_card(). %s" % str(e)
+        raise e
+    else:
+        for one in resp:
+            records[one.kpi_code] = one
+        return records
+    finally:
+        session.close()
+
+
+def add_kpi_to_motivation_card(motivation_card, weight, kpi):
+    """
+    Добавление показателя в карту мотивации
+
+    :param motivation_card:
+    :param weight:
+    :param kpi:
+    :return:
+    """
+
+    session = Session()
+    new_kpi = MotivationCardRecord()
+    new_kpi.kpi_code = kpi
+    new_kpi.motivation_card_code = motivation_card
+    new_kpi.weight = weight
+    try:
+        session.add(new_kpi)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции add_kpi_to_motivation_card(). %s" % str(e)
+        raise e
+    finally:
+        session.close()
+
+
+def delete_kpi_from_motivation_card(motivation_card, kpi):
+    """
+    Удаляет показатель из карты мотивации
+
+    :param motivation_card:
+    :param kpi:
+    :return:
+    """
+
+    session = Session()
+    try:
+        resp = session.query(MotivationCardRecord).filter(and_(MotivationCardRecord.kpi_code == kpi,
+                                                               MotivationCardRecord.motivation_card_code ==
+                                                               motivation_card)).one()
+    except Exception as e:
+        print "Ошибка в функции delete_kpi_from_motivation_card(). %s" % str(e)
+        raise e
+    else:
+        session.delete(resp)
+        session.commit()
+    finally:
+        session.close()
+
+
+def update_kpi_in_motivation_card(motivation_card, weight, kpi):
+    """
+    Обновляет занчение веса показателя в карте мотивации
+
+    :param motivation_card:
+    :param weight:
+    :param kpi:
+    :return:
+    """
+
+    session = Session()
+    try:
+        resp = session.query(MotivationCardRecord).filter(and_(MotivationCardRecord.kpi_code == kpi,
+                                                               MotivationCardRecord.motivation_card_code ==
+                                                               motivation_card)).one()
+    except Exception as e:
+        print "Ошибка в функции update_kpi_in_motivation_card(). %s" % str(e)
+        raise e
+    else:
+        resp.weight = weight
+        session.commit()
+    finally:
+        session.close()
+
