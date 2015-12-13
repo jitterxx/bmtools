@@ -176,18 +176,28 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" bgcolor="#eeeeee">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>Вид карты</h3>
-            <p>Премиальная часть: ${motivation_card.salary_var} руб</p>
-            <p class="lead">Общий вес: <span id="full_weight" class="label label-success">100%</span></p>
+            <h3>КАРТА ПОКАЗАТЕЛЕЙ ОЦЕНКИ РЕЗУЛЬТАТОВ ТРУДА</h3>
+            <div style="margin-left: 2%;">
+                <p>Сотрудник: ${persons[motivation_card.user_id]}</p>
+                <p>Отдел: ${org[motivation_card.user_id].dep_name}</p>
+                <p>Руководитель: ${persons[org[motivation_card.user_id].boss]}</p>
+            </div>
+            <h4>Оклад/премия</h4>
+            <div style="margin-left: 2%;">
+                <p>Соотношение фикс/премия: ${motivation_card.salary_fix_p}/${motivation_card.salary_var_p}%</p>
+                <p>Фиксированная часть: ${motivation_card.salary_fix} руб</p>
+                <p>Премиальная часть: ${motivation_card.salary_var} руб</p>
+            </div>
+
             <input type="hidden" id="motivation_card" value="${motivation_card.code}">
             <hr>
             <table class="table" width="50%" id="card_table">
                 <thead>
                 <tr>
                     <th width="30%">Показатель</th>
-                    <th width="10%">Вес</th>
+                    <th width="10%">Вес<br><span id="full_weight" class="label label-success">100%</span></th>
                     <th width="10%">${motivation_card.edge1}% и больше</th>
                     <th width="10%">${motivation_card.edge2}% и больше</th>
                     <th width="10%">${motivation_card.edge3}% и больше</th>
@@ -210,7 +220,7 @@
                         </div>
                     </td>
                     <td>
-                        (${float(motivation_records[one].weight)/100 * motivation_card.salary_var * float(motivation_card.var_edge_1)/100})</td>
+                        ${float(motivation_records[one].weight)/100 * motivation_card.salary_var * float(motivation_card.var_edge_1)/100}(${motivation_card.var_edge_1}%)</td>
                     <td>
                         (${float(motivation_records[one].weight)/100 * motivation_card.salary_var * float(motivation_card.var_edge_2)/100})</td>
                     <td>

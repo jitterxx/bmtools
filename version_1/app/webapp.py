@@ -2060,6 +2060,14 @@ class MotivationCard():
         step_desc['full_description'] = ""
         step_desc['name'] = "Мотивационные карты"
         step_desc['next_step'] = ""
+        # TODO: ДОбавить срок действия стратегической карты
+        # TODO: Специальные виды показателей для мотивации: штрафы, смарт задачи
+        # TODO: Добавить управление пользователями, прикрепление к отделам и т.д.
+        class Org():
+            boss = 3
+            dep_name = "Первый отдел"
+
+        org = {4: Org()}
 
         try:
             motivation_card = BMTObjects.get_motivation_cards(card_code="mc109a")
@@ -2072,7 +2080,8 @@ class MotivationCard():
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            persons=BMTObjects.persons, motivation_card=motivation_card,
-                           map_kpi=map_kpi, map_opkpi=map_opkpi, motivation_records=motivation_records)
+                           map_kpi=map_kpi, map_opkpi=map_opkpi, motivation_records=motivation_records,
+                           org=org)
 
     @cherrypy.expose
     # @require(member_of("users"))
