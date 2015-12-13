@@ -91,4 +91,20 @@ function DeleteKPI(element, kpi_code){
     SendDelete(kpi_code, card_code);
     var row = element.parentNode.parentNode.rowIndex;
     document.getElementById('card_table').deleteRow(row);
+    Check_weight();
+};
+
+function CalculateSalary(element) {
+    var salary = document.getElementById('salary');
+    var salary_fix_p = document.getElementById('salary_fix_p');
+    var salary_var_p = document.getElementById('salary_var_p');
+    var salary_fix = document.getElementById('salary_fix');
+    var salary_var = document.getElementById('salary_var');
+
+    if (element.id != 'salary_fix_p') {
+        salary_fix_p.value = 100 - parseInt(salary_var_p.value);
+    };
+    salary_var_p.value = 100 - parseInt(salary_fix_p.value);
+    salary_fix.value = parseInt(salary_fix_p.value)*parseInt(salary.value)/100;
+    salary_var.value = parseInt(salary_var_p.value)*parseInt(salary.value)/100;
 };

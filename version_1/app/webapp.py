@@ -2114,6 +2114,28 @@ class MotivationCard():
     def save(self, user_id=None, group_id=None, salary=None, salary_fix_p=None, salary_var_p=None,
              salary_fix=None, salary_var=None, user_approve=None, boss_approve=None,
              edge1=None, edge2=None, edge3=None, var_edge_1=None, var_edge_2=None, var_edge_3=None):
+        """
+        Создание новой карты мотивации
+
+        :param user_id:
+        :param group_id:
+        :param salary:
+        :param salary_fix_p:
+        :param salary_var_p:
+        :param salary_fix:
+        :param salary_var:
+        :param user_approve:
+        :param boss_approve:
+        :param edge1:
+        :param edge2:
+        :param edge3:
+        :param var_edge_1:
+        :param var_edge_2:
+        :param var_edge_3:
+        :return:
+        """
+
+        # TODO: при создании новой карты надо проверять есть уже действующая карта. Может быть одна активная.
 
         p = cherrypy.request.params
         if not user_id:
@@ -2158,7 +2180,7 @@ class MotivationCard():
         else:
             print "Показатель добавлен."
 
-        raise cherrypy.HTTPRedirect("/motivation")
+        raise cherrypy.HTTPRedirect("/motivation/show?code=%s" % motivation_card)
 
     @cherrypy.expose
     # @require(member_of("users"))

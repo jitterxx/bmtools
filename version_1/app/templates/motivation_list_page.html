@@ -30,7 +30,8 @@
             <h3>Мотивационные карты</h3>
             <div style="margin-left: 2%;">
             % for one in motivation_cards.values():
-                <p><a role="button" href="/motivation/show?code=${one.code}">Мотивационная карта для ${persons[one.user_id]}</a></p>
+                <p><a role="button" href="/motivation/show?code=${one.code}">Мотивационная карта сотрудника
+                    ${persons[one.user_id]}</a> (от ${one.date.strftime("%H:%M %d-%B-%Y")})</p>
             % endfor
             </div>
         </div>
@@ -42,7 +43,7 @@
             <form action="/motivation/save" method="post">
                 <div class="form-group">
                     <label for="user_id">Пользователь</label>
-                    <select name="user_id" id="user_id">
+                    <select name="user_id" id="user_id" required>
                         % for key in persons.keys():
                             <option value="${key}">${persons[key]}</option>
                         % endfor
@@ -57,13 +58,16 @@
                 </div>
                 <div class="form-group">
                     <label for="salary">ЗП</label>
-                    <input type="number" class="form-control" id="salary" name="salary" placeholder="0">
+                    <input type="number" class="form-control" id="salary" name="salary" value="0"
+                           onchange="CalculateSalary(this);">
                 </div>
                 <div class="form-group">
                     <label for="salary_fix_p">% fix</label>
-                    <input type="number" class="form-control" id="salary_fix_p" name="salary_fix_p" value="0">
+                    <input type="number" class="form-control" id="salary_fix_p" name="salary_fix_p" value="0"
+                           onchange="CalculateSalary(this);">
                     <label for="salary_var_p">% var</label>
-                    <input type="number" class="form-control" id="salary_var_p" name="salary_var_p" value="0">
+                    <input type="number" class="form-control" id="salary_var_p" name="salary_var_p" value="0"
+                           onchange="CalculateSalary(this);">
                 </div>
                 <div class="form-group">
                     <label for="salary_fix">рубли fix</label>
