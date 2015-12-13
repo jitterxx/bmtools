@@ -24,9 +24,9 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>КАРТА ПОКАЗАТЕЛЕЙ ОЦЕНКИ РЕЗУЛЬТАТОВ ТРУДА</h3>
             <div style="margin-left: 2%;">
-                <p>Сотрудник: ${persons[motivation_card.user_id]}</p>
-                <p>Отдел: ${org[motivation_card.user_id].dep_name}</p>
-                <p>Руководитель: ${persons[org[motivation_card.user_id].boss]}</p>
+                <p>Сотрудник: ${persons.get(motivation_card.user_id)}</p>
+                <p>Отдел: ${org.get(motivation_card.user_id).dep_name}</p>
+                <p>Руководитель: ${persons.get(org.get(motivation_card.user_id).boss)}</p>
             </div>
             <h4>Оклад/премия</h4>
             <div style="margin-left: 2%;">
