@@ -2089,7 +2089,7 @@ class MotivationCard():
             boss = 3
             dep_name = "Первый отдел"
 
-        org = {4: Org()}
+        org = {1: Org(), 2: Org(), 3: Org(), 4: Org()}
 
         try:
             motivation_card = BMTObjects.get_motivation_cards(card_code=code)
