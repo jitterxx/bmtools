@@ -2051,15 +2051,37 @@ class KPIs(object):
 
 class MotivationCard():
 
+
     @cherrypy.expose
     # @require(member_of("users"))
-    def index(self):
+    def index(self, code=None):
         # Вывести все мотивационные карточки
         tmpl = lookup.get_template("motivation_list_page.html")
         step_desc = dict()
         step_desc['full_description'] = ""
         step_desc['name'] = "Мотивационные карты"
         step_desc['next_step'] = ""
+
+        try:
+            motivation_cards = BMTObjects.get_motivation_cards()
+        except Exception as e:
+            print "Ошибка при получении мотивационных карт. %s" % str(e)
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           persons=BMTObjects.persons, motivation_cards=motivation_cards)
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def show(self, code=None):
+        # Вывести указанную карту
+        tmpl = lookup.get_template("motivation_card_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Мотивационные карты"
+        step_desc['next_step'] = ""
+
         # TODO: ДОбавить срок действия стратегической карты
         # TODO: Специальные виды показателей для мотивации: штрафы, смарт задачи
         # TODO: Добавить управление пользователями, прикрепление к отделам и т.д.
@@ -2070,12 +2092,16 @@ class MotivationCard():
         org = {4: Org()}
 
         try:
-            motivation_card = BMTObjects.get_motivation_cards(card_code="mc109a")
+            motivation_card = BMTObjects.get_motivation_cards(card_code=code)
             map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)
-            motivation_records = BMTObjects.get_motivation_card_records("mc109a")
+            motivation_records = BMTObjects.get_motivation_card_records(code)
         except Exception as e:
             print "Ошибка при получении мотивационных карт. %s" % str(e)
             return ShowError(e)
+
+        if not motivation_card:
+            print "Нет такой карты: %s" % code
+            raise cherrypy.HTTPRedirect("/motivation")
 
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),

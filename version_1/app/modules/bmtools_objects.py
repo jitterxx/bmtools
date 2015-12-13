@@ -2216,7 +2216,7 @@ def get_motivation_cards(card_code=None, user_code=None):
             resp = session.query(MotivationCardData).filter(MotivationCardData.code == card_code).one()
         except sqlalchemy.orm.exc.NoResultFound as e:
             print "Ничего не найдено get_motivation_cards() для карты: %s. %s" % (card_code, str(e))
-            return None
+            return dict()
         except sqlalchemy.orm.exc.MultipleResultsFound as e:
             print "Ошибка в функции get_motivation_cards(). Найдено много карт с кодом: %s. %s" %\
                   (card_code, str(e))
@@ -2229,13 +2229,13 @@ def get_motivation_cards(card_code=None, user_code=None):
         finally:
             session.close()
 
-    if card_code:
+    if user_code:
         # Ищем карту для пользователя
         try:
             resp = session.query(MotivationCardData).filter(MotivationCardData.user_id == user_code).all()
         except sqlalchemy.orm.exc.NoResultFound as e:
             print "Ничего не найдено get_motivation_cards() для пользователя: %s. %s" % (user_code, str(e))
-            return None
+            return dict()
         except Exception as e:
             print "Ошибка в функции get_motivation_cards(). %s" % str(e)
             raise e
@@ -2251,8 +2251,8 @@ def get_motivation_cards(card_code=None, user_code=None):
     try:
         resp = session.query(MotivationCardData).all()
     except sqlalchemy.orm.exc.NoResultFound as e:
-        print "Ничего не найдено get_motivation_cards() для карты: %s. %s" % (card_code, str(e))
-        return cards
+        print "Ничего не найдено get_motivation_cards(). %s" % str(e)
+        return dict()
     except Exception as e:
         print "Ошибка в функции get_motivation_cards(). %s" % str(e)
         raise e
