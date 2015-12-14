@@ -150,11 +150,12 @@ class AuthController(object):
     
     def get_loginform(self, username, msg="Enter login information", from_page="/"):
         tmpl = lookup.get_template("auth.html")        
-        
+        print "get_loginform() FROM_PAGE: %s" % from_page
         return tmpl.render(username = username, msg=msg, from_page = from_page)
     
     @cherrypy.expose
     def login(self, username=None, password=None, from_page="/"):
+        print "login() FROM_PAGE: %s" % from_page
         if username is None or password is None:
             return self.get_loginform("", from_page=from_page)
         
@@ -167,7 +168,7 @@ class AuthController(object):
             cherrypy.session[SESSION_KEY] = cherrypy.request.login = username
             cherrypy.session['session_context'] = {'login': str(username)}
             self.on_login(username)
-            raise cherrypy.HTTPRedirect(from_page or "/")    
+            raise cherrypy.HTTPRedirect(from_page or "/")
 
     @cherrypy.expose
     def logout(self, from_page="/"):
