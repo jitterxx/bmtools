@@ -9,7 +9,18 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            % if not org_root:
+            <h3>Что сделать</h3>
+            % endif
+            % if not org_root:
+            <p>
+                Не создана организационная структура компании.
+                <a role="button" class="text-muted" href="/wizard/step2">Создайте ее</a>.
+            </p>
+            <hr>
+            % endif
+
             <h3>Последние обновления</h3>
             <div style="margin-left: 3%;">
                 <p class="lead">06.12.15</p>

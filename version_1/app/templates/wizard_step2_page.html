@@ -11,28 +11,37 @@
     <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-6">
             <h1>${step_desc['name']}</h1>
-            <ul>
-                <li>описание шага: ${step_desc['full_description']}</li>
-                <li>Проверить заданы ли сроки для этого шага?</li>
-                <li>?</li>
-            </ul>
-
+            <div style="margin-left: 2%;">
+                ${step_desc['full_description']}
+            </div>
+            <hr>
             % if action == "show":
                 % if org_structure:
+                <div class="list-group">
                     % for one in xrange(0,org_structure.__len__()):
-                        ${shift[one]*"-"} ${org_structure[one].org_name} - ${persons[org_structure[one].director]}
-                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=edit&org_id=${org_structure[one].id}" role="button">Редактировать</a>
-                        <a class="btn btn-default btn-xs" href="/wizard/step2?action=delete&org_id=${org_structure[one].id}" role="button">Удалить</a>
-                        <br>
+                        <div style="margin-left: ${shift[one]}%;" class="list-group-item">
+                            <h4 class="list-group-item-heading">${org_structure[one].org_name}
+                                <a class="text-muted btn-xs"
+                                   href="/wizard/step2?action=edit&org_id=${org_structure[one].id}" role="button">
+                                    Редактировать</a>
+                                <a  class="text-muted btn-xs"
+                                   href="/wizard/step2?action=delete&org_id=${org_structure[one].id}" role="button">
+                                    Удалить</a>
+                            </h4>
+                            <p class="list-group-item-text">Руководитель: ${persons[org_structure[one].director]}</p>
+                        </div>
                     % endfor
+                </div>
                 % else:
                     Создайте одну организационную единицу.<br>
                 % endif
+                <!--
                 % if status == "writed":
                     Новая структура создана.
                 % elif status == "error":
                     Ошибка записи.
                 % endif
+                -->
                 <hr>
                 <a class="btn btn-default" href="/wizard/step2?action=add" role="button">Добавить</a>
                 <hr>
@@ -49,6 +58,9 @@
                             % endfor
                         </select>
                     </div>
+                    <p class="text-muted">
+                        Если в списке нет нужного человеа <a role="button" class="btn btn-default btn-xs" href="/users/new">добавьте его</a>
+                    </p>
                     <div class="form-group">
                         <label for="org_name">Название</label>
                         <input required name="org_name" id="org_name" type="text" class="form-control">
@@ -64,14 +76,14 @@
                             </select>
                         % else:
                             <input name="parentid" id="parentid" type="hidden" class="form-control" value="0">
-                            Это первая организационная единица вашей компании.
+                            Введите название вашей компании.
                         % endif
                     </div>
                     <div class="form-group">
                         <input name="action" type="hidden" class="form-control" value="save">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default">Добавить</button>
+                        <button type="submit" class="btn btn-default">Добавить организационную единицу</button>
                     </div>
                 </form>
             % elif action == "edit":

@@ -7,7 +7,15 @@
 </%block>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-6">
+            % if not current_map:
+                <p>Стратегическая карта компании не создана.
+                    <a role="button" href="/create-enterprise-map" class="text-muted">Создать?</a>
+                </p>
+            % endif
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-6">
             <h1>${step_desc['name']}</h1>

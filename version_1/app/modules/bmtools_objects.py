@@ -115,8 +115,7 @@ class User(Base):
 
     def __init__(self):
         self.uuid = uuid.uuid1()
-        self.list_access_groups = list()
-        self.list_access_groups = re.split(",", self.access_groups)
+        self.disabled = 0
 
     def read(self):
         self.list_access_groups = list()
@@ -143,18 +142,40 @@ def get_user_by_login(login):
     try:
         user = session.query(User).filter(User.login == login).one()
     except sqlalchemy.orm.exc.NoResultFound:
-        print "Пользователь не найден"
+        print "Пользователь не найден get_user_by_login()."
         logging.warning("Пользователь с логином %s не найден" % login)
         return None
     except sqlalchemy.orm.exc.MultipleResultsFound:
         # status = [False,"Такой логин существует. Задайте другой."]
-        print "Найдено множество пользователей."
+        print "Найдено множество пользователей get_user_by_login()."
         logging.warning("Найдено множество пользователей с логином %s." % login)
         return None
     else:
-        print "Пользователь найден"
+        print "Пользователь найден get_user_by_login()."
         logging.warning("Пользователь с логином %s найден" % login)
         return user
+
+
+def add_new_user(name=None, surname=None, login=None, passwd=None, groups=None, status=None):
+    session = Session()
+    new_user = User()
+    new_user.name = name
+    new_user.surname = surname
+    new_user.login = login
+    new_user.password = passwd
+    new_user.disabled = status
+    new_user.access_groups = groups
+    try:
+        session.add(new_user)
+        session.commit()
+    except Exception as e:
+        print "Ошибка при создании пользователя add_new_user(). %s " % str(e)
+        raise e
+    else:
+        print "Пользователь создан add_new_user()."
+    finally:
+        session.close()
+        read_user_info()
 
 
 class TextMessage(Base):
@@ -378,27 +399,33 @@ def get_structure_sorted():
     session = Session()
     try:
         resp = session.query(OrgStucture).filter(OrgStucture.parentid != 0).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено в get_structure_sorted()."+str(e)
+        return list(), list()
     except Exception as e:
-        print "Ошибка при поиске организационноых единиц. " + str(e)
-        return list()
+        print "Ошибка при поиске организационноых единиц get_structure_sorted(). " + str(e)
+        raise e
+    else:
+        # Сортируем согласно родительским объектам.
+        sorted = list()
+        shift = list()
+        root = get_org_structure_root()
+        if root:
+            sorted.append(root)
+            shift.append(0)
+            for one in resp:
+                inx=0
+                for i in sorted:
+                    if one.parentid == i.id:
+                        inx = sorted.index(i)
+                sorted.insert(inx+1, one)
+                shift.insert(inx+1, shift[inx]+5)
+
+            return sorted, shift
+        else:
+            return list(), list()
     finally:
         session.close()
-
-    # Сортируем согласно родительским объектам.
-    sorted = list()
-    shift = list()
-    root = get_org_structure_root()
-    sorted.append(root)
-    shift.append(0)
-    for one in resp:
-        inx=0
-        for i in sorted:
-            if one.parentid == i.id:
-                inx = sorted.index(i)
-        sorted.insert(inx+1, one)
-        shift.insert(inx+1, shift[inx]+5)
-
-    return sorted, shift
 
 
 
@@ -436,10 +463,10 @@ def get_org_structure_root():
         query = session.query(OrgStucture). \
             filter(OrgStucture.parentid == 0).one()
     except sqlalchemy.orm.exc.NoResultFound as e:
-        print "Родительский узел не найден."+str(e)
+        print "get_org_structure_root(). Родительский узел не найден."+str(e)
         return None
     except sqlalchemy.orm.exc.MultipleResultsFound as e:
-        print "Найдено несколько корневых узлов. " + str(e)
+        print "get_org_structure_root(). Найдено несколько корневых узлов. " + str(e)
         raise e
     else:
         return query
@@ -1478,7 +1505,37 @@ class StrategicMapDescription(Base):
             session.close()
 
 
-def create_strategic_map(department, name="", description="", owner=0, status=0):
+def create_ent_strategic_map(owner=None, cycle=None, cycle_count=None):
+    session = Session()
+
+    s = StrategicMapDescription()
+    s.code = enterprise_strategic_map
+    s.name = "Стратегическая карта компании"
+    s.description = "Стратегическая карта компании верхнего уровня."
+    s.owner = owner
+    s.status = 0
+    s.department = 0
+    s.date = datetime.datetime.now()
+    s.start_date = datetime.datetime.now()
+    if cycle:
+        s.cycle = cycle
+    else:
+        s.cycle = 1  # стандартный период: месяц
+    if cycle_count:
+        s.cycle_count = cycle_count
+    else:
+        s.cycle_count = 3  # планируем стандартно на 3 пероида вперед
+
+    try:
+        session.add(s)
+        session.commit()
+    except Exception as e:
+        raise e
+    finally:
+        session.close()
+
+
+def create_dep_strategic_map(department, name="", description="", owner=0, status=0):
     session = Session()
 
     s = StrategicMapDescription()
@@ -2116,7 +2173,7 @@ def read_user_info():
     try:
         resp = session.query(User).all()
     except Exception as e:
-        print "Ошибка чтения пользоваетлей из базы. %s" % str(e)
+        print "read_user_info(). Ошибка чтения пользоваетлей из базы. %s" % str(e)
     else:
         for one in resp:
             persons[one.id] = one.name + " " + one.surname

@@ -823,10 +823,13 @@ class Wizard(object):
         else:
             # if action is None: show the org structure
             action = "show"
+        try:
+            org_structure, shift = BMTObjects.get_structure_sorted()
+        except Exception as e:
+            print "Ошибка при получении отсортированной орг. структуры. %s" % str(e)
+            return ShowError(e)
 
-        org_structure, shift = BMTObjects.get_structure_sorted()
-
-        print org_structure
+        print "Орг. Структура компании: %s" % org_structure
 
         return tmpl.render(params=params, step_desc=step_desc, action=action,
                            org_structure=org_structure, persons=BMTObjects.persons,
@@ -836,6 +839,12 @@ class Wizard(object):
     @require(member_of("users"))
     def step3(self):
         tmpl = lookup.get_template("wizard_step3_page.html")
+        # Проверяем наличие основной карты компании, если нет - создаем со стандартными настройками
+        if not BMTObjects.get_strategic_map_object(BMTObjects.enterprise_strategic_map):
+            root = BMTObjects.get_org_structure_root()
+            if root:
+                BMTObjects.create_ent_strategic_map(owner=root.director, cycle=1, cycle_count=3)
+
         BMTObjects.change_current_strategic_map(BMTObjects.enterprise_strategic_map)
         params = cherrypy.request.headers
         step_desc = dict()
@@ -850,6 +859,7 @@ class Wizard(object):
 
         print "Custom goals: %s" % custom_goals.keys()
         print "Custom KPI: %s" % custom_kpi.keys()
+        print "MAP: %s" %  BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map)
 
         return tmpl.render(params=params, step_desc=step_desc, custom_goals=custom_goals, custom_kpi=custom_kpi,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map))
@@ -1360,8 +1370,8 @@ class Wizard(object):
         try:
 
             for one in org:
-                BMTObjects.create_strategic_map(int(one), name="Стратегическая карта: %s" % orgs[int(one)].org_name,
-                                                owner=orgs[int(one)].director)
+                BMTObjects.create_dep_strategic_map(int(one), name="Стратегическая карта: %s" % orgs[int(one)].org_name,
+                                                    owner=orgs[int(one)].director)
         except Exception as e:
             print "Step7 SAVE. Ошибка: %s" % str(e)
             ShowError(e)
@@ -2229,6 +2239,45 @@ class MotivationCard():
         raise cherrypy.HTTPRedirect("/motivation")
 
 
+class Users(object):
+
+    @cherrypy.expose
+    @require(member_of("admin"))
+    def new(self):
+        tmpl = lookup.get_template("new_user_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Создание пользователя"
+        step_desc['next_step'] = ""
+
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map))
+
+    @cherrypy.expose
+    @require(member_of("admin"))
+    def save(self, name=None, surname=None, login=None, passwd=None):
+
+        p = cherrypy.request.params
+        if None in [name, surname]:
+            print "Один из параметров не указан. Параметры: %s" % p
+            raise cherrypy.HTTPRedirect("/users/new")
+
+        if not login:
+            login = ""
+        if not passwd:
+            passwd = ""
+
+        try:
+            # добавляем пользователя
+            BMTObjects.add_new_user(name=str(name), surname=str(surname), login=str(login), passwd=str(passwd),
+                                    status=0, groups="users")
+        except Exception as e:
+            print "Ошибка при попытке добавления пользователя /users/save. %s" % str(e)
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/wizard/step2?action=add")
+
+
 class Root(object):
 
     auth = AuthController()
@@ -2238,6 +2287,7 @@ class Root(object):
     goals = Goals()
     kpi = KPIs()
     motivation = MotivationCard()
+    users = Users()
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2246,11 +2296,12 @@ class Root(object):
         maps = dict()
         try:
             maps = BMTObjects.get_all_maps()
+            root = BMTObjects.get_org_structure_root()
         except Exception as e:
             return ShowError(e)
 
         return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
-                           maps=maps, ent_map=BMTObjects.enterprise_strategic_map)
+                           maps=maps, ent_map=BMTObjects.enterprise_strategic_map, org_root=root)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2377,6 +2428,13 @@ class Root(object):
 
         else:
             tmpl = lookup.get_template("maps_page.html")
+
+            # Проверяем наличие основной карты компании, если нет - создаем со стандартными настройками
+            root = BMTObjects.get_org_structure_root()
+            if not BMTObjects.get_strategic_map_object(BMTObjects.enterprise_strategic_map):
+                if root:
+                    BMTObjects.create_ent_strategic_map(owner=root.director, cycle=1, cycle_count=3)
+
             maps = dict()
             try:
                 maps = BMTObjects.get_all_maps()
@@ -2384,7 +2442,7 @@ class Root(object):
                 return ShowError(e)
 
             return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
-                               maps=maps, ent_map=BMTObjects.enterprise_strategic_map)
+                               maps=maps, ent_map=BMTObjects.enterprise_strategic_map, org_root=root)
 
     @cherrypy.expose
     @require(member_of("users"))

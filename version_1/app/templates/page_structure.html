@@ -20,13 +20,15 @@
       % if current_map:
         <a class="navbar-brand" href="/maps?code=${current_map.code}">${current_map.name}</a>
       % else:
+      <!--
         <a class="navbar-brand" href="/changemap">Карта не указана</a>
+        -->
       % endif
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <!--
         <li><a href="/settings">Настройки</a></li>
+        <!--
         <li><a href="/profile">Профиль</a></li>
         <li><a href="/help?menu=" >Помощь</a></li>
         -->

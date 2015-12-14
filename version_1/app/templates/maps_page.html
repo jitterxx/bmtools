@@ -12,6 +12,15 @@
         <div class="col-lg-8 col-md-8 col-sm-8">
             <h3>Стратегические карты</h3>
             <div style="margin-left: 3%;">
+                % if not org_root:
+                <p>
+                    Для компании не указана организационная структура. Не могу создавать стратегические карты.
+
+                </p>
+                <p>
+                    <a role="button" class="text-muted" href="/wizard/step2">Создать орг. структуру</a>
+                </p>
+                % endif
                 % for map in maps:
                  <p>
                      <a class="btn btn-link" href="/maps?code=${map.code}">${map.name}</a>
