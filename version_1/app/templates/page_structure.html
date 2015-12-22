@@ -7,27 +7,50 @@
 
 <%block name="navigation">
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand"> > </span>
-      % if current_map:
-        <a class="navbar-brand" href="/maps?code=${current_map.code}">${current_map.name}</a>
-      % else:
-      <!--
-        <a class="navbar-brand" href="/changemap">Карта не указана</a>
-        -->
-      % endif
-    </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+            </button>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                 aria-expanded="false">
+                    <span class="navbar-brand glyphicon glyphicon-th-large"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Библиотека</a></li>
+                </ul>
+            </li>
+          % if current_map:
+            <a class="navbar-brand" href="/maps?code=${current_map.code}">${current_map.name}</a>
+          % else:
+          <!--
+            <a class="navbar-brand" href="/changemap">Карта не указана</a>
+            -->
+          % endif
+        </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/settings">Настройки</a></li>
+
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+             aria-expanded="false">Меню<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">Библиотека</a></li>
+              <li><a href="#">Стратегические карты</a></li>
+              <li><a href="#">Структура компании</a></li>
+              <li><a href="#">Сотрудники</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Мастер для компании</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Мастер для подразделения</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/settings">Настройки</a></li>
+          </ul>
+        </li>
+
         <!--
         <li><a href="/profile">Профиль</a></li>
         <li><a href="/help?menu=" >Помощь</a></li>
@@ -37,10 +60,34 @@
     </div>
   </div>
 </nav>
-    
+
+<nav class="navbar navbar-top">
+  <div class="container-fluid">
+    <div id="navbar2" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="#">Библиотека</a></li>
+            <li><a href="#">Стратегические карты</a></li>
+            <li><a href="#">Структура компании</a></li>
+            <li><a href="#">Сотрудники</a></li>
+            <li><a href="#">Мастер для компании</a></li>
+            <li><a href="#">Мастер для подразделения</a></li>
+            <li><a href="/settings">Настройки</a></li>
+            <li><a href="/settings">Настройки</a></li>
+            <li><a href="#">Структура компании</a></li>
+            <li><a href="#">Сотрудники</a></li>
+            <li><a href="#">Мастер для компании</a></li>
+            <li><a href="#">Мастер для подразделения</a></li>
+            <li><a href="/settings">Настройки</a></li>
+            <li><a href="/settings">Настройки</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
+
 </%block>
     
 <%block name="menu">
+<!--
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
         <li><a href="/library">Библиотека<span class="sr-only">(current)</span></a></li>
@@ -49,6 +96,7 @@
         <li><a href="/wizardfordepartment">Мастер для подразделения<span class="sr-only">(current)</span></a></li>
       </ul>
     </div>
+    -->
 </%block>
 
 <%block name="base">

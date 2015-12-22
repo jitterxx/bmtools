@@ -17260,3 +17260,156 @@ WARNING  [2015-12-14 14:59:21,889] Описание с кодом step2_full_des
 WARNING  [2015-12-14 14:59:21,890] Описание с кодом step2_name не найдено
 INFO     [2015-12-14 14:59:21,895] 127.0.0.1 - admin [14/Dec/2015:14:59:21] "GET /wizard/step2 HTTP/1.1" 200 1714 "http://localhost:8080/auth/login?from_page=/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
 INFO     [2015-12-14 14:59:24,505] 127.0.0.1 - - [14/Dec/2015:14:59:24] "GET /maps HTTP/1.1" 200 1487 "http://localhost:8080/wizard/step2" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 17:56:56,597] 127.0.0.1 - - [14/Dec/2015:17:56:56] "GET / HTTP/1.1" 303 106 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 17:56:56,714] 127.0.0.1 - - [14/Dec/2015:17:56:56] "GET /auth/login?from_page=/ HTTP/1.1" 200 1217 "" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 17:57:00,051] Пользователь с логином admin найден
+INFO     [2015-12-14 17:57:00,052] 127.0.0.1 - admin [14/Dec/2015:17:57:00] "POST /auth/login HTTP/1.1" 303 90 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 17:57:00,153] Пользователь с логином admin найден
+INFO     [2015-12-14 17:57:00,166] 127.0.0.1 - admin [14/Dec/2015:17:57:00] "GET / HTTP/1.1" 200 2238 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:22:49,419] Пользователь с логином admin найден
+INFO     [2015-12-14 18:22:49,435] 127.0.0.1 - admin [14/Dec/2015:18:22:49] "GET / HTTP/1.1" 200 2385 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:22:49,487] 127.0.0.1 - - [14/Dec/2015:18:22:49] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:22:49,510] 127.0.0.1 - - [14/Dec/2015:18:22:49] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:22:49,533] 127.0.0.1 - - [14/Dec/2015:18:22:49] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:26:25,042] Пользователь с логином admin найден
+INFO     [2015-12-14 18:26:25,059] 127.0.0.1 - admin [14/Dec/2015:18:26:25] "GET / HTTP/1.1" 200 2391 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:26:25,081] 127.0.0.1 - - [14/Dec/2015:18:26:25] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:26:25,087] 127.0.0.1 - - [14/Dec/2015:18:26:25] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:26:25,089] 127.0.0.1 - - [14/Dec/2015:18:26:25] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:26:27,219] Пользователь с логином admin найден
+INFO     [2015-12-14 18:26:27,225] 127.0.0.1 - admin [14/Dec/2015:18:26:27] "GET / HTTP/1.1" 200 2391 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:26:27,242] 127.0.0.1 - - [14/Dec/2015:18:26:27] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:26:27,245] 127.0.0.1 - - [14/Dec/2015:18:26:27] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:26:27,247] 127.0.0.1 - - [14/Dec/2015:18:26:27] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:27:02,074] Пользователь с логином admin найден
+INFO     [2015-12-14 18:27:02,091] 127.0.0.1 - admin [14/Dec/2015:18:27:02] "GET / HTTP/1.1" 200 2389 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:27:02,173] 127.0.0.1 - - [14/Dec/2015:18:27:02] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:27:02,175] 127.0.0.1 - - [14/Dec/2015:18:27:02] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:27:02,258] 127.0.0.1 - - [14/Dec/2015:18:27:02] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:30:38,223] Пользователь с логином admin найден
+INFO     [2015-12-14 18:30:38,244] 127.0.0.1 - admin [14/Dec/2015:18:30:38] "GET / HTTP/1.1" 200 2383 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:30:38,283] 127.0.0.1 - - [14/Dec/2015:18:30:38] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:30:38,289] 127.0.0.1 - - [14/Dec/2015:18:30:38] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:30:38,301] 127.0.0.1 - - [14/Dec/2015:18:30:38] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:30:59,182] Пользователь с логином admin найден
+INFO     [2015-12-14 18:30:59,200] 127.0.0.1 - admin [14/Dec/2015:18:30:59] "GET / HTTP/1.1" 200 2387 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:30:59,248] 127.0.0.1 - - [14/Dec/2015:18:30:59] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:30:59,251] 127.0.0.1 - - [14/Dec/2015:18:30:59] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:30:59,252] 127.0.0.1 - - [14/Dec/2015:18:30:59] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:32:10,059] Пользователь с логином admin найден
+INFO     [2015-12-14 18:32:10,079] 127.0.0.1 - admin [14/Dec/2015:18:32:10] "GET / HTTP/1.1" 200 2428 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:10,100] 127.0.0.1 - - [14/Dec/2015:18:32:10] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:10,106] 127.0.0.1 - - [14/Dec/2015:18:32:10] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:10,110] 127.0.0.1 - - [14/Dec/2015:18:32:10] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:32:12,939] Пользователь с логином admin найден
+INFO     [2015-12-14 18:32:12,946] 127.0.0.1 - admin [14/Dec/2015:18:32:12] "GET / HTTP/1.1" 200 2428 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:12,968] 127.0.0.1 - - [14/Dec/2015:18:32:12] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:12,973] 127.0.0.1 - - [14/Dec/2015:18:32:12] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:12,978] 127.0.0.1 - - [14/Dec/2015:18:32:12] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:32:21,773] Пользователь с логином admin найден
+INFO     [2015-12-14 18:32:21,792] 127.0.0.1 - admin [14/Dec/2015:18:32:21] "GET / HTTP/1.1" 200 2420 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:21,821] 127.0.0.1 - - [14/Dec/2015:18:32:21] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:21,823] 127.0.0.1 - - [14/Dec/2015:18:32:21] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:32:21,826] 127.0.0.1 - - [14/Dec/2015:18:32:21] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:33:12,048] Пользователь с логином admin найден
+INFO     [2015-12-14 18:33:12,075] 127.0.0.1 - admin [14/Dec/2015:18:33:12] "GET / HTTP/1.1" 200 2420 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:33:12,161] 127.0.0.1 - - [14/Dec/2015:18:33:12] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:33:12,214] 127.0.0.1 - - [14/Dec/2015:18:33:12] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:33:12,264] 127.0.0.1 - - [14/Dec/2015:18:33:12] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:34:11,118] Пользователь с логином admin найден
+INFO     [2015-12-14 18:34:11,139] 127.0.0.1 - admin [14/Dec/2015:18:34:11] "GET / HTTP/1.1" 200 2426 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:34:11,156] 127.0.0.1 - - [14/Dec/2015:18:34:11] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:34:11,157] 127.0.0.1 - - [14/Dec/2015:18:34:11] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:34:11,163] 127.0.0.1 - - [14/Dec/2015:18:34:11] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:38:01,936] Пользователь с логином admin найден
+INFO     [2015-12-14 18:38:01,955] 127.0.0.1 - admin [14/Dec/2015:18:38:01] "GET / HTTP/1.1" 200 2449 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:38:02,102] 127.0.0.1 - - [14/Dec/2015:18:38:02] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:38:02,128] 127.0.0.1 - - [14/Dec/2015:18:38:02] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:38:02,151] 127.0.0.1 - - [14/Dec/2015:18:38:02] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:39:14,604] Пользователь с логином admin найден
+INFO     [2015-12-14 18:39:14,623] 127.0.0.1 - admin [14/Dec/2015:18:39:14] "GET / HTTP/1.1" 200 2455 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:39:14,697] 127.0.0.1 - - [14/Dec/2015:18:39:14] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:39:14,708] 127.0.0.1 - - [14/Dec/2015:18:39:14] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:39:14,750] 127.0.0.1 - - [14/Dec/2015:18:39:14] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:45:07,092] Пользователь с логином admin найден
+INFO     [2015-12-14 18:45:07,108] 127.0.0.1 - admin [14/Dec/2015:18:45:07] "GET / HTTP/1.1" 200 2462 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:07,141] 127.0.0.1 - - [14/Dec/2015:18:45:07] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:07,143] 127.0.0.1 - - [14/Dec/2015:18:45:07] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:07,167] 127.0.0.1 - - [14/Dec/2015:18:45:07] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:45:08,983] Пользователь с логином admin найден
+INFO     [2015-12-14 18:45:08,991] 127.0.0.1 - admin [14/Dec/2015:18:45:08] "GET / HTTP/1.1" 200 2462 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:09,013] 127.0.0.1 - - [14/Dec/2015:18:45:09] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:09,013] 127.0.0.1 - - [14/Dec/2015:18:45:09] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:09,018] 127.0.0.1 - - [14/Dec/2015:18:45:09] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:45:17,309] Пользователь с логином admin найден
+INFO     [2015-12-14 18:45:17,327] 127.0.0.1 - admin [14/Dec/2015:18:45:17] "GET / HTTP/1.1" 200 2447 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:17,374] 127.0.0.1 - - [14/Dec/2015:18:45:17] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:17,378] 127.0.0.1 - - [14/Dec/2015:18:45:17] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:17,383] 127.0.0.1 - - [14/Dec/2015:18:45:17] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:45:18,320] Пользователь с логином admin найден
+INFO     [2015-12-14 18:45:18,329] 127.0.0.1 - admin [14/Dec/2015:18:45:18] "GET / HTTP/1.1" 200 2447 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:18,350] 127.0.0.1 - - [14/Dec/2015:18:45:18] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:18,351] 127.0.0.1 - - [14/Dec/2015:18:45:18] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:18,353] 127.0.0.1 - - [14/Dec/2015:18:45:18] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:45:49,402] Пользователь с логином admin найден
+INFO     [2015-12-14 18:45:49,423] 127.0.0.1 - admin [14/Dec/2015:18:45:49] "GET / HTTP/1.1" 200 2458 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:49,461] 127.0.0.1 - - [14/Dec/2015:18:45:49] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:49,467] 127.0.0.1 - - [14/Dec/2015:18:45:49] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:49,472] 127.0.0.1 - - [14/Dec/2015:18:45:49] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:49,568] 127.0.0.1 - - [14/Dec/2015:18:45:49] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 304 - "http://localhost:8080/static/css/bootstrap.min.css" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:45:57,107] Пользователь с логином admin найден
+INFO     [2015-12-14 18:45:57,125] 127.0.0.1 - admin [14/Dec/2015:18:45:57] "GET / HTTP/1.1" 200 2460 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:57,193] 127.0.0.1 - - [14/Dec/2015:18:45:57] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:57,200] 127.0.0.1 - - [14/Dec/2015:18:45:57] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:45:57,210] 127.0.0.1 - - [14/Dec/2015:18:45:57] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:47:47,848] Пользователь с логином admin найден
+INFO     [2015-12-14 18:47:47,869] 127.0.0.1 - admin [14/Dec/2015:18:47:47] "GET / HTTP/1.1" 200 2475 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:47:47,897] 127.0.0.1 - - [14/Dec/2015:18:47:47] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:47:47,898] 127.0.0.1 - - [14/Dec/2015:18:47:47] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:47:47,900] 127.0.0.1 - - [14/Dec/2015:18:47:47] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:47:57,715] Пользователь с логином admin найден
+INFO     [2015-12-14 18:47:57,733] 127.0.0.1 - admin [14/Dec/2015:18:47:57] "GET / HTTP/1.1" 200 2475 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:47:57,804] 127.0.0.1 - - [14/Dec/2015:18:47:57] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:47:57,806] 127.0.0.1 - - [14/Dec/2015:18:47:57] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:47:57,807] 127.0.0.1 - - [14/Dec/2015:18:47:57] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:49:11,752] Пользователь с логином admin найден
+INFO     [2015-12-14 18:49:11,768] 127.0.0.1 - admin [14/Dec/2015:18:49:11] "GET / HTTP/1.1" 200 2428 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:11,867] 127.0.0.1 - - [14/Dec/2015:18:49:11] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:11,868] 127.0.0.1 - - [14/Dec/2015:18:49:11] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:11,869] 127.0.0.1 - - [14/Dec/2015:18:49:11] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:49:12,848] Пользователь с логином admin найден
+INFO     [2015-12-14 18:49:12,856] 127.0.0.1 - admin [14/Dec/2015:18:49:12] "GET / HTTP/1.1" 200 2428 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:12,893] 127.0.0.1 - - [14/Dec/2015:18:49:12] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:12,894] 127.0.0.1 - - [14/Dec/2015:18:49:12] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:12,896] 127.0.0.1 - - [14/Dec/2015:18:49:12] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:49:13,927] Пользователь с логином admin найден
+INFO     [2015-12-14 18:49:13,932] 127.0.0.1 - admin [14/Dec/2015:18:49:13] "GET / HTTP/1.1" 200 2428 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:13,951] 127.0.0.1 - - [14/Dec/2015:18:49:13] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 122540 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:13,954] 127.0.0.1 - - [14/Dec/2015:18:49:13] "GET /static/css/dashboard.css HTTP/1.1" 200 1557 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:13,959] 127.0.0.1 - - [14/Dec/2015:18:49:13] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 36816 "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:14,015] 127.0.0.1 - - [14/Dec/2015:18:49:14] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028 "http://localhost:8080/static/css/bootstrap.min.css" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:49:27,205] Пользователь с логином admin найден
+INFO     [2015-12-14 18:49:27,222] 127.0.0.1 - admin [14/Dec/2015:18:49:27] "GET / HTTP/1.1" 200 2429 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:27,245] 127.0.0.1 - - [14/Dec/2015:18:49:27] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:27,253] 127.0.0.1 - - [14/Dec/2015:18:49:27] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:27,254] 127.0.0.1 - - [14/Dec/2015:18:49:27] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:49:30,782] Пользователь с логином admin найден
+INFO     [2015-12-14 18:49:30,791] 127.0.0.1 - admin [14/Dec/2015:18:49:30] "GET / HTTP/1.1" 200 2429 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:30,815] 127.0.0.1 - - [14/Dec/2015:18:49:30] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:30,816] 127.0.0.1 - - [14/Dec/2015:18:49:30] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:30,822] 127.0.0.1 - - [14/Dec/2015:18:49:30] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+WARNING  [2015-12-14 18:49:35,888] Пользователь с логином admin найден
+INFO     [2015-12-14 18:49:35,908] 127.0.0.1 - admin [14/Dec/2015:18:49:35] "GET / HTTP/1.1" 200 2478 "http://localhost:8080/auth/login?from_page=/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:35,930] 127.0.0.1 - - [14/Dec/2015:18:49:35] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:35,935] 127.0.0.1 - - [14/Dec/2015:18:49:35] "GET /static/css/dashboard.css HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 18:49:35,942] 127.0.0.1 - - [14/Dec/2015:18:49:35] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 - "http://localhost:8080/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"
+INFO     [2015-12-14 19:49:26,352] [14/Dec/2015:19:49:26] ENGINE Keyboard Interrupt: shutting down bus
+INFO     [2015-12-14 19:49:26,353] [14/Dec/2015:19:49:26] ENGINE Bus STOPPING
+INFO     [2015-12-14 19:49:26,356] [14/Dec/2015:19:49:26] ENGINE HTTP Server cherrypy._cpwsgi_server.CPWSGIServer(('127.0.0.1', 8080)) shut down
+INFO     [2015-12-14 19:49:26,356] [14/Dec/2015:19:49:26] ENGINE Stopped thread 'Session cleanup'.
+INFO     [2015-12-14 19:49:26,356] [14/Dec/2015:19:49:26] ENGINE Stopped thread '_TimeoutMonitor'.
+INFO     [2015-12-14 19:49:26,357] [14/Dec/2015:19:49:26] ENGINE Stopped thread 'Autoreloader'.
+INFO     [2015-12-14 19:49:26,357] [14/Dec/2015:19:49:26] ENGINE Bus STOPPED
+INFO     [2015-12-14 19:49:26,357] [14/Dec/2015:19:49:26] ENGINE Bus EXITING
+INFO     [2015-12-14 19:49:26,357] [14/Dec/2015:19:49:26] ENGINE Bus EXITED
+INFO     [2015-12-14 19:49:26,358] [14/Dec/2015:19:49:26] ENGINE Waiting for child threads to terminate...
