@@ -1,0 +1,105 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+    <script src="/static/js/fabric.min.js"></script>
+</%block>
+
+
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/maps/map">
+                  Карта<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/maps/goals">
+                  Цели<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/maps/kpi">
+                  Стратегические показатели<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/maps/events">
+                  Мероприятия<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="active">
+              <a href="/maps/opkpi">
+                  Операционные показатели<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="separator"></li>
+          <li>
+              <a href="/back">
+                  Назад<span class="sr-only">(current)</span>
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <h1>${current_map.name}</h1>
+            <div style="margin-left: 2%;">
+                ${current_map.description}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <hr>
+            <div>
+                <a class="btn btn-default" href="/kpi/new" role="button">
+                    <span class="text-muted">Добавить операционный показатель</span>
+                </a>
+            </div>
+            <br>
+            <h3> </h3>
+            <table class="table table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th></th>
+                    <th class="text-muted">Название</th>
+                    <th class="text-center text-muted">Единицы</th>
+                    <th class="text-center text-muted"></th>
+                </tr>
+                </thead>
+                <tbody>
+            % for one in map_opkpi.values():
+                <tr>
+                    <td width="5%">
+                    <div class="dropdown">
+                        <a href="${one.code}"></a>
+                        <a id="${one.code}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="${one.code}">
+                            <li><a href="/kpi/edit?code=${one.code}">Свойства</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/kpi/delete?code=${one.code}">Удалить из карты</a></li>
+                        </ul>
+                    </div>
+                    </td>
+                    <td width=20%">${one.name}</td>
+                    <td width="5%">${measures[one.measure]}</td>
+                    <td></td>
+                </tr>
+            % endfor
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+

@@ -1163,7 +1163,7 @@ def load_map_links(for_goals=None, for_kpi=None):
                             Custom_linked_kpi_to_goal.kpi_code.in_(for_kpi))).all()
         except sqlalchemy.orm.exc.NoResultFound as e:
             print "Ничего не найдено load_custom_links() для GOALS: %s. %s" % (for_goals, str(e))
-            return None
+            return dict()
         except Exception as e:
             print "Ошибка в функции BMTObjects.load_custom_links(). %s" % str(e)
             raise e
@@ -1179,7 +1179,10 @@ def load_map_links(for_goals=None, for_kpi=None):
         finally:
             session.close()
 
-        return None
+        return dict()
+
+    else:
+        return dict()
 
 
 

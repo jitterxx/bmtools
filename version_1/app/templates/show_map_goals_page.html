@@ -1,0 +1,95 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+    <script src="/static/js/fabric.min.js"></script>
+</%block>
+
+
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/maps/map">
+                  Карта<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="active">
+              <a href="/maps/goals">
+                  Цели<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/maps/kpi">
+                  Стратегические показатели<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/maps/events">
+                  Мероприятия<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/maps/opkpi">
+                  Операционные показатели<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="separator"></li>
+          <li>
+              <a href="/back">
+                  Назад<span class="sr-only">(current)</span>
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <h1>${current_map.name}</h1>
+            <div style="margin-left: 2%;">
+                ${current_map.description}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <hr>
+            <div>
+                <a class="btn btn-default" href="/goals/new" role="button">
+                    <span class="text-muted">Добавить цель</span>
+                </a>
+            </div>
+            <br>
+            % if map_goals.keys():
+                % for p in range(0, len(group_goals)):
+                    <h3>${perspectives.get(p)}</h3>
+                    <div style="margin-left: 2%;">
+                    % for one in group_goals[p]:
+                        <div class="dropdown">
+                            <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                               style="color: ${colors[p]}">
+                                <h4>${map_goals[one].goal_name}
+                                <span class="caret"></span></h4>
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><a href="/goals/edit?code=${map_goals[one].code}">Редактировать</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/goals/delete?code=${map_goals[one].code}">Удалить из карты</a></li>
+                              </ul>
+                        </div>
+                    % endfor
+                    </div>
+                % endfor
+            % else:
+                <p>Цели не заданы.</p>
+            % endif
+        </div>
+    </div>
+
+
+</div>
+

@@ -23,6 +23,40 @@ from mako.lookup import TemplateLookup
 lookup = TemplateLookup(directories=["./templates"], output_encoding="utf-8",
                         input_encoding="utf-8", encoding_errors="replace")
 
+"""
+Переменная хранит историю переходов по страницам приложения.
+
+Каждая функция записывает в конец ссылку на саму себя.
+"""
+
+history = list()
+
+
+def add_to_history(href=None):
+    """
+    Добавление в историю пеерходов новой страницы
+
+    :param href:
+    :return:
+    """
+    global history
+
+    if not history:
+        a = ""
+    else:
+        a = history.pop()
+
+    if href:
+        if a != href:
+            # если последний элемент не такой же как новый, добавляем его в список, иначе пропускаем.
+            # Это сделано, чтобы при обновлении страницы история не дублировалась
+            history.append(a)
+            history.append(href)
+        else:
+            history.append(a)
+
+    print history
+
 
 def ShowError(e):
     tmpl = lookup.get_template("wizard_error_page.html")
@@ -1193,6 +1227,7 @@ class Wizard(object):
     @cherrypy.expose
     @require(member_of("users"))
     def step6new(self):
+        # TODO: заменить шаги мастера по созданию стндартных объектов на универсальные действия
         tmpl = lookup.get_template("wizard_step6new_page.html")
         params = cherrypy.request.headers
         step_desc = dict()
@@ -2278,6 +2313,586 @@ class Users(object):
         raise cherrypy.HTTPRedirect("/wizard/step2?action=add")
 
 
+class Events(object):
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def index(self):
+        tmpl = lookup.get_template("events_show_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = "Все мероприятия"
+        step_desc['name'] = ""
+        step_desc['next_step'] = ""
+        step_desc['subheader'] = ""
+
+        try:
+            events = BMTObjects.get_events()
+            custom_goals = BMTObjects.load_custom_goals_kpi()[0]
+        except Exception as e:
+            return ShowError(e)
+
+        print events
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/events")
+
+        return tmpl.render(params=params, step_desc=step_desc, events=events, custom_goals=custom_goals)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def new(self):
+        tmpl = lookup.get_template("events_new_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = "Укажите необходимые данные. " \
+                                        "Опишите, что вы будет делать в рамках данной задачи."
+        step_desc['name'] = "Создание нового мероприятия"
+        step_desc['next_step'] = ""
+        step_desc['subheader'] = ""
+
+        # Получаем список кастомных целей компании
+        try:
+            (goals,) = BMTObjects.load_cur_map_objects()[0:1]
+        except Exception as e:
+            return ShowError(e)
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/events/new")
+
+        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=goals)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def save(self, goal=None, name=None, description=None, planres=None,
+             responsible=None, actors=None, start_date=None, end_date=None):
+        """
+
+        :param goal:
+        :param name:
+        :param description:
+        :param planres:
+        :param responsible:
+        :param actors:
+        :param start_date:
+        :param end_date:
+        :return:
+        """
+
+        print "New Event SAVE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect(history.pop())
+
+        event_fields = dict()
+        if not isinstance(actors, list):
+            actors = [actors]
+        event_fields['actors'] = ",".join(actors)
+        event_fields['description'] = description
+        event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
+        event_fields['start_date'] = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+        event_fields['name'] = name
+        event_fields['plan_result'] = planres
+        event_fields['linked_goal_code'] = goal
+        event_fields['responsible'] = responsible
+
+        try:
+            BMTObjects.create_new_event(event_fields)
+        except Exception as e:
+            print "Ошибка при сохранении нового EVENT."
+            return ShowError(e)
+        else:
+            history.pop()
+            raise cherrypy.HTTPRedirect(history.pop())
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def edit(self, event_code=None):
+        """
+        Открываем для редактирования событие
+
+        :param event_code:
+        :return:
+        """
+
+        print "Event EDIT : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect(history.pop())
+
+        tmpl = lookup.get_template("events_edit_page.html")
+        params = cherrypy.request.headers
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Редактирование мероприятия"
+        step_desc['next_step'] = ""
+        step_desc['subheader'] = ""
+
+        try:
+            events = BMTObjects.get_events()
+            (goals,) = BMTObjects.load_cur_map_objects()[0:1]
+        except Exception as e:
+            print "/events/edit. Ошибка при открытии на редактирование EVENT: %s" % event_code
+            return ShowError(e)
+
+        event=events[event_code]
+        actors = re.split(",", event.actors)
+        print "GOALS FOR EVENT: %s" % goals
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/events/edit?event_code=%s" % event_code)
+
+        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons,
+                           goals=goals, event=event, actors=actors)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def update(self, event_code=None, goal=None, name=None, description=None, planres=None,
+               responsible=None, actors=None, start_date=None, end_date=None):
+        """
+        Сохраняем выбранные значения
+
+        :param event_code:
+        :param goal:
+        :param name:
+        :param description:
+        :param planres:
+        :param responsible:
+        :param actors:
+        :param start_date:
+        :param end_date:
+        :return:
+        """
+
+        print "Event UPDATE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Event UPDATE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect(history.pop())
+
+        event_fields = dict()
+        event_fields['actors'] = ",".join(actors)
+        event_fields['description'] = description
+        event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
+        event_fields['start_date'] = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+        event_fields['name'] = name
+        event_fields['plan_result'] = planres
+        event_fields['linked_goal_code'] = goal
+        event_fields['responsible'] = responsible
+
+        try:
+            BMTObjects.update_event(event_code, event_fields)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            history.pop()
+            raise cherrypy.HTTPRedirect(history.pop())
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def delete(self, event_code=None):
+
+        print "Event DELETE : %s " % cherrypy.request.params
+
+        if None in cherrypy.request.params.values():
+            print "Event DELETE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect(history.pop())
+
+        try:
+            BMTObjects.delete_event(event_code)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect(history.pop())
+
+
+class Maps(object):
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def index(self):
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Просмотр карты"
+        step_desc['next_step'] = ""
+        tmpl = lookup.get_template("maps_page.html")
+
+        # Проверяем наличие основной карты компании, если нет - создаем со стандартными настройками
+        root = BMTObjects.get_org_structure_root()
+        if not BMTObjects.get_strategic_map_object(BMTObjects.enterprise_strategic_map):
+            if root:
+                BMTObjects.create_ent_strategic_map(owner=root.director, cycle=1, cycle_count=3)
+
+        maps = dict()
+        try:
+            maps = BMTObjects.get_all_maps()
+            BMTObjects.change_current_strategic_map(BMTObjects.enterprise_strategic_map)
+        except Exception as e:
+            return ShowError(e)
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/maps")
+
+        return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           maps=maps, ent_map=BMTObjects.enterprise_strategic_map, org_root=root)
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def map(self, code=None):
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Просмотр карты"
+        step_desc['next_step'] = ""
+
+        # TODO: по двойному клику на цель переходить к показу свойств.
+        tmpl = lookup.get_template("show_map_draw_page.html")
+        if not code:
+            code = BMTObjects.current_strategic_map
+        try:
+            BMTObjects.change_current_strategic_map(code)
+            map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(code)
+            custom_linked_goals = BMTObjects.load_custom_links()[0]
+            draw_data = BMTObjects.load_map_draw_data(code)
+        except Exception as e:
+            return ShowError(e)
+
+        custom_linked_goals_in_json = dict()
+        for one in map_goals.values():
+            if one.code in custom_linked_goals.keys():
+                custom_linked_goals_in_json[one.code] = custom_linked_goals[one.code]
+
+        custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
+        # print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
+
+        try:
+            custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
+        except Exception as e:
+            return ShowError(e)
+
+        # Группируем цели по перспективами и порядку расположения
+        group_goals = BMTObjects.group_goals(map_goals)
+
+        print "Show KPI for MAP: %s" % code
+        print "MAP goals: %s " % map_goals
+        print "MAP kpi: %s " % map_kpi
+        print "MAP linked goals: %s" % custom_linked_goals
+        print "OPKPI : %s" % map_opkpi
+        print "KPI links: %s" % custom_kpi_links
+        print "Grouped goals: %s" % group_goals
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/maps/map")
+
+        return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
+                           map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
+                           custom_linked_goals_in_json=custom_linked_goals_in_json,
+                           draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           group_goals=group_goals,
+                           perspectives=BMTObjects.perspectives)
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def goals(self, code=None):
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Просмотр карты"
+        step_desc['next_step'] = ""
+        tmpl = lookup.get_template("show_map_goals_page.html")
+
+        if not code:
+            code = BMTObjects.current_strategic_map
+        try:
+            # BMTObjects.change_current_strategic_map(code)
+            map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(code)
+            custom_linked_goals = BMTObjects.load_custom_links()[0]
+            draw_data = BMTObjects.load_map_draw_data(code)
+        except Exception as e:
+            return ShowError(e)
+
+        custom_linked_goals_in_json = dict()
+        for one in map_goals.values():
+            if one.code in custom_linked_goals.keys():
+                custom_linked_goals_in_json[one.code] = custom_linked_goals[one.code]
+
+        custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
+        # print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
+
+        try:
+            custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
+        except Exception as e:
+            return ShowError(e)
+
+        kpi_target_values = dict()
+        kpi_target_formula_values = dict()
+        for one in map_kpi.keys():
+            target = BMTObjects.get_kpi_target_value(one)
+            if target:
+                kpi_target_values[one] = target
+
+        for one in map_kpi.values():
+            # Считаем значения по формуле, если она есть
+            if one.formula:
+                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
+                try:
+                    formula = py_expression_eval.Parser().parse(one.formula)
+                except Exception as e:
+                    print "Формула некорректная. %s" % str(e)
+                else:
+                    fsum = dict()
+                    var = dict()
+                    for e in kpi_target_values[one.code]:
+                        fsum[e.period_code] = 0
+                        var[e.period_code] = dict()
+
+                    for v in formula.variables():
+                        print v
+                        for k in kpi_target_values[v]:
+                            var[k.period_code][v] = k.first_value
+                    print var
+
+                    for e in kpi_target_values[one.code]:
+                        fsum[e.period_code] = formula.evaluate(var[e.period_code])
+
+                    kpi_target_formula_values[one.code] = fsum
+
+        # Группируем цели по перспективами и порядку расположения
+        group_goals = BMTObjects.group_goals(map_goals)
+
+        print "Show KPI for MAP: %s" % code
+        print "MAP goals: %s " % map_goals
+        print "MAP kpi: %s " % map_kpi
+        print "MAP linked goals: %s" % custom_linked_goals
+        print "KPI formula values: %s" % kpi_target_formula_values
+        print "KPI targets: %s" % kpi_target_values
+        print "OPKPI : %s" % map_opkpi
+        print "KPI links: %s" % custom_kpi_links
+        print "Grouped goals: %s" % group_goals
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/maps/goals")
+
+        return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
+                           map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
+                           custom_linked_goals_in_json=custom_linked_goals_in_json,
+                           draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           kpi_target_values=kpi_target_values, group_goals=group_goals,
+                           perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def kpi(self, code=None):
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Просмотр карты"
+        step_desc['next_step'] = ""
+        tmpl = lookup.get_template("show_map_kpi_page.html")
+        if not code:
+            code = BMTObjects.current_strategic_map
+
+        try:
+            # BMTObjects.change_current_strategic_map(code)
+            map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(code)
+            custom_linked_goals = BMTObjects.load_custom_links()[0]
+        except Exception as e:
+            return ShowError(e)
+
+
+        try:
+            custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
+        except Exception as e:
+            return ShowError(e)
+
+        kpi_target_values = dict()
+        kpi_target_formula_values = dict()
+        for one in map_kpi.keys():
+            target = BMTObjects.get_kpi_target_value(one)
+            if target:
+                kpi_target_values[one] = target
+
+        for one in map_kpi.values():
+            # Считаем значения по формуле, если она есть
+            if one.formula:
+                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
+                try:
+                    formula = py_expression_eval.Parser().parse(one.formula)
+                except Exception as e:
+                    print "Формула некорректная. %s" % str(e)
+                else:
+                    fsum = dict()
+                    var = dict()
+                    for e in kpi_target_values[one.code]:
+                        fsum[e.period_code] = 0
+                        var[e.period_code] = dict()
+
+                    for v in formula.variables():
+                        print v
+                        for k in kpi_target_values[v]:
+                            var[k.period_code][v] = k.first_value
+                    print var
+
+                    for e in kpi_target_values[one.code]:
+                        fsum[e.period_code] = formula.evaluate(var[e.period_code])
+
+                    kpi_target_formula_values[one.code] = fsum
+
+        # Группируем цели по перспективами и порядку расположения
+        group_goals = BMTObjects.group_goals(map_goals)
+
+        print "Show KPI for MAP: %s" % code
+        print "MAP goals: %s " % map_goals
+        print "MAP kpi: %s " % map_kpi
+        print "MAP linked goals: %s" % custom_linked_goals
+        print "OPKPI : %s" % map_opkpi
+        print "KPI links: %s" % custom_kpi_links
+        print "KPI formula values: %s" % kpi_target_formula_values
+        print "KPI targets: %s" % kpi_target_values
+        print "Grouped goals: %s" % group_goals
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/maps/kpi")
+
+        return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
+                           map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
+                           colors=BMTObjects.PERSPECTIVE_COLORS,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           kpi_target_values=kpi_target_values, group_goals=group_goals,
+                           perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
+
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def events(self, code=None):
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Просмотр карты"
+        step_desc['next_step'] = ""
+
+        tmpl = lookup.get_template("show_map_events_page.html")
+        if not code:
+            code = BMTObjects.current_strategic_map
+
+        try:
+            map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(code)
+            custom_linked_goals = BMTObjects.load_custom_links()[0]
+        except Exception as e:
+            return ShowError(e)
+
+        try:
+            custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
+        except Exception as e:
+            return ShowError(e)
+
+        # Группируем цели по перспективами и порядку расположения
+        group_goals = BMTObjects.group_goals(map_goals)
+
+        print "Show KPI for MAP: %s" % code
+        print "MAP goals: %s " % map_goals
+        print "MAP kpi: %s " % map_kpi
+        print "MAP linked goals: %s" % custom_linked_goals
+        print "OPKPI : %s" % map_opkpi
+        print "KPI links: %s" % custom_kpi_links
+        print "Grouped goals: %s" % group_goals
+
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/maps/events")
+
+        return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
+                           map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
+                           colors=BMTObjects.PERSPECTIVE_COLORS,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           group_goals=group_goals,
+                           perspectives=BMTObjects.perspectives)
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def opkpi(self, code=None):
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Просмотр карты"
+        step_desc['next_step'] = ""
+        tmpl = lookup.get_template("show_map_opkpi_page.html")
+
+        if not code:
+            code = BMTObjects.current_strategic_map
+
+        try:
+            map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(code)
+            custom_linked_goals = BMTObjects.load_custom_links()[0]
+        except Exception as e:
+            return ShowError(e)
+
+        try:
+            custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
+        except Exception as e:
+            return ShowError(e)
+
+        kpi_target_values = dict()
+        kpi_target_formula_values = dict()
+        for one in map_kpi.keys():
+            target = BMTObjects.get_kpi_target_value(one)
+            if target:
+                kpi_target_values[one] = target
+
+        for one in map_kpi.values():
+            # Считаем значения по формуле, если она есть
+            if one.formula:
+                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
+                try:
+                    formula = py_expression_eval.Parser().parse(one.formula)
+                except Exception as e:
+                    print "Формула некорректная. %s" % str(e)
+                else:
+                    fsum = dict()
+                    var = dict()
+                    for e in kpi_target_values[one.code]:
+                        fsum[e.period_code] = 0
+                        var[e.period_code] = dict()
+
+                    for v in formula.variables():
+                        print v
+                        for k in kpi_target_values[v]:
+                            var[k.period_code][v] = k.first_value
+                    print var
+
+                    for e in kpi_target_values[one.code]:
+                        fsum[e.period_code] = formula.evaluate(var[e.period_code])
+
+                    kpi_target_formula_values[one.code] = fsum
+
+        # Группируем цели по перспективами и порядку расположения
+        group_goals = BMTObjects.group_goals(map_goals)
+
+        print "Show KPI for MAP: %s" % code
+        print "MAP goals: %s " % map_goals
+        print "MAP kpi: %s " % map_kpi
+        print "MAP linked goals: %s" % custom_linked_goals
+        print "OPKPI : %s" % map_opkpi
+        print "KPI links: %s" % custom_kpi_links
+        print "KPI formula values: %s" % kpi_target_formula_values
+        print "KPI targets: %s" % kpi_target_values
+        print "Grouped goals: %s" % group_goals
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/maps/opkpi")
+
+        return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
+                           map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
+                           colors=BMTObjects.PERSPECTIVE_COLORS,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           kpi_target_values=kpi_target_values, group_goals=group_goals,
+                           perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
+
+
 class Root(object):
 
     auth = AuthController()
@@ -2288,6 +2903,8 @@ class Root(object):
     kpi = KPIs()
     motivation = MotivationCard()
     users = Users()
+    events = Events()
+    maps = Maps()
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2338,112 +2955,19 @@ class Root(object):
                            current_map=current_map)
 
     @cherrypy.expose
-    # @require(member_of("users"))
-    def maps(self, code=None, view=None):
-        step_desc = dict()
-        step_desc['full_description'] = ""
-        step_desc['name'] = "Просмотр карты"
-        step_desc['next_step'] = ""
-        print "Show MAP: %s" % code
-        print "MAP view mode: %s" % view
+    @require(member_of("users"))
+    def back(self):
+        print "Current history list: %s" % history
+        back = str()
+        try:
+            back = history.pop()
+            back = history.pop()
+        except IndexError:
+            back = "/"
 
-        if code:
-            # TODO: по двойному клику на цель переходить к показу свойств.
-            tmpl = lookup.get_template("show_map_page.html")
-            try:
-                BMTObjects.change_current_strategic_map(code)
-                map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(code)
-                custom_linked_goals = BMTObjects.load_custom_links()[0]
-                draw_data = BMTObjects.load_map_draw_data(code)
-            except Exception as e:
-                return ShowError(e)
+        raise cherrypy.HTTPRedirect(back)
 
-            # print "MAP goals: %s " % map_goals
-            # print "MAP kpi: %s " % map_kpi
-            # print "MAP linked goals: %s" % custom_linked_goals
-            print "OPKPI : %s" % map_opkpi
 
-            custom_linked_goals_in_json = dict()
-            for one in map_goals.values():
-                if one.code in custom_linked_goals.keys():
-                    custom_linked_goals_in_json[one.code] = custom_linked_goals[one.code]
-
-            custom_linked_goals_in_json = json.dumps(custom_linked_goals_in_json)
-            # print "MAP linked goals in JSON: %s" % custom_linked_goals_in_json
-
-            try:
-                custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
-            except Exception as e:
-                return ShowError(e)
-
-            # print "KPI links: %s" % custom_kpi_links
-
-            kpi_target_values = dict()
-            kpi_target_formula_values = dict()
-            for one in map_kpi.keys():
-                target = BMTObjects.get_kpi_target_value(one)
-                if target:
-                    kpi_target_values[one] = target
-
-            for one in map_kpi.values():
-                # Считаем значения по формуле, если она есть
-                if one.formula:
-                    print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
-                    try:
-                        formula = py_expression_eval.Parser().parse(one.formula)
-                    except Exception as e:
-                        print "Формула некорректная. %s" % str(e)
-                    else:
-                        fsum = dict()
-                        var = dict()
-                        for e in kpi_target_values[one.code]:
-                            fsum[e.period_code] = 0
-                            var[e.period_code] = dict()
-
-                        for v in formula.variables():
-                            print v
-                            for k in kpi_target_values[v]:
-                                var[k.period_code][v] = k.first_value
-                        print var
-
-                        for e in kpi_target_values[one.code]:
-                            fsum[e.period_code] = formula.evaluate(var[e.period_code])
-
-                        kpi_target_formula_values[one.code] = fsum
-
-            print "KPI formula values: %s" % kpi_target_formula_values
-            # print "KPI targets: %s" % kpi_target_values
-
-            # Группируем цели по перспективами и порядку расположения
-            group_goals = BMTObjects.group_goals(map_goals)
-            # print "Grouped goals: %s" % group_goals
-
-            return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
-                               map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
-                               custom_linked_goals_in_json=custom_linked_goals_in_json,
-                               draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS,
-                               persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
-                               kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
-                               kpi_target_values=kpi_target_values, group_goals=group_goals,
-                               perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values, view=view)
-
-        else:
-            tmpl = lookup.get_template("maps_page.html")
-
-            # Проверяем наличие основной карты компании, если нет - создаем со стандартными настройками
-            root = BMTObjects.get_org_structure_root()
-            if not BMTObjects.get_strategic_map_object(BMTObjects.enterprise_strategic_map):
-                if root:
-                    BMTObjects.create_ent_strategic_map(owner=root.director, cycle=1, cycle_count=3)
-
-            maps = dict()
-            try:
-                maps = BMTObjects.get_all_maps()
-            except Exception as e:
-                return ShowError(e)
-
-            return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
-                               maps=maps, ent_map=BMTObjects.enterprise_strategic_map, org_root=root)
 
     @cherrypy.expose
     @require(member_of("users"))
