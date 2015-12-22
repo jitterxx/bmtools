@@ -6,6 +6,18 @@
 
 </%block>
 
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="/library">Библиотека<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/maps" >Карты<span class="sr-only">(current)</span></a></li>
+        <li><a href="/wizard">Мастер для компании<span class="sr-only">(current)</span></a></li>
+        <li><a href="/wizardfordepartment">Мастер для подразделения<span class="sr-only">(current)</span></a></li>
+      </ul>
+    </div>
+</%block>
+
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
@@ -23,7 +35,7 @@
                 % endif
                 % for map in maps:
                  <p>
-                     <a class="btn btn-link" href="/maps?code=${map.code}">${map.name}</a>
+                     <a class="btn btn-link" href="/maps?code=${map.code}&view=map">${map.name}</a>
                  </p>
                 % endfor
             </div>

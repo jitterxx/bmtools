@@ -2339,12 +2339,13 @@ class Root(object):
 
     @cherrypy.expose
     # @require(member_of("users"))
-    def maps(self, code=None):
+    def maps(self, code=None, view=None):
         step_desc = dict()
         step_desc['full_description'] = ""
         step_desc['name'] = "Просмотр карты"
         step_desc['next_step'] = ""
         print "Show MAP: %s" % code
+        print "MAP view mode: %s" % view
 
         if code:
             # TODO: по двойному клику на цель переходить к показу свойств.
@@ -2424,7 +2425,7 @@ class Root(object):
                                persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                                kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                                kpi_target_values=kpi_target_values, group_goals=group_goals,
-                               perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
+                               perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values, view=view)
 
         else:
             tmpl = lookup.get_template("maps_page.html")
