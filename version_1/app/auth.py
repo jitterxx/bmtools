@@ -31,7 +31,8 @@ def check_credentials(username, password):
     #    return u"Incorrect username or password."
     
     user = BMTObjects.get_user_by_login(username)
-    user.read()
+    if user:
+        user.read()
 
     if user is None:
         return u"Username %s is unknown to me." % username
