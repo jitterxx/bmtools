@@ -1755,7 +1755,7 @@ class KPIs(object):
 
         if None in [name, kpi_linked_goal, measures, data_source, target_responsible, plan_period, cycles, start_date]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
         kpi_fields = dict()
         kpi_target = dict()
@@ -1785,7 +1785,7 @@ class KPIs(object):
             # привязываем новый показатель к цели
             if kpi_linked_goal == "0":
                 print "Операционный показатель. Возвращаемся обратно."
-                raise cherrypy.HTTPRedirect(history.pop())
+                raise cherrypy.HTTPRedirect(history_back())
             else:
                 print "Стратегический показатель. Создаем связь с целью и целевые значения."
                 try:
@@ -2771,22 +2771,21 @@ class Maps(object):
         except Exception as e:
             return ShowError(e)
 
-        try:
-            custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
-        except Exception as e:
-            return ShowError(e)
-
         # Группируем цели по перспективами и порядку расположения
         group_goals = BMTObjects.group_goals(map_goals)
 
-        print "Show KPI for MAP: %s" % code
-        print "MAP goals: %s " % map_goals
-        print "MAP kpi: %s " % map_kpi
-        print "MAP linked goals: %s" % custom_linked_goals
-        print "OPKPI : %s" % map_opkpi
-        print "KPI links: %s" % custom_kpi_links
-        print "Grouped goals: %s" % group_goals
+        # Группируем мероприятия по целям и сортируем по различным условиям
+        group_events = dict()
+        for one in map_events.values():
+            if group_events.get(one.linked_goal_code):  # Если такая цель уже имеет мероприятия, то добавляем новое
+                group_events[one.linked_goal_code].append(one.event_code)
+            else:  # иначе создаем список, и добавлем первое
+                group_events[one.linked_goal_code] = list()
+                group_events[one.linked_goal_code].append(one.event_code)
 
+        print "Show KPI for MAP: %s" % code
+        print "Grouped goals: %s" % group_goals
+        print "Grouped events: %s" % group_events
 
         # ДОбавляем в историю посещение страницы
         add_to_history(href="/maps/events")
@@ -2795,8 +2794,8 @@ class Maps(object):
                            map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
                            colors=BMTObjects.PERSPECTIVE_COLORS,
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
-                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
-                           group_goals=group_goals,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE,
+                           group_goals=group_goals, group_events=group_events,
                            perspectives=BMTObjects.perspectives)
 
     @cherrypy.expose

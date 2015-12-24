@@ -8,55 +8,106 @@
 
 
 <%block name="menu">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-          <li>
-              <a href="/maps/map">
-                  Карта<span class="sr-only">(current)</span>
-              </a>
-          </li>
-          <li>
-              <a href="/maps/goals">
-                  Цели<span class="sr-only">(current)</span>
-              </a>
-          </li>
-          <li>
-              <a href="/maps/kpi">
-                  Стратегические показатели<span class="sr-only">(current)</span>
-              </a>
-          </li>
-          <li class="active">
-              <a href="/maps/events">
-                  Мероприятия<span class="sr-only">(current)</span>
-              </a>
-          </li>
-          <li>
-              <a href="/maps/opkpi">
-                  Операционные показатели<span class="sr-only">(current)</span>
-              </a>
-          </li>
-      </ul>
-    </div>
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li>
+            <a href="/maps/map">
+                Карта<span class="sr-only">(current)</span>
+            </a>
+        </li>
+      <li>
+          <a href="/maps/goals">
+              Цели<span class="sr-only">(current)</span>
+          </a>
+      </li>
+      <li>
+          <a href="/maps/kpi">
+              Стратегические показатели<span class="sr-only">(current)</span>
+          </a>
+      </li>
+      <li class="active">
+          <a href="/maps/events">
+              Мероприятия<span class="sr-only">(current)</span>
+          </a>
+      </li>
+      <li>
+          <a href="/maps/opkpi">
+              Операционные показатели<span class="sr-only">(current)</span>
+          </a>
+        </li>
+    </ul>
+</div>
+
 </%block>
 
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-            <h1>${current_map.name}</h1>
-            <div style="margin-left: 2%;">
-                ${current_map.description}
-            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <hr>
             <div>
                 <a class="btn btn-default" href="/events/new" role="button">
                     <span class="text-muted">Добавить мероприятие</span>
                 </a>
             </div>
+            <hr>
+            % for p in range(0, len(group_goals)):
+                <h3 >${perspectives.get(p)}</h3>
+                <div style="margin-left: 2%;">
+                % if group_goals[p]:
+                    % for goal in group_goals[p]:
+                        <h4 style="color: ${colors[p]}">${map_goals.get(goal).goal_name}</h4>
+                        % if group_events.get(goal):
+                        <div style="margin-left: 2%;">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr class="text-center">
+                                    <th></th>
+                                    <th>Название</th>
+                                    <th class="text-center">Ответственный</th>
+                                    <th class="text-center">Дата начала</th>
+                                    <th class="text-center">Дата окончания</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                            % for event in group_events[goal]:
+                                    <tr  style="color: ${colors[p]}">
+                                        <td width="1%">
+                                            <div class="dropdown">
+                                                <a href="${event}"></a>
+                                                <a id="${event}" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
+                                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                                    <li><a href="/events/edit?event_code=${event}">Свойства</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="/events/delete?event_code=${event}">Удалить из карты</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td width="30%">${map_events[event].name}</td>
+                                        <td width="15%" class="text-center">${persons[map_events[event].responsible]}</td>
+                                        <td width="10%" class="text-center">${map_events[event].start_date.strftime('%d.%m.%Y')}</td>
+                                        <td width="10%" class="text-center">${map_events[event].end_date.strftime('%d.%m.%Y')}</td>
+                                        <td></td>
+                                    </tr>
+                            % endfor
+                                </tbody>
+                            </table>
+                        </div>
+                        % else:
+                            Нет мероприятий.
+                        % endif
+                    % endfor
+                % endif
+                </div>
+            % endfor
+            <hr>
             <br>
             % for one in map_events.values():
             <p>

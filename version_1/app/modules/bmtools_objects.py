@@ -1040,8 +1040,11 @@ def update_custom_kpi(custom_kpi_update):
                 filter(Custom_linked_kpi_to_goal.kpi_code == custom_kpi_update["code"]).one()
         except sqlalchemy.orm.exc.NoResultFound:
             print "Ни одна цель не связана с KPI: %s" % custom_kpi_update["code"]
-            print "Создаем связь GOAL: %s  --> KPI: %s" % (custom_kpi_update["linked_goal"], custom_kpi_update["code"])
-            create_custom_link_kpi_to_goal(goal=custom_kpi_update["linked_goal"], kpi=custom_kpi_update["code"])
+            if custom_kpi_update["linked_goal"] != "0":
+                print "Создаем связь GOAL: %s  --> KPI: %s" % (custom_kpi_update["linked_goal"], custom_kpi_update["code"])
+                create_custom_link_kpi_to_goal(goal=custom_kpi_update["linked_goal"], kpi=custom_kpi_update["code"])
+            else:
+                print "Новая цель = %s - это операционный показатель." % custom_kpi_update["linked_goal"]
         except Exception as e:
             print "Ошибка в функции update_custom_kpi() при поиске связи KPI с целью. %s" % str(e)
         else:

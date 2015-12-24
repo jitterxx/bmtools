@@ -43,15 +43,16 @@
 
     <div class="row">
         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+            <!--
             <h1>${current_map.name}</h1>
             <div style="margin-left: 2%;">
                 ${current_map.description}
             </div>
+            -->
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <hr>
             <div>
                 <a class="btn btn-default" href="/goals/new" role="button">
                     <span class="text-muted">Добавить цель</span>
@@ -85,9 +86,10 @@
                                     <td width="2%">
                                         <div class="dropdown">
                                             <a href="${map_kpi.get(kpi).code}"></a>
-                                            <a id="${map_kpi.get(kpi).code}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
-                                                <span class="caret"></span>
-                                            </a>
+                                            <a id="${map_kpi.get(kpi).code}" data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
+                                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                </a>
                                             <ul class="dropdown-menu" aria-labelledby="dLabel">
                                                 <li><a href="/kpi/edit?code=${kpi}">Свойства</a></li>
                                                 <li role="separator" class="divider"></li>
