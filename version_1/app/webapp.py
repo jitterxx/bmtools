@@ -2419,7 +2419,6 @@ class Events(object):
             print "Ошибка при сохранении нового EVENT."
             return ShowError(e)
         else:
-            history.pop()
             raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
@@ -2643,39 +2642,6 @@ class Maps(object):
         except Exception as e:
             return ShowError(e)
 
-        kpi_target_values = dict()
-        kpi_target_formula_values = dict()
-        for one in map_kpi.keys():
-            target = BMTObjects.get_kpi_target_value(one)
-            if target:
-                kpi_target_values[one] = target
-
-        for one in map_kpi.values():
-            # Считаем значения по формуле, если она есть
-            if one.formula:
-                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
-                try:
-                    formula = py_expression_eval.Parser().parse(one.formula)
-                except Exception as e:
-                    print "Формула некорректная. %s" % str(e)
-                else:
-                    fsum = dict()
-                    var = dict()
-                    for e in kpi_target_values[one.code]:
-                        fsum[e.period_code] = 0
-                        var[e.period_code] = dict()
-
-                    for v in formula.variables():
-                        print v
-                        for k in kpi_target_values[v]:
-                            var[k.period_code][v] = k.first_value
-                    print var
-
-                    for e in kpi_target_values[one.code]:
-                        fsum[e.period_code] = formula.evaluate(var[e.period_code])
-
-                    kpi_target_formula_values[one.code] = fsum
-
         # Группируем цели по перспективами и порядку расположения
         group_goals = BMTObjects.group_goals(map_goals)
 
@@ -2683,9 +2649,6 @@ class Maps(object):
         print "MAP goals: %s " % map_goals
         print "MAP kpi: %s " % map_kpi
         print "MAP linked goals: %s" % custom_linked_goals
-        print "KPI formula values: %s" % kpi_target_formula_values
-        print "KPI targets: %s" % kpi_target_values
-        print "OPKPI : %s" % map_opkpi
         print "KPI links: %s" % custom_kpi_links
         print "Grouped goals: %s" % group_goals
 
@@ -2698,8 +2661,8 @@ class Maps(object):
                            draw_data=draw_data, colors=BMTObjects.PERSPECTIVE_COLORS,
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                            kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
-                           kpi_target_values=kpi_target_values, group_goals=group_goals,
-                           perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
+                           group_goals=group_goals,
+                           perspectives=BMTObjects.perspectives)
 
     @cherrypy.expose
     # @require(member_of("users"))

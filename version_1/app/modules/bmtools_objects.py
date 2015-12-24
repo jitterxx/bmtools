@@ -206,6 +206,26 @@ def add_new_user(name=None, surname=None, login=None, passwd=None, groups=None, 
         read_user_info()
 
 
+def read_user_info():
+    # ЧИтаем данные пользователей и заносим persons
+
+    session = Session()
+    global persons
+
+    try:
+        resp = session.query(User).all()
+    except Exception as e:
+        print "read_user_info(). Ошибка чтения пользоваетлей из базы. %s" % str(e)
+    else:
+        for one in resp:
+            persons[one.id] = one.name + " " + one.surname
+
+    finally:
+        session.close()
+
+read_user_info()
+
+
 class TextMessage(Base):
     """
     Класс для работы с текстовыми сообщениями в системе.
@@ -2193,26 +2213,6 @@ def change_current_strategic_map(smap):
     # меняем текущую стратегическую карту
     global current_strategic_map
     current_strategic_map = smap
-
-
-def read_user_info():
-    # ЧИтаем данные пользователей и заносим persons
-
-    session = Session()
-    global persons
-
-    try:
-        resp = session.query(User).all()
-    except Exception as e:
-        print "read_user_info(). Ошибка чтения пользоваетлей из базы. %s" % str(e)
-    else:
-        for one in resp:
-            persons[one.id] = one.name + " " + one.surname
-
-    finally:
-        session.close()
-
-read_user_info()
 
 
 class MotivationCardData(Base):
