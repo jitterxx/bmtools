@@ -58,6 +58,18 @@ def add_to_history(href=None):
     print history
 
 
+def history_back():
+
+    global history
+    print "Current history list: %s" % history
+    back = str()
+    try:
+        back = history.pop()
+    except IndexError:
+        back = "/"
+    finally:
+        return back
+
 def ShowError(e):
     tmpl = lookup.get_template("wizard_error_page.html")
     params = cherrypy.request.headers
@@ -1559,7 +1571,7 @@ class Goals(object):
 
         if None in [name, description, perspective]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect(history.pop())
 
         goal_fields = dict()
 
@@ -1582,7 +1594,7 @@ class Goals(object):
                 print "Ошибка при создании LINK_FOR_CUSTOM_GOAL. %s" % str(e)
                 return ShowError(e)
 
-        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+        raise cherrypy.HTTPRedirect(history.pop())
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -1598,7 +1610,7 @@ class Goals(object):
 
         if not code:
             print "Параметр code указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect(history.pop())
 
         try:
             cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
@@ -1625,7 +1637,6 @@ class Goals(object):
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
                            goal=goal, linked_goals=linked_goals, escapef=BMTObjects.escape)
 
-
     @cherrypy.expose
     @require(member_of("users"))
     def delete(self, code=None):
@@ -1633,7 +1644,7 @@ class Goals(object):
         print "DELETE GOAL."
         if not code:
             print "GOAL code empty. Redirect to /maps?code=%s" % BMTObjects.current_strategic_map
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect(history.pop())
 
         try:
             BMTObjects.remove_goal_from_map(code, BMTObjects.current_strategic_map)
@@ -1641,7 +1652,7 @@ class Goals(object):
             print "Ошибка %s " % str(e)
             return ShowError(e)
         else:
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect(history.pop())
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -1651,7 +1662,7 @@ class Goals(object):
 
         if None in [code, name, description, perspective]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect(history.pop())
 
         goal_fields = dict()
 
@@ -1682,7 +1693,7 @@ class Goals(object):
             print "Ошибка при обновлении LINK_FOR_CUSTOM_GOAL. %s" % str(e)
             return ShowError(e)
 
-        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+        raise cherrypy.HTTPRedirect(history.pop())
 
 
 class KPIs(object):
@@ -1744,7 +1755,7 @@ class KPIs(object):
 
         if None in [name, kpi_linked_goal, measures, data_source, target_responsible, plan_period, cycles, start_date]:
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/kpi/new")
+            raise cherrypy.HTTPRedirect(history.pop())
 
         kpi_fields = dict()
         kpi_target = dict()
@@ -1774,7 +1785,7 @@ class KPIs(object):
             # привязываем новый показатель к цели
             if kpi_linked_goal == "0":
                 print "Операционный показатель. Возвращаемся обратно."
-                raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+                raise cherrypy.HTTPRedirect(history.pop())
             else:
                 print "Стратегический показатель. Создаем связь с целью и целевые значения."
                 try:
@@ -1893,7 +1904,7 @@ class KPIs(object):
 
         if not code:
             print "Параметр code указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect(history.pop())
 
         try:
             cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
@@ -1962,7 +1973,7 @@ class KPIs(object):
             print "Ошибка %s " % str(e)
             return ShowError(e)
         else:
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+            raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
     #@require(member_of("users"))
@@ -2016,7 +2027,7 @@ class KPIs(object):
             print "Ошибка при обновлении CUSTOM KPI. %s" % str(e)
             return ShowError(e)
 
-        raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+        raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
     # @require(member_of("users"))
@@ -2357,9 +2368,6 @@ class Events(object):
         except Exception as e:
             return ShowError(e)
 
-        # ДОбавляем в историю посещение страницы
-        add_to_history(href="/events/new")
-
         return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=goals)
 
     @cherrypy.expose
@@ -2383,11 +2391,19 @@ class Events(object):
 
         if None in cherrypy.request.params.values():
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
         event_fields = dict()
         if not isinstance(actors, list):
-            actors = [actors]
+            if actors:
+                actors = [actors]
+            else:
+                actors = []
+
+        if start_date == "" or end_date == "":
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect("/events/new")
+
         event_fields['actors'] = ",".join(actors)
         event_fields['description'] = description
         event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
@@ -2404,7 +2420,7 @@ class Events(object):
             return ShowError(e)
         else:
             history.pop()
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2420,7 +2436,7 @@ class Events(object):
 
         if None in cherrypy.request.params.values():
             print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
         tmpl = lookup.get_template("events_edit_page.html")
         params = cherrypy.request.headers
@@ -2440,9 +2456,6 @@ class Events(object):
         event=events[event_code]
         actors = re.split(",", event.actors)
         print "GOALS FOR EVENT: %s" % goals
-
-        # ДОбавляем в историю посещение страницы
-        add_to_history(href="/events/edit?event_code=%s" % event_code)
 
         return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons,
                            goals=goals, event=event, actors=actors)
@@ -2470,9 +2483,14 @@ class Events(object):
 
         if None in cherrypy.request.params.values():
             print "Event UPDATE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
         event_fields = dict()
+        if not isinstance(actors, list):
+            if actors:
+                actors = [actors]
+            else:
+                actors = []
         event_fields['actors'] = ",".join(actors)
         event_fields['description'] = description
         event_fields['end_date'] = datetime.datetime.strptime(end_date, "%d.%m.%Y").date()
@@ -2487,8 +2505,7 @@ class Events(object):
         except Exception as e:
             return ShowError(e)
         else:
-            history.pop()
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2496,16 +2513,16 @@ class Events(object):
 
         print "Event DELETE : %s " % cherrypy.request.params
 
-        if None in cherrypy.request.params.values():
+        if not event_code:
             print "Event DELETE. Один из параметров не указан. Параметры: %s" % cherrypy.request.params
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
         try:
             BMTObjects.delete_event(event_code)
         except Exception as e:
             return ShowError(e)
         else:
-            raise cherrypy.HTTPRedirect(history.pop())
+            raise cherrypy.HTTPRedirect(history_back())
 
 
 class Maps(object):
@@ -2729,15 +2746,22 @@ class Maps(object):
                     for e in kpi_target_values[one.code]:
                         fsum[e.period_code] = 0
                         var[e.period_code] = dict()
+                        for v in formula.variables():
+                            var[e.period_code][v] = 0
 
                     for v in formula.variables():
                         print v
-                        for k in kpi_target_values[v]:
-                            var[k.period_code][v] = k.first_value
+                        # Если целевые значения не заданы, ставим везде 0
+                        if kpi_target_values.get(v):
+                            for k in kpi_target_values[v]:
+                                var[k.period_code][v] = k.first_value
                     print var
 
                     for e in kpi_target_values[one.code]:
-                        fsum[e.period_code] = formula.evaluate(var[e.period_code])
+                        try:
+                            fsum[e.period_code] = formula.evaluate(var[e.period_code])
+                        except ZeroDivisionError:
+                            fsum[e.period_code] = 0
 
                     kpi_target_formula_values[one.code] = fsum
 
@@ -2856,15 +2880,21 @@ class Maps(object):
                     for e in kpi_target_values[one.code]:
                         fsum[e.period_code] = 0
                         var[e.period_code] = dict()
+                        for v in formula.variables():
+                            var[e.period_code][v] = 0
 
                     for v in formula.variables():
                         print v
-                        for k in kpi_target_values[v]:
-                            var[k.period_code][v] = k.first_value
+                        if kpi_target_values.get(v):
+                            for k in kpi_target_values[v]:
+                                var[k.period_code][v] = k.first_value
                     print var
 
                     for e in kpi_target_values[one.code]:
-                        fsum[e.period_code] = formula.evaluate(var[e.period_code])
+                        try:
+                            fsum[e.period_code] = formula.evaluate(var[e.period_code])
+                        except ZeroDivisionError:
+                            fsum[e.period_code] = 0
 
                     kpi_target_formula_values[one.code] = fsum
 
@@ -2957,17 +2987,7 @@ class Root(object):
     @cherrypy.expose
     @require(member_of("users"))
     def back(self):
-        print "Current history list: %s" % history
-        back = str()
-        try:
-            back = history.pop()
-            back = history.pop()
-        except IndexError:
-            back = "/"
-
-        raise cherrypy.HTTPRedirect(back)
-
-
+        raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
     @require(member_of("users"))

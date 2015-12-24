@@ -10,6 +10,19 @@
     <script type="text/javascript" src="/static/js/kpi.js" charset="UTF-8"></script>
 </%block>
 
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/back">
+                  Назад<span class="sr-only">(current)</span>
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
@@ -61,7 +74,7 @@
                     </tbody>
                 </table>
                 <hr>
-            <a class="btn btn-default" href="${step_desc['next_step']}" role="button">Вернуться</a>
+            <a class="btn btn-default" href="/back" role="button">Вернуться</a>
         </div>
     </div>
 
