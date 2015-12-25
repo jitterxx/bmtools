@@ -1700,7 +1700,7 @@ class Goals(object):
 class KPIs(object):
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def new(self):
         # Создание нового показателя
         tmpl = lookup.get_template("kpi_new_page.html")
@@ -1725,7 +1725,7 @@ class KPIs(object):
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def save(self, name=None, description=None, kpi_linked_goal=None, data_source=None,
              target_responsible=None, fact_responsible=None, formula=None, link_to_desc=None,
              measures=None, cycles=None, kpi_scale_type=None, plan_period=None, start_date=None):
@@ -1836,7 +1836,7 @@ class KPIs(object):
 
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def newstage2(self, code=None):
         # Планирование целевых значений для нового показателя
         tmpl = lookup.get_template("kpi_newstage2_page.html")
@@ -1864,7 +1864,7 @@ class KPIs(object):
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def savestage2(self, kpi_code=None, period_code=None, target_value=None):
         """
         Сохраняем новый показатель,добавляем в текущую карту,
@@ -1893,7 +1893,7 @@ class KPIs(object):
         return "ok"
 
     @cherrypy.expose
-    #@require(member_of("users"))
+    @require(member_of("users"))
     def edit(self, code=None):
         # выводим страницу редактирования показателя, без целевых значений 0 это отдельный этап
         print "EDIT KPI."
@@ -1932,7 +1932,7 @@ class KPIs(object):
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def editstage2(self, code=None):
         # Редактирование целевых значений для показателя
         tmpl = lookup.get_template("kpi_editstage2_page.html")
@@ -1966,7 +1966,7 @@ class KPIs(object):
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def delete(self, code=None):
         # Удаляем показатель из текущей карты. Он не удаляется из базы, остается в кастомных и виден в библиотеке.
         print "DELETE KPI."
@@ -1983,7 +1983,7 @@ class KPIs(object):
             raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
-    #@require(member_of("users"))
+    @require(member_of("users"))
     def update(self, code=None, name=None, description=None, kpi_linked_goal=None, data_source=None,
                target_responsible=None, fact_responsible=None, formula=None, link_to_desc=None,
                measures=None, cycles=None, kpi_scale_type=None):
@@ -2037,7 +2037,7 @@ class KPIs(object):
         raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def updatestage2(self, kpi_code=None, period_code=None, target_value=None, plan_period=None, start_date=None,
                      cycles=None):
         """
@@ -2112,7 +2112,7 @@ class KPIs(object):
             return "ok"
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def updatestage2_one(self, kpi_code=None, plan_period=None, start_date=None, cycles=None):
         """
         Сохраняем новый отчетный период, готовим объекты целевых значений для заполнения
@@ -2163,7 +2163,7 @@ class KPIs(object):
 
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def delete_target(self, code=None, period_code=None):
         """
         Удаляем целевое значение для указанного показателя и периода
@@ -2191,7 +2191,7 @@ class MotivationCard():
 
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def index(self, code=None):
         # Вывести все мотивационные карточки
         tmpl = lookup.get_template("motivation_list_page.html")
@@ -2211,7 +2211,7 @@ class MotivationCard():
                            persons=BMTObjects.persons, motivation_cards=motivation_cards)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def show(self, code=None):
         # Вывести указанную карту
         tmpl = lookup.get_template("motivation_card_page.html")
@@ -2248,7 +2248,7 @@ class MotivationCard():
                            org=org)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def save(self, user_id=None, group_id=None, salary=None, salary_fix_p=None, salary_var_p=None,
              salary_fix=None, salary_var=None, user_approve=None, boss_approve=None,
              edge1=None, edge2=None, edge3=None, var_edge_1=None, var_edge_2=None, var_edge_3=None):
@@ -2301,7 +2301,7 @@ class MotivationCard():
         raise cherrypy.HTTPRedirect("/motivation")
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def add_kpi(self, motivation_card=None, weight=None, kpi=None):
 
         p = cherrypy.request.params
@@ -2321,7 +2321,7 @@ class MotivationCard():
         raise cherrypy.HTTPRedirect("/motivation/show?code=%s" % motivation_card)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def update_kpi(self, motivation_card=None, weight=None, kpi=None):
 
         p = cherrypy.request.params
@@ -2344,7 +2344,7 @@ class MotivationCard():
         raise cherrypy.HTTPRedirect("/motivation")
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def remove_kpi(self, motivation_card=None, kpi=None):
 
         p = cherrypy.request.params
@@ -2458,7 +2458,7 @@ class Users(object):
         raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def disable(self, uuid=None):
 
         print cherrypy.request.params
@@ -2476,7 +2476,7 @@ class Users(object):
         raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def enable(self, uuid=None):
 
         print cherrypy.request.params
@@ -2697,7 +2697,7 @@ class Events(object):
 class Maps(object):
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def index(self):
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -2725,7 +2725,7 @@ class Maps(object):
                            maps=maps, ent_map=BMTObjects.enterprise_strategic_map, org_root=root)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def map(self, code=None):
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -2781,7 +2781,7 @@ class Maps(object):
                            perspectives=BMTObjects.perspectives)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def goals(self, code=None):
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -2835,7 +2835,7 @@ class Maps(object):
                            perspectives=BMTObjects.perspectives)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def kpi(self, code=None):
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -2933,7 +2933,7 @@ class Maps(object):
 
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def events(self, code=None):
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -2978,7 +2978,7 @@ class Maps(object):
                            perspectives=BMTObjects.perspectives)
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def opkpi(self, code=None):
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -3079,10 +3079,10 @@ class Settings(object):
     @require(member_of("users"))
     def index(self):
         # общий раздел
-        return ShowError("Общий раздел")
+        raise cherrypy.HTTPRedirect("/settings/users")
 
     @cherrypy.expose
-    # @require(member_of("users"))
+    @require(member_of("users"))
     def users(self):
         # раздел работы с пользователями
         tmpl = lookup.get_template("setting_users_page.html")
@@ -3096,16 +3096,16 @@ class Settings(object):
         return tmpl.render(users=users, user_status=BMTObjects.USER_STATUS)
 
     @cherrypy.expose
-    @require(member_of("admin"))
+    @require(member_of("users"))
     def access(self):
         # раздел настройки прав доступа
-        return ShowError("раздел настройки прав доступа")
+        raise cherrypy.HTTPRedirect("/settings/users")
 
     @cherrypy.expose
-    @require(member_of("admin"))
+    @require(member_of("users"))
     def integrations(self):
         # раздел настройки интеграций
-        return ShowError("раздел настройки интеграций")
+        raise cherrypy.HTTPRedirect("/settings/users")
 
 
 class Root(object):
@@ -3192,7 +3192,7 @@ class Root(object):
         return "ok"
 
     @cherrypy.expose
-    #@require(member_of("users"))
+    @require(member_of("users"))
     def formulaeditor(self):
         tmpl = lookup.get_template("formula_editor_test.html")
         step_desc = dict()
