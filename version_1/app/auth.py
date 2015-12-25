@@ -76,9 +76,13 @@ def check_auth(*args, **kwargs):
             
 cherrypy.tools.auth = cherrypy.Tool('before_handler', check_auth)
 
+
 def require(*conditions):
-    """A decorator that appends conditions to the auth.require config
-    variable."""
+    """
+    A decorator that appends conditions to the auth.require config
+    variable.
+    """
+
     def decorate(f):
         if not hasattr(f, '_cp_config'):
             f._cp_config = dict()
@@ -86,6 +90,7 @@ def require(*conditions):
             f._cp_config['auth.require'] = []
         f._cp_config['auth.require'].extend(conditions)
         return f
+
     return decorate
 
 # Conditions are callables that return True

@@ -877,6 +877,7 @@ class Wizard(object):
 
         print "Орг. Структура компании: %s" % org_structure
 
+        add_to_history("/wizard/step2")
         return tmpl.render(params=params, step_desc=step_desc, action=action,
                            org_structure=org_structure, persons=BMTObjects.persons,
                            status=status, org_edit=org_edit, shift=shift)
@@ -2369,9 +2370,9 @@ class MotivationCard():
 class Users(object):
 
     @cherrypy.expose
-    @require(member_of("admin"))
+    @require(member_of("users"))
     def new(self):
-        tmpl = lookup.get_template("new_user_page.html")
+        tmpl = lookup.get_template("user_new_page.html")
         step_desc = dict()
         step_desc['full_description'] = ""
         step_desc['name'] = "Создание пользователя"
@@ -2381,8 +2382,8 @@ class Users(object):
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map))
 
     @cherrypy.expose
-    @require(member_of("admin"))
-    def save(self, name=None, surname=None, login=None, passwd=None):
+    @require(member_of("users"))
+    def save(self, name=None, surname=None, login=None, passwd=None, groups=None):
 
         p = cherrypy.request.params
         if None in [name, surname]:
@@ -2402,7 +2403,95 @@ class Users(object):
             print "Ошибка при попытке добавления пользователя /users/save. %s" % str(e)
             return ShowError(e)
 
-        raise cherrypy.HTTPRedirect("/wizard/step2?action=add")
+        raise cherrypy.HTTPRedirect(history_back())
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def edit(self, login=None):
+        tmpl = lookup.get_template("user_edit_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Редактирование пользователя"
+        step_desc['next_step'] = ""
+
+        if not login:
+            print "Не указан логин пользователя лдля редактирования."
+            raise cherrypy.HTTPRedirect(history_back())
+
+        try:
+            user = BMTObjects.get_user_by_login(login)
+            user.read()
+        except Exception as e:
+            print "Ошибка при получении данных пользователя /users/edit. %s" % str(e)
+            return ShowError(e)
+
+        return tmpl.render(step_desc=step_desc, user=user)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def update(self, uuid=None, name=None, surname=None, login=None, passwd=None, groups=None):
+
+        print "Параметры: %s" % cherrypy.request.params
+        if None in [uuid, login, name]:
+            print "Один из параметров не указан"
+            raise cherrypy.HTTPRedirect("/users/new")
+
+        if not isinstance(groups, list):
+            if groups:
+                groups = [groups]
+            else:
+                groups = []
+
+        if not login:
+            login = ""
+        if not passwd:
+            passwd = ""
+
+        try:
+            # добавляем пользователя
+            BMTObjects.user_update(uuid=str(uuid), name=str(name), surname=str(surname), login=str(login),
+                                    passwd=str(passwd), status=0, groups=groups)
+        except Exception as e:
+            print "Ошибка при попытке обновления данных пользователя /users/update. %s" % str(e)
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect(history_back())
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def disable(self, uuid=None):
+
+        print cherrypy.request.params
+        if not uuid:
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect(history_back())
+
+        try:
+            # отключаем или включаем пользователя
+            BMTObjects.user_disable(uuid=uuid)
+        except Exception as e:
+            print "Ошибка при попытке отключении пользователя /users/disable. %s" % str(e)
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect(history_back())
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def enable(self, uuid=None):
+
+        print cherrypy.request.params
+        if not uuid:
+            print "Один из параметров не указан. Параметры: %s" % cherrypy.request.params
+            raise cherrypy.HTTPRedirect(history_back())
+
+        try:
+            # включаем пользователя
+            BMTObjects.user_enable(uuid=uuid)
+        except Exception as e:
+            print "Ошибка при попытке включении пользователя /users/enable. %s" % str(e)
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect(history_back())
 
 
 class Events(object):
@@ -2984,6 +3073,41 @@ class Maps(object):
                            perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
 
 
+class Settings(object):
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def index(self):
+        # общий раздел
+        return ShowError("Общий раздел")
+
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def users(self):
+        # раздел работы с пользователями
+        tmpl = lookup.get_template("setting_users_page.html")
+
+        try:
+            users = BMTObjects.get_all_users()
+        except Exception as e:
+            return ShowError(e)
+
+        add_to_history("/settings/users")
+        return tmpl.render(users=users, user_status=BMTObjects.USER_STATUS)
+
+    @cherrypy.expose
+    @require(member_of("admin"))
+    def access(self):
+        # раздел настройки прав доступа
+        return ShowError("раздел настройки прав доступа")
+
+    @cherrypy.expose
+    @require(member_of("admin"))
+    def integrations(self):
+        # раздел настройки интеграций
+        return ShowError("раздел настройки интеграций")
+
+
 class Root(object):
 
     auth = AuthController()
@@ -2996,6 +3120,7 @@ class Root(object):
     users = Users()
     events = Events()
     maps = Maps()
+    settings = Settings()
 
     @cherrypy.expose
     @require(member_of("users"))

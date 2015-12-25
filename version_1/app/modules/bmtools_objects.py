@@ -49,6 +49,7 @@ GOAL_TYPE = {0: "lib", 1: "custom"}
 GOAL_EDIT_FLAG = {0: "Нельзя изменять KPI", 1: "Можно изменять KPI"}
 
 PERIOD_NAME = ["Декабрь", "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+USER_STATUS = {0: "Активен", 1: "Отключен"}
 
 VERSION = 0
 
@@ -156,7 +157,7 @@ class User(Base):
 """
 
 
-def get_user_by_login(login):
+def get_user_by_login(login=None):
     """
     Получить данные пользователя по логину.
     Информация о событиях записывается в лог приложения.
@@ -182,10 +183,45 @@ def get_user_by_login(login):
         print "Пользователь найден get_user_by_login()."
         logging.warning("Пользователь с логином %s найден" % login)
         return user
+    finally:
+        session.close()
+
+
+def get_all_users():
+    """
+    Получить всех пользователей в системе.
+
+    :return: Словарь пользователей, ключ - идентификатор, значение - объект типа Users
+    """
+
+    session = Session()
+    try:
+        resp = session.query(User).order_by(User.surname.asc()).all()
+    except Exception as e:
+        print "Ошибка при получении данных пользовтелей get_all_users(). %s" % str(e)
+        raise e
+    else:
+        users = dict()
+        for one in resp:
+            one.read()
+            users[one.uuid] = one
+        return users
+    finally:
+        session.close()
 
 
 def add_new_user(name=None, surname=None, login=None, passwd=None, groups=None, status=None):
+
     session = Session()
+    try:
+        resp = session.query(User).filter(User.login == login).all()
+    except sqlalchemy.orm.exc.NoResultFound:
+        print "Пользователь c таким логином не найден. add_new_user()."
+        print "Создаем нового."
+    else:
+        print "add_new_user(). Найден пользователь c таким логином."
+        raise Exception.message("Не могу добавить пользователя. Такой логин существует.")
+
     new_user = User()
     new_user.name = name
     new_user.surname = surname
@@ -201,6 +237,104 @@ def add_new_user(name=None, surname=None, login=None, passwd=None, groups=None, 
         raise e
     else:
         print "Пользователь создан add_new_user()."
+    finally:
+        session.close()
+        read_user_info()
+
+
+def user_update(uuid=None, name=None, surname=None, login=None, passwd=None, groups=None, status=None):
+    """
+    Обновление данных пользователя.
+
+    :param uuid:
+    :param name:
+    :param surname:
+    :param login:
+    :param passwd:
+    :param groups:
+    :param status:
+    :return:
+    """
+
+    session = Session()
+    try:
+        resp = session.query(User).filter(User.uuid == uuid).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Пользователь c таким UUID не найден. user_update()."
+        raise e
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Найдено много пользователей c таким UUID. user_update()."
+        raise e
+    except Exception as e:
+        print "Ошибка в user_update()."
+        raise e
+    else:
+        # обновляем данные
+        resp.name = name
+        resp.surname = surname
+        resp.login = login
+        resp.password = passwd
+        resp.access_groups = ",".join(groups)
+        session.commit()
+    finally:
+        session.close()
+        read_user_info()
+
+
+def user_disable(uuid=None):
+    """
+    Обновление данных пользователя.
+
+    :param uuid:
+    :return:
+    """
+
+    session = Session()
+    print uuid
+    try:
+        resp = session.query(User).filter(User.uuid == uuid).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Пользователь c таким UUID не найден. user_disable()."
+        raise e
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Найдено много пользователей c таким UUID. user_disable()."
+        raise e
+    except Exception as e:
+        print "Ошибка в user_disable()."
+        raise e
+    else:
+        # обновляем данные
+        resp.disabled = 1
+        session.commit()
+    finally:
+        session.close()
+        read_user_info()
+
+
+def user_enable(uuid=None):
+    """
+    Обновление данных пользователя.
+
+    :param uuid:
+    :return:
+    """
+
+    session = Session()
+    try:
+        resp = session.query(User).filter(User.uuid == uuid).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Пользователь c таким UUID не найден. user_enable()."
+        raise e
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Найдено много пользователей c таким UUID. user_enable()."
+        raise e
+    except Exception as e:
+        print "Ошибка в user_enable()."
+        raise e
+    else:
+        # обновляем данные
+        resp.disabled = 0
+        session.commit()
     finally:
         session.close()
         read_user_info()

@@ -1,0 +1,67 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+
+</%block>
+
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li>
+                <a href="/back">
+                    Назад<span class="sr-only">(current)</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <h3>${step_desc['name']}</h3>
+            <div style="margin-left: 3%;">
+                ${step_desc['full_description']}
+            </div>
+            <hr>
+            <form action="/users/update" method="post">
+                <input type="hidden" name="uuid" value="${user.uuid}">
+                <div class="form-group">
+                    <label for="name">Имя *</label>
+                    <input type="text" id="name" name="name" class="form-control" required value="${user.name}">
+                </div>
+                <div class="form-group">
+                    <label for="surname">Фамилия *</label>
+                    <input type="text" id="surname" name="surname" class="form-control" required value="${user.surname}">
+                </div>
+                <div class="form-group">
+                    <label for="login">Логин</label>
+                    <input type="text" id="login" name="login" class="form-control" value="${user.login}">
+                </div>
+                <div class="form-group">
+                    <label for="passwd">Пароль</label>
+                    <input type="password" id="passwd" name="passwd" class="form-control" value="${user.password}">
+                </div>
+                <label for="group">Группы</label>
+                <div style="margin-left: 2%;">
+                    % for g in user.list_access_groups:
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="groups" value="${g}" checked>
+                            ${g}
+                        </label>
+                    </div>
+                    % endfor
+                </div>
+                <hr>
+                <button role="button" type="submit" class="btn btn-default">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+

@@ -1,0 +1,110 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+</%block>
+
+
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/settings">
+                  Общие настройки<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="active">
+              <a href="/settings/users">
+                  Пользователи<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/settings/access">
+                  Права доступа<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li>
+              <a href="/settings/intergations">
+                  Интеграции<span class="sr-only">(current)</span>
+              </a>
+          </li>
+          </ul>
+        <hr>
+        <ul class="nav nav-sidebar">
+          <li>
+              <a href="/back">
+                  Назад<span class="sr-only">(current)</span>
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table class="table table-hover">
+                <thead>
+                <tr class="text-muted">
+                    <th></th>
+                    <th class=" text-center">Фамилия и имя</th>
+                    <th class=" text-center">Логин</th>
+                    <th class=" text-center">Статус</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                % for user in users.values():
+                <tr class="text-center">
+                    <td width="2%">
+                        <div class="dropdown">
+                            <a href="#"></a>
+                            <a id="#" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                </a>
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li><a href="/users/edit?login=${user.login}">Свойства</a></li>
+                                <li role="separator" class="divider"></li>
+                                %if user.disabled:
+                                <li><a href="/users/enable?uuid=${user.uuid}">Включить</a></li>
+                                % else:
+                                <li><a href="/users/disable?uuid=${user.uuid}">Отключить</a></li>
+                                % endif
+                            </ul>
+                        </div>
+                    </td>
+                    <td width="20%" class=" text-center">${user.surname} ${user.name}</td>
+                    <td width="10%" class=" text-center">${user.login}</td>
+                    <td width="10%" class=" text-center">
+                        %if user.disabled:
+                        <span class="text-danger">${user_status.get(user.disabled)}</span>
+                        % else:
+                        <span class="text-success">${user_status.get(user.disabled)}</span>
+                        % endif
+                    </td>
+                    <td></td>
+                </tr>
+                % endfor
+                <tr>
+                    <td colspan="5">
+                        <a role="button" href="/users/new">
+                            <span class="glyphicon glyphicon-plus text-success" aria-hidden="true">
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
