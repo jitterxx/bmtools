@@ -1984,7 +1984,11 @@ def save_kpi_target_value(kpi_target_value):
         # такой объект существует, обновляем
         print "KPI TARGET такой объект существует, обновляем"
         try:
-            exist.first_value = kpi_target_value["first_value"]
+            # если значение не передано, присваиваем по умолчанию 0
+            if kpi_target_value.get("first_value"):
+                exist.first_value = kpi_target_value["first_value"]
+            else:
+                exist.first_value = 0
             # exist.second_value = kpi_target_value["second_value"]
             # exist.kpi_scale_type = kpi_target_value["kpi_scale_type"]
             # exist.data_source = kpi_target_value["data_source"]

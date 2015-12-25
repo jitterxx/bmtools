@@ -2110,6 +2110,56 @@ class KPIs(object):
 
             return "ok"
 
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def updatestage2_one(self, kpi_code=None, plan_period=None, start_date=None, cycles=None):
+        """
+        Сохраняем новый отчетный период, готовим объекты целевых значений для заполнения
+
+        :param kpi_code:
+        :param plan_period:
+        :param start_date:
+        :param cycles:
+        :return:
+        """
+
+        print "KPI UPDATE stage2 new TARGET period"
+        print "Параметры запроса: %s" % cherrypy.request.params
+
+        start_date = datetime.datetime.strptime(start_date, "%m.%Y").date()
+        print "Количество периодов: %s" % int(plan_period)
+        print "Стартовая дата: %s" % start_date
+
+        period_date = dict()
+        period_name = dict()
+        one = 1
+
+        print "Период: %s" % one
+        period_date[one] = datetime.datetime(start_date.year + (start_date.month / 12),
+                                             ((start_date.month % 12) + one), 1)
+        if (period_date[one].month - 1) == 0:
+            period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                               str(period_date[one].year - 1)
+        else:
+            period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                               str(period_date[one].year)
+
+        print "Отчетная дата периода: %s" % period_date[one]
+        print "Название отчетного периода: %s" % period_name[one]
+
+        kpi_target = dict()
+        kpi_target['kpi_code'] = str(kpi_code)
+        kpi_target['date'] = period_date[one]
+        kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
+        kpi_target['period_name'] = period_name[one]
+        try:
+            BMTObjects.save_kpi_target_value(kpi_target)
+        except Exception as e:
+            print "Ошибка при создании KPI TARGET. updatestage2_one(). %s" % str(e)
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % kpi_code)
+
 
     @cherrypy.expose
     # @require(member_of("users"))

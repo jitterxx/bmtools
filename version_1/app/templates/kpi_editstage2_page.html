@@ -57,16 +57,16 @@
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </a>
             <div class="collapse" id="collapsePeriod">
-                <form action="/kpi/updatestage2" method="post">
+                <form action="/kpi/updatestage2_one" method="post">
                     <input type="hidden" name="kpi_code" value="${kpi.code}">
                     <div class="form-inline">
                     <div class="form-group">
-                    <input type="hidden" name="plan_period" id="plan_period" class="form-control"
+                    <input type="hidden" name="plan_period" class="form-control"
                         value="1">
-                    <input name="cycles" id="cycles" type="hidden" value="1">
-                    <label for="plan_period">Добавить отчетный период для</label>
-                    <div class='input-group date' id='start_date'>
-                        <input type='text' class="form-control" name="start_date"
+                    <input name="cycles" type="hidden" value="1">
+                    <label>Добавить отчетный период для</label>
+                    <div class='input-group date'>
+                        <input type='text' class="form-control" name="start_date" id="start_date1"
                         % if current_map.start_date:
                             value="${current_map.start_date.strftime('%d.%m.%Y')}"
                         % else:
@@ -78,8 +78,8 @@
                         </span>
                     </div>
                     <script type="text/javascript">
-                            $('#start_date').datepicker({
-                                format: "M yyyy",
+                            $('#start_date1').datepicker({
+                                format: "mm.yyyy",
                                 language: "ru",
                                 calendarWeeks: true,
                                 autoclose: true,
