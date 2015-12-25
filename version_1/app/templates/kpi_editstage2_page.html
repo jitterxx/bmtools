@@ -52,20 +52,76 @@
             <hr>
             <input type="hidden" id="kpi_code" value="${kpi.code}">
             % if target_values:
+            <a role="button" class="text-success" data-toggle="collapse" href="#collapsePeriod"
+               aria-expanded="false" aria-controls="collapsePeriod">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+            <div class="collapse" id="collapsePeriod">
+                <form action="/kpi/updatestage2" method="post">
+                    <input type="hidden" name="kpi_code" value="${kpi.code}">
+                    <div class="form-inline">
+                    <div class="form-group">
+                    <input type="hidden" name="plan_period" id="plan_period" class="form-control"
+                        value="1">
+                    <input name="cycles" id="cycles" type="hidden" value="1">
+                    <label for="plan_period">Добавить отчетный период для</label>
+                    <div class='input-group date' id='start_date'>
+                        <input type='text' class="form-control" name="start_date"
+                        % if current_map.start_date:
+                            value="${current_map.start_date.strftime('%d.%m.%Y')}"
+                        % else:
+                               value=""
+                        % endif
+                        />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <script type="text/javascript">
+                            $('#start_date').datepicker({
+                                format: "M yyyy",
+                                language: "ru",
+                                calendarWeeks: true,
+                                autoclose: true,
+                                todayHighlight: true,
+                                todayBtn: "linked",
+                                startView: 1,
+                                minViewMode: 1,
+                                toggleActive: true
+                            });
+                    </script>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-link">
+                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                    </button>
+                </div>
+                </div>
+                </form>
+            </div>
+            <hr>
             <table class="table table-condensed table-hover">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Отчетный период</th>
                     <th>Дата отчета</th>
                     <th>Значение (${measures[kpi.measure]})</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
 
                 % for one in target_values:
                     <tr id="tr_period_${one.period_code}">
-                        <td width="10%">${one.period_name} (№${one.period_code} )</td>
-                        <td width="10%">${one.date.day}.${one.date.month}.${one.date.year}</td>
+                        <td width="5%">
+                            <a href="/kpi/delete_target?code=${kpi.code}&period_code=${one.period_code}"
+                               role="button" class="text-danger">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </td>
+                        <td width="20%">${one.period_name} (№${one.period_code} )</td>
+                        <td width="10%">${one.date.strftime('%d.%m.%Y')}</td>
                         <td width="10%">
                             <div class="form-group">
                                 <input name="target_value" id="period_${one.period_code}" class="form-control"
@@ -74,6 +130,7 @@
                                        onfocus="ChangeColor('period_${one.period_code}');">
                             </div>
                         </td>
+                        <td></td>
                     </tr>
                 % endfor
 
@@ -83,8 +140,8 @@
             % else:
             <form action="/kpi/updatestage2" method="post">
                 <input type="hidden" name="kpi_code" value="${kpi.code}">
-            <div class="form-inline">
-            <div class="form-group">
+                <div class="form-inline">
+                <div class="form-group">
                 <label for="plan_period">*Спланировать целевые значения на </label>
                 <input type="number" name="plan_period" id="plan_period" class="form-control"
                     value="${current_map.cycle_count}">

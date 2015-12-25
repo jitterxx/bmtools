@@ -2011,6 +2011,41 @@ def save_kpi_target_value(kpi_target_value):
             session.close()
 
 
+def delete_kpi_target_value(kpi_code=None, period_code=None):
+    """
+    Удаляем целевые значения из базы для указанного в kpi_code показателя.
+    Если указан конкретный период в period_code, то удаляем только его.
+
+    :param kpi_code: код показателя
+    :param period_code: код периода
+    :return:
+    """
+
+    session = Session()
+    try:
+        if period_code:
+            resp = session.query(KPITargetValue).filter(and_(KPITargetValue.kpi_code == kpi_code,
+                                                             KPITargetValue.period_code == period_code)).all()
+        else:
+            resp = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_code).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "BMTObjects.delete_kpi_target_value(). Ничего не найдено для KPI = %s" % kpi_code
+        return None
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.delete_kpi_target_value(). " + str(e)
+        raise e
+    else:
+        try:
+            for one in resp:
+                session.delete(one)
+                session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.delete_kpi_target_value() при удалении целевых значений. " + str(e)
+            raise e
+    finally:
+        session.close()
+
+
 class FactValue(Base):
     """
     Хранит фактические значения метрик.

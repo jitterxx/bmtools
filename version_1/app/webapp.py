@@ -2111,6 +2111,31 @@ class KPIs(object):
             return "ok"
 
 
+    @cherrypy.expose
+    # @require(member_of("users"))
+    def delete_target(self, code=None, period_code=None):
+        """
+        Удаляем целевое значение для указанного показателя и периода
+
+        :param code:
+        :param period_code:
+        :return:
+        """
+
+        print "DELETE TARGET for KPI: %s" % code
+        if not code:
+            print "KPI code empty. Redirect."
+            raise cherrypy.HTTPRedirect(history_back())
+
+        try:
+            BMTObjects.delete_kpi_target_value(kpi_code=code, period_code=period_code)
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % code)
+
+
 class MotivationCard():
 
 
