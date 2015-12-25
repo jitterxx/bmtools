@@ -1095,6 +1095,7 @@ def load_custom_goals_kpi(goal_code=None, kpi_code=None):
         session.close()
         raise e
     else:
+
         if goal_code:
             goals = resp
         else:

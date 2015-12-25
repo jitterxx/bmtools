@@ -1941,11 +1941,17 @@ class KPIs(object):
         step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
 
         try:
-            goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code,
-                                                         goal_code=BMTObjects.load_custom_links(for_kpi=code).goal_code)
+            # Возвращает цель или None
+            g = BMTObjects.load_custom_links(for_kpi=code)
+            if g:
+                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code=g.goal_code)
+            else:
+                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code="0")
+            print "kpi", kpi.code
+            print "goal", goal
             target_values = BMTObjects.get_kpi_target_value(code)
         except Exception as e:
-            print "Ошибка %s " % str(e)
+            print "Ошибка: %s " % str(e)
             return ShowError(e)
 
         print "Current KPI: %s" % kpi
@@ -2713,11 +2719,20 @@ class Maps(object):
                             var[e.period_code][v] = 0
 
                     for v in formula.variables():
-                        print v
+                        print "v: %s" % v
+                        print "var: %s" % var.keys()
                         # Если целевые значения не заданы, ставим везде 0
                         if kpi_target_values.get(v):
                             for k in kpi_target_values[v]:
-                                var[k.period_code][v] = k.first_value
+                                if var.get(k.period_code):
+                                    var[k.period_code][v] = k.first_value
+                                else:
+                                    print "Предупреждение! Периоды целевых значений показателя %s не совпадают с" \
+                                          " периодами показателя %s." % (one.code, v)
+                        else:
+                            print "Предупреждение! Нет целевых значений показателя %s для расчета по формуле" \
+                                  " показателя %s" % (v, one.code)
+
                     print var
 
                     for e in kpi_target_values[one.code]:
@@ -2846,10 +2861,19 @@ class Maps(object):
                             var[e.period_code][v] = 0
 
                     for v in formula.variables():
-                        print v
+                        print "v: %s" % v
+                        print "var: %s" % var.keys()
+                        # Если целевые значения не заданы, ставим везде 0
                         if kpi_target_values.get(v):
                             for k in kpi_target_values[v]:
-                                var[k.period_code][v] = k.first_value
+                                if var.get(k.period_code):
+                                    var[k.period_code][v] = k.first_value
+                                else:
+                                    print "Предупреждение! Периоды целевых значений показателя %s не совпадают с" \
+                                          " периодами показателя %s." % (one.code, v)
+                        else:
+                            print "Предупреждение! Нет целевых значений показателя %s для расчета по формуле" \
+                                  " показателя %s" % (v, one.code)
                     print var
 
                     for e in kpi_target_values[one.code]:

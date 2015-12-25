@@ -35,7 +35,13 @@
             <hr>
             <h3>Показатель: ${kpi.name}</h3>
             <div style="margin-left: 3%;">
-                <p>Цель: ${goal.goal_name}</p>
+                <p>Цель:
+                    % if goal:
+                    ${goal.goal_name}
+                    % else:
+                    нет цели
+                    % endif
+                </p>
                 <p>Период: ${cycles[kpi.cycle]}</p>
                 <p>Отвественный за достижение: ${persons[kpi.target_responsible]}</p>
                 <p>Единица измерения: ${measures[kpi.measure]}</p>
@@ -94,7 +100,12 @@
                 <label for="plan_period">начиная с</label>
                 <div class='input-group date' id='start_date'>
                     <input type='text' class="form-control" name="start_date"
-                        value="${current_map.start_date.strftime('%d.%m.%Y')}"/>
+                    % if current_map.start_date:
+                        value="${current_map.start_date.strftime('%d.%m.%Y')}"
+                    % else:
+                           value=""
+                    % endif
+                    />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -117,10 +128,7 @@
             </div>
             </div>
             </form>
-            <hr>
             % endif
-
-            <a class="btn btn-default" href="/back" role="button">Вернуться</a>
         </div>
     </div>
 
