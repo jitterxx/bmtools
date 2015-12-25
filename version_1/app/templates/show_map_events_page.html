@@ -107,15 +107,6 @@
                 % endif
                 </div>
             % endfor
-            <hr>
-            <br>
-            % for one in map_events.values():
-            <p>
-                ${one.name} - ${one.linked_goal_code}
-                <a role="button" class="btn btn-xs btn-warning"  href="/events/edit?event_code=${one.event_code}">Редактировать</a>
-                <a role="button" class="btn btn-xs btn-danger" href="/events/delete?event_code=${one.event_code}">Удалить</a>
-            </p>
-            % endfor
         </div>
     </div>
 
