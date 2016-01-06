@@ -36,9 +36,11 @@
                         % endfor
                     </select>
                 </div>
+
+                <!--
                 <div class="form-group">
                     <label for="linked">Связать с целями</label>
-                    <select name="linked" id="linked" class="form-control" multiple size="${len(cur_map_goals.keys())}">
+                    <select id="linked" class="form-control" multiple size="${len(cur_map_goals.keys())}">
                         % for one in cur_map_goals.keys():
                             %if one in linked_goals:
                                 <option value="${one}" selected>${cur_map_goals[one].goal_name}</option>
@@ -48,6 +50,29 @@
                         % endfor
                     </select>
                 </div>
+                -->
+
+                <div class="form-group">
+                    <label>Связать с целями</label>
+                    % for one in cur_map_goals.keys():
+                        %if one in linked_goals:
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="${one}" name="linked" checked>
+                                ${cur_map_goals[one].goal_name}
+                            </label>
+                        </div>
+                        % else:
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="${one}" name="linked">
+                                ${cur_map_goals[one].goal_name}
+                            </label>
+                        </div>
+                        % endif
+                    % endfor
+                </div>
+
                 <div class="form-group">
                     <label for="goal_desc" class="control-label">Описание</label>
                     <textarea rows="5" name="description" id="goal_desc" class="form-control">${goal.description}</textarea>

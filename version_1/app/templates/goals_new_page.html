@@ -33,6 +33,8 @@
                         % endfor
                     </select>
                 </div>
+
+                <!--
                 <div class="form-group">
                     <label for="linked">Связать с целями</label>
                     <select  id="linked" class="form-control" multiple size="${len(cur_map_goals.keys())}">
@@ -41,9 +43,10 @@
                         % endfor
                     </select>
                 </div>
+                -->
 
                 <div class="form-group">
-                    <label for="linked">Связать с целями 2</label>
+                    <label>Связать с целями</label>
                     % for one in cur_map_goals.keys():
                     <div class="checkbox">
                         <label>
