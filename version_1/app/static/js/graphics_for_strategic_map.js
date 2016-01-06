@@ -1,7 +1,7 @@
 var draw_goals = {};
 
 (function() {
-    var canvas = this.__canvas = new fabric.Canvas('graph_map');
+    var canvas = this.__canvas = new fabric.CanvasEx('graph_map');
     fabric.Object.prototype.transparentCorners = false;
     var top_start = 200;
     var left_start = 30;
@@ -89,18 +89,11 @@ var draw_goals = {};
         canvas.renderAll();
     });
 
-    /*
-    canvas.on('mouse:doubleclick', function(e) {
+    canvas.on('mouse:dblclick', function(e) {
         if (e.target instanceof fabric.Group) {
-            original_color = e.target.getFill();
-            original_text_color = e.target.item(1).getFill();
-            //console.log(e.target);
-            e.target.setFill('#eee');
-            e.target.item(1).setFill('#000000');
-        }
-        canvas.renderAll();
+            console.log('DBL click :', e.target.code);
+        };
     });
-    */
 
     //console.log(goals_in_json);
     //var goals = JSON.parse(goals_in_json);
