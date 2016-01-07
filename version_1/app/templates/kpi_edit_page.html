@@ -99,7 +99,9 @@
                                 <select id="formula_kpi"  class="form-control">
                                     <option selected value=""></option>
                                     % for one in map_kpi.values():
-                                    <option id="${one.code}" value="${one.code}">${one.name}</option>
+                                        % if one:
+                                        <option id="${one.code}" value="${one.code}">${one.name}</option>
+                                        % endif
                                     % endfor
                                 </select>
                                     <div class="input-group-addon" role="button" id="add_var" onclick="SendOperation(this);">

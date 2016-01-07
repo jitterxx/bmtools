@@ -1769,7 +1769,7 @@ class KPIs(object):
             kpi_fields['measure'] = int(measures)
             kpi_fields['target_responsible'] = int(target_responsible)
             kpi_fields['fact_responsible'] = int(fact_responsible)
-            kpi_fields['cycles'] = int(cycles)
+            kpi_fields['cycle'] = int(cycles)
             kpi_fields['data_source'] = str(data_source)
             kpi_fields['kpi_scale_type'] = int(kpi_scale_type)
         except Exception as e:
