@@ -72,6 +72,7 @@
                 </thead>
                 <tbody>
             % for one in map_opkpi.values():
+                % if one:
                 <tr>
                     <td width="2%">
                     <div class="dropdown">
@@ -110,6 +111,7 @@
 
                     <td></td>
                 </tr>
+                % endif
             % endfor
                 </tbody>
             </table>
