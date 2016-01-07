@@ -44,7 +44,7 @@
                 </p>
                 <p>Период: ${cycles[kpi.cycle]}</p>
                 <p>Отвественный за достижение: ${persons[kpi.target_responsible]}</p>
-                <p>Единица измерения: ${measures[kpi.measure]}</p>
+                <p>Единица измерения: ${measures.get(int(kpi.measure))}</p>
             </div>
             <div class="alert alert-success alert-dismissible hidden" role="alert" id="save_alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -106,7 +106,7 @@
                     <th></th>
                     <th>Отчетный период</th>
                     <th>Дата отчета</th>
-                    <th>Значение (${measures[kpi.measure]})</th>
+                    <th>Значение (${measures.get(int(kpi.measure))})</th>
                     <th></th>
                 </tr>
                 </thead>

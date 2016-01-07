@@ -70,9 +70,9 @@
                     <select name="measures" id="measures" class="form-control">
                         % for one in measures.keys():
                             % if one == kpi.measure:
-                            <option value="${one}" selected>${measures[one]}</option>
+                            <option value="${one}" selected>${measures[int(one)]}</option>
                             % else:
-                            <option value="${one}">${measures[one]}</option>
+                            <option value="${one}">${measures[int(one)]}</option>
                             % endif
                         % endfor
                     </select>
