@@ -106,7 +106,7 @@
                                         ${persons[map_kpi.get(kpi).target_responsible]}
                                     </td>
                                     <td width="5%" class="text-center">
-                                        ${measures[map_kpi.get(kpi).measure]}
+                                        ${measures.get(map_kpi.get(kpi).measure)}${map_kpi.get(kpi).measure}
                                     </td>
                                     % if kpi_target_values.get(kpi):
                                     % for one in kpi_target_values.get(kpi):
