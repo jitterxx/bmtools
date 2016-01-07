@@ -2867,7 +2867,7 @@ class Maps(object):
 
         for one in map_kpi.values():
             # Считаем значения по формуле, если она есть
-            if one.formula:
+            if one and one.formula:
                 print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
                 try:
                     formula = py_expression_eval.Parser().parse(one.formula)
