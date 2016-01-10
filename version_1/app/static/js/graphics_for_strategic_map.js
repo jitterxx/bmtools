@@ -262,8 +262,6 @@ var draw_goals = {};
         if (draw_data[key]) {
             group.left = draw_data[key].left;
             group.top = draw_data[key].top;
-            group.width = draw_data[key].width;
-            group.height = draw_data[key].height;
         }
         else {
             draw_data[key] = {
