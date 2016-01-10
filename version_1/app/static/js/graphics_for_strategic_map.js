@@ -120,6 +120,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
+                  selectable: true,
                   fill: financial_map_color
             };
             var group_options = {
@@ -137,6 +138,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
+                  selectable: true,
                   fill: client_map_color
             };
             var group_options = {
@@ -154,6 +156,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
+                  selectable: true,
                   fill: process_map_color
             };
             var group_options = {
@@ -171,6 +174,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
+                  selectable: true,
                   fill: hr_map_color
             };
             var group_options = {
@@ -188,6 +192,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
+                  selectable: true,
                   fill: '#eee'
             };
             var group_options = {
