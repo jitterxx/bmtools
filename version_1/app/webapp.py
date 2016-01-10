@@ -2966,7 +2966,7 @@ class Maps(object):
 
         # Группируем мероприятия по целям и сортируем по различным условиям
         group_events = dict()
-        events_delta = dist()
+        events_delta = dict()
         for one in map_events.values():
             if group_events.get(one.linked_goal_code):  # Если такая цель уже имеет мероприятия, то добавляем новое
                 group_events[one.linked_goal_code].append(one.event_code)
