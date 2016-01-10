@@ -89,6 +89,13 @@ var draw_goals = {};
         canvas.renderAll();
     });
 
+    canvas.on ('object:scaling', function(e) {
+        if (e.target instanceof fabric.Group) {
+            console.log('scaling: ', e.target.code);
+        };
+        canvas.renderAll();
+    });
+
     canvas.on('mouse:dblclick', function(e) {
         if (e.target instanceof fabric.Group) {
             console.log('DBL click :', e.target.code);
