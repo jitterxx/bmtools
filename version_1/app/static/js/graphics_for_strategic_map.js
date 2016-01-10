@@ -98,7 +98,8 @@ var draw_goals = {};
             draw_data[p.code].top = p.top;
             draw_data[p.code].width = p.width;
             draw_data[p.code].height = p.height;
-            p.item(1).setFontSize(11);
+            console.log(p.item(1), p.item(1).fontSize);
+
         };
         canvas.renderAll();
     });
