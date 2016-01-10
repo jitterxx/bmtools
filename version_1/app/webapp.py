@@ -2547,7 +2547,7 @@ class Events(object):
             return ShowError(e)
 
         return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=goals,
-                           group_goals=group_goals)
+                           perspectives=BMTObjects.perspectives, group_goals=group_goals)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2637,7 +2637,8 @@ class Events(object):
         print "GOALS FOR EVENT: %s" % goals
 
         return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons,
-                           goals=goals, event=event, actors=actors, group_goals=group_goals)
+                           goals=goals, event=event, actors=actors, perspectives=BMTObjects.perspectives,
+                           group_goals=group_goals)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2965,12 +2966,15 @@ class Maps(object):
 
         # Группируем мероприятия по целям и сортируем по различным условиям
         group_events = dict()
+        events_delta = dist()
         for one in map_events.values():
             if group_events.get(one.linked_goal_code):  # Если такая цель уже имеет мероприятия, то добавляем новое
                 group_events[one.linked_goal_code].append(one.event_code)
             else:  # иначе создаем список, и добавлем первое
                 group_events[one.linked_goal_code] = list()
                 group_events[one.linked_goal_code].append(one.event_code)
+            # вычисляем количество дней до окончания мероприятия
+            events_delta[one.event_code] = (one.end_date - datetime.datetime.now()).days
 
         print "Show KPI for MAP: %s" % code
         print "Grouped goals: %s" % group_goals
@@ -2981,9 +2985,9 @@ class Maps(object):
 
         return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                            map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
-                           colors=BMTObjects.PERSPECTIVE_COLORS,
+                           colors=BMTObjects.PERSPECTIVE_COLORS, now=datetime.datetime.now(),
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
-                           kpi_scale=BMTObjects.KPI_SCALE_TYPE,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, events_delta=events_delta,
                            group_goals=group_goals, group_events=group_events,
                            perspectives=BMTObjects.perspectives)
 

@@ -96,7 +96,7 @@
                                         <td width="10%" class="text-center">${map_events[event].start_date.strftime('%d.%m.%Y')}</td>
                                         <td width="10%" class="text-center">${map_events[event].end_date.strftime('%d.%m.%Y')}</td>
                                         <td width="10%" class="text-center">
-                                            ${map_events[event].end_date - map_events[event].start_date}
+                                            ${events_delta.get(event)}
                                         </td>
                                         <td></td>
                                     </tr>
