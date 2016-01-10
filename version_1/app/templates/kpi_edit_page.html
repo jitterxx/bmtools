@@ -37,25 +37,43 @@
                     <select name="kpi_linked_goal" id="kpi_linked_goal" class="form-control">
                         % if not goal:
                         <option value="0" selected>Нет цели</option>
-                            % for one in cur_map_goals.keys():
-                            <option value="${one}">${cur_map_goals[one].goal_name}</option>
-                            % endfor
+                        % for p in range(0, len(group_goals)):
+                            % if group_goals[p]:
+                            <optgroup label="${perspectives.get(p)}">
+                                % for one in group_goals[p]:
+                                <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                                % endfor
+                            </optgroup>
+                            % endif
+                        % endfor
                         % elif goal.code not in cur_map_goals.keys():
                         <option value="0" selected>Нет цели</option>
-                        % for one in cur_map_goals.keys():
-                            % if one == goal.code:
-                            <option selected value="${one}">${cur_map_goals[one].goal_name}</option>
-                            %else:
-                            <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                        % for p in range(0, len(group_goals)):
+                            % if group_goals[p]:
+                            <optgroup label="${perspectives.get(p)}">
+                                % for one in group_goals[p]:
+                                    % if one == goal.code:
+                                    <option selected value="${one}">${cur_map_goals[one].goal_name}</option>
+                                    %else:
+                                    <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                                    % endif
+                                % endfor
+                            </optgroup>
                             % endif
                         % endfor
                         %else:
                         <option value="0">Нет цели</option>
-                        % for one in cur_map_goals.keys():
-                            % if one == goal.code:
-                            <option selected value="${one}">${cur_map_goals[one].goal_name}</option>
-                            %else:
-                            <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                        % for p in range(0, len(group_goals)):
+                            % if group_goals[p]:
+                            <optgroup label="${perspectives.get(p)}">
+                                % for one in group_goals[p]:
+                                    % if one == goal.code:
+                                    <option selected value="${one}">${cur_map_goals[one].goal_name}</option>
+                                    %else:
+                                    <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                                    % endif
+                                % endfor
+                            </optgroup>
                             % endif
                         % endfor
                         % endif
