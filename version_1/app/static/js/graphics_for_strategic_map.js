@@ -231,7 +231,8 @@ var draw_goals = {};
             fontFamily: 'Arial',
             originX: 'center',
             originY: 'center',
-            textAlign: 'center'
+            textAlign: 'center',
+            selectable: false
         };
 
         var text = new fabric.Text(text, text_options1);
