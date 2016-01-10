@@ -70,6 +70,7 @@
                                     <th class="text-center">Ответственный</th>
                                     <th class="text-center">Дата начала</th>
                                     <th class="text-center">Дата окончания</th>
+                                    <th class="text-center">Осталось дней до завершения</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -94,6 +95,9 @@
                                         <td width="15%" class="text-center">${persons[map_events[event].responsible]}</td>
                                         <td width="10%" class="text-center">${map_events[event].start_date.strftime('%d.%m.%Y')}</td>
                                         <td width="10%" class="text-center">${map_events[event].end_date.strftime('%d.%m.%Y')}</td>
+                                        <td width="10%" class="text-center">
+                                            ${map_events[event].end_date - map_events[event].start_date}
+                                        </td>
                                         <td></td>
                                     </tr>
                             % endfor
