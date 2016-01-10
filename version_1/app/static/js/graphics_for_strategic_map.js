@@ -92,6 +92,7 @@ var draw_goals = {};
     canvas.on('mouse:dblclick', function(e) {
         if (e.target instanceof fabric.Group) {
             console.log('DBL click :', e.target.code);
+            window.location.replace('/goals/edit?code=' + e.target.code);
         };
     });
 
