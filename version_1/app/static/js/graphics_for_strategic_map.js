@@ -78,6 +78,8 @@ var draw_goals = {};
         var p = e.target;
         draw_data[p.code].left = p.left;
         draw_data[p.code].top = p.top;
+        draw_data[p.code].width = p.width;
+        draw_data[p.code].height = p.height;
         for (var i = 0; i < p.in_lines.length; i++) {
             p.in_lines[i] && p.in_lines[i].set({ 'x2': p.left + p.width/2, 'y2': p.top + p.height/2 });
         };
@@ -260,11 +262,15 @@ var draw_goals = {};
         if (draw_data[key]) {
             group.left = draw_data[key].left;
             group.top = draw_data[key].top;
+            group.width = draw_data[key].width;
+            group.height = draw_data[key].height;
         }
         else {
             draw_data[key] = {
                 left: group.left,
-                top: group.top
+                top: group.top,
+                width: group.width,
+                height: goup.height
             };
         }
         group.centerX = group.left + group.width/2;
