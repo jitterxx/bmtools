@@ -91,9 +91,19 @@ var draw_goals = {};
         canvas.renderAll();
     });
 
+    /*
     canvas.on ('object:scaling', function(e) {
         if (e.target instanceof fabric.Group) {
             var p = e.target;
+            var goal = p.item(0);
+            canvas.delete(e);
+
+            var group = new fabric.Group([ goal, text ], group_options);
+            group.hasControls = group.hasBorders = true;
+            group.selectable = true;
+            group.code =  goals[key].code;
+            group.in_lines = [];
+            group.out_lines = [];
             draw_data[p.code].left = p.left;
             draw_data[p.code].top = p.top;
             draw_data[p.code].width = p.width;
@@ -103,6 +113,7 @@ var draw_goals = {};
         };
         canvas.renderAll();
     });
+    */
 
     canvas.on('mouse:dblclick', function(e) {
         if (e.target instanceof fabric.Group) {
