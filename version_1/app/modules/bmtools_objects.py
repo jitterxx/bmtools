@@ -214,13 +214,15 @@ def add_new_user(name=None, surname=None, login=None, passwd=None, groups=None, 
 
     session = Session()
     try:
-        resp = session.query(User).filter(User.login == login).all()
+        resp = session.query(User).filter(User.login == login).one()
     except sqlalchemy.orm.exc.NoResultFound:
         print "Пользователь c таким логином не найден. add_new_user()."
         print "Создаем нового."
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "add_new_user(). Найдено много пользователей c таким логином."
+        raise e
     else:
-        print "add_new_user(). Найден пользователь c таким логином."
-        raise Exception.message("Не могу добавить пользователя. Такой логин существует.")
+        return None
 
     new_user = User()
     new_user.name = name
@@ -237,9 +239,12 @@ def add_new_user(name=None, surname=None, login=None, passwd=None, groups=None, 
         raise e
     else:
         print "Пользователь создан add_new_user()."
+        read_user_info()
+        return new_user
     finally:
         session.close()
-        read_user_info()
+
+
 
 
 def user_update(uuid=None, name=None, surname=None, login=None, passwd=None, groups=None, status=None):

@@ -2404,11 +2404,14 @@ class Users(object):
 
         try:
             # добавляем пользователя
-            BMTObjects.add_new_user(name=str(name), surname=str(surname), login=str(login), passwd=str(passwd),
+            status = BMTObjects.add_new_user(name=str(name), surname=str(surname), login=str(login), passwd=str(passwd),
                                     status=0, groups="users")
         except Exception as e:
             print "Ошибка при попытке добавления пользователя /users/save. %s" % str(e)
             return ShowError(e)
+        # Если возвращен
+        if not status:
+            return ShowError("Такой пользователь уже существует.")
 
         raise cherrypy.HTTPRedirect(history_back())
 
