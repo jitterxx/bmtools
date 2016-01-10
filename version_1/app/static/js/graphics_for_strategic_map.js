@@ -237,7 +237,8 @@ var draw_goals = {};
         var text = new fabric.Text(text, text_options1);
 
         var group = new fabric.Group([ goal, text ], group_options);
-        group.hasControls = group.hasBorders = false;
+        group.hasControls = group.hasBorders = true;
+        group.selectable = true;
         group.code =  goals[key].code;
         group.in_lines = [];
         group.out_lines = [];
