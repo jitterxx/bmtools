@@ -53,6 +53,34 @@
                 -->
 
                 <div class="form-group">
+                    <label>Связать с целями (группы)</label>
+                    % for p in range(0, len(group_goals)):
+                        % if group_goals[p]:
+                            <h4>${perspectives.get(p)}</h4>
+                            <div style="margin-left: 2%;">
+                            % for one in group_goals[p]:
+                                %if one in linked_goals:
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="${one}" name="linked" checked>
+                                        ${cur_map_goals[one].goal_name}
+                                    </label>
+                                </div>
+                                % else:
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="${one}" name="linked">
+                                        ${cur_map_goals[one].goal_name}
+                                    </label>
+                                </div>
+                                % endif
+                            % endfor
+                        </div>
+                        % endif
+                    % endfor
+                </div>
+
+                <div class="form-group">
                     <label>Связать с целями</label>
                     % for one in cur_map_goals.keys():
                         %if one in linked_goals:

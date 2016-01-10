@@ -1628,6 +1628,7 @@ class Goals(object):
         # Удалем выбранную цель из списка целей
         goal = cur_map_goals[code]
         del cur_map_goals[code]
+        group_goals = BMTObjects.group_goals(cur_map_goals)
 
         print "Current MAP : %s" % BMTObjects.current_strategic_map
         print "Current MAP goals: %s" % cur_map_goals
@@ -1636,7 +1637,8 @@ class Goals(object):
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
-                           goal=goal, linked_goals=linked_goals, escapef=BMTObjects.escape)
+                           goal=goal, linked_goals=linked_goals, escapef=BMTObjects.escape,
+                           group_goals=group_goals)
 
     @cherrypy.expose
     @require(member_of("users"))
