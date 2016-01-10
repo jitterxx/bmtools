@@ -37,9 +37,9 @@
                     <select name="kpi_linked_goal" id="kpi_linked_goal" class="form-control">
                         % if not goal:
                         <option value="0" selected>Нет цели</option>
-                        % for one in cur_map_goals.keys():
+                            % for one in cur_map_goals.keys():
                             <option value="${one}">${cur_map_goals[one].goal_name}</option>
-                        % endfor
+                            % endfor
                         % elif goal.code not in cur_map_goals.keys():
                         <option value="0" selected>Нет цели</option>
                         % for one in cur_map_goals.keys():

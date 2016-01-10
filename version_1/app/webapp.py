@@ -1721,12 +1721,13 @@ class KPIs(object):
 
         print "Current MAP : %s" % BMTObjects.current_strategic_map
         print "Current MAP kpi: %s" % cur_map_goals
+        group_goals = BMTObjects.group_goals(cur_map_goals)
 
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
                            persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
-                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
+                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, group_goals=group_goals)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -1928,12 +1929,14 @@ class KPIs(object):
 
         # print "Current MAP : %s" % BMTObjects.current_strategic_map
         # print "Current MAP kpi: %s" % cur_map_goals
+        group_goals = BMTObjects.group_goals(cur_map_goals)
 
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
                            goal=goal, kpi=kpi, persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
-                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi)
+                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi,
+                           group_goals=group_goals)
 
     @cherrypy.expose
     @require(member_of("users"))

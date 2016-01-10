@@ -33,6 +33,7 @@
                 ${step_desc['full_description']}
             </div>
             <hr>
+            <!--
             <form action="/kpi/save" method="post">
                 <div class="form-group">
                     <label for="kpi_linked_goal">Для цели*</label>
@@ -43,8 +44,27 @@
                         <option value="${one}">${cur_map_goals[one].goal_name}</option>
                         % endfor
                     </select>
+                </div>
+                -->
+
+                <div class="form-group">
+                    <label for="kpi_linked_goal">Для цели*</label>
+                    <p class="text-muted"><small>чтобы создать операционный показатель, оставьте поле пустым</small></p>
+                    <select name="kpi_linked_goal" id="kpi_linked_goal" class="form-control" required>
+                        <option value="0" selected> </option>
+                    % for p in range(0, len(group_goals)):
+                        % if group_goals[p]:
+                        <optgroup label="${perspectives.get(p)}">
+                            % for one in group_goals[p]:
+                            <option value="${one}">${cur_map_goals[one].goal_name}</option>
+                            % endfor
+                        </optgroup>
+                        % endif
+                    % endfor
+                    </select>
 
                 </div>
+
                 <div class="form-group">
                     <label for="kpi_name">Название показателя*</label>
                     <input type="text" name="name" id="kpi_name" class="form-control" required>
