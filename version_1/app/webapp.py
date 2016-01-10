@@ -2542,10 +2542,12 @@ class Events(object):
         # Получаем список кастомных целей компании
         try:
             (goals,) = BMTObjects.load_cur_map_objects()[0:1]
+            group_goals = BMTObjects.group_goals(goals)
         except Exception as e:
             return ShowError(e)
 
-        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=goals)
+        return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons, goals=goals,
+                           group_goals=group_goals)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2625,6 +2627,7 @@ class Events(object):
         try:
             events = BMTObjects.get_events()
             (goals,) = BMTObjects.load_cur_map_objects()[0:1]
+            group_goals = BMTObjects.group_goals(goals)
         except Exception as e:
             print "/events/edit. Ошибка при открытии на редактирование EVENT: %s" % event_code
             return ShowError(e)
@@ -2634,7 +2637,7 @@ class Events(object):
         print "GOALS FOR EVENT: %s" % goals
 
         return tmpl.render(params=params, step_desc=step_desc, persons=BMTObjects.persons,
-                           goals=goals, event=event, actors=actors)
+                           goals=goals, event=event, actors=actors, group_goals=group_goals)
 
     @cherrypy.expose
     @require(member_of("users"))

@@ -39,11 +39,17 @@
                     <label for="input_goal">Цель</label>
                     <select name="goal" id="input_goal" class="form-control">
                         <option value="" selected>Не указана</option>
-                        % for one in goals.keys():
-                            % if event.linked_goal_code == goals[one].code:
-                            <option value="${one}" selected>${goals[one].goal_name}</option>
-                            % else:
-                            <option value="${one}">${goals[one].goal_name}</option>
+                        % for p in range(0, len(group_goals)):
+                            % if group_goals[p]:
+                            <optgroup label="${perspectives.get(p)}">
+                            % for one in group_goals[p]:
+                                % if event.linked_goal_code == goals[one].code:
+                                <option value="${one}" selected>${goals[one].goal_name}</option>
+                                % else:
+                                <option value="${one}">${goals[one].goal_name}</option>
+                                % endif
+                            % endfor
+                            </optgroup>
                             % endif
                         % endfor
                     </select>
