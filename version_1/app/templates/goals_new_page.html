@@ -10,6 +10,18 @@
 
 </%block>
 
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/back">
+                  Назад<span class="sr-only">(current)</span>
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
@@ -47,14 +59,22 @@
 
                 <div class="form-group">
                     <label>Связать с целями</label>
-                    % for one in cur_map_goals.keys():
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="${one}" name="linked">
-                            ${cur_map_goals[one].goal_name}
-                        </label>
-                    </div>
+                    <div style="margin-left: 2%;">
+                    % for p in range(0, len(group_goals)):
+                        % if group_goals[p]:
+                            <i>${perspectives.get(p)}</i>
+                            <div style="margin-left: 2%;">
+                            % for one in group_goals[p]:
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value="${one}" name="linked">
+                                        ${cur_map_goals[one].goal_name}
+                                    </label>
+                                </div>
+                            % endfor
+                        %endif
                     % endfor
+                    </div>
                 </div>
 
                 <div class="form-group">

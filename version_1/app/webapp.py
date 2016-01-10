@@ -1555,10 +1555,12 @@ class Goals(object):
 
         print "Current MAP : %s" % BMTObjects.current_strategic_map
         print "Current MAP goals: %s" % cur_map_goals
+        group_goals = BMTObjects.group_goals(cur_map_goals)
 
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
-                           cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives)
+                           cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
+                           group_goals=group_goals)
 
 
     @cherrypy.expose
