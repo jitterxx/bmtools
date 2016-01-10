@@ -91,7 +91,13 @@ var draw_goals = {};
 
     canvas.on ('object:scaling', function(e) {
         if (e.target instanceof fabric.Group) {
-            console.log('scaling: ', e.target.code);
+            var p = e.target;
+            draw_data[p.code].left = p.left;
+            draw_data[p.code].top = p.top;
+            draw_data[p.code].width = p.width;
+            draw_data[p.code].height = p.height;
+            console.log('scaling: ', p.code);
+            p.item(0).fontSize = 11;
         };
         canvas.renderAll();
     });
