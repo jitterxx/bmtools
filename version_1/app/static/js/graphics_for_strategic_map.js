@@ -268,9 +268,7 @@ var draw_goals = {};
         else {
             draw_data[key] = {
                 left: group.left,
-                top: group.top,
-                width: group.width,
-                height: goup.height
+                top: group.top
             };
         }
         group.centerX = group.left + group.width/2;
