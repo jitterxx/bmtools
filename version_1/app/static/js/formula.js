@@ -21,18 +21,20 @@ function SendOperation(e) {
     var kpi = document.getElementById('formula_kpi');
     var number = document.getElementById('number');
 
-    console.log('Выбрана: ', e.id, kpi.value);
+
     if (e.id == 'add_var') {
+        console.log('Выбрана: ', e.id, kpi.value);
         old_formula = formula;
         formula.value = old_formula.value + ' ' + kpi.value;
         old_view = view;
         kpi_name =  document.getElementById(kpi.value);
         view.innerHTML = old_view.innerHTML + ' ' + kpi_name.innerHTML;
     } else if (e.id == 'add_number') {
+        console.log('Выбрана: ', e.id, number.value);
         old_formula = formula;
         formula.value = old_formula.value + ' ' + number.value;
         old_view = view;
-        view.innerHTML = old_view.innerHTML + ' ' + number.innerHTML;
+        view.innerHTML = old_view.innerHTML + ' ' + number.value;
     } else {
         old_formula = formula;
         formula.value = old_formula.value + ' ' + e.value;
