@@ -2208,6 +2208,78 @@ class KPIs(object):
         else:
             raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % code)
 
+    @cherrypy.expose
+    @require(member_of("users"))
+    def copy(self, code=None):
+        """
+        Создаем копию показателя
+
+        :param code: код показателя, который надо скопировать
+        :return:
+        """
+
+        kpi_fields = dict()
+        kpi_target = dict()
+
+        try:
+            kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code)
+            kpi_linked_goal = BMTObjects.load_custom_links(for_kpi=code)
+            kpi_fields['name'] = str(kpi.name)
+            kpi_fields['description'] = str(kpi.description)
+            kpi_fields['formula'] = str(kpi.formula)
+            kpi_fields['link_to_desc'] = str(kpi.link_to_desc)
+            kpi_fields['measure'] = int(kpi.measure)
+            kpi_fields['target_responsible'] = int(kpi.target_responsible)
+            kpi_fields['fact_responsible'] = int(kpi.fact_responsible)
+            kpi_fields['cycle'] = int(kpi.cycle)
+            kpi_fields['data_source'] = str(kpi.data_source)
+            kpi_fields['kpi_scale_type'] = int(kpi.kpi_scale_type)
+        except Exception as e:
+            print "Copy KPI. Ошибка при обработке параметров запроса. %s" % str(e)
+            return ShowError(e)
+
+        try:
+            # Записываем новый показатель и ждем возврата его кода
+            status = BMTObjects.create_new_custom_kpi(kpi_fields)
+        except Exception as e:
+            print "Copy KPI. Ошибка при создании CUSTOM KPI. %s" % str(e)
+            return ShowError(e)
+        else:
+            # привязываем новый показатель к цели
+            if kpi_linked_goal.code == "0":
+                print "Copy KPI. Операционный показатель. Возвращаемся обратно."
+                raise cherrypy.HTTPRedirect(history_back())
+            else:
+                print "Copy KPI. Стратегический показатель. Создаем связь с целью и целевые значения."
+                try:
+                    BMTObjects.create_custom_link_kpi_to_goal(kpi_linked_goal.code, status[1])
+                except Exception as e:
+                    print "Copy KPI. Ошибка при создании связи KPI to GOAL. %s" % str(e)
+                    return ShowError(e)
+
+                # Получаем целевые значения для оригинала
+                # Если они есть - копируем  в новый, если нет - ничего не делаем
+                try:
+                    kpi_target = BMTObjects.get_kpi_target_value(kpi_code=code)
+                except Exception as e:
+                    print "Copy KPI. Ошибка при получении целевых значений. %s" % str(e)
+                    return ShowError(e)
+
+                if kpi_target:
+                    for one in kpi_target:
+                        kpi_target['kpi_code'] = str(status[1])
+                        kpi_target['date'] = one.date
+                        kpi_target['period_code'] = one.period_code
+                        kpi_target['period_name'] = one.period_name
+                        try:
+                            BMTObjects.save_kpi_target_value(kpi_target)
+                        except Exception as e:
+                            print "Copy KPI. Ошибка при копировании KPI TARGET. %s" % str(e)
+                            return ShowError(e)
+
+            raise cherrypy.HTTPRedirect("/kpi/edit?code=%s" % status[1])
+
+
 
 class MotivationCard():
 
