@@ -2238,6 +2238,11 @@ class KPIs(object):
             print "Copy KPI. Ошибка при обработке параметров запроса. %s" % str(e)
             return ShowError(e)
 
+        if not kpi_linked_goal or not kpi:
+            print "Copy KPI. Пустые значения KPI и KPI_LINKED_GOAL."
+            return ShowError("Ошибка при копировании. Не найдены данные или не указана связанная цель, для KPI: %s"
+                             % code)
+
         try:
             # Записываем новый показатель и ждем возврата его кода
             status = BMTObjects.create_new_custom_kpi(kpi_fields)
@@ -2246,13 +2251,13 @@ class KPIs(object):
             return ShowError(e)
         else:
             # привязываем новый показатель к цели
-            if kpi_linked_goal.code == "0":
+            if kpi_linked_goal.goal_code == "0":
                 print "Copy KPI. Операционный показатель. Возвращаемся обратно."
                 raise cherrypy.HTTPRedirect(history_back())
             else:
                 print "Copy KPI. Стратегический показатель. Создаем связь с целью и целевые значения."
                 try:
-                    BMTObjects.create_custom_link_kpi_to_goal(kpi_linked_goal.code, status[1])
+                    BMTObjects.create_custom_link_kpi_to_goal(kpi_linked_goal.goal_code, status[1])
                 except Exception as e:
                     print "Copy KPI. Ошибка при создании связи KPI to GOAL. %s" % str(e)
                     return ShowError(e)
