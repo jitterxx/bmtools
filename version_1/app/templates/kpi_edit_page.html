@@ -126,14 +126,14 @@
                                                     % endfor
                                                     % endif
                                                 </optgroup>
-                                                <optgroup label="Операционные показатели">
-                                                    % for one in map_opkpi.values():
-                                                    <option id="${one.code}" value="${one.code}">${one.name}</option>
-                                                    % endfor
-                                                </optgroup>
                                                 % endfor
                                             % endif
                                         % endfor
+                                        <optgroup label="Операционные показатели">
+                                            % for one in map_opkpi.values():
+                                            <option id="${one.code}" value="${one.code}">${one.name}</option>
+                                            % endfor
+                                        </optgroup>
                                     </select>
 
                                     <div class="input-group-addon" role="button" id="add_var" onclick="SendOperation(this);">
@@ -148,6 +148,14 @@
                                 <button type="button" class="btn btn-default" id="mult" value="*" onclick="SendOperation(this);">*</button>
                                 <button type="button" class="btn btn-default" id="div" value="/" onclick="SendOperation(this);">/</button>
                                 <button type="button" class="btn btn-default" id="off" value=")" onclick="SendOperation(this);">)</button>
+                            </td>
+                            <td width="20%" class="text-center">
+                                <div class="input-group">
+                                    <input id="number" value="" >
+                                    <div class="input-group-addon" role="button" id="add_number" onclick="SendOperation(this);">
+                                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <tr>

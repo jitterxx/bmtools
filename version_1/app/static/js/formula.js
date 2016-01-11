@@ -19,6 +19,7 @@ function SendOperation(e) {
     var formula = document.getElementById('formula_text');
     var view = document.getElementById('formula_view');
     var kpi = document.getElementById('formula_kpi');
+    var number = document.getElementById('number');
 
     console.log('Выбрана: ', e.id, kpi.value);
     if (e.id == 'add_var') {
@@ -27,6 +28,11 @@ function SendOperation(e) {
         old_view = view;
         kpi_name =  document.getElementById(kpi.value);
         view.innerHTML = old_view.innerHTML + ' ' + kpi_name.innerHTML;
+    } else if (e.id == 'add_number') {
+        old_formula = formula;
+        formula.value = old_formula.value + ' ' + number.value;
+        old_view = view;
+        view.innerHTML = old_view.innerHTML + ' ' + number.innerHTML;
     } else {
         old_formula = formula;
         formula.value = old_formula.value + ' ' + e.value;
