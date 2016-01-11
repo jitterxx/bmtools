@@ -2222,7 +2222,7 @@ class KPIs(object):
         kpi_target = dict()
 
         try:
-            kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code)
+            kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code)[1]
             kpi_linked_goal = BMTObjects.load_custom_links(for_kpi=code)
             kpi_fields['name'] = str(kpi.name)
             kpi_fields['description'] = str(kpi.description)
@@ -2262,7 +2262,7 @@ class KPIs(object):
                 try:
                     kpi_target = BMTObjects.get_kpi_target_value(kpi_code=code)
                 except Exception as e:
-                    print "Copy KPI. Ошибка при получении целевых значений. %s" % str(e)
+                    print "Copy KPI. Ошибка при получении KPI TARGET. %s" % str(e)
                     return ShowError(e)
 
                 if kpi_target:
