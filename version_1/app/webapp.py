@@ -813,7 +813,7 @@ class Wizard(object):
         return tmpl.render(params=params, step_desc=step_desc, industry=BMTObjects.def_industry,
                            status=status, wiz_conf=wiz_conf,op_status=op_status)
 
-    @cherrypy.expose
+    @cherrypy.expose(['orgstructure'])
     @require(member_of("users"))
     def step2(self, action=None, org_id=None, parentid=None, org_name=None, director=None):
         tmpl = lookup.get_template("wizard_step2_page.html")
@@ -1923,20 +1923,27 @@ class KPIs(object):
                 goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code="0")
             print "kpi", kpi.code
             print "goal", goal
+            group_goals = BMTObjects.group_goals(cur_map_goals)
         except Exception as e:
             print "Ошибка при открытии на редактирование показателя %s. Ошибка: %s " % (code, str(e.args))
             return ShowError(e)
 
         # print "Current MAP : %s" % BMTObjects.current_strategic_map
         # print "Current MAP kpi: %s" % cur_map_goals
-        group_goals = BMTObjects.group_goals(cur_map_goals)
+
+        try:
+            # Загружаем связи цель - показатели
+            lined_kpi = BMTObjects.load_custom_links()[1]
+        except Exeption as e:
+            print "Ошибка при загрузке данных для редактирования показателя %s. Ошибка: %s " % (code, str(e.args))
+            return ShowError(e)
 
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
                            goal=goal, kpi=kpi, persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi,
-                           group_goals=group_goals)
+                           group_goals=group_goals, lined_kpi=lined_kpi)
 
     @cherrypy.expose
     @require(member_of("users"))
