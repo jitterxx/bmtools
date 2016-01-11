@@ -114,34 +114,23 @@
                         <tr>
                             <td width="20%">
                                 <div class="input-group">
-
-                                <select id="formula_kpi1"  class="form-control">
-                                    <option selected value=""></option>
-                                    % for p in range(0, len(group_goals)):
-                                        % if group_goals[p]:
-                                        <optgroup label="${perspectives.get(p)}">
-                                            % for one in group_goals[p]:
-                                            <optgroup label="${cur_map_goals[one].goal_name}">
-                                                % if linked_kpi.get(one):
-                                                % for one2 in linked_kpi.get(one):
-                                                <option id="${one2}" value="${one2}">${map_kpi.get(one2).name}</option>
+                                    <select id="formula_kpi"  class="form-control">
+                                        <option selected value=""></option>
+                                        % for p in range(0, len(group_goals)):
+                                            % if group_goals[p]:
+                                                % for one in group_goals[p]:
+                                                <optgroup label="${cur_map_goals[one].goal_name}">
+                                                    % if linked_kpi.get(one):
+                                                    % for one2 in linked_kpi.get(one):
+                                                    <option id="${one2}" value="${one2}">${map_kpi.get(one2).name}</option>
+                                                    % endfor
+                                                    % endif
+                                                </optgroup>
                                                 % endfor
-                                                % endif
-                                            </optgroup>
-                                            % endfor
-                                        </optgroup>
-                                        % endif
-                                    % endfor
-                                </select>
+                                            % endif
+                                        % endfor
+                                    </select>
 
-                                <select id="formula_kpi"  class="form-control">
-                                    <option selected value=""></option>
-                                    % for one in map_kpi.values():
-                                        % if one:
-                                        <option id="${one.code}" value="${one.code}">${one.name}</option>
-                                        % endif
-                                    % endfor
-                                </select>
                                     <div class="input-group-addon" role="button" id="add_var" onclick="SendOperation(this);">
                                         <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
                                     </div>
