@@ -2219,7 +2219,6 @@ class KPIs(object):
         """
 
         kpi_fields = dict()
-        kpi_target = dict()
 
         try:
             kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code)[1]
@@ -2272,12 +2271,13 @@ class KPIs(object):
 
                 if kpi_target:
                     for one in kpi_target:
-                        kpi_target['kpi_code'] = str(status[1])
-                        kpi_target['date'] = one.date
-                        kpi_target['period_code'] = one.period_code
-                        kpi_target['period_name'] = one.period_name
+                        target = dict()
+                        target['kpi_code'] = str(status[1])
+                        target['date'] = one.date
+                        target['period_code'] = one.period_code
+                        target['period_name'] = one.period_name
                         try:
-                            BMTObjects.save_kpi_target_value(kpi_target)
+                            BMTObjects.save_kpi_target_value(target)
                         except Exception as e:
                             print "Copy KPI. Ошибка при копировании KPI TARGET. %s" % str(e)
                             return ShowError(e)
