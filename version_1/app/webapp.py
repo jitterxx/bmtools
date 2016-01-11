@@ -1921,8 +1921,7 @@ class KPIs(object):
             raise cherrypy.HTTPRedirect(history.pop())
 
         try:
-            cur_map_goals = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[0]
-            (map_kpi, ) = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)[1:2]
+            cur_map_goals, map_kpi, events, map_opkpi = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)
             # Возвращает цель или None
             g = BMTObjects.load_custom_links(for_kpi=code)
             if g:
@@ -1951,7 +1950,7 @@ class KPIs(object):
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
                            goal=goal, kpi=kpi, persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi,
-                           group_goals=group_goals, linked_kpi=linked_kpi)
+                           group_goals=group_goals, linked_kpi=linked_kpi, map_opkpi=map_opkpi)
 
     @cherrypy.expose
     @require(member_of("users"))
