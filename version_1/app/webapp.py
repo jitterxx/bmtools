@@ -813,7 +813,7 @@ class Wizard(object):
         return tmpl.render(params=params, step_desc=step_desc, industry=BMTObjects.def_industry,
                            status=status, wiz_conf=wiz_conf,op_status=op_status)
 
-    @cherrypy.expose(['orgstructure'])
+    @cherrypy.expose
     @require(member_of("users"))
     def step2(self, action=None, org_id=None, parentid=None, org_name=None, director=None):
         tmpl = lookup.get_template("wizard_step2_page.html")
@@ -1532,6 +1532,14 @@ class Library(object):
         return tmpl.render(current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            step_desc=step_desc, lib_goals=lib_goals, lib_kpi=lib_kpi, events=events,
                            custom_kpi=custom_kpi, custom_goals=custom_goals, perspectives=BMTObjects.perspectives)
+
+
+class OrgStructure(object):
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def index(self):
+        cherrypy.HTTPRedirect("/wizard/step2")
 
 
 class Goals(object):
@@ -3145,6 +3153,7 @@ class Root(object):
     events = Events()
     maps = Maps()
     settings = Settings()
+    orgstructure = OrgStructure()
 
     @cherrypy.expose
     @require(member_of("users"))
