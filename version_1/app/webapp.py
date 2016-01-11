@@ -1539,7 +1539,7 @@ class OrgStructure(object):
     @cherrypy.expose
     @require(member_of("users"))
     def index(self):
-        cherrypy.HTTPRedirect("/wizard/step2")
+        raise cherrypy.HTTPRedirect("/wizard/step2")
 
 
 class Goals(object):
