@@ -125,7 +125,9 @@
                                                 <optgroup label="${cur_map_goals[one].goal_name}">
                                                     % if linked_kpi.get(one):
                                                     % for one2 in linked_kpi.get(one):
+                                                    % if map_kpi.get(one2):
                                                     <option id="${one2}" value="${one2}">${map_kpi.get(one2).name}</option>
+                                                    % endif
                                                     % endfor
                                                     % endif
                                                 </optgroup>
