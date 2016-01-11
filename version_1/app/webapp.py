@@ -1933,7 +1933,7 @@ class KPIs(object):
 
         try:
             # Загружаем связи цель - показатели
-            lined_kpi = BMTObjects.load_custom_links()[1]
+            linked_kpi = BMTObjects.load_custom_links()[1]
         except Exeption as e:
             print "Ошибка при загрузке данных для редактирования показателя %s. Ошибка: %s " % (code, str(e.args))
             return ShowError(e)
@@ -1943,7 +1943,7 @@ class KPIs(object):
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
                            goal=goal, kpi=kpi, persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi,
-                           group_goals=group_goals, lined_kpi=lined_kpi)
+                           group_goals=group_goals, linked_kpi=linked_kpi)
 
     @cherrypy.expose
     @require(member_of("users"))
