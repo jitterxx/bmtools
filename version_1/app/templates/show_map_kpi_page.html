@@ -67,7 +67,7 @@
                 <div style="margin-left: 2%;">
                 % if group_goals[p]:
                 % for goal in group_goals[p]:
-                    <h4 style="color: ${colors[p]}">${map_goals.get(goal).goal_name}</h4>
+                    <h4 id="${map_goals.get(goal).code}" style="color: ${colors[p]}">${map_goals.get(goal).goal_name}</h4>
                     % if custom_kpi_links.get(goal):
                     <div style="margin-left: 2%;">
                         <table class="table table-hover">
@@ -85,7 +85,7 @@
                                 <tr style="color: ${colors[p]}">
                                     <td width="2%">
                                         <div class="dropdown">
-                                            <a href="${map_kpi.get(kpi).code}"></a>
+                                            <a href="#${map_kpi.get(kpi).code}"></a>
                                             <a id="${map_kpi.get(kpi).code}" data-toggle="dropdown" role="button"
                                                    aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
                                                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>

@@ -1908,7 +1908,7 @@ class KPIs(object):
     @cherrypy.expose
     @require(member_of("users"))
     def edit(self, code=None):
-        # выводим страницу редактирования показателя, без целевых значений 0 это отдельный этап
+        # выводим страницу редактирования показателя, без целевых значений, это отдельный этап
         print "EDIT KPI."
         tmpl = lookup.get_template("kpi_edit_page.html")
         step_desc = dict()
@@ -1945,6 +1945,7 @@ class KPIs(object):
             print "Ошибка при загрузке данных для редактирования показателя %s. Ошибка: %s " % (code, str(e.args))
             return ShowError(e)
 
+        add_to_history("/maps/kpi#%s" % goal.code)
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
@@ -1980,6 +1981,7 @@ class KPIs(object):
         print "Goal for KPI: %s" % goal
         print "Current KPI TARGETS: %s" % target_values
 
+        add_to_history("/maps/kpi#%s" % goal.code)
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            kpi=kpi, target_values=target_values, goal=goal, perspectives=BMTObjects.perspectives,
@@ -2182,7 +2184,6 @@ class KPIs(object):
 
         raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % kpi_code)
 
-
     @cherrypy.expose
     @require(member_of("users"))
     def delete_target(self, code=None, period_code=None):
@@ -2275,6 +2276,7 @@ class KPIs(object):
                         target['date'] = one.date
                         target['period_code'] = one.period_code
                         target['period_name'] = one.period_name
+                        target['first_value'] = one.first_value
                         try:
                             BMTObjects.save_kpi_target_value(target)
                         except Exception as e:
@@ -2284,9 +2286,7 @@ class KPIs(object):
             raise cherrypy.HTTPRedirect("/kpi/edit?code=%s" % status[1])
 
 
-
-class MotivationCard():
-
+class MotivationCard(object):
 
     @cherrypy.expose
     @require(member_of("users"))
