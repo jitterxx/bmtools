@@ -62,3 +62,33 @@ function Reset() {
     formula.value = "";
     view.innerHTML = "";
 };
+
+function LoadFormula() {
+    var formula = document.getElementById('formula_text');
+    var view = document.getElementById('formula_view');
+    var formula_list = formula.value.split(" ");
+    var formula_text = ""
+
+    for (var code in formula_list){
+        if (formula_list[code] && document.getElementById(formula_list[code])) {
+            var kpi = document.getElementById(formula_list[code]);
+            formula_text += kpi.innerHTML;
+        }
+        else {
+            formula_text += " " + formula_list[code] + " ";
+        };
+    };
+    // console.log(formula_text);
+
+    view.innerHTML = formula_text;
+
+};
+
+function Backspace() {
+    var formula = document.getElementById('formula_text');
+    var formula_list = formula.value.split(" ");
+    formula_list.pop();
+    console.log(formula_list);
+    formula.value = formula_list.join(" ");
+    LoadFormula();
+};

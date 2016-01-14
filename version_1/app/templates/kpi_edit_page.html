@@ -166,19 +166,22 @@
                         <tr>
                             <td colspan="3">
                                 <br>
-                                <input name="formula" id="formula_text" value="${kpi.formula}" class="form-control" type="hidden"/>
+                                <input name="formula" id="formula_text" value="${kpi.formula}" class="form-control"
+                                       type="hidden"/>
                                 <div class="well">
                                     <p id="formula_view">${kpi.formula}</p>
                                 </div>
+                                <script>
+                                    LoadFormula();
+                                </script>
                             </td>
                         </tr>
                         <tr>
-                            <td><!--
-                                <button type="button" class="btn btn-default" onclick="Save();">Сохранить</button>
-                                -->
-                            </td>
                             <td class="text-right">
-                                <button type="button" class="btn btn-default"  onclick="Reset();">Очистить</button>
+                                <button type="button" class="btn btn-default"  onclick="Reset();">Очистить все</button>
+                            </td>
+                            <td class="text-right" colspan="2">
+                                <button type="button" class="btn btn-default"  onclick="Backspace();">Удалить последнюю операцию</button>
                             </td>
                         </tr>
                         </tbody>
