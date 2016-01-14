@@ -86,7 +86,7 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="/kpi/editstage2?code=${one.code}">Целевые значения</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="/kpi/copy?code=${kpi}">Создать копию</a></li>
+                            <li><a href="/kpi/copy?code=${one.code}">Создать копию</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="/kpi/delete?code=${one.code}">Удалить из карты</a></li>
                         </ul>
@@ -98,17 +98,17 @@
                     </td>
                     <td width="5%">${measures[one.measure]}</td>
                     % if kpi_target_values.get(one.code):
-                    % for t in kpi_target_values.get(one.code):
-                    <td width="8%" class="text-center">
-                        % if one.code in fval.keys():
-                        <small class="text-muted">
-                            по формуле<br>${"{:,}".format(fval[one.code].get(t.period_code))}
-                        </small><br>
-                        % endif
-                        ${"{:,}".format(t.first_value)}<br>
-                        <small class="text-muted">${t.period_name}</small>
-                    </td>
-                    % endfor
+                        % for t in kpi_target_values.get(one.code):
+                        <td width="8%" class="text-center">
+                            % if one.code in fval.keys():
+                            <small class="text-muted">
+                                по формуле<br>${"{:,}".format(fval[one.code].get(t.period_code))}
+                            </small><br>
+                            % endif
+                            ${"{:,}".format(t.first_value)}<br>
+                            <small class="text-muted">${t.period_name}</small>
+                        </td>
+                        % endfor
                     % endif
 
                     <td></td>

@@ -1945,7 +1945,10 @@ class KPIs(object):
             print "Ошибка при загрузке данных для редактирования показателя %s. Ошибка: %s " % (code, str(e.args))
             return ShowError(e)
 
-        add_to_history("/maps/kpi#%s" % goal.code)
+        if goal:
+            add_to_history("/maps/kpi#%s" % goal.code)
+        else:
+            add_to_history("/maps/kpi#%s" % kpi.code)
         return tmpl.render(step_desc=step_desc,
                            current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
                            cur_map_goals=cur_map_goals, perspectives=BMTObjects.perspectives,
@@ -3229,24 +3232,24 @@ class Maps(object):
         group_goals = BMTObjects.group_goals(map_goals)
 
         print "Show KPI for MAP: %s" % code
-        print "MAP goals: %s " % map_goals
-        print "MAP kpi: %s " % map_kpi
-        print "MAP linked goals: %s" % custom_linked_goals
+        #print "MAP goals: %s " % map_goals
+        #print "MAP kpi: %s " % map_kpi
+        #print "MAP linked goals: %s" % custom_linked_goals
         print "OPKPI : %s" % map_opkpi
-        print "KPI links: %s" % custom_kpi_links
+        #print "KPI links: %s" % custom_kpi_links
         print "KPI formula values: %s" % kpi_target_formula_values
         print "KPI targets: %s" % kpi_target_values
-        print "Grouped goals: %s" % group_goals
+        #print "Grouped goals: %s" % group_goals
 
         # ДОбавляем в историю посещение страницы
         add_to_history(href="/maps/opkpi")
 
         return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
-                           map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
+                           map_opkpi=map_opkpi,
                            colors=BMTObjects.PERSPECTIVE_COLORS,
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
-                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
-                           kpi_target_values=kpi_target_values, group_goals=group_goals,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE,
+                           kpi_target_values=kpi_target_values,
                            perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
 
 
