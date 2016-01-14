@@ -70,10 +70,9 @@
                     <h4 id="${map_goals.get(goal).code}" style="color: ${colors[p]}">${map_goals.get(goal).goal_name}</h4>
                     % if custom_kpi_links.get(goal):
                     <div style="margin-left: 2%;">
-                        <table class="table table-hover">
+                        <table class="table table-hover" border="0">
                             <thead>
                             <tr class="text-center">
-                                <th></th>
                                 <th>Название</th>
                                 <th class="text-center">Ответственный</th>
                                 <th class="text-center">Единицы</th>
@@ -82,54 +81,114 @@
                             </thead>
                             <tbody>
                         % for kpi in custom_kpi_links[goal]:
-                                <tr style="color: ${colors[p]}">
-                                    <td width="2%">
-                                        <div class="dropdown">
-                                            <a href="#${map_kpi.get(kpi).code}"></a>
-                                            <a id="${map_kpi.get(kpi).code}" data-toggle="dropdown" role="button"
-                                                   aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
-                                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                                                </a>
-                                            <ul class="dropdown-menu" aria-labelledby="dLabel">
-                                                <li><a href="/kpi/edit?code=${kpi}">Свойства</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li><a href="/kpi/editstage2?code=${kpi}">Целевые значения</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li><a href="/kpi/copy?code=${kpi}">Создать копию</a></li>
-                                                <li role="separator" class="divider"></li>
-                                                <li><a href="/kpi/delete?code=${kpi}">Удалить из карты</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>
-                                    <td width="20%" >
-                                        ${map_kpi.get(kpi).name}
-                                    </td>
-                                    <td width="10%" class="text-center">
-                                        ${persons[map_kpi.get(kpi).target_responsible]}
-                                    </td>
-                                    <td width="5%" class="text-center">
-                                        ${measures.get(int(map_kpi.get(kpi).measure))}
-                                    </td>
-                                    % if kpi_target_values.get(kpi):
-                                    % for one in kpi_target_values.get(kpi):
-                                    <td width="8%" class="text-center">
-                                        % if kpi in fval.keys():
-                                        <small class="text-muted">
-                                            по формуле<br>
-                                            %if map_kpi.get(kpi).measure == 1:
-                                            ${"{:,}".format(fval[kpi].get(one.period_code)*100)}
-                                            % else:
-                                            ${"{:,}".format(fval[kpi].get(one.period_code))}
-                                            % endif
-                                        </small><br>
-                                        % endif
-                                        ${"{:,}".format(one.first_value)}<br>
-                                        <small class="text-muted">${one.period_name}</small>
-                                    </td>
-                                    % endfor
+                            <tr style="color: ${colors[p]}">
+                                <td width="30%" >
+                                    <div class="dropdown">
+                                        <a href="${map_kpi.get(kpi).code}"></a>
+                                        <a id="${map_kpi.get(kpi).code}" data-toggle="dropdown" role="button"
+                                               aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
+                                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                    ${map_kpi.get(kpi).name}
+                                            </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                            <li><a href="/kpi/edit?code=${kpi}">Свойства</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="/kpi/editstage2?code=${kpi}">Целевые значения</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="/kpi/copy?code=${kpi}">Создать копию</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="/kpi/delete?code=${kpi}">Удалить из карты</a></li>
+                                        </ul>
+                                    </div>
+                                    % if formula_kpi.get(kpi):
+                                    <small class="text-muted">Для этого показателя есть формула</small>
                                     % endif
-                                    <td></td>
-                                </tr>
+                                </td>
+                                <td width="10%" class="text-center">
+                                    ${persons[map_kpi.get(kpi).target_responsible]}
+                                </td>
+                                <td width="5%" class="text-center">
+                                    ${measures.get(int(map_kpi.get(kpi).measure))}
+                                </td>
+                                % if kpi_target_values.get(kpi):
+                                % for one in kpi_target_values.get(kpi):
+                                <td width="8%" class="text-center">
+                                    % if kpi in fval.keys():
+                                    <small class="text-muted">
+                                        по формуле<br>
+                                        %if map_kpi.get(kpi).measure == 1:
+                                        ${"{:,}".format(fval[kpi].get(one.period_code)*100)}
+                                        % else:
+                                        ${"{:,}".format(fval[kpi].get(one.period_code))}
+                                        % endif
+                                    </small><br>
+                                    % endif
+                                    ${"{:,}".format(one.first_value)}<br>
+                                    <small class="text-muted">${one.period_name}</small>
+                                </td>
+                                % endfor
+                                % endif
+                                <td></td>
+                            </tr>
+                        % if kpi in depended_kpi.keys():
+                        % for i in range(0, len(depended_kpi[kpi]['kpi'])):
+                        <%
+                            dkpi = depended_kpi[kpi]['kpi'][i]
+                            shift = depended_kpi[kpi]['shift'][i]
+                        %>
+                        <tr style="color: ${colors[p]}">
+                            <td width="30%">
+                                <div style="margin-left: ${shift*5}%">
+                                <div class="dropdown">
+                                    <a href="${map_kpi.get(dkpi).code}"></a>
+                                    <a id="${map_kpi.get(dkpi).code}" data-toggle="dropdown" role="button"
+                                           aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
+                                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                                    ${map_kpi.get(dkpi).name}
+                                        </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                        <li><a href="/kpi/edit?code=${dkpi}">Свойства</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="/kpi/editstage2?code=${dkpi}">Целевые значения</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="/kpi/copy?code=${dkpi}">Создать копию</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="/kpi/delete?code=${dkpi}">Удалить из карты</a></li>
+                                    </ul>
+                                </div>
+                                % if formula_kpi.get(dkpi):
+                                <small class="text-muted">для этого показателя указана формула</small>
+                                % endif
+                                </div>
+                            </td>
+                            <td width="10%" class="text-center">
+                                ${persons[map_kpi.get(dkpi).target_responsible]}
+                            </td>
+                            <td width="5%" class="text-center">
+                                ${measures.get(int(map_kpi.get(dkpi).measure))}
+                            </td>
+                            % if kpi_target_values.get(dkpi):
+                            % for one in kpi_target_values.get(dkpi):
+                            <td width="8%" class="text-center">
+                                % if dkpi in fval.keys():
+                                <small class="text-muted">
+                                    по формуле<br>
+                                    %if map_kpi.get(dkpi).measure == 1:
+                                    ${"{:,}".format(fval[dkpi].get(one.period_code)*100)}
+                                    % else:
+                                    ${"{:,}".format(fval[dkpi].get(one.period_code))}
+                                    % endif
+                                </small><br>
+                                % endif
+                                ${"{:,}".format(one.first_value)}<br>
+                                <small class="text-muted">${one.period_name}</small>
+                            </td>
+                            % endfor
+                            % endif
+                            <td></td>
+                        </tr>
+                        % endfor
+                        % endif
                         % endfor
                             </tbody>
                         </table>

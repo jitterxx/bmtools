@@ -2940,7 +2940,7 @@ class Maps(object):
                            perspectives=BMTObjects.perspectives)
 
     @cherrypy.expose
-    @require(member_of("users"))
+    # @require(member_of("users"))
     def kpi(self, code=None):
         step_desc = dict()
         step_desc['full_description'] = ""
@@ -2965,6 +2965,8 @@ class Maps(object):
 
         kpi_target_values = dict()
         kpi_target_formula_values = dict()
+        formula_kpi = dict()
+
         for one in map_kpi.keys():
             target = BMTObjects.get_kpi_target_value(one)
             if target:
@@ -2979,6 +2981,7 @@ class Maps(object):
                 except Exception as e:
                     print "Формула некорректная. %s" % str(e)
                 else:
+                    formula_kpi[one.code] = formula.variables()
                     fsum = dict()
                     var = dict()
                     for e in kpi_target_values[one.code]:
@@ -3002,7 +3005,7 @@ class Maps(object):
                             print "Предупреждение! Нет целевых значений показателя %s для расчета по формуле" \
                                   " показателя %s" % (v, one.code)
 
-                    print var
+                    # print var
 
                     for e in kpi_target_values[one.code]:
                         try:
@@ -3016,25 +3019,91 @@ class Maps(object):
         group_goals = BMTObjects.group_goals(map_goals)
 
         print "Show KPI for MAP: %s" % code
-        print "MAP goals: %s " % map_goals
-        print "MAP kpi: %s " % map_kpi
-        print "MAP linked goals: %s" % custom_linked_goals
-        print "OPKPI : %s" % map_opkpi
-        print "KPI links: %s" % custom_kpi_links
-        print "KPI formula values: %s" % kpi_target_formula_values
-        print "KPI targets: %s" % kpi_target_values
-        print "Grouped goals: %s" % group_goals
+        #print "MAP goals: %s " % map_goals
+        #print "MAP kpi: %s " % map_kpi
+        #print "MAP linked goals: %s" % custom_linked_goals
+        #print "OPKPI : %s" % map_opkpi
+        #print "KPI links: %s" % custom_kpi_links
+        #print "KPI formula values: %s" % kpi_target_formula_values
+        #print "KPI targets: %s" % kpi_target_values
+        #print "Grouped goals: %s" % group_goals
+        print "Formula KPI: %s " % formula_kpi
 
         # ДОбавляем в историю посещение страницы
         add_to_history(href="/maps/kpi")
 
+        # Для каждого показателя который содержит формулы, формируем список показатлей внутри формулы
+        # для каждого показателя внутри формулы проверяем тоже самое. В результате должно получиться 2 списка
+        # сдвиг - равен уровню вложенности показателя в формуле, список показателей связанный с их включеним в формулы
+        kpi2 = list()
+        shift2 = list()
+
+        def shift(kpi, shift1):
+            shift1 += 1
+            print "Работаем с KPI: %s, сдвиг: %s" % (kpi,shift1)
+            # рекурсивная функция, заполняет списки подчиненных показателей если формула содержит вложения
+            if kpi in formula_kpi.keys():
+                print "Есть формула для KPI: %s" % kpi
+                kpi2.append(kpi)
+                shift2.append(shift1)
+                print "KPI2: %s SHIFT2: %s" % (kpi2, shift2)
+                # есть формула для этого показателя
+                # для каждого ее члена проверяем наличие формулы в formula_key
+                for var1 in formula_kpi.get(kpi):
+                    # запускаем рекурсию для каждого показателя в формуле
+                    sh, lkp = shift(var1, shift1)
+                    if sh and lkp:
+                        kpi2.append(lkp)
+                        shift2.append(sh)
+            else:
+                # нет формулы для показателя
+                print "Нет формулы для KPI: %s" % kpi
+                return shift1, kpi
+
+            return None, None
+
+        # shift("kp50f5", 0)
+
+
+        # исключаем из списка вывода показатели, которые входят в формулы других показателей. Они будут отображены
+        # другим способом
+        temp = dict()
+        depended_kpi = dict()
+        for goal in custom_kpi_links.keys():
+            temp[goal] = list()
+            for kpi in custom_kpi_links[goal]:
+                # формируем список входяих в формулу показателей
+                kpi2 = list()
+                shift2 = list()
+                shift(kpi, 0)
+                if kpi2 and shift2:
+                    depended_kpi[kpi] = {"shift": list(), "kpi": list()}
+                    depended_kpi[kpi]["shift"] = shift2[1:]
+                    depended_kpi[kpi]["kpi"] = kpi2[1:]
+                    print "For KPI %s grouped by formula kpi: %s \n Shifts: %s" % (kpi, kpi2, shift2)
+                # проверяем наличие каждого показателя во всех формулах
+                check = True
+                for fk in formula_kpi.values():
+                    # если он есть хотя бы в одной форуле, исключаем
+                    if kpi in fk:
+                        check = False
+                        print "Исключен KPI: %s" % kpi
+                if check:
+                    temp[goal].append(kpi)
+                    print "Оставлен KPI: %s" % kpi
+
+        custom_kpi_links = temp
+
+        print depended_kpi
+
         return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
                            map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
-                           colors=BMTObjects.PERSPECTIVE_COLORS,
+                           colors=BMTObjects.PERSPECTIVE_COLORS, formula_kpi=formula_kpi,
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                            kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                            kpi_target_values=kpi_target_values, group_goals=group_goals,
-                           perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values)
+                           perspectives=BMTObjects.perspectives, fval=kpi_target_formula_values,
+                           depended_kpi=depended_kpi)
 
 
     @cherrypy.expose
