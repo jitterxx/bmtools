@@ -101,7 +101,8 @@
                                         </ul>
                                     </div>
                                     % if formula_kpi.get(kpi):
-                                    <small class="text-muted">Для этого показателя есть формула</small>
+                                    <small class="text-muted">Для этого показателя есть формула.
+                                        Ниже выведены показатели которые в нее входят.</small>
                                     % endif
                                 </td>
                                 <td width="10%" class="text-center">
@@ -136,6 +137,7 @@
                             dkpi = depended_kpi[kpi]['kpi'][i]
                             shift = depended_kpi[kpi]['shift'][i]
                         %>
+                        % if map_kpi.get(dkpi):
                         <tr style="color: ${colors[p]}">
                             <td width="30%">
                                 <div style="margin-left: ${shift*5}%">
@@ -157,7 +159,8 @@
                                     </ul>
                                 </div>
                                 % if formula_kpi.get(dkpi):
-                                <small class="text-muted">для этого показателя указана формула</small>
+                                <small class="text-muted">Для этого показателя указана формула.
+                                Ниже выведены показатели которые в нее входят.</small>
                                 % endif
                                 </div>
                             </td>
@@ -187,6 +190,7 @@
                             % endif
                             <td></td>
                         </tr>
+                        % endif
                         % endfor
                         % endif
                         % endfor
