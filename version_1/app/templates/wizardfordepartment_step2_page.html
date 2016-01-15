@@ -6,64 +6,137 @@
 
 </%block>
 
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/wizardfordepartment/start?code=${current_map.code}">
+                  Шаг 1. Начало
+              </a>
+          </li>
+          <li class="active">
+              <a href="/wizardfordepartment/step2">
+                  Шаг 2. Цели
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step3">
+                  Шаг 3. Цели из библиотеки
+              </a>
+          </li>
+          <li class="separator divider">
+              <hr>
+          </li>
+          <li>
+              <a href="/goals/new">
+                  Добавить новую цель
+              </a>
+          </li>
+          <li class="separator divider">
+              <hr>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step${step_desc['next_step']}">
+                  Следующий шаг
+              </a>
+          </li>
+          <li>
+              <a href="/back">
+                  Назад
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
-        <div class="col-lg-8 col-md-6 col-sm-6">
+        <div class="col-lg-12 col-md-12 col-sm-12">
             <h1>${step_desc['name']}</h1>
-            <h3>Описание</h3>
+            <h3></h3>
             ${step_desc['full_description']}
-            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
             <h3>Цели компании</h3>
             <form method="post" action="/wizardfordepartment/step2add">
-            <table class="table table-condensed table-hover">
-                <tbody>
-                % for i in ent_goals.keys():
-                    <tr>
-                        <td width="5%" align="center">
-                            % if i in cur_map_goals.keys():
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" value=${ent_goals[i].code} name="ent_goals" checked readonly>
-                                </label>
-                            </div>
-                            %else:
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" value=${ent_goals[i].code} name="ent_goals">
-                                </label>
-                            </div>
-                            % endif
-                        </td>
-                        <td>
-                            <h4>
-                                ${ent_goals[i].goal_name}
-                                <small></small>
-                            </h4>
-                            <p>${ent_goals[i].description}</p>
-                        </td>
-                    </tr>
+                % for p in range(0, len(ent_grouped_goals)):
+                    % if ent_grouped_goals[p]:
+                    <h4 style="color: ${colors[p]}">${perspectives[p]}</h4>
+                    <table class="table table-condensed table-hover" border="0">
+                        <tbody>
+                        % for i in ent_grouped_goals[p]:
+                            <tr>
+                                <td width="5%" align="center">
+                                    % if i in cur_map_goals.keys():
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value=${ent_goals[i].code} name="ent_goals" checked readonly>
+                                        </label>
+                                    </div>
+                                    %else:
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value=${ent_goals[i].code} name="ent_goals">
+                                        </label>
+                                    </div>
+                                    % endif
+                                </td>
+                                <td>
+                                    <h4 style="color: ${colors[p]}">
+                                        ${ent_goals[i].goal_name}
+                                        <small></small>
+                                    </h4>
+                                    <p class="text-muted">${ent_goals[i].description}</p>
+                                </td>
+                            </tr>
+                        % endfor
+                        </tbody>
+                    </table>
+
+                    % endif
                 % endfor
-                </tbody>
-            </table>
                 <hr>
-                <button type="submit" class="btn btn-default">Добавить выделенные в карту подразделения</button>
+                <button id="add_dep" type="submit" class="btn btn-default">Добавить выделенные в карту подразделения</button>
             </form>
-
-            <h3>Цели подразделения</h3>
-            % if cur_map_goals.keys():
-                % for one in cur_map_goals.keys():
-                    <p>${cur_map_goals[one].goal_name}</p>
-                % endfor
-
-            % else:
-                <p>Цели не заданы.</p>
-            % endif
             <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step2new" role="button">Создать новую цель</a>
-            <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Дальше</a>
+            <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">
+                Следующий шаг
+            </a>
         </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <h3>Цели подразделения</h3>
+            % for p in range(0, len(map_grouped_goals)):
+                <h4 style="color: ${colors[p]}">${perspectives[p]}</h4>
+                <table class="table table-condensed table-hover" border="0">
+                    <tbody>
+                % if map_grouped_goals[p]:
+                    % for i in map_grouped_goals[p]:
+                        <tr>
+                            <td width="5%" align="center"></td>
+                            <td>
+                                <h4 style="color: ${colors[p]}">
+                                    ${cur_map_goals[i].goal_name}
+                                    <small></small>
+                                </h4>
+                                <p class="text-muted">${cur_map_goals[i].description}</p>
+                            </td>
+                        </tr>
+                    % endfor
+                % else:
+                        <tr>
+                            <td width="5%" align="center"></td>
+                            <td>Цели не заданы.</td>
+                        </tr>
+                    </div>
+                % endif
+                    </tbody>
+                </table>
+            % endfor
+        </div>
+
     </div>
 
 

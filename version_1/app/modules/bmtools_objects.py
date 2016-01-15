@@ -615,11 +615,7 @@ def get_structure_sorted():
         session.close()
 
 
-
-
-
-
-def get_org_structure():
+def get_org_structure(org_id=None):
     """
     Возвращает структуру организации.
 
@@ -627,6 +623,25 @@ def get_org_structure():
     """
 
     session = Session()
+    # если указан org_id, то возвращаем только указанную орг единицу. Если не найдено, то None
+    if org_id:
+        try:
+            resp = session.query(OrgStucture).filter(OrgStucture.id == int(org_id)).one()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "get_org_structure. Ничего не найдено."+str(e)
+            return None
+        except sqlalchemy.orm.exc.MultipleResultsFound as e:
+            print "get_org_structure. Найдено много объектов с ID = %s. Ошибка: %s" % (org_id, str(e))
+            return None
+        except Exception as e:
+            print "Ошибка при поиске организационноых единиц. " + str(e)
+            return None
+        else:
+            return resp
+        finally:
+            session.close()
+
+
     try:
         resp = session.query(OrgStucture).all()
     except Exception as e:

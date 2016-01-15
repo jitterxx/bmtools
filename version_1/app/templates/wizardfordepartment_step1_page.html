@@ -6,6 +6,23 @@
 
 </%block>
 
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/wizardfordepartment/step${step_desc['next_step']}">
+                  Следующий шаг
+              </a>
+          </li>
+          <li>
+              <a href="/back">
+                  Назад
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
@@ -78,12 +95,16 @@
                 <p>Не заданы.</p>
             % endif
             </div>
+            <!--
             <hr>
             <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить цель</a>
             <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить показатель</a>
             <a class="btn btn-default" href="/wizardfordepartment/step2" role="button">Добавить мероприятие</a>
+            -->
             <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">Дальше</a>
+            <a class="btn btn-default" href="/wizardfordepartment/step${step_desc['next_step']}" role="button">
+                Следующий шаг
+            </a>
         </div>
     </div>
 
