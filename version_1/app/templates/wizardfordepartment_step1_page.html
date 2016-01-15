@@ -9,6 +9,49 @@
 <%block name="menu">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
+          <li class="disabled">
+              <a href="/wizardfordepartment">
+                  Мастер для подразделения
+              </a>
+          </li>
+          <li class="active">
+              <a href="/wizardfordepartment/start?code=${current_map.code}">
+                  Шаг 1. Начало
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step2">
+                  Шаг 2. Добавить цели
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step3">
+                  Шаг 3. Добавить цели из библиотеки
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step4">
+                  Шаг 4. Добавить связанные цели
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step5">
+                  Шаг 5. Добавить показатели
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step6">
+                  Шаг 6. Добавить мероприятия
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step7">
+                  Шаг 7. Завершение
+              </a>
+          </li>
+          <li class="separator divider">
+              <hr>
+          </li>
           <li>
               <a href="/wizardfordepartment/step${step_desc['next_step']}">
                   Следующий шаг
@@ -27,7 +70,6 @@
 
     <div class="row">
         <div class="col-lg-8 col-md-6 col-sm-6">
-            <h1>${step_desc['name']}</h1>
             <h3>Описание</h3>
             <div style="margin-left: 2%;">
                 ${step_desc['full_description']}
@@ -35,31 +77,26 @@
             <hr>
             <h3>Цели</h3>
             <div style="margin-left: 2%;">
-            % if custom_goals.keys():
-                % for one in custom_goals.keys():
-                    <p class=
-                        % if custom_goals[one].perspective == 0:
-                        "text-success"
-                        % elif custom_goals[one].perspective == 1:
-                        "text-danger"
-                        %else:
-                        "text-default"
-                        %endif
-                        ">
-                        ${custom_goals[one].goal_name}
-                        %if custom_goals[one].type == 1:
-                            <a href="/wizardfordepartment/step1remove?code=${custom_goals[one].code}"
-                               type="button" class="btn btn-warning btn-xs">Убрать из карты</a>
-                        % elif custom_goals[one].type == 0:
-                            <a href="/wizardfordepartment/step1remove?code=${custom_goals[one].code}"
-                               type="button" class="btn btn-warning btn-xs">Убрать из карты</a>
+            % for p in range(0, len(grouped_goals)):
+                <h4 style="color: ${colors[p]}">${perspectives[p]}</h4>
+                % if grouped_goals[p]:
+                    % for one in grouped_goals[p]:
+                    <div style="margin-left: 2%;">
+                        <p style="color: ${colors[p]}">${custom_goals[one].goal_name}</p>
+                        % if kpi_linked_goals.get(one):
+                            % for kpi in kpi_linked_goals.get(one):
+                            <div style="margin-left: 2%;">
+                                <p style="color: ${colors[p]}">${custom_kpi.get(kpi).name}</p>
+                            </div>
+                            % endfor
                         % endif
+                    </div>
+                    % endfor
+                % else:
+                <div style="margin-left: 2%;">Цели не заданы.</div>
+                % endif
+            % endfor
 
-                    </p>
-                % endfor
-            % else:
-                <p>Цели не заданы.</p>
-            % endif
             </div>
             <hr>
             <h3>Показатели</h3>

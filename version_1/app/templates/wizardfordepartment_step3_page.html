@@ -14,9 +14,10 @@
             ${step_desc['full_description']}
             <form method="post" action="/wizardfordepartment/step3save" id="add_lib_goals">
                 <h3>Цели из библиотеки</h3>
+                <div style="margin-left: 2%;">
                 % for p in range(0, len(lib_grouped_goals)):
-                    % if lib_grouped_goals[p]:
                     <h4 style="color: ${colors[p]}">${perspectives[p]}</h4>
+                    % if lib_grouped_goals[p]:
                     <table class="table">
                         <tbody>
                         % for g in lib_grouped_goals[p]:
@@ -40,10 +41,15 @@
                         % endfor
                         </tbody>
                     </table>
+                    % else:
+                    <div style="margin-left: 2%;">
+                        <h5>Нет целей.</h5>
+                    </div>
                     % endif
                 % endfor
-
-                <h3>Цели созданные самостоятельно</h3>
+                </div>
+                <h3>Цели созданные на предыдущих шагах, но не использованные</h3>
+                <div style="margin-left: 2%;">
                 % for p in range(0, len(all_grouped_goals)):
                     % if all_grouped_goals[p]:
                     <h4 style="color: ${colors[p]}">${perspectives[p]}</h4>
@@ -75,6 +81,7 @@
                     </table>
                     % endif
                 % endfor
+                </div>
                 <button type="submit" class="btn btn-default">Сохранить</button>
             </form>
             <hr>

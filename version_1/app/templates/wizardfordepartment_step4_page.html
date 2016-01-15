@@ -9,34 +9,87 @@
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-8">
+        <div class="col-lg-12 col-md-12 col-sm-12">
             <h1>${step_desc['name']}</h1>
-            <h3>Описание</h3>
-            <div style="margin-left: 3%;">
-                ${step_desc['full_description']}
+            ${step_desc['full_description']}
+            <h3>Выбранные цели:</h3>
+            <div style="margin-left: 2%;">
+            % for p in range(0, len(grouped_goals)):
+                <h4 style="color: ${colors[p]}">${perspectives[p]}</h4>
+                % if grouped_goals[p]:
+                <div style="margin-left: 2%;">
+                    % for one in grouped_goals[p]:
+                    <p>${map_custom_goals.get(one).goal_name}</p>
+                    % endfor
+                </div>
+                % endif
+            % endfor
+
             </div>
-            <h3>
-                ${step_desc['subheader']}
-                <small></small>
-            </h3>
+
+            <h3>${step_desc['subheader']}</h3>
+
+
+            <form method="post" action="/wizardfordepartment/step4save" id="picked_goals">
+                <div style="margin-left: 2%;">
+                   <table class="table">
+                       <tbody>
+                       % for one in lib_missing_goals.keys():
+                                <tr>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="${one}" name="picked_lib_goals">
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                        ${lib_goals[one].goal_name}
+                                        <small> (связана с
+                                        % for g in lib_missing_goals[one]:
+                                            "${lib_goals[g].goal_name}",
+                                        % endfor
+                                            )</small>
+                                        </h4>
+                                        <p>${lib_goals[one].description}</p>
+                                    </td>
+                                </tr>
+                       % endfor
+                       </tbody>
+                   </table>
+
+                   <table class="table">
+                       <tbody>
+                       % for one in custom_missing_goals.keys():
+                                <tr>
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" value="${one}" name="picked_custom_goals">
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <h4>
+                                        ${all_custom_goals[one].goal_name}
+                                        <small> (связана с
+                                        % for g in custom_missing_goals[one]:
+                                            "${all_custom_goals[g].goal_name}",
+                                        % endfor
+                                            )</small>
+                                        </h4>
+                                        <p>${all_custom_goals[one].description}</p>
+                                    </td>
+                                </tr>
+                       % endfor
+                       </tbody>
+                   </table>
+                    <button type="submit" class="btn btn-default">Добавить выбранные</button>
+                </div>
+            </form>
             <hr>
-            <a class="btn btn-default" href="/wizardfordepartment/step4new" role="button">Создать новое</a>
-            <hr>
-            <div style="margin-left: 3%;">
-            % if map_custom_events:
-                % for e in map_custom_events.values():
-                    <p>
-                        ${e.name} - ${map_custom_goals[e.linked_goal_code].goal_name}
-                        <a role="button" class="btn btn-xs btn-warning"  href="step4edit?event_code=${e.event_code}">Редактировать</a>
-                        <a role="button" class="btn btn-xs btn-danger" href="step4delete?event_code=${e.event_code}">Удалить</a>
-                    </p>
-                % endfor
-            % else:
-                Нет мероприятий.
-            % endif
-            </div>
-            <hr>
-            <a class="btn btn-default btn-block" href="/wizardfordepartment/${step_desc['next_step']}" role="button">Дальше</a>
+            <a class="btn btn-default" href="/wizardfordepartment/${step_desc['next_step']}" role="button">Следующий шаг</a>
         </div>
     </div>
 
