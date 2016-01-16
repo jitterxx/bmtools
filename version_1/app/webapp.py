@@ -2174,15 +2174,16 @@ class KPIs(object):
 
             kpi_target = dict()
             start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
-            print "Количество периодов: %s" % int(plan_period)
-            print "Стартовая дата: %s" % start_date
+            # print "Количество периодов: %s" % int(plan_period)
+            # print "Стартовая дата: %s" % start_date
             period_date = dict()
             period_name = dict()
 
             for one in range(1, int(plan_period) + 1):
-                print "Период: %s" % one
-                period_date[one] = datetime.datetime(start_date.year + (start_date.month / 12),
-                                                     ((start_date.month % 12) + one), 1)
+                # print "Период: %s" % one
+
+                period_date[one] = datetime.datetime(start_date.year + (one // 12),
+                                                     ((start_date.month % 12) + one) - 12*(one // 12), 1)
                 if (period_date[one].month - 1) == 0:
                     period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
                                        str(period_date[one].year - 1)
@@ -2190,8 +2191,8 @@ class KPIs(object):
                     period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
                                        str(period_date[one].year)
 
-                print "Отчетная дата периода: %s" % period_date[one]
-                print "Название отчетного периода: %s" % period_name[one]
+                # print "Отчетная дата периода: %s" % period_date[one]
+                # print "Название отчетного периода: %s" % period_name[one]
 
             # Считаем даты периодов, создаем записи для KPI Target
             # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
@@ -2211,9 +2212,9 @@ class KPIs(object):
 
         if kpi_code and period_code and target_value:
             # Обновляем значения
-            print kpi_code
-            print period_code
-            print target_value
+            # print kpi_code
+            # print period_code
+            # print target_value
 
             kpi_target = dict()
             kpi_target['kpi_code'] = str(kpi_code)
