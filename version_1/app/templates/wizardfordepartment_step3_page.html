@@ -6,6 +6,67 @@
 
 </%block>
 
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li class="disabled">
+              <a href="/wizardfordepartment">
+                  Мастер для подразделения
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/start?code=${current_map.code}">
+                  Шаг 1. Начало
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step2">
+                  Шаг 2. Добавить цели
+              </a>
+          </li>
+          <li class="active">
+              <a href="/wizardfordepartment/step3">
+                  Шаг 3. Добавить цели из библиотеки
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step4">
+                  Шаг 4. Добавить связанные цели
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step5">
+                  Шаг 5. Добавить показатели
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step6">
+                  Шаг 6. Добавить мероприятия
+              </a>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step7">
+                  Шаг 7. Завершение
+              </a>
+          </li>
+          <li class="separator divider">
+              <hr>
+          </li>
+          <li>
+              <a href="/wizardfordepartment/step${step_desc['next_step']}">
+                  Следующий шаг
+              </a>
+          </li>
+          <li>
+              <a href="/back">
+                  Назад
+              </a>
+          </li>
+      </ul>
+    </div>
+</%block>
+
+
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
     <div class="row">
