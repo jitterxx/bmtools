@@ -100,7 +100,7 @@
                     <label for="measures">Единица измерения*</label>
                     <select name="measures" id="measures" class="form-control">
                         % for one in measures.keys():
-                            % if one == kpi.measure:
+                            % if int(one) == int(kpi.measure):
                             <option value="${one}" selected>${measures[int(one)]}</option>
                             % else:
                             <option value="${one}">${measures[int(one)]}</option>
