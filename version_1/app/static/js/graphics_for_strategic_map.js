@@ -91,29 +91,16 @@ var draw_goals = {};
         canvas.renderAll();
     });
 
-    /*
     canvas.on ('object:scaling', function(e) {
+        var p = e.target;
         if (e.target instanceof fabric.Group) {
-            var p = e.target;
             var goal = p.item(0);
-            canvas.delete(e);
-
-            var group = new fabric.Group([ goal, text ], group_options);
-            group.hasControls = group.hasBorders = true;
-            group.selectable = true;
-            group.code =  goals[key].code;
-            group.in_lines = [];
-            group.out_lines = [];
-            draw_data[p.code].left = p.left;
-            draw_data[p.code].top = p.top;
-            draw_data[p.code].width = p.width;
-            draw_data[p.code].height = p.height;
-            console.log(p.item(1), p.item(1).fontSize);
-
+            console.log("rect", p.item(0).width, p.item(0).height);
+            console.log("text", p.item(1).width, p.item(1).height);
         };
+        //console.log(p);
         canvas.renderAll();
     });
-    */
 
     canvas.on('mouse:dblclick', function(e) {
         if (e.target instanceof fabric.Group) {
@@ -146,7 +133,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
-                  selectable: true,
+                  selectable: false,
                   fill: financial_map_color
             };
             var group_options = {
@@ -164,7 +151,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
-                  selectable: true,
+                  selectable: false,
                   fill: client_map_color
             };
             var group_options = {
@@ -182,7 +169,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
-                  selectable: true,
+                  selectable: false,
                   fill: process_map_color
             };
             var group_options = {
@@ -200,7 +187,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
-                  selectable: true,
+                  selectable: false,
                   fill: hr_map_color
             };
             var group_options = {
@@ -218,7 +205,7 @@ var draw_goals = {};
                   rx: 5,
                   width: 2*radius,
                   height: radius,
-                  selectable: true,
+                  selectable: false,
                   fill: '#eee'
             };
             var group_options = {
@@ -263,8 +250,17 @@ var draw_goals = {};
 
         var text = new fabric.Text(text, text_options1);
 
+        // расширяем размеры квадратов, если текст не помещается
+        if (goal.width - text.width < 5) {
+            goal.width = text.width + 20;
+        }
+        // увеличиваем высоту квадратов, если текст не помещается
+        if (goal.height - text.height < 5) {
+            goal.height = text.height + 20;
+        }
+
         var group = new fabric.Group([ goal, text ], group_options);
-        group.hasControls = group.hasBorders = true;
+        group.hasControls = group.hasBorders = false;
         group.selectable = true;
         group.code =  goals[key].code;
         group.in_lines = [];

@@ -101,8 +101,7 @@
                                         </ul>
                                     </div>
                                     % if formula_kpi.get(kpi):
-                                    <small class="text-muted">Для этого показателя есть формула.
-                                        Ниже выведены показатели которые в нее входят.</small>
+                                    <small class="text-muted">Для этого показателя есть формула</small>
                                     % endif
                                 </td>
                                 <td width="10%" class="text-center">
@@ -116,7 +115,7 @@
                                 <td width="8%" class="text-center">
                                     % if kpi in fval.keys():
                                     <small class="text-muted">
-                                        по формуле<br>
+
                                         %if map_kpi.get(kpi).measure == 1:
                                         ${"{:,}".format(fval[kpi].get(one.period_code)*100)}
                                         % else:
@@ -159,8 +158,7 @@
                                     </ul>
                                 </div>
                                 % if formula_kpi.get(dkpi):
-                                <small class="text-muted">Для этого показателя указана формула.
-                                Ниже выведены показатели которые в нее входят.</small>
+                                <small class="text-muted">Для этого показателя указана формула</small>
                                 % endif
                                 </div>
                             </td>
@@ -175,7 +173,7 @@
                             <td width="8%" class="text-center">
                                 % if dkpi in fval.keys():
                                 <small class="text-muted">
-                                    по формуле<br>
+
                                     %if map_kpi.get(dkpi).measure == 1:
                                     ${"{:,}".format(fval[dkpi].get(one.period_code)*100)}
                                     % else:
