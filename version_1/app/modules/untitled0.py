@@ -15,7 +15,7 @@ import bmtools_objects as BMTObjects
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
-
+"""
 start_date = "01.01.2016"
 plan_period = 18
 start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
@@ -42,4 +42,7 @@ for one in range(1, int(plan_period) + 1):
     print "Название отчетного периода: %s" % period_name[one]
     print "Отчетная дата периода: %s" % period_date[one]
     print "-----------------------------------------------------"
+"""
 
+#BMTObjects.create_auto_target_values("kp79c4")
+BMTObjects.calculate_auto_target_values(for_kpi="kp79c4", for_period=1012016)

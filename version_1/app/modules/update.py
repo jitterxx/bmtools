@@ -48,6 +48,10 @@ sql5 = "CREATE TABLE `motivation_card_data` (  `id` int(11) NOT NULL AUTO_INCREM
        ") ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;"
 
 
+sql6 = "ALTER TABLE `kpi_target_values` ADD COLUMN `formula` VARCHAR(256) NULL AFTER `second_value`;"
+
+
+
 connection = BMTObjects.Engine.connect()
 # result = connection.execute(sql)
 # print result
@@ -92,6 +96,14 @@ else:
 
 try:
     result = connection.execute(sql5)
+except Exception as e:
+    print e.message, e.args
+else:
+    print result
+
+# Добавление поля формула в целевые значения для вычисления квартальны, полу и годовых показателей автоматически
+try:
+    result = connection.execute(sql6)
 except Exception as e:
     print e.message, e.args
 else:
