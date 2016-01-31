@@ -1938,6 +1938,7 @@ class KPIs(object):
         kpi_target['kpi_code'] = str(kpi_code)
         kpi_target['period_code'] = str(re.split("_",period_code)[1])
         kpi_target['first_value'] = float(target_value)
+        kpi_target['second_value'] = float(target_value)
         try:
             BMTObjects.save_kpi_target_value(kpi_target)
         except Exception as e:
@@ -2184,6 +2185,7 @@ class KPIs(object):
             kpi_target['kpi_code'] = str(kpi_code)
             kpi_target['period_code'] = str(re.split("_",period_code)[1])
             kpi_target['first_value'] = float(target_value)
+            kpi_target['second_value'] = float(target_value)
             try:
                 BMTObjects.save_kpi_target_value(kpi_target)
             except Exception as e:
