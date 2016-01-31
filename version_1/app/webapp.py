@@ -3079,7 +3079,6 @@ class Maps(object):
         except Exception as e:
             return ShowError(e)
 
-
         try:
             custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
         except Exception as e:
@@ -3134,6 +3133,24 @@ class Maps(object):
                             fsum[e.period_code] = formula.evaluate(var[e.period_code])
                         except ZeroDivisionError:
                             fsum[e.period_code] = 0
+                        else:
+                            # сохраняем расчитанные по формуле значения в second_value KPITargetValues
+                            kpi_target = dict()
+                            kpi_target['kpi_code'] = str(one.code)
+                            kpi_target['period_code'] = str(e.period_code)
+                            kpi_target['second_value'] = float(fsum[e.period_code])
+                            try:
+                                BMTObjects.save_kpi_target_value(kpi_target)
+                            except Exception as e:
+                                print "Ошибка при обновлении KPI TARGET. /maps/kpi(). %s" % str(e)
+                                # return ShowError(e)
+                            else:
+                                # пересчет для авто периодов целевых значений
+                                try:
+                                    BMTObjects.calculate_auto_target_values(for_kpi=str(one.code))
+                                except Exception as e:
+                                    print "Ошибка при вычислении AUTO KPI for TARGET. /maps/kpi(). %s" % str(e)
+                                    # return ShowError(e)
 
                     kpi_target_formula_values[one.code] = fsum
 

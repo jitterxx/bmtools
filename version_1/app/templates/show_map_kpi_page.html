@@ -112,7 +112,14 @@
                                 </td>
                                 % if kpi_target_values.get(kpi):
                                 % for one in kpi_target_values.get(kpi):
+                                    % if one.first_value != 0 and one.first_value != one.second_value:
+                                <td width="8%" class="text-center"  bgcolor="#FFFFCC">
+                                    % else:
                                 <td width="8%" class="text-center">
+                                    % endif
+
+                                    <%doc>
+                                    <!--
                                     % if kpi in fval.keys():
                                     <small class="text-muted">
 
@@ -123,8 +130,14 @@
                                         % endif
                                     </small><br>
                                     % endif
+                                    -->
+                                    </%doc>
+
                                     ${"{:,}".format(one.first_value)}<br>
-                                    <small class="text-muted">${one.period_name}</small>
+                                    <small class="text-muted">
+                                        ${"{:,}".format(one.second_value)}<br>
+                                        ${one.period_name}
+                                    </small>
                                 </td>
                                 % endfor
                                 % endif
@@ -170,10 +183,16 @@
                             </td>
                             % if kpi_target_values.get(dkpi):
                             % for one in kpi_target_values.get(dkpi):
+                                % if one.first_value == one.second_value:
                             <td width="8%" class="text-center">
+                                % else:
+                            <td width="8%" class="text-center" bgcolor="#eee;">
+                                % endif
+
+                                <%doc>
+                                <!--
                                 % if dkpi in fval.keys():
                                 <small class="text-muted">
-
                                     %if map_kpi.get(dkpi).measure == 1:
                                     ${"{:,}".format(fval[dkpi].get(one.period_code)*100)}
                                     % else:
@@ -181,8 +200,13 @@
                                     % endif
                                 </small><br>
                                 % endif
+                                -->
+                                </%doc>
                                 ${"{:,}".format(one.first_value)}<br>
-                                <small class="text-muted">${one.period_name}</small>
+                                <small class="text-muted">
+                                    ${"{:,}".format(one.second_value)}<br>
+                                    ${one.period_name}
+                                </small>
                             </td>
                             % endfor
                             % endif

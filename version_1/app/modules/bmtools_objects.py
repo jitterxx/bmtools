@@ -2158,8 +2158,8 @@ def save_kpi_target_value(kpi_target_value):
 
     session = Session()
     print "SAVE target values"
-    for key in kpi_target_value.keys():
-        print key, ":", kpi_target_value[key]
+    # for key in kpi_target_value.keys():
+    #    print key, ":", kpi_target_value[key]
 
     # check exist
     try:
@@ -2437,7 +2437,7 @@ def calculate_auto_target_values(for_kpi=None, for_period=None):
                         variables[v] = 0
                         print v.split("_")[1]
                         if target.get(int(v.split("_")[1])):
-                            variables[v] = target.get(int(v.split("_")[1])).first_value
+                            variables[v] = target.get(int(v.split("_")[1])).second_value
                             print v, " : ", variables[v]
 
                     try:

@@ -180,7 +180,15 @@
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                             </a>
                         </td>
-                        <td width="20%">${one.period_name} (№${one.period_code} )</td>
+                        <td width="20%">
+                            ${one.period_name} (№${one.period_code} )
+                        %if one.formula:
+                            <small class="text-muted">Показатель рассчитывается автоматически.
+                            Вы можете указать значений вручную, но оно будет использоваться
+                                только для информирования.
+                            </small>
+                        % endif
+                        </td>
                         <td width="10%">${one.date.strftime('%d.%m.%Y')}</td>
                         <td width="20%">
                             <div class="form-group">
@@ -189,6 +197,12 @@
                                        onchange="SendTargetValue('period_${one.period_code}');"
                                        onfocus="ChangeColor('period_${one.period_code}');">
                             </div>
+                        %if one.formula:
+                            <small class="text-muted">
+                                <b>${one.second_value}</b> - значение рассчитаное по формуле
+                            </small>
+                        % endif
+
                         </td>
                         <td></td>
                     </tr>
