@@ -2407,6 +2407,92 @@ class KPIs(object):
 
             raise cherrypy.HTTPRedirect("/kpi/edit?code=%s" % status[1])
 
+    @cherrypy.expose
+    #@require(member_of("users"))
+    def fact(self, code=None):
+        # Редактирование фактических значений для показателя
+        tmpl = lookup.get_template("kpi_fact_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Фактические значения"
+        step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
+
+        try:
+            # Возвращает цель или None
+            target_values = BMTObjects.get_kpi_target_value(code)
+            print "target_values"
+            fact_values = BMTObjects.get_kpi_fact_values(code)
+            print fact_values
+            goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code)
+            print "goal, kpi"
+        except Exception as e:
+            print "/kpi/fact(). Ошибка при получении фактических значений показателя. KPI : %s. %s " % (code, str(e))
+            return ShowError(e)
+
+        add_to_history("/maps/kpi#%s" % code)
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           target_values=target_values, perspectives=BMTObjects.perspectives,
+                           persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
+                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES,
+                           fact_values=fact_values, kpi=kpi)
+
+    @cherrypy.expose
+    #@require(member_of("users"))
+    def add_fact(self, kpi_code=None, fact_value=None, fact_date=None, period_code=None):
+        """
+        Сохраняем фактические данные показателя
+
+        :param kpi_code:
+        :param fact_value:
+        :param fact_date:
+        :param period_code:
+        :return:
+        """
+
+        print kpi_code
+        print period_code
+        print fact_value
+        print fact_date
+
+        kpi_fact = dict()
+        if kpi_code and fact_date and fact_value and period_code:
+            kpi_fact['kpi_code'] = str(kpi_code)
+            kpi_fact['fact_value'] = float(fact_value)
+            kpi_fact['create_date'] = datetime.datetime.strptime(fact_date, "%d.%m.%Y").date()
+        else:
+            print "Не указаны параметры для сохранения факта. /kpi/add_fact()"
+            raise ShowError("Не указаны параметры для сохранения факта.")
+
+        if period_code:
+            # добавляем в конкретный период
+            kpi_fact['period'] = int(period_code)
+        else:
+            # сначала надо определить период
+            try:
+                fact_period = BMTObjects.get_fact_period_code(for_kpi=kpi_code, date=fact_date)
+            except Exception as e:
+                s = "Ошибка при получении периода для даты фактического показателя. /kpi/add_fact(). %s" % str(e)
+                print s
+                raise ShowError(s)
+            else:
+                kpi_fact['period'] = int(fact_period)
+
+        try:
+            BMTObjects.save_kpi_fact_value(kpi_fact)
+        except Exception as e:
+            print "Ошибка при сохранении KPI FACT. /kpi/add_fact(). %s" % str(e)
+            return ShowError(e)
+        else:
+            # пересчет значений для авто периодов фактических значений
+            try:
+                BMTObjects.calculate_auto_fact_values(for_kpi=str(kpi_code))
+            except Exception as e:
+                print "Ошибка при вычислении AUTO KPI FACT. /kpi/add_fact. %s" % str(e)
+                return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/kpi/fact?code=%s" % kpi_code)
+
 
 class MotivationCard(object):
 

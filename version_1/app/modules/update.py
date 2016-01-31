@@ -51,6 +51,8 @@ sql5 = "CREATE TABLE `motivation_card_data` (  `id` int(11) NOT NULL AUTO_INCREM
 sql6 = "ALTER TABLE `kpi_target_values` ADD COLUMN `formula` VARCHAR(256) NULL AFTER `second_value`;" \
        "UPDATE `kpi_target_values` SET `second_value`= `first_value` WHERE id >0;"
 
+sql7 = "DROP TABLE `fact_value`;"
+
 connection = BMTObjects.Engine.connect()
 # result = connection.execute(sql)
 # print result
@@ -108,6 +110,18 @@ except Exception as e:
     print e.message, e.args
 else:
     print result
+
+# Подготовка БД для хранения фактических результатов
+try:
+    result = connection.execute(sql7)
+except Exception as e:
+    print e.message, e.args
+else:
+    print result
+
+BMTObjects.create_tables()
+
+
 
 
 connection.close()

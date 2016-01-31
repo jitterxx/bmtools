@@ -2463,17 +2463,116 @@ def calculate_auto_target_values(for_kpi=None, for_period=None):
     session.close()
 
 
-class FactValue(Base):
+class KPIFactValue(Base):
     """
     Хранит фактические значения метрик.
     """
-    __tablename__ = "fact_value"
+    __tablename__ = "fact_values"
 
     id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
     kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
-    metric_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
     fact_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
-    date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+    create_date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+    period = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+
+    def __init__(self):
+        self.kpi_code = ""
+        self.fact_value = 0
+        self.create_date = datetime.datetime.now()
+        self.period = ""
+        self.version = 0
+
+
+def get_kpi_fact_values(for_kpi=None):
+    """
+    Функция возвращает все записи о фактических значениях для указанного KPI
+
+    :param for_kpi: для указанного kpi
+    :return:
+    """
+
+    session = Session()
+    try:
+        if for_kpi:
+            resp = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == for_kpi).\
+                order_by(KPIFactValue.period.asc(), KPIFactValue.create_date.asc()).all()
+        else:
+            return None
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s" % for_kpi
+        return None
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.get_kpi_fact_value(). " + str(e)
+        raise e
+    else:
+        fact = dict()
+        for one in resp:
+            if fact.get(one.period):
+                fact[one.period].append(one)
+            else:
+                fact[one.period] = list()
+                fact[one.period].append(one)
+        return fact
+    finally:
+        session.close()
+
+
+def get_fact_period_code(for_kpi=None, date=None):
+
+    return ""
+
+
+def save_kpi_fact_value(kpi_fact=None):
+
+    session = Session()
+    # проверяем, существует ли запись для этого показателя и периода
+    try:
+        exist = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == kpi_fact["kpi_code"],
+                                                   KPIFactValue.period == kpi_fact['period']).all()
+    except sqlalchemy.orm.exc.NoResultFound:
+        exist = None
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.save_kpi_fact_value. Чтение KPIFactValue. " + str(e)
+        session.close()
+        raise e
+
+    exist = None
+
+    if exist:
+        print "KPI FACT такой объект существует, обновляем"
+        try:
+            # если значение не передано, присваиваем по умолчанию 0
+            if kpi_fact.get("fact_value"):
+                exist.fact_value = kpi_fact["fact_value"]
+
+            if kpi_fact.get("create_date"):
+                exist.create_date = kpi_fact["create_date"]
+
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.save_kpi_fact_value. Обновление KPIFactValue. " + str(e)
+            raise e
+        finally:
+            session.close()
+    else:
+        # создаем запись
+        new = KPIFactValue()
+        try:
+            for key in kpi_fact.keys():
+                new.__dict__[key] = kpi_fact[key]
+            session.add(new)
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.save_kpi_fact_value. Создание нового KPITFactValue. " + str(e)
+            raise e
+        finally:
+            session.close()
+
+
+def calculate_auto_fact_values(for_kpi=None):
+
+    return ""
 
 
 class Event(Base):
