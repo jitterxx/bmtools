@@ -106,6 +106,41 @@ def create_tables():
     Base.metadata.create_all(Engine)
 
 
+def make_periods_for_kpi(start_date=None, plan_period=None):
+    """
+    Функция расчета отчетных периодов и названий для показателей
+
+    :param start_date: стартовая дата, с какого месяца создаем периоды
+    :param plan_period: сколько надо создать периодов начания со стартовой даты
+    :return:
+    """
+
+    period_date = dict()
+    period_name = dict()
+
+    for one in range(1, int(plan_period) + 1):
+        print "Период: %s" % one
+
+        year = start_date.year + ((start_date.month + one - 1) // 12)
+        month = ((start_date.month % 12) + one) - 12 * ((start_date.month + one) // 12)
+        if not month:
+            month = 12
+
+        print year, month
+
+        period_date[one] = datetime.datetime(year, month, 1)
+        if (period_date[one].month - 1) == 0:
+            period_name[one] = str(PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                               str(period_date[one].year - 1)
+        else:
+            period_name[one] = str(PERIOD_NAME[period_date[one].month - 1]) + " " + \
+                               str(period_date[one].year)
+
+        print "Отчетная дата периода: %s" % period_date[one]
+        print "Название отчетного периода: %s" % period_name[one]
+
+    return period_date, period_name
+
 class User(Base):
     """
     Класс для работы с объектами Пользователей системы.
@@ -2144,6 +2179,13 @@ def save_kpi_target_value(kpi_target_value):
             # если значение не передано, присваиваем по умолчанию 0
             if kpi_target_value.get("first_value"):
                 exist.first_value = kpi_target_value["first_value"]
+
+            if kpi_target_value.get("second_value"):
+                exist.second_value = kpi_target_value["second_value"]
+
+            if kpi_target_value.get("formula"):
+                exist.formula = kpi_target_value["formula"]
+
             #else:
             #    exist.first_value = 0
             # exist.second_value = kpi_target_value["second_value"]
@@ -2210,7 +2252,12 @@ def delete_kpi_target_value(kpi_code=None, period_code=None):
 def create_auto_target_values(for_kpi=None):
     """
     Рассчитать и заполнить автоматические значения для показателей.
-    Названия автоматических значений и их коды указаны в константе AUTO_TARGET_CODES
+    Названия автоматических значений и их коды указаны в константе AUTO_TARGET_CODES.
+
+    При удалении периодов входящих в формулу для расчета, формула изменяется если остался хотя бы один период, который \
+    должен в нее входить. Т.е. если последовательно уделаять месяца 2-ого квартала, после удаления последнего месяца в \
+    формуле останется запись только о нем. Но это не будет влиять на расчеты, т.к. данные о самом периоде были удалены.\
+    После добавления нового месяца в период, формула будет автоматически пересчитана.
 
     :param for_kpi: рассчитать для указанного kpi
 
@@ -2224,6 +2271,7 @@ def create_auto_target_values(for_kpi=None):
         formula = dict()
         for one in target:
             # Эта проверка нужна пока коды периодов сдвинуты на один месяц вперед!!!
+            # вычисляем реальный месяц и год для целевого значения
             if one.date.month - 1 == 0:
                 month = 12
                 year = one.date.year - 1
@@ -2231,57 +2279,65 @@ def create_auto_target_values(for_kpi=None):
                 month = one.date.month - 1
                 year = one.date.year
 
-            if not formula.get("101" + str(year)):
-                # создаем пустые значения
-                for key in AUTO_TARGET_CODES.keys():
-                    formula[str(key) + str(year)] = list()
-                    formula[str(key) + str(year)].append(list())  # [0] список периодов для расчета
-                    formula[str(key) + str(year)].append("")  # [1] код периода для формирования названия
-                    formula[str(key) + str(year)].append("")  # [2] дата отчетного периода
-                    formula[str(key) + str(year)].append(str(year))  # [3] год для формирования названия
+            # это авто период, исключаем из обработки
+            if str(one.period_code // 10000) not in AUTO_TARGET_CODES.keys():
+                # print "Период: %s , дата: %s" % (one.period_code, one.date)
+                # print "Реальный месяц: %s" % month
+                # print "Реальный год: %s" % year
 
-            if 1 <= month <= 3:
-                print AUTO_TARGET_CODES["101"]
-                # первый квартал
-                formula["101" + str(year)][0].append("p_" + str(one.period_code))
-                formula["101" + str(year)][1] = "101"
-                formula["101" + str(year)][2] = datetime.datetime.strptime("01.04.%s" % str(year), "%d.%m.%Y").date()
-                # первое полугодие
-                formula["106" + str(year)][0].append("p_" + str(one.period_code))
-                formula["106" + str(year)][1] = "106"
-                formula["106" + str(year)][2] = datetime.datetime.strptime("01.07.%s" % str(year), "%d.%m.%Y").date()
-            elif 4 <= month <= 6:
-                print AUTO_TARGET_CODES["104"]
-                # второй квартал
-                formula["104" + str(year)][0].append("p_" + str(one.period_code))
-                formula["104" + str(year)][1] = "104"
-                formula["104" + str(year)][2] = datetime.datetime.strptime("01.07.%s" % str(year), "%d.%m.%Y").date()
-                # первое полугодие
-                formula["106" + str(year)][0].append("p_" + str(one.period_code))
-                formula["106" + str(year)][1] = "106"
-                formula["106" + str(year)][2] = datetime.datetime.strptime("01.07.%s" % str(year), "%d.%m.%Y").date()
-            elif 7 <= month <= 9:
-                print AUTO_TARGET_CODES["107"]
-                formula["107" + str(year)][0].append("p_" + str(one.period_code))
-                formula["107" + str(year)][1] = "107"
-                formula["107" + str(year)][2] = datetime.datetime.strptime("01.10.%s" % str(year), "%d.%m.%Y").date()
-                formula["112" + str(year)][0].append("p_" + str(one.period_code))
-                formula["112" + str(year)][1] = "112"
-                formula["112" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
-            elif 10 <= month <= 12:
-                print AUTO_TARGET_CODES["110"]
-                # Четвертый квартал
-                formula["110" + str(year)][0].append("p_" + str(one.period_code))
-                formula["110" + str(year)][1] = "110"
-                formula["110" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
-                # Второе полугодие
-                formula["112" + str(year)][0].append("p_" + str(one.period_code))
-                formula["112" + str(year)][1] = "112"
-                formula["112" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
+                if not formula.get("101" + str(year)):
+                    # создаем пустые значения
+                    for key in AUTO_TARGET_CODES.keys():
+                        formula[str(key) + str(year)] = list()
+                        formula[str(key) + str(year)].append(list())  # [0] список периодов для расчета
+                        formula[str(key) + str(year)].append("")  # [1] код периода для формирования названия
+                        formula[str(key) + str(year)].append("")  # [2] дата отчетного периода
+                        formula[str(key) + str(year)].append(str(year))  # [3] год для формирования названия
 
-            formula["113" + str(year)][0].append("p_" + str(one.period_code))
-            formula["113" + str(year)][1] = "113"
-            formula["113" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
+                if 1 <= month <= 3:
+                    print AUTO_TARGET_CODES["101"]
+                    # первый квартал
+                    formula["101" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["101" + str(year)][1] = "101"
+                    formula["101" + str(year)][2] = datetime.datetime.strptime("01.04.%s" % str(year), "%d.%m.%Y").date()
+                    # первое полугодие
+                    formula["106" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["106" + str(year)][1] = "106"
+                    formula["106" + str(year)][2] = datetime.datetime.strptime("01.07.%s" % str(year), "%d.%m.%Y").date()
+                elif 4 <= month <= 6:
+                    print AUTO_TARGET_CODES["104"]
+                    # второй квартал
+                    formula["104" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["104" + str(year)][1] = "104"
+                    formula["104" + str(year)][2] = datetime.datetime.strptime("01.07.%s" % str(year), "%d.%m.%Y").date()
+                    # первое полугодие
+                    formula["106" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["106" + str(year)][1] = "106"
+                    formula["106" + str(year)][2] = datetime.datetime.strptime("01.07.%s" % str(year), "%d.%m.%Y").date()
+                elif 7 <= month <= 9:
+                    print AUTO_TARGET_CODES["107"]
+                    formula["107" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["107" + str(year)][1] = "107"
+                    formula["107" + str(year)][2] = datetime.datetime.strptime("01.10.%s" % str(year), "%d.%m.%Y").date()
+                    formula["112" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["112" + str(year)][1] = "112"
+                    formula["112" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
+                elif 10 <= month <= 12:
+                    print AUTO_TARGET_CODES["110"]
+                    # Четвертый квартал
+                    formula["110" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["110" + str(year)][1] = "110"
+                    formula["110" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
+                    # Второе полугодие
+                    formula["112" + str(year)][0].append("p_" + str(one.period_code))
+                    formula["112" + str(year)][1] = "112"
+                    formula["112" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
+
+                formula["113" + str(year)][0].append("p_" + str(one.period_code))
+                formula["113" + str(year)][1] = "113"
+                formula["113" + str(year)][2] = datetime.datetime.strptime("01.01.%s" % str(year + 1), "%d.%m.%Y").date()
+
+                #print "---------------------------"
 
         print formula
 
@@ -2292,19 +2348,15 @@ def create_auto_target_values(for_kpi=None):
                 target_value = dict()
                 target_value["kpi_code"] = for_kpi
                 # target_value["first_value"] = 0
-                target_value["formula"] = " + ".join(formula[one][0])
+                target_value["formula"] = " + ".join(formula[one][0])  # тут надо делать выбор формулы. Сейчас: сумма
                 target_value["date"] = formula[one][2]
                 target_value["period_code"] = int(one)
                 target_value["period_name"] = str(AUTO_TARGET_CODES.get(formula[one][1])) + " " + str(formula[one][3])
-
-                #for key in target_value.keys():
-                #    print key, " : ", target_value[key]
 
                 try:
                     save_kpi_target_value(target_value)
                 except Exception as e:
                     raise e
-
                 print "---------------------------------"
 
     session.close()
@@ -2319,10 +2371,14 @@ def calculate_auto_target_values(for_kpi=None, for_period=None):
     :return: значение расчета float или None, если ошибка
     """
 
+    if not for_kpi:
+        return None
+
     session = Session()
     try:
         t = get_kpi_target_value(for_kpi)
     except Exception as e:
+        session.close()
         raise e
     else:
         if t:
@@ -2330,41 +2386,81 @@ def calculate_auto_target_values(for_kpi=None, for_period=None):
             for one in t:
                 target[one.period_code] = one
         else:
+            session.close()
             return None
 
-    if not target.get(for_period).formula:
-        return None
-
-    print target.get(for_period).formula
-    try:
-        formula = py_expression_eval.Parser().parse(target.get(for_period).formula)
-    except Exception as e:
-        print "Формула некорректная. %s" % str(e)
-    else:
-        variables = dict()
-        print formula.variables()
-        for v in formula.variables():
-            variables[v] = 0
-            print v.split("_")[1]
-            if target.get(int(v.split("_")[1])):
-                variables[v] = target.get(int(v.split("_")[1])).first_value
-                print v, " : ", variables[v]
-
-        result = formula.evaluate(variables)
-        print result
-
-        target_value = dict()
-        target_value["kpi_code"] = for_kpi
-        target_value["first_value"] = result
-        target_value["period_code"] = for_period
-
+    if for_period and target.get(for_period).formula:
+        # если указан период и есть формула, делаем расчет только для него
+        print target.get(for_period).formula
         try:
-            save_kpi_target_value(target_value)
+            formula = py_expression_eval.Parser().parse(target.get(for_period).formula)
         except Exception as e:
-            raise e
+            print "Формула некорректная. %s" % str(e)
+        else:
+            variables = dict()
+            print formula.variables()
+            for v in formula.variables():
+                variables[v] = 0
+                print v.split("_")[1]
+                if target.get(int(v.split("_")[1])):
+                    variables[v] = target.get(int(v.split("_")[1])).first_value
+                    print v, " : ", variables[v]
 
+            result = formula.evaluate(variables)
+            print result
+
+            target_value = dict()
+            target_value["kpi_code"] = for_kpi
+            # target_value["first_value"] = result
+            target_value["second_value"] = result
+            target_value["period_code"] = for_period
+
+            try:
+                save_kpi_target_value(target_value)
+            except Exception as e:
+                raise e
+
+    # расчет всех авто периодов для целевых значений показателя
+    if for_kpi and not for_period:
+        print "Рассчитываем все AUTO PERIODS TARGET для KPI: %s" % for_kpi
+        for period in target.values():
+            if period.formula:
+                print period.period_code, " : ", period.formula
+                try:
+                    formula = py_expression_eval.Parser().parse(period.formula)
+                except Exception as e:
+                    print "Формула некорректная. %s" % str(e)
+                else:
+                    variables = dict()
+                    print formula.variables()
+                    for v in formula.variables():
+                        variables[v] = 0
+                        print v.split("_")[1]
+                        if target.get(int(v.split("_")[1])):
+                            variables[v] = target.get(int(v.split("_")[1])).first_value
+                            print v, " : ", variables[v]
+
+                    try:
+                        result = formula.evaluate(variables)
+                    except Exception as e:
+                        print "Ошибка в расчетах AUTO PERIODS TARGET для KPI: %s" % for_kpi
+                        session.close()
+                        raise e
+                    else:
+                        print result
+
+                        target_value = dict()
+                        target_value["kpi_code"] = for_kpi
+                        # target_value["first_value"] = result
+                        target_value["second_value"] = result
+                        target_value["period_code"] = period.period_code
+
+                        try:
+                            save_kpi_target_value(target_value)
+                        except Exception as e:
+                            session.close()
+                            raise e
     session.close()
-
 
 
 class FactValue(Base):

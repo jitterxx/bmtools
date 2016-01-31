@@ -1844,6 +1844,7 @@ class KPIs(object):
                     return ShowError(e)
 
                 start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
+                """
                 print "Количество периодов: %s" % int(plan_period)
                 print "Стартовая дата: %s" % start_date
                 period_date = dict()
@@ -1862,8 +1863,8 @@ class KPIs(object):
 
                     print "Отчетная дата периода: %s" % period_date[one]
                     print "Название отчетного периода: %s" % period_name[one]
-
-                print period_date
+                """
+                period_date, period_name = BMTObjects.make_periods_for_kpi(start_date, int(plan_period))
 
                 # Считаем даты периодов, создаем записи для KPI Target
                 # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
@@ -1879,6 +1880,13 @@ class KPIs(object):
                     except Exception as e:
                         print "Ошибка при создании KPI TARGET. %s" % str(e)
                         return ShowError(e)
+
+                # создаем авто периоды для целевых значений
+                try:
+                    BMTObjects.create_auto_target_values(str(status[1]))
+                except Exception as e:
+                    print "Ошибка при создании AUTO PERIOD for TARGET. /kpi/save(). %s" % str(e)
+                    return ShowError(e)
 
                 raise cherrypy.HTTPRedirect("/kpi/newstage2?code=%s" % status[1])
 
@@ -1915,8 +1923,6 @@ class KPIs(object):
     @require(member_of("users"))
     def savestage2(self, kpi_code=None, period_code=None, target_value=None):
         """
-        Сохраняем новый показатель,добавляем в текущую карту,
-        готовим объекты целевых значений для заполнения на втором шаге
 
         :param kpi_code:
         :param period_code:
@@ -1924,9 +1930,9 @@ class KPIs(object):
         :return:
         """
 
-        print kpi_code
-        print period_code
-        print target_value
+        #print kpi_code
+        #print period_code
+        #print target_value
 
         kpi_target = dict()
         kpi_target['kpi_code'] = str(kpi_code)
@@ -1937,6 +1943,13 @@ class KPIs(object):
         except Exception as e:
             print "Ошибка при обновлении KPI TARGET. %s" % str(e)
             return ShowError(e)
+        else:
+            # пересчет значений для авто периодов целевых значений
+            try:
+                BMTObjects.calculate_auto_target_values(for_kpi=str(kpi_code))
+            except Exception as e:
+                print "Ошибка при вычислении AUTO KPI for TARGET. /kpi/savestage2(). %s" % str(e)
+                return ShowError(e)
 
         return "ok"
 
@@ -1976,7 +1989,7 @@ class KPIs(object):
         try:
             # Загружаем связи цель - показатели
             linked_kpi = BMTObjects.load_custom_links()[1]
-        except Exeption as e:
+        except Exception as e:
             print "Ошибка при загрузке данных для редактирования показателя %s. Ошибка: %s " % (code, str(e.args))
             return ShowError(e)
 
@@ -1990,58 +2003,6 @@ class KPIs(object):
                            goal=goal, kpi=kpi, persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES, map_kpi=map_kpi,
                            group_goals=group_goals, linked_kpi=linked_kpi, map_opkpi=map_opkpi)
-
-    @cherrypy.expose
-    @require(member_of("users"))
-    def editstage2(self, code=None):
-        # Редактирование целевых значений для показателя
-        tmpl = lookup.get_template("kpi_editstage2_page.html")
-        step_desc = dict()
-        step_desc['full_description'] = ""
-        step_desc['name'] = "Целевые значения"
-        step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
-
-        try:
-            # Возвращает цель или None
-            g = BMTObjects.load_custom_links(for_kpi=code)
-            if g:
-                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code=g.goal_code)
-            else:
-                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code="0")
-            print "kpi", kpi.code
-            print "goal", goal
-            target_values = BMTObjects.get_kpi_target_value(code)
-        except Exception as e:
-            print "Ошибка: %s " % str(e)
-            return ShowError(e)
-
-        print "Current KPI: %s" % kpi
-        print "Goal for KPI: %s" % goal
-        print "Current KPI TARGETS: %s" % target_values
-
-        add_to_history("/maps/kpi#%s" % goal.code)
-        return tmpl.render(step_desc=step_desc,
-                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
-                           kpi=kpi, target_values=target_values, goal=goal, perspectives=BMTObjects.perspectives,
-                           persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
-                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
-
-    @cherrypy.expose
-    @require(member_of("users"))
-    def delete(self, code=None):
-        # Удаляем показатель из текущей карты. Он не удаляется из базы, остается в кастомных и виден в библиотеке.
-        print "DELETE KPI."
-        if not code:
-            print "KPI code empty. Redirect to /maps?code=%s" % BMTObjects.current_strategic_map
-            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
-
-        try:
-            BMTObjects.remove_kpi_from_map(code, BMTObjects.current_strategic_map)
-        except Exception as e:
-            print "Ошибка %s " % str(e)
-            return ShowError(e)
-        else:
-            raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2099,6 +2060,41 @@ class KPIs(object):
 
     @cherrypy.expose
     @require(member_of("users"))
+    def editstage2(self, code=None):
+        # Редактирование целевых значений для показателя
+        tmpl = lookup.get_template("kpi_editstage2_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Целевые значения"
+        step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
+
+        try:
+            # Возвращает цель или None
+            g = BMTObjects.load_custom_links(for_kpi=code)
+            if g:
+                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code=g.goal_code)
+            else:
+                goal, kpi = BMTObjects.load_custom_goals_kpi(kpi_code=code, goal_code="0")
+            print "kpi", kpi.code
+            print "goal", goal
+            target_values = BMTObjects.get_kpi_target_value(code)
+        except Exception as e:
+            print "Ошибка: %s " % str(e)
+            return ShowError(e)
+
+        print "Current KPI: %s" % kpi
+        print "Goal for KPI: %s" % goal
+        print "Current KPI TARGETS: %s" % target_values
+
+        add_to_history("/maps/kpi#%s" % goal.code)
+        return tmpl.render(step_desc=step_desc,
+                           current_map=BMTObjects.get_strategic_map_object(BMTObjects.current_strategic_map),
+                           kpi=kpi, target_values=target_values, goal=goal, perspectives=BMTObjects.perspectives,
+                           persons=BMTObjects.persons, kpi_scale_type=BMTObjects.KPI_SCALE_TYPE,
+                           measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
+
+    @cherrypy.expose
+    @require(member_of("users"))
     def updatestage2(self, kpi_code=None, period_code=None, target_value=None, plan_period=None, start_date=None,
                      cycles=None):
         """
@@ -2121,14 +2117,21 @@ class KPIs(object):
             start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
             # print "Количество периодов: %s" % int(plan_period)
             # print "Стартовая дата: %s" % start_date
+            """
             period_date = dict()
             period_name = dict()
 
             for one in range(1, int(plan_period) + 1):
-                # print "Период: %s" % one
+                print "Период: %s" % one
 
-                period_date[one] = datetime.datetime(start_date.year + (one // 12),
-                                                     ((start_date.month % 12) + one) - 12*(one // 12), 1)
+                year = start_date.year + ((start_date.month + one - 1) // 12)
+                month = ((start_date.month % 12) + one) - 12 * ((start_date.month + one) // 12)
+                if not month:
+                    month = 12
+
+                print year, month
+
+                period_date[one] = datetime.datetime(year, month, 1)
                 if (period_date[one].month - 1) == 0:
                     period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
                                        str(period_date[one].year - 1)
@@ -2136,8 +2139,10 @@ class KPIs(object):
                     period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
                                        str(period_date[one].year)
 
-                # print "Отчетная дата периода: %s" % period_date[one]
-                # print "Название отчетного периода: %s" % period_name[one]
+                print "Отчетная дата периода: %s" % period_date[one]
+                print "Название отчетного периода: %s" % period_name[one]
+            """
+            period_date, period_name = BMTObjects.make_periods_for_kpi(start_date, int(plan_period))
 
             # Считаем даты периодов, создаем записи для KPI Target
             # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
@@ -2153,6 +2158,20 @@ class KPIs(object):
                 except Exception as e:
                     print "Ошибка при создании KPI TARGET. %s" % str(e)
                     return ShowError(e)
+
+            # создаем авто периоды для целевых значений
+            try:
+                BMTObjects.create_auto_target_values(kpi_code)
+            except Exception as e:
+                print "Ошибка при создании AUTO PERIOD for TARGET. updatestage2(). %s" % str(e)
+                return ShowError(e)
+            try:
+                BMTObjects.calculate_auto_target_values(for_kpi=kpi_code)
+            except Exception as e:
+                print "Ошибка при вычислении AUTO KPI for TARGET. updatestage2(). %s" % str(e)
+                return ShowError(e)
+
+
             raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % kpi_code)
 
         if kpi_code and period_code and target_value:
@@ -2170,6 +2189,12 @@ class KPIs(object):
             except Exception as e:
                 print "Ошибка при обновлении KPI TARGET. %s" % str(e)
                 return ShowError(e)
+            else:
+                try:
+                    BMTObjects.calculate_auto_target_values(for_kpi=kpi_code)
+                except Exception as e:
+                    print "Ошибка при вычислении AUTO KPI for TARGET. updatestage2(). %s" % str(e)
+                    return ShowError(e)
 
             return "ok"
 
@@ -2197,8 +2222,9 @@ class KPIs(object):
         period_name = dict()
         one = 1
 
+        # Стандартная схема расчета периодов не годится
         print "Период: %s" % one
-        period_date[one] = datetime.datetime(start_date.year + (one // 12),
+        period_date[one] = datetime.datetime(start_date.year + (start_date.month // 12),
                                              ((start_date.month % 12) + one) - 12*(one // 12), 1)
         if (period_date[one].month - 1) == 0:
             period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
@@ -2220,6 +2246,19 @@ class KPIs(object):
         except Exception as e:
             print "Ошибка при создании KPI TARGET. updatestage2_one(). %s" % str(e)
             return ShowError(e)
+        else:
+            # создаем авто периоды для целевых значений
+            try:
+                BMTObjects.create_auto_target_values(kpi_code)
+            except Exception as e:
+                print "Ошибка при создании AUTO PERIOD for TARGET. /kpi/updatestage2_one(). %s" % str(e)
+                return ShowError(e)
+            # рассчитываем данные для авто периодов
+            try:
+                BMTObjects.calculate_auto_target_values(for_kpi=kpi_code)
+            except Exception as e:
+                print "Ошибка при вычислении AUTO PERIOD for TARGET. /kpi/updatestage2_one(). %s" % str(e)
+                return ShowError(e)
 
         raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % kpi_code)
 
@@ -2245,7 +2284,37 @@ class KPIs(object):
             print "Ошибка %s " % str(e)
             return ShowError(e)
         else:
+            # пересоздаем авто периоды для целевых значений
+            try:
+                BMTObjects.create_auto_target_values(code)
+            except Exception as e:
+                print "Ошибка при создании AUTO PERIOD for TARGET. delete_target(). %s" % str(e)
+                return ShowError(e)
+            # пересчитываем данные для авто периодов
+            try:
+                BMTObjects.calculate_auto_target_values(for_kpi=code)
+            except Exception as e:
+                print "Ошибка при вычислении AUTO PERIOD for TARGET. /kpi/delete_target(). %s" % str(e)
+                return ShowError(e)
+
             raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % code)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def delete(self, code=None):
+        # Удаляем показатель из текущей карты. Он не удаляется из базы, остается в кастомных и виден в библиотеке.
+        print "DELETE KPI."
+        if not code:
+            print "KPI code empty. Redirect to /maps?code=%s" % BMTObjects.current_strategic_map
+            raise cherrypy.HTTPRedirect("/maps?code=%s" % BMTObjects.current_strategic_map)
+
+        try:
+            BMTObjects.remove_kpi_from_map(code, BMTObjects.current_strategic_map)
+        except Exception as e:
+            print "Ошибка %s " % str(e)
+            return ShowError(e)
+        else:
+            raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -2321,6 +2390,18 @@ class KPIs(object):
                         except Exception as e:
                             print "Copy KPI. Ошибка при копировании KPI TARGET. %s" % str(e)
                             return ShowError(e)
+                    # создаем авто периоды для целевых значений
+                    try:
+                        BMTObjects.create_auto_target_values(str(status[1]))
+                    except Exception as e:
+                        print "Ошибка при создании AUTO PERIOD for TARGET. /kpi/copy. %s" % str(e)
+                        return ShowError(e)
+                    # рассчитываем данные для авто периодов
+                    try:
+                        BMTObjects.calculate_auto_target_values(for_kpi=str(status[1]))
+                    except Exception as e:
+                        print "Ошибка при вычислении AUTO PERIOD for TARGET. /kpi/copy. %s" % str(e)
+                        return ShowError(e)
 
             raise cherrypy.HTTPRedirect("/kpi/edit?code=%s" % status[1])
 

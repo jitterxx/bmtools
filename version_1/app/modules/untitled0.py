@@ -44,5 +44,5 @@ for one in range(1, int(plan_period) + 1):
     print "-----------------------------------------------------"
 """
 
-#BMTObjects.create_auto_target_values("kp79c4")
-BMTObjects.calculate_auto_target_values(for_kpi="kp79c4", for_period=1012016)
+BMTObjects.create_auto_target_values("kp79c4")
+#BMTObjects.calculate_auto_target_values(for_kpi="kp79c4", for_period=1012016)
