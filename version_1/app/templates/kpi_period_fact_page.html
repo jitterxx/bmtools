@@ -30,9 +30,15 @@
             <h1>${step_desc['name']}: ${period[1]}</h1>
             <hr>
             <div class="btn-group" role="group" aria-label="periods">
-                <button type="button" class="btn btn-default">periods</button>
-                <button type="button" class="btn btn-default">Middle</button>
-                <button type="button" class="btn btn-default">Right</button>
+                % for one in periods:
+                    %if one[0] == period[0]:
+                    <a role="button" class="btn btn-default active" href="/kpi/pfact?period_code=${one[0]}">
+                    % else:
+                    <a role="button" class="btn btn-default" href="/kpi/pfact?period_code=${one[0]}">
+                    % endif
+                    ${one[1]}
+                </a>
+                % endfor
             </div>
         </div>
     </div>
@@ -93,6 +99,14 @@
                 % if custom_kpi_links.get(goal):
                 <div style="margin-left: 2%;">
                     <table class="table table-hover" border="0">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th class="text-center">План</th>
+                            <th class="text-center">Факт</th>
+                            <th></th>
+                        </tr>
+                        </thead>
                         % for kpi in custom_kpi_links.get(goal):
                         <tr>
                             <td width="40%">
@@ -113,7 +127,9 @@
                                 </span>
                                 ${m_spec[int(map_kpi.get(kpi).measure)]}
                                 %else:
-                                Факт не указан
+                                <span id="fact_${kpi}">
+                                    Факт не указан
+                                </span>
                                 %endif
                             </td>
                             <td width="20%" id="new_fact_${kpi}">

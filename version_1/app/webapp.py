@@ -2510,9 +2510,35 @@ class KPIs(object):
         step_desc['name'] = "Ввод факта"
         step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
 
+        dd = datetime.datetime.now()
         if not period_code:
             # Определяем текущий период по сегодняшней дате
-            period = BMTObjects.define_period(datetime.datetime.now())
+            period = BMTObjects.define_period(dd)
+        else:
+            month = int(period_code) // 10000
+            year = int(period_code) % 10000
+            if month - 1 == 0:
+                month = 12
+                year -= 1
+            else:
+                month -= 1
+
+            period = BMTObjects.define_period(datetime.datetime.strptime("01.%s.%s" % (month, year), "%d.%m.%Y").date())
+
+        periods = list()
+        for one in range(0, 3):
+            month = dd.month - one
+            year = dd.year
+            if month == 0:
+                month = 12
+                year -= 1
+            elif month < 0:
+                month = 12 + dd.month - one
+                year -= 1
+            dd2 = "01.%s.%s" % (month, year)
+            periods.append(BMTObjects.define_period(datetime.datetime.strptime(dd2 , "%d.%m.%Y").date()))
+
+        periods.reverse()
 
         try:
             map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects(BMTObjects.current_strategic_map)
@@ -2530,19 +2556,20 @@ class KPIs(object):
 
         fact_values = dict()
         target_values = dict()
-        period_code = "22016"
+        # period_code = "22016"
         for kpi in map_kpi.keys():
             target_values[kpi] = None
             try:
-                target_values[kpi] = BMTObjects.get_kpi_target_value(kpi_code=kpi, period_code=period_code)
+                target_values[kpi] = BMTObjects.get_kpi_target_value(kpi_code=kpi, period_code=period[0])
             except Exception as e:
                 print "/kpi/pfact. Ошибка получения плановых значений для kpi = %s. %s" % (kpi, str(e))
                 return ShowError(e)
 
             fact_values[kpi] = None
             try:
-                fact = BMTObjects.get_kpi_fact_values(for_kpi=kpi, period_code=period_code)
+                fact = BMTObjects.get_kpi_fact_values(for_kpi=kpi, period_code=period[0])
                 if fact:
+                    fact.reverse()
                     fact_values[kpi] = fact[0]
                 print "KPI: ", kpi, "Fact: ", fact_values[kpi]
             except Exception as e:
@@ -2558,7 +2585,8 @@ class KPIs(object):
                            fact_values=fact_values, m_spec=BMTObjects.MEASURES_SPEC, m_form=BMTObjects.MEASURES_FORMAT,
                            group_goals=group_goals, custom_kpi_links=custom_kpi_links, map_goals=map_goals,
                            map_kpi=map_kpi, period_code=period_code,
-                           period=period)
+                           period=period, periods=periods)
+
 
     @cherrypy.expose
     #@require(member_of("users"))
