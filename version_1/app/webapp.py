@@ -3666,6 +3666,71 @@ class Settings(object):
         raise cherrypy.HTTPRedirect("/settings/users")
 
 
+class Monitoring(object):
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def index(self):
+        # список доступных мониторов
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def new(self):
+        """
+        Создать новый монитор.
+        Название, выбрать показатели, выбрать людей имеющих доступ.
+
+        :return:
+        """
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def save(self):
+        """
+        Сохранить новый монитор.
+
+        :return:
+        """
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def edit(self, code=None):
+        """
+        Редактировать монитор.
+        Поменять: название, набор показателей, людей имеющих доступ.
+
+        :param code: код монитора для вывода
+        :return:
+        """
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def update(self):
+        """
+        Сохранить изменения монитора.
+        Название, показатели, списиок людей имеющих доступ.
+
+        :return:
+        """
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def show(self, code=None):
+        """
+        Вывести монитор.
+        Показать: план, факт, отобразить результат согласно  шкале показателя.
+
+        :param code: код монитора для вывода
+        :return:
+        """
+        raise cherrypy.HTTPRedirect("/")
+
+
 class Root(object):
 
     auth = AuthController()
@@ -3680,6 +3745,7 @@ class Root(object):
     maps = Maps()
     settings = Settings()
     orgstructure = OrgStructure()
+    monitoring = Monitoring()
 
 
     @cherrypy.expose

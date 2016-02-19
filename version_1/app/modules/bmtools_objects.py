@@ -2840,6 +2840,44 @@ def change_current_strategic_map(smap):
     current_strategic_map = smap
 
 
+class MonitorDescription(Base):
+
+    __tablename__= "monitor_desc"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
+    name = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
+    owner = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    status = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+
+    def __init__(self):
+        self.code = ""
+        self.name = ""
+        self.description = ""
+        self.owner = 0
+        self.status = 0
+
+
+class Monitor(Base):
+
+    __tablename__ = "monitor"
+
+    id = sqlalchemy.Column(sqlalchemy.Integer, primary_key=True)
+    mon_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    opkpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
+    version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
+
+    def __init__(self):
+        self.mon_code = ""
+        self.kpi_code = ""
+        self.opkpi_code = ""
+        self.version = 0
+        self.date = datetime.datetime.now()
+
+
 class MotivationCardData(Base):
 
     __tablename__="motivation_card_data"
