@@ -45,6 +45,10 @@ CYCLES = {0: "Неделя", 1: "Месяца(ев)", 2: "Квартал", 3: "�
 
 MEASURES = {0: "Штуки", 1: "Проценты", 2: "Рубли", 3: "Баллы", 4: "Дни"}
 
+MEASURES_SPEC = {0: "шт", 1: "%", 2: "р", 3: "б", 4: "д"}
+
+MEASURES_FORMAT = {0: "{:3.0f}", 1: "{:3.0f}", 2: "{:.2f}", 3: "{:3.0f}", 4: "{:3.0f}"}
+
 GOAL_TYPE = {0: "lib", 1: "custom"}
 
 GOAL_EDIT_FLAG = {0: "Нельзя изменять KPI", 1: "Можно изменять KPI"}
@@ -140,6 +144,29 @@ def make_periods_for_kpi(start_date=None, plan_period=None):
         print "Название отчетного периода: %s" % period_name[one]
 
     return period_date, period_name
+
+
+def define_period(date=None):
+    """
+    Функция ищет к какому периоду относиться указанная дата и возвращает код и название периода.
+
+    :param date: указанная дата
+    :return:
+    """
+
+    year = date.year
+    month = date.month
+    period_code = ""
+
+    if month == 12:
+        period_code = str(1) + str(year + 1)
+    else:
+        period_code = str(month + 1) + str(year)
+
+    period_name = PERIOD_NAME[month] + " " + str(year)
+
+    return [period_code, period_name]
+
 
 class User(Base):
     """
@@ -2128,27 +2155,48 @@ class KPITargetValue(Base):
         self.formula = ""
 
 
-def get_kpi_target_value(kpi_code):
+def get_kpi_target_value(kpi_code=None, period_code=None):
     """
     Возвращает список объектов класса KPITargetValue.
+
+    :param kpi_code:
+    :param period_code:
     """
 
     session = Session()
 
-    try:
-        resp = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_code).\
-            order_by(KPITargetValue.date.asc(),KPITargetValue.period_code.asc()).all()
-    except sqlalchemy.orm.exc.NoResultFound as e:
-        print "BMTObjects.get_kpi_target_value(kpi_code). Ничего не найдено для KPI = %s" % kpi_code
-        return None
-    except Exception as e:
-        print "Ошибка в функции BMTObjects.get_kpi_target_value(kpi_code). " + str(e)
-        raise e
+    if kpi_code and not period_code:
+        try:
+            resp = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_code).\
+                order_by(KPITargetValue.date.asc(), KPITargetValue.period_code.asc()).all()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "BMTObjects.get_kpi_target_value(). Ничего не найдено для KPI = %s" % kpi_code
+            return None
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.get_kpi_target_value(). " + str(e)
+            raise e
+        else:
+            return resp
+        finally:
+            session.close()
+    elif kpi_code and period_code:
+        try:
+            resp = session.query(KPITargetValue).filter(and_(KPITargetValue.kpi_code == kpi_code,
+                                                             KPITargetValue.period_code == period_code)).one()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "BMTObjects.get_kpi_target_value(). Ничего не найдено для KPI = %s и Period = %s" % \
+                  (kpi_code, period_code)
+            return None
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.get_kpi_target_value(). " + str(e)
+            raise e
+        else:
+            return resp
+        finally:
+            session.close()
     else:
-        return resp
-    finally:
         session.close()
-
+        return None
 
 def save_kpi_target_value(kpi_target_value):
     """
@@ -2484,38 +2532,60 @@ class KPIFactValue(Base):
         self.version = 0
 
 
-def get_kpi_fact_values(for_kpi=None):
+def get_kpi_fact_values(for_kpi=None, period_code=None):
     """
     Функция возвращает все записи о фактических значениях для указанного KPI
 
     :param for_kpi: для указанного kpi
+    :param period_code: код периода
     :return:
     """
 
     session = Session()
-    try:
-        if for_kpi:
-            resp = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == for_kpi).\
-                order_by(KPIFactValue.period.asc(), KPIFactValue.create_date.asc()).all()
-        else:
-            return None
-    except sqlalchemy.orm.exc.NoResultFound as e:
-        print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s" % for_kpi
-        return None
-    except Exception as e:
-        print "Ошибка в функции BMTObjects.get_kpi_fact_value(). " + str(e)
-        raise e
-    else:
-        fact = dict()
-        for one in resp:
-            if fact.get(one.period):
-                fact[one.period].append(one)
+    if for_kpi and not period_code:
+        try:
+            if for_kpi:
+                resp = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == for_kpi).\
+                    order_by(KPIFactValue.period.asc(), KPIFactValue.create_date.asc()).all()
             else:
-                fact[one.period] = list()
-                fact[one.period].append(one)
-        return fact
-    finally:
+                return None
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s" % for_kpi
+            return None
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.get_kpi_fact_value(). " + str(e)
+            raise e
+        else:
+            fact = dict()
+            for one in resp:
+                if fact.get(one.period):
+                    fact[one.period].append(one)
+                else:
+                    fact[one.period] = list()
+                    fact[one.period].append(one)
+            return fact
+        finally:
+            session.close()
+    elif for_kpi and period_code:
+        try:
+            resp = session.query(KPIFactValue).filter(and_(KPIFactValue.kpi_code == for_kpi,
+                                                           KPIFactValue.period == period_code)).\
+                order_by(KPIFactValue.create_date.asc()).all()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s и Period = %s" % \
+                  (for_kpi, period_code)
+            return None
+        except Exception as e:
+            print "Ошибка в функции BMTObjects.get_kpi_fact_value(). " + str(e)
+            raise e
+        else:
+            return resp
+        finally:
+            session.close()
+
+    else:
         session.close()
+        return None
 
 
 def get_fact_period_code(for_kpi=None, date=None):

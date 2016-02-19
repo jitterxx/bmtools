@@ -35,6 +35,14 @@
                   Операционные показатели<span class="sr-only">(current)</span>
               </a>
           </li>
+          <li class="separator divider">
+              <hr>
+          </li>
+          <li>
+              <a href="/kpi/pfact">
+                  Ввод факта<span class="sr-only">(current)</span>
+              </a>
+          </li>
       </ul>
     </div>
 </%block>
@@ -74,8 +82,10 @@
                             <thead>
                             <tr class="text-center">
                                 <th>Название</th>
+                                <!--
                                 <th class="text-center">Ответственный</th>
                                 <th class="text-center">Единицы</th>
+                                -->
                                 <th colspan="3" class="text-center">Целевые значения</th>
                             </tr>
                             </thead>
@@ -100,16 +110,22 @@
                                             <li><a href="/kpi/delete?code=${kpi}">Удалить из карты</a></li>
                                         </ul>
                                     </div>
+                                    <div style="margin-left: 4%;">
                                     % if formula_kpi.get(kpi):
-                                    <small class="text-muted">Для этого показателя есть формула</small>
+                                    <small class="text-muted">Для этого показателя есть формула</small><br>
                                     % endif
+                                    <small class="text-muted"><b>Ответственный: </b>${persons[map_kpi.get(kpi).target_responsible]}</small><br>
+                                    <small class="text-muted"><b>Единица измерения: </b>${measures.get(int(map_kpi.get(kpi).measure))}</small>
+                                    </div>
                                 </td>
+                                <!--
                                 <td width="10%" class="text-center">
                                     ${persons[map_kpi.get(kpi).target_responsible]}
                                 </td>
                                 <td width="5%" class="text-center">
                                     ${measures.get(int(map_kpi.get(kpi).measure))}
                                 </td>
+                                -->
                                 % if kpi_target_values.get(kpi):
                                 % for one in kpi_target_values.get(kpi):
                                     % if one.first_value != 0 and one.first_value != one.second_value:
@@ -170,17 +186,23 @@
                                         <li><a href="/kpi/delete?code=${dkpi}">Удалить из карты</a></li>
                                     </ul>
                                 </div>
-                                % if formula_kpi.get(dkpi):
-                                <small class="text-muted">Для этого показателя указана формула</small>
-                                % endif
+                                    <div style="margin-left: 4%;">
+                                    % if formula_kpi.get(dkpi):
+                                    <small class="text-muted">Для этого показателя указана формула</small>
+                                    % endif
+                                    <small class="text-muted"><b>Ответственный: </b>${persons[map_kpi.get(dkpi).target_responsible]}</small><br>
+                                    <small class="text-muted"><b>Единица измерения: </b>${measures.get(int(map_kpi.get(dkpi).measure))}</small>
+                                    </div>
                                 </div>
                             </td>
+                            <!--
                             <td width="10%" class="text-center">
                                 ${persons[map_kpi.get(dkpi).target_responsible]}
                             </td>
                             <td width="5%" class="text-center">
                                 ${measures.get(int(map_kpi.get(dkpi).measure))}
                             </td>
+                            -->
                             % if kpi_target_values.get(dkpi):
                             % for one in kpi_target_values.get(dkpi):
                                 % if one.first_value == one.second_value:
