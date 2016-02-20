@@ -15,34 +15,71 @@ import bmtools_objects as BMTObjects
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
-"""
-start_date = "01.01.2016"
-plan_period = 18
-start_date = datetime.datetime.strptime(start_date, "%d.%m.%Y").date()
-print "Количество периодов: %s" % int(plan_period)
-print "Стартовая дата: %s" % start_date
-period_date = dict()
-period_name = dict()
 
-for one in range(1, int(plan_period) + 1):
-    print "Год отчетного периода: %s" % (start_date.year + (one // 12))
-    print "Месяц отчетного периода: %s" % (((start_date.month % 12) + one) - 12*(one // 12))
-    print "Период: %s" % one
 
-    period_date[one] = datetime.datetime(start_date.year + (one // 12),
-                                         ((start_date.month % 12) + one) - 12*(one // 12), 1)
+session = BMTObjects.Session()
 
-    if (period_date[one].month - 1) == 0:
-        period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
-                           str(period_date[one].year - 1)
-    else:
-        period_name[one] = str(BMTObjects.PERIOD_NAME[period_date[one].month - 1]) + " " + \
-                           str(period_date[one].year)
+p = BMTObjects.make_periods_for_kpi_new(start_date=datetime.datetime.now(), plan_period=12)
 
-    print "Название отчетного периода: %s" % period_name[one]
-    print "Отчетная дата периода: %s" % period_date[one]
-    print "-----------------------------------------------------"
-"""
+for one in p.values():
+    print one[0]
+    print one[1]
+    print one[2]
+    print "-----------------------"
 
-BMTObjects.create_auto_target_values("kp79c4")
-#BMTObjects.calculate_auto_target_values(for_kpi="kp79c4", for_period=1012016)
+
+print BMTObjects.define_period_new(date=datetime.datetime.now())
+
+
+try:
+    resp = session.query(BMTObjects.KPITargetValue).all()
+except Exception as e:
+    raise e
+
+for one in resp:
+    p_month = int(one.period_code) // 10000
+    p_year = int(one.period_code) % 10000
+    new = list()
+
+    if 12 >= p_month >= 1:
+        print "Старый код периода: %s" % one.period_code
+        print "Старое название: %s" % one.period_name
+
+        if p_month == one.date.month:
+            print "Это старый расчет периода. Пересчитываем!"
+            if p_month - 1 == 0:
+                p_month = 12
+                p_year -= 1
+            else:
+                p_month -= 1
+
+            print "Новый код: %s" % (str(p_month) + str(p_year))
+            new.append(str(p_month) + str(p_year))
+            print "Новое название: %s" % (BMTObjects.PERIOD_NAME[p_month] + str(p_year))
+            new.append(BMTObjects.PERIOD_NAME[p_month] + " " + str(p_year))
+            print "--------------------------"
+            try:
+                one.period_code = new[0]
+                session.commit()
+            except Exception as e:
+                raise e
+        else:
+            print "Это новый расчет. Дальше."
+
+
+try:
+    resp = session.query(BMTObjects.KPIFactValue).all()
+except Exception as e:
+    raise e
+
+for one in resp:
+    p_month = int(one.period_code) // 10000
+    p_year = int(one.period_code) % 10000
+
+    try:
+        one.period_code = str()
+
+
+
+
+session.close()

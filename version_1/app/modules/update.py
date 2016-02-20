@@ -10,10 +10,6 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 import bmtools_objects as BMTObjects
-import cherrypy
-import datetime
-import json
-import re
 
 #sql = "ALTER TABLE strategic_maps_desc ADD COLUMN draw_data TEXT NULL AFTER department;"
 sql1 = "ALTER TABLE custom_kpi " \
@@ -52,6 +48,14 @@ sql6 = "ALTER TABLE `kpi_target_values` ADD COLUMN `formula` VARCHAR(256) NULL A
        "UPDATE `kpi_target_values` SET `second_value`= `first_value` WHERE id >0;"
 
 sql7 = "DROP TABLE `fact_value`;"
+
+sql8 = "ALTER TABLE `custom_kpi` ADD COLUMN `fact_cycle` INT(11) NOT NULL DEFAULT 2 AFTER `fact_responsible`;"
+
+sql9 = "ALTER TABLE `fact_values` CHANGE COLUMN `period` `period_code` VARCHAR(256) NULL DEFAULT NULL ;"
+
+
+
+
 
 connection = BMTObjects.Engine.connect()
 # result = connection.execute(sql)
@@ -111,7 +115,7 @@ except Exception as e:
 else:
     print result
 
-# Подготовка БД для хранения фактических результатов
+# Подготовка БД для хранения фактических результатов. Удаление старой таблицы факта, создание новой
 try:
     result = connection.execute(sql7)
 except Exception as e:
@@ -121,6 +125,24 @@ else:
 
 BMTObjects.create_tables()
 
+# Добавление поля fact_cycle - цикл сбора факта, для показателя
+try:
+    result = connection.execute(sql8)
+except Exception as e:
+    print e.message, e.args
+else:
+    print result
+
+# Создание новых таблиц для объектов Monitor
+BMTObjects.create_tables()
+
+# исправления в названии столбца в таблице fact_values
+try:
+    result = connection.execute(sql9)
+except Exception as e:
+    print e.message, e.args
+else:
+    print result
 
 
 

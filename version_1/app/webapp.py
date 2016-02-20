@@ -1873,6 +1873,7 @@ class KPIs(object):
                 for one in period_date.keys():
                     kpi_target['kpi_code'] = str(status[1])
                     kpi_target['date'] = period_date[one]
+                    # TODO: Изменить способ присвоения кода периода
                     kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
                     kpi_target['period_name'] = period_name[one]
                     try:
@@ -2152,6 +2153,7 @@ class KPIs(object):
             for one in period_date.keys():
                 kpi_target['kpi_code'] = str(kpi_code)
                 kpi_target['date'] = period_date[one]
+                # TODO: Изменить способ присвоения кода периода 2
                 kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
                 kpi_target['period_name'] = period_name[one]
                 try:
@@ -2241,6 +2243,7 @@ class KPIs(object):
         kpi_target = dict()
         kpi_target['kpi_code'] = str(kpi_code)
         kpi_target['date'] = period_date[one]
+        # TODO: Изменить способ присвоения кода периода 3
         kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
         kpi_target['period_name'] = period_name[one]
         try:
@@ -2476,7 +2479,7 @@ class KPIs(object):
                 print s
                 raise ShowError(s)
             else:
-                kpi_fact['period'] = int(fact_period)
+                kpi_fact['period_code'] = int(fact_period)
 
         try:
             BMTObjects.save_kpi_fact_value(kpi_fact)
@@ -2511,6 +2514,7 @@ class KPIs(object):
         step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
 
         dd = datetime.datetime.now()
+        # TODO: Изменить способ присвоения кода периода 4
         if not period_code:
             # Определяем текущий период по сегодняшней дате
             period = BMTObjects.define_period(dd)
@@ -2623,7 +2627,7 @@ class KPIs(object):
 
         if period_code:
             # добавляем в конкретный период
-            kpi_fact['period'] = int(period_code)
+            kpi_fact['period_code'] = int(period_code)
         else:
             # сначала надо определить период
             try:

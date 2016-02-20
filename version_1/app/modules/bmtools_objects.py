@@ -41,6 +41,7 @@ enterprise_strategic_map = "ent0"
 current_strategic_map = enterprise_strategic_map
 KPI_SCALE_TYPE = {0: "Красный/Зеленый", 1: "Зеленый/Красный", 2: "Шкала (Красный/Желтый/Зеленый)",
                   3: "Шкала (Зеленый/Желтый/Красный)", 4: "Шкала (Красный/Зеленый/Красный)"}
+
 CYCLES = {0: "Неделя", 1: "Месяца(ев)", 2: "Квартал", 3: "Полгода", 4: "Год"}
 
 MEASURES = {0: "Штуки", 1: "Проценты", 2: "Рубли", 3: "Баллы", 4: "Дни"}
@@ -62,6 +63,16 @@ AUTO_TARGET_CODES = {"101": "Первый квартал", "104": "Второй 
                      "110": "Четвертый квартал", "106": "Первое полугодие", "112": "Второе полугодие",
                      "113": "Год"}
 
+
+class FactCycle(object):
+    code = None
+    name = ""
+
+    def __init__(self, code=None, name=""):
+        self.name = name
+        self.code = code
+
+FACT_CYCLES = {0: FactCycle(0, "День"), 1: FactCycle(1, "Неделя"), 2: FactCycle(2, "Месяц"), 3: FactCycle(3, "Квартал")}
 
 """
 Подключение БД
@@ -109,7 +120,7 @@ def create_tables():
 
     Base.metadata.create_all(Engine)
 
-
+# TODO: Изменить способ присвоения кода периода 5
 def make_periods_for_kpi(start_date=None, plan_period=None):
     """
     Функция расчета отчетных периодов и названий для показателей
@@ -146,6 +157,58 @@ def make_periods_for_kpi(start_date=None, plan_period=None):
     return period_date, period_name
 
 
+def make_periods_for_kpi_new(start_date=None, plan_period=None):
+    """
+        Функция формирования отчетных периодов и названий для них.
+        Код периода формируется: номер отчетного месяца + год. Например: апрель 2016 -> 42016
+        Отчетная дата формируется: первое число месяца следующего за отчетным. Например: апрель 2016 -> 01.05.2016
+
+    :param start_date: стартовая дата, с какого месяца создаем периоды
+    :param plan_period: сколько надо создать периодов начиная со стартовой даты
+    :return:
+    """
+
+    # каждый элемент содержит массив из 3-х элементов: код периода, название периода, отчетная дата
+    periods = dict()
+
+    for one in range(0, int(plan_period)):
+        p = one + 1
+        print "Период: %s" % p
+        periods[p] = list()
+
+        year = start_date.year + ((start_date.month + one - 1) // 12)
+        month = ((start_date.month % 12) + one) - 12 * ((start_date.month + one) // 12)
+        if not month:
+            month = 12
+
+        """
+        print "Месяц: %s, год: %s" % (month, year)
+        print "Код периода: %s" % (str(month) + str(year))
+        print "Название периода: %s" % (PERIOD_NAME[month] + str(year))
+        if month + 1 == 13:
+            month = 1
+            year += 1
+            print "Отчетная дата периода: %s" % datetime.datetime(year, month, 1)
+        else:
+            print "Отчетная дата периода: %s" % datetime.datetime(year, month + 1, 1)
+        print "-------------------------------------"
+        """
+        # код периода
+        periods[p].append(str(month) + str(year))
+        # название периода
+        periods[p].append(PERIOD_NAME[month] + " " + str(year))
+        # отчетная дата
+        if month + 1 == 13:
+            month = 1
+            year += 1
+            periods[p].append(datetime.datetime(year, month, 1))
+        else:
+            periods[p].append(datetime.datetime(year, month + 1, 1))
+
+    return periods
+
+
+# TODO: Изменить способ присвоения кода периода 6
 def define_period(date=None):
     """
     Функция ищет к какому периоду относиться указанная дата и возвращает код и название периода.
@@ -166,6 +229,32 @@ def define_period(date=None):
     period_name = PERIOD_NAME[month] + " " + str(year)
 
     return [period_code, period_name]
+
+
+def define_period_new(date=None):
+    """
+    Функция ищет к какому периоду относиться указанная дата и возвращает код и название периода.
+
+    :param date: указанная дата
+    :return:
+    """
+
+    year = date.year
+    month = date.month
+    period = list()
+    # код периода
+    period.append(str(month) + str(year))
+    # название периода
+    period.append(PERIOD_NAME[month] + " " + str(year))
+    # отчетная дата
+    if month + 1 == 13:
+        month = 1
+        year += 1
+        period.append(datetime.datetime(year, month, 1))
+    else:
+        period.append(datetime.datetime(year, month + 1, 1))
+
+    return period
 
 
 class User(Base):
@@ -1061,6 +1150,7 @@ def update_custom_link_for_goals(code, linked, delete_all=False):
 
 
 class Custom_KPI(Base):
+
     __tablename__ = "custom_kpi"
     # TODO: Переделать работу с объектами CustomKPI для мастера планирования Карты компании
     # TODO: Переделать работу с объектами CustomKPI при переносе из LibKPI
@@ -1075,6 +1165,7 @@ class Custom_KPI(Base):
     measure = sqlalchemy.Column(sqlalchemy.String(256), default=0) # from MEASURES
     target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
     fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
+    fact_cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from FACT_CYCLES
     cycle = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from CYCLES
     kpi_scale_type = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from  KPI_SCALE_TYPE
     data_source = sqlalchemy.Column(sqlalchemy.String(256), default="")
@@ -1090,6 +1181,7 @@ class Custom_KPI(Base):
         self.cycle = 0
         self.target_responsible = 0
         self.fact_responsible = 0
+        self.fact_cycle = 2
         self.data_source = ""
         self.kpi_scale_type = 0
 
@@ -1173,8 +1265,6 @@ def create_custom_link_for_goals(goal, linked):
             raise e
 
     session.close()
-
-
 
 
 class Custom_linked_kpi_to_goal(Base):
@@ -1277,6 +1367,7 @@ def update_custom_kpi(custom_kpi_update):
 
         resp.target_responsible = custom_kpi_update["target_responsible"]
         resp.fact_responsible = custom_kpi_update["fact_responsible"]
+        # resp.fact_cycle = custom_kpi_update["fact_cycle"]
         resp.measure = custom_kpi_update["measure"]
         resp.cycle = custom_kpi_update["cycle"]
         resp.name = custom_kpi_update["name"]
@@ -1455,7 +1546,6 @@ def load_map_links(for_goals=None, for_kpi=None):
 
     else:
         return dict()
-
 
 
 def load_custom_links(for_kpi=None):
@@ -2521,14 +2611,14 @@ class KPIFactValue(Base):
     kpi_code = sqlalchemy.Column(sqlalchemy.String(10), default="")
     fact_value = sqlalchemy.Column(sqlalchemy.Float, default=0)
     create_date = sqlalchemy.Column(sqlalchemy.DATETIME(), default=datetime.datetime.now())
-    period = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    period_code = sqlalchemy.Column(sqlalchemy.String(256), default="")
     version = sqlalchemy.Column(sqlalchemy.Integer, default=0)
 
     def __init__(self):
         self.kpi_code = ""
         self.fact_value = 0
         self.create_date = datetime.datetime.now()
-        self.period = ""
+        self.period_code = ""
         self.version = 0
 
 
@@ -2546,7 +2636,7 @@ def get_kpi_fact_values(for_kpi=None, period_code=None):
         try:
             if for_kpi:
                 resp = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == for_kpi).\
-                    order_by(KPIFactValue.period.asc(), KPIFactValue.create_date.asc()).all()
+                    order_by(KPIFactValue.period_code.asc(), KPIFactValue.create_date.asc()).all()
             else:
                 return None
         except sqlalchemy.orm.exc.NoResultFound as e:
@@ -2558,18 +2648,18 @@ def get_kpi_fact_values(for_kpi=None, period_code=None):
         else:
             fact = dict()
             for one in resp:
-                if fact.get(one.period):
-                    fact[one.period].append(one)
+                if fact.get(one.period_code):
+                    fact[one.period_code].append(one)
                 else:
-                    fact[one.period] = list()
-                    fact[one.period].append(one)
+                    fact[one.period_code] = list()
+                    fact[one.period_code].append(one)
             return fact
         finally:
             session.close()
     elif for_kpi and period_code:
         try:
             resp = session.query(KPIFactValue).filter(and_(KPIFactValue.kpi_code == for_kpi,
-                                                           KPIFactValue.period == period_code)).\
+                                                           KPIFactValue.period_code == period_code)).\
                 order_by(KPIFactValue.create_date.asc()).all()
         except sqlalchemy.orm.exc.NoResultFound as e:
             print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s и Period = %s" % \
@@ -2599,7 +2689,7 @@ def save_kpi_fact_value(kpi_fact=None):
     # проверяем, существует ли запись для этого показателя и периода
     try:
         exist = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == kpi_fact["kpi_code"],
-                                                   KPIFactValue.period == kpi_fact['period']).all()
+                                                   KPIFactValue.period_code == kpi_fact['period_code']).all()
     except sqlalchemy.orm.exc.NoResultFound:
         exist = None
     except Exception as e:
@@ -2848,8 +2938,9 @@ class MonitorDescription(Base):
     code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
     name = sqlalchemy.Column(sqlalchemy.String(256), default="")
     description = sqlalchemy.Column(sqlalchemy.TEXT(), default="")
-    owner = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    owner = sqlalchemy.Column(sqlalchemy.Integer, default=0)  # создатель и редактор
     status = sqlalchemy.Column(sqlalchemy.Integer, default=0)
+    viewers = sqlalchemy.Column(sqlalchemy.String(256), default="")  # кто видит монитор
 
     def __init__(self):
         self.code = ""
@@ -2857,6 +2948,7 @@ class MonitorDescription(Base):
         self.description = ""
         self.owner = 0
         self.status = 0
+        self.viewers = ""
 
 
 class Monitor(Base):
