@@ -54,8 +54,69 @@ sql8 = "ALTER TABLE `custom_kpi` ADD COLUMN `fact_cycle` INT(11) NOT NULL DEFAUL
 sql9 = "ALTER TABLE `fact_values` CHANGE COLUMN `period` `period_code` VARCHAR(256) NULL DEFAULT NULL ;"
 
 
+def update_periods():
 
+    session = BMTObjects.Session()
 
+    try:
+        resp = session.query(BMTObjects.KPITargetValue).all()
+    except Exception as e:
+        raise e
+
+    for one in resp:
+        p_month = int(one.period_code) // 10000
+        p_year = int(one.period_code) % 10000
+        new = list()
+
+        if 12 >= p_month >= 1:
+            print "Старый код периода: %s" % one.period_code
+            print "Старое название: %s" % one.period_name
+
+            if p_month == one.date.month:
+                print "Это старый расчет периода. Пересчитываем!"
+                if p_month - 1 == 0:
+                    p_month = 12
+                    p_year -= 1
+                else:
+                    p_month -= 1
+
+                print "Новый код: %s" % (str(p_month) + str(p_year))
+                new.append(str(p_month) + str(p_year))
+                print "Новое название: %s" % (BMTObjects.PERIOD_NAME[p_month] + str(p_year))
+                new.append(BMTObjects.PERIOD_NAME[p_month] + " " + str(p_year))
+                print "--------------------------"
+                try:
+                    one.period_code = new[0]
+                    session.commit()
+                except Exception as e:
+                    raise e
+            else:
+                print "Это новый расчет. Дальше."
+
+    try:
+        resp = session.query(BMTObjects.KPIFactValue).all()
+    except Exception as e:
+        raise e
+
+    for one in resp:
+        p_month = int(one.period_code) // 10000
+        p_year = int(one.period_code) % 10000
+        if p_month - 1 == 0:
+            p_month = 12
+            p_year -= 1
+        else:
+            p_month -= 1
+
+        print "Old: %s" % one.period_code
+        print "New: %s" % (str(p_month) + str(p_year))
+
+        try:
+            one.period_code = str(p_month) + str(p_year)
+            session.commit()
+        except Exception as e:
+            raise e
+
+    session.close()
 
 connection = BMTObjects.Engine.connect()
 # result = connection.execute(sql)
@@ -115,6 +176,7 @@ except Exception as e:
 else:
     print result
 
+"""
 # Подготовка БД для хранения фактических результатов. Удаление старой таблицы факта, создание новой
 try:
     result = connection.execute(sql7)
@@ -124,6 +186,7 @@ else:
     print result
 
 BMTObjects.create_tables()
+"""
 
 # Добавление поля fact_cycle - цикл сбора факта, для показателя
 try:
@@ -144,7 +207,8 @@ except Exception as e:
 else:
     print result
 
-
-
 connection.close()
 
+# Обновление периодов для плана и факта.
+# После использования, закомментировать!
+#update_periods()

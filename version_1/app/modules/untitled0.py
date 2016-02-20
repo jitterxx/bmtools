@@ -75,10 +75,20 @@ except Exception as e:
 for one in resp:
     p_month = int(one.period_code) // 10000
     p_year = int(one.period_code) % 10000
+    if p_month - 1 == 0:
+        p_month = 12
+        p_year -= 1
+    else:
+        p_month -= 1
+
+    print "Old: %s" % one.period_code
+    print "New: %s" % (str(p_month) + str(p_year))
 
     try:
-        one.period_code = str()
-
+        one.period_code = str(p_month) + str(p_year)
+        # session.commit()
+    except Exception as e:
+        raise e
 
 
 

@@ -178,10 +178,10 @@ def make_periods_for_kpi_new(start_date=None, plan_period=None):
 
         year = start_date.year + ((start_date.month + one - 1) // 12)
         month = ((start_date.month % 12) + one) - 12 * ((start_date.month + one) // 12)
-        if not month:
+        if month == 0:
             month = 12
 
-        """
+
         print "Месяц: %s, год: %s" % (month, year)
         print "Код периода: %s" % (str(month) + str(year))
         print "Название периода: %s" % (PERIOD_NAME[month] + str(year))
@@ -192,7 +192,7 @@ def make_periods_for_kpi_new(start_date=None, plan_period=None):
         else:
             print "Отчетная дата периода: %s" % datetime.datetime(year, month + 1, 1)
         print "-------------------------------------"
-        """
+
         # код периода
         periods[p].append(str(month) + str(year))
         # название периода
@@ -208,7 +208,6 @@ def make_periods_for_kpi_new(start_date=None, plan_period=None):
     return periods
 
 
-# TODO: Изменить способ присвоения кода периода 6
 def define_period(date=None):
     """
     Функция ищет к какому периоду относиться указанная дата и возвращает код и название периода.

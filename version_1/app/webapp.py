@@ -1864,18 +1864,19 @@ class KPIs(object):
                     print "Отчетная дата периода: %s" % period_date[one]
                     print "Название отчетного периода: %s" % period_name[one]
                 """
-                period_date, period_name = BMTObjects.make_periods_for_kpi(start_date, int(plan_period))
+                # period_date, period_name = BMTObjects.make_periods_for_kpi(start_date, int(plan_period))
+                periods = BMTObjects.make_periods_for_kpi_new(start_date, int(plan_period))
 
                 # Считаем даты периодов, создаем записи для KPI Target
                 # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
                 # следующего месяца.
 
-                for one in period_date.keys():
+                for one in periods.values():
                     kpi_target['kpi_code'] = str(status[1])
-                    kpi_target['date'] = period_date[one]
+                    kpi_target['date'] = one[2]
                     # TODO: Изменить способ присвоения кода периода
-                    kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
-                    kpi_target['period_name'] = period_name[one]
+                    kpi_target['period_code'] = one[0]
+                    kpi_target['period_name'] = one[1]
                     try:
                         BMTObjects.save_kpi_target_value(kpi_target)
                     except Exception as e:
@@ -2144,18 +2145,19 @@ class KPIs(object):
                 print "Отчетная дата периода: %s" % period_date[one]
                 print "Название отчетного периода: %s" % period_name[one]
             """
-            period_date, period_name = BMTObjects.make_periods_for_kpi(start_date, int(plan_period))
+            # period_date, period_name = BMTObjects.make_periods_for_kpi(start_date, int(plan_period))
+            periods = BMTObjects.make_periods_for_kpi_new(start_date, int(plan_period))
 
             # Считаем даты периодов, создаем записи для KPI Target
             # даты отчета по целевым значениям назначаются на следующий день после окончания перида, т.е. 1 число
             # следующего месяца.
 
-            for one in period_date.keys():
+            for one in periods.values():
                 kpi_target['kpi_code'] = str(kpi_code)
-                kpi_target['date'] = period_date[one]
+                kpi_target['date'] = one[2]
                 # TODO: Изменить способ присвоения кода периода 2
-                kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
-                kpi_target['period_name'] = period_name[one]
+                kpi_target['period_code'] = one[0]
+                kpi_target['period_name'] = one[1]
                 try:
                     BMTObjects.save_kpi_target_value(kpi_target)
                 except Exception as e:
@@ -2222,11 +2224,8 @@ class KPIs(object):
         print "Количество периодов: %s" % int(plan_period)
         print "Стартовая дата: %s" % start_date
 
-        period_date = dict()
-        period_name = dict()
-        one = 1
-
         # Стандартная схема расчета периодов не годится
+        """
         print "Период: %s" % one
         period_date[one] = datetime.datetime(start_date.year + (start_date.month // 12),
                                              ((start_date.month % 12) + one) - 12*(one // 12), 1)
@@ -2239,13 +2238,19 @@ class KPIs(object):
 
         print "Отчетная дата периода: %s" % period_date[one]
         print "Название отчетного периода: %s" % period_name[one]
+        """
+        if int(plan_period) == 1:
+            periods = BMTObjects.define_period_new(start_date)
+        else:
+            print "/kpi/updatestage2_one(). Количество периодов больше 1. Plan_period = %s" % plan_period
+            raise cherrypy.HTTPRedirect("/kpi/editstage2?code=%s" % kpi_code)
 
         kpi_target = dict()
         kpi_target['kpi_code'] = str(kpi_code)
-        kpi_target['date'] = period_date[one]
-        # TODO: Изменить способ присвоения кода периода 3
-        kpi_target['period_code'] = str(period_date[one].month) + str(period_date[one].year)
-        kpi_target['period_name'] = period_name[one]
+        kpi_target['date'] = periods[2]
+        kpi_target['period_code'] = periods[0]
+        kpi_target['period_name'] = periods[1]
+
         try:
             BMTObjects.save_kpi_target_value(kpi_target)
         except Exception as e:
@@ -2517,17 +2522,13 @@ class KPIs(object):
         # TODO: Изменить способ присвоения кода периода 4
         if not period_code:
             # Определяем текущий период по сегодняшней дате
-            period = BMTObjects.define_period(dd)
+            period = BMTObjects.define_period_new(dd)
         else:
+            # или по первому дню периода
             month = int(period_code) // 10000
             year = int(period_code) % 10000
-            if month - 1 == 0:
-                month = 12
-                year -= 1
-            else:
-                month -= 1
-
-            period = BMTObjects.define_period(datetime.datetime.strptime("01.%s.%s" % (month, year), "%d.%m.%Y").date())
+            period = BMTObjects.define_period_new(datetime.datetime.strptime("01.%s.%s" % (month, year),
+                                                                             "%d.%m.%Y").date())
 
         periods = list()
         for one in range(0, 3):
@@ -2540,7 +2541,7 @@ class KPIs(object):
                 month = 12 + dd.month - one
                 year -= 1
             dd2 = "01.%s.%s" % (month, year)
-            periods.append(BMTObjects.define_period(datetime.datetime.strptime(dd2 , "%d.%m.%Y").date()))
+            periods.append(BMTObjects.define_period_new(datetime.datetime.strptime(dd2 , "%d.%m.%Y").date()))
 
         periods.reverse()
 
