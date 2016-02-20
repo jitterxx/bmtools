@@ -2942,12 +2942,74 @@ class MonitorDescription(Base):
     viewers = sqlalchemy.Column(sqlalchemy.String(256), default="")  # кто видит монитор
 
     def __init__(self):
-        self.code = ""
+        u = uuid.uuid4().get_hex().__str__()
+        self.code = "mn" + "".join(random.sample(u, 4))
         self.name = ""
         self.description = ""
         self.owner = 0
         self.status = 0
         self.viewers = ""
+
+
+def get_monitor_desc(mon_code=None):
+
+    session = Session()
+
+    if mon_code:
+        # Ищем описание монитора по коду
+        try:
+            resp = session.query(MonitorDescription).filter(MonitorDescription.code == mon_code).one()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "Ничего не найдено get_monitor_desc() для монитора: %s. %s" % (mon_code, str(e))
+            return dict()
+        except sqlalchemy.orm.exc.MultipleResultsFound as e:
+            print "Ошибка в функции get_monitor_desc(). Найдено много мониторов с кодом: %s. %s" %\
+                  (mon_code, str(e))
+            raise e
+        except Exception as e:
+            print "Ошибка в функции get_monitor_desc(). %s" % str(e)
+            raise e
+        else:
+            return {str(resp.code): resp}
+        finally:
+            session.close()
+
+    # конкретный код не указан, возвращаем все мониторы в виде словаря. Ключ: код монитора
+    try:
+        resp = session.query(MonitorDescription).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено get_monitor_desc(). %s" % str(e)
+        return dict()
+    except Exception as e:
+        print "Ошибка в функции get_monitor_desc(). %s" % str(e)
+        raise e
+    else:
+        mon = dict()
+        for one in resp:
+            mon[one.code] = one
+        return mon
+    finally:
+        session.close()
+
+    session.close()
+
+
+def create_monitor(monitor_fields=None):
+
+    session = Session()
+    new = MonitorDescription()
+    try:
+        for key in monitor_fields.keys():
+            new.__dict__[key] = monitor_fields[key]
+        session.add(new)
+        session.commit()
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.create_monitor(). Монитор не записан. %s" % str(e)
+        raise e
+    else:
+        return new.code
+    finally:
+        session.close()
 
 
 class Monitor(Base):

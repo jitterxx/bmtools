@@ -1874,7 +1874,6 @@ class KPIs(object):
                 for one in periods.values():
                     kpi_target['kpi_code'] = str(status[1])
                     kpi_target['date'] = one[2]
-                    # TODO: Изменить способ присвоения кода периода
                     kpi_target['period_code'] = one[0]
                     kpi_target['period_name'] = one[1]
                     try:
@@ -2155,7 +2154,6 @@ class KPIs(object):
             for one in periods.values():
                 kpi_target['kpi_code'] = str(kpi_code)
                 kpi_target['date'] = one[2]
-                # TODO: Изменить способ присвоения кода периода 2
                 kpi_target['period_code'] = one[0]
                 kpi_target['period_name'] = one[1]
                 try:
@@ -2519,7 +2517,6 @@ class KPIs(object):
         step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
 
         dd = datetime.datetime.now()
-        # TODO: Изменить способ присвоения кода периода 4
         if not period_code:
             # Определяем текущий период по сегодняшней дате
             period = BMTObjects.define_period_new(dd)
@@ -3677,7 +3674,20 @@ class Monitoring(object):
     @require(member_of("users"))
     def index(self):
         # список доступных мониторов
-        raise cherrypy.HTTPRedirect("/")
+        tmpl = lookup.get_template("monitor_main_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Мониторы"
+        step_desc['next_step'] = ""
+
+        try:
+            monitors = BMTObjects.get_monitor_desc()
+        except Exception as e:
+            return ShowError(e)
+
+        add_to_history("/monitoring")
+
+        return tmpl.render(step_desc=step_desc, monitors=monitors)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -3688,17 +3698,38 @@ class Monitoring(object):
 
         :return:
         """
-        raise cherrypy.HTTPRedirect("/")
+        tmpl = lookup.get_template("monitor_new_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Создание нового монитора"
+        step_desc['next_step'] = ""
+
+        return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons)
 
     @cherrypy.expose
     @require(member_of("users"))
-    def save(self):
+    def save(self, name=None, desc=None, owner=None):
         """
         Сохранить новый монитор.
 
         :return:
         """
-        raise cherrypy.HTTPRedirect("/")
+        if not desc:
+            desc = ""
+
+        if not name or not owner:
+            return ShowError("Укажите имя и владельца монитора.")
+
+        monitor = dict()
+        monitor["name"] = str(name)
+        monitor["description"] = str(desc)
+        monitor["owner"] = int(owner)
+        try:
+            BMTObjects.create_monitor(monitor)
+        except Exception as e:
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/monitoring")
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -3719,6 +3750,17 @@ class Monitoring(object):
         Сохранить изменения монитора.
         Название, показатели, списиок людей имеющих доступ.
 
+        :return:
+        """
+        raise cherrypy.HTTPRedirect("/")
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def delete(self, code=None):
+        """
+        Удалить монитор.
+
+        :param code: код монитора для удаления
         :return:
         """
         raise cherrypy.HTTPRedirect("/")
