@@ -3791,8 +3791,9 @@ class Monitoring(object):
         step_desc['name'] = "Монитор: %s" % mdesc.name
         step_desc['next_step'] = ""
 
-        return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons,
-                           mdesc=mdesc, mdata=mdata)
+        return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons, measures=BMTObjects.MEASURES,
+                           mea_f=BMTObjects.MEASURES_FORMAT, mea_s=BMTObjects.MEASURES_SPEC,
+                           mdesc=mdesc, mdata=mdata, scale=BMTObjects.KPI_SCALE_TYPE)
 
     @cherrypy.expose
     @require(member_of("users"))

@@ -39,8 +39,12 @@ PERSPECTIVE_COLORS = ["#CC6666", "#669966", "#336699", "#CC9966"]
 
 enterprise_strategic_map = "ent0"
 current_strategic_map = enterprise_strategic_map
+
 KPI_SCALE_TYPE = {0: "Красный/Зеленый", 1: "Зеленый/Красный", 2: "Шкала (Красный/Желтый/Зеленый)",
                   3: "Шкала (Зеленый/Желтый/Красный)", 4: "Шкала (Красный/Зеленый/Красный)"}
+
+SCALE_COLOR = {0: ["CC6666", "669966"], 1: ["669966", "CC6666"], 2: ["CC6666", "FFCC33", "669966"],
+                  3: ["669966", "FFCC33", "CC6666"], 4: ["CC6666", "669966", "CC6666"]}
 
 CYCLES = {0: "Неделя", 1: "Месяца(ев)", 2: "Квартал", 3: "Полгода", 4: "Год"}
 
@@ -120,7 +124,7 @@ def create_tables():
 
     Base.metadata.create_all(Engine)
 
-# TODO: Изменить способ присвоения кода периода 5
+
 def make_periods_for_kpi(start_date=None, plan_period=None):
     """
     Функция расчета отчетных периодов и названий для показателей
@@ -129,7 +133,7 @@ def make_periods_for_kpi(start_date=None, plan_period=None):
     :param plan_period: сколько надо создать периодов начания со стартовой даты
     :return:
     """
-
+    """
     period_date = dict()
     period_name = dict()
 
@@ -155,6 +159,8 @@ def make_periods_for_kpi(start_date=None, plan_period=None):
         print "Название отчетного периода: %s" % period_name[one]
 
     return period_date, period_name
+    """
+    return None, None
 
 
 def make_periods_for_kpi_new(start_date=None, plan_period=None):
@@ -216,6 +222,7 @@ def define_period(date=None):
     :return:
     """
 
+    """
     year = date.year
     month = date.month
     period_code = ""
@@ -228,6 +235,8 @@ def define_period(date=None):
     period_name = PERIOD_NAME[month] + " " + str(year)
 
     return [period_code, period_name]
+    """
+    return None
 
 
 def define_period_new(date=None):
@@ -3012,21 +3021,6 @@ def create_monitor(monitor_fields=None):
         session.close()
 
 
-def get_monitor_data(mon_code=None):
-    """
-        Возвращает данные о показателях входящих в монитор для вывода пользователю.
-        Название показателей, план, факт, оценку по шкале.
-
-    :param mon_code:
-    :return:
-    """
-
-    session = Session()
-
-    session.close()
-    return None
-
-
 class Monitor(Base):
 
     __tablename__ = "monitor"
@@ -3044,6 +3038,82 @@ class Monitor(Base):
         self.opkpi_code = ""
         self.version = 0
         self.date = datetime.datetime.now()
+
+
+def get_monitor_data(mon_code=None):
+    """
+        Возвращает данные о показателях входящих в монитор для вывода пользователю.
+        Название показателей, план, факт, оценку по шкале.
+
+    :param mon_code:
+    :return:
+    """
+
+    """
+        1. Список стратегических показателей в мониторе
+        2. Для каждого показателя плановое значение на текущий период
+        3. Для каждого показателя фактические значения за текущий период
+        4. Для каждого показателя текущий процент факта от плана
+        5. Для каждого показателя шкалу оценки
+    """
+    resp = get_monitor_indicators(mon_code=mon_code)
+    mon = dict()
+
+    # 1
+    try:
+        for one in resp["kpi"]:
+            mon[one] = list()
+            kpi = load_custom_goals_kpi(goal_code=None, kpi_code=one)[1]
+            mon[one].append(kpi)  # добавляем объект показателя
+    except Exception as e:
+        print "Ошибка в функции get_monitor_data()1. %s" % str(e)
+        raise e
+
+    period = define_period_new(datetime.datetime.now())
+    for one in mon.keys():
+        # 2 план для текущего периода
+        try:
+            target = get_kpi_target_value(kpi_code=one, period_code=period[0])
+        except Exception as e:
+            print "Ошибка в функции get_monitor_data()2. %s" % str(e)
+            raise e
+        else:
+            mon[one].append(target)
+        # 3 факт для текущего периода
+        try:
+            fact = get_kpi_fact_values(for_kpi=one,period_code=period[0])
+        except Exception as e:
+            print "Ошибка в функции get_monitor_data()3. %s" % str(e)
+            raise e
+        else:
+            mon[one].append(fact)
+
+        # 4 отношени факта к плану %
+        trend = float()
+        if fact:
+            trend = fact[0].fact_value
+        else:
+            trend = 0
+
+        if target and target.first_value != 0:
+            trend = trend/target.first_value*100
+        mon[one].append(trend)
+
+        # 5 цвет этого показателя на мониторе
+        scale = mon[one][0].kpi_scale_type
+        if fact and target and scale == 0 :
+            try:
+                if fact[0].fact_value >= target.first_value:
+                    mon[one].append(SCALE_COLOR[scale][1])
+                else:
+                    mon[one].append(SCALE_COLOR[scale][0])
+            except Exception as e:
+                print "Ошибка в функции get_monitor_data()5. %s" % str(e)
+                mon[one].append("000000")
+        else:
+            mon[one].append("000000")
+
+    return mon
 
 
 def get_monitor_indicators(mon_code=None):

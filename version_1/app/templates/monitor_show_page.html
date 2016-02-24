@@ -39,13 +39,14 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h1>${step_desc['name']}</h1>
-            <hr>
+
         </div>
     </div>
     <div class="row">
         <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             % if mdata:
-            % for one in mdata.values():
+                % for one in mdata.values():
+
             <%doc>
             <div class="dropdown">
                 <a href="${one.code}"></a>
@@ -63,303 +64,50 @@
             </div>
             </%doc>
             % endfor
+
+            %for one in mdata.values():
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center">
+                    <h1  style="color: #${one[4]}">
+                        ${one[3]} %<br>
+                        <small>${one[0].name}</small>
+                    </h1>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                    <%
+                        m = int(one[0].measure)
+                    %>
+                    %if one[1]:
+                    <h1  style="color: #${one[4]}">
+                        ${mea_f[m].format(one[1].first_value)}
+                        ${mea_s[m]}<br>
+                        <small>План</small>
+                    </h1>
+                    %else:
+                    <h1  style="color: #${one[4]}">-</h1>
+                    %endif
+
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 text-center">
+                    %if one[2]:
+                    <h1  style="color: #${one[4]}">
+                        ${mea_f[m].format(one[2][0].fact_value)}
+                        ${mea_s[m]}<br>
+                        <small>Факт</small>
+                    </h1>
+                    %else:
+                    <h1  style="color: #${one[4]}">-</h1>
+                    %endif
+                </div>
+            </div>
+            <div class="row">
+                <div><hr></div>
+            </div>
+            %endfor
+
             % endif
         </div>
     </div>
-
-        <%doc>
-        <!--
-        <table class="table table-condensed table-hover" border="0">
-            <thead>
-            <tr>
-                <th width="30%">Период</th>
-                <th width="10%">План</th>
-                <th width="20%">Факт</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            %for one in target_values:
-            <tr>
-                <td>
-                    ${one.period_name} (#${one.period_code})
-                    </td>
-                <td class="text-center">
-                    ${one.first_value} <br>
-                    <small class="text_muted">${one.second_value} (a)</small>
-                </td>
-                <td>
-                % if fact_values.get(str(one.period_code)):
-                    <%
-                    fl = fact_values.get(str(one.period_code))
-                    fl.reverse()
-                    %>
-                    % for k in range(0,len(fl)):
-                        %if k == 0:
-                        <b>${fl[k].fact_value}</b>
-                        <small class="text-muted">( от ${fl[k].create_date.strftime('%d.%m.%Y')})</small><br>
-                        % else:
-                        <small class="text-muted">${fl[k].fact_value}
-                            ( от ${fl[k].create_date.strftime('%d.%m.%Y')})</small><br>
-                        % endif
-
-                    % endfor
-                % else:
-                    Нет данных
-                % endif
-                </td>
-                <td>
-                    <form class="row" action="/kpi/add_fact" method="post">
-                        <input type="hidden" name="kpi_code" value="${kpi.code}">
-                        <input type="hidden" name="period_code" value="${one.period_code}">
-                        <div class="form-group col-md-5">
-                            <input type="text" class="form-control" value="0" name="fact_value">
-                        </div>
-                        <div class="form-group col-md-5">
-                            <div class='input-group date'>
-                                <input type='text' class="form-control" name="fact_date" id="fact_date" value=""/>
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                            <script type="text/javascript">
-                                $('#fact_date').datepicker({
-
-                                    language: "ru",
-                                    calendarWeeks: true,
-                                    autoclose: true,
-                                    todayHighlight: true,
-                                    todayBtn: "linked",
-                                    toggleActive: true
-                                });
-                            </script>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <button type="submit" class="btn btn-link">
-                                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </form>
-
-                </td>
-            </tr>
-            % endfor
-            </tbody>
-        </table>
-        -->
-        </%doc>
-
-
-        <%doc>
-            <!--x
-            <div class="alert alert-success alert-dismissible hidden" role="alert" id="save_alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <input type="hidden" id="kpi_code" value="${kpi.code}">
-            % if target_values:
-            <a role="button" class="text-success" data-toggle="collapse" href="#collapsePeriod"
-               aria-expanded="false" aria-controls="collapsePeriod">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </a>
-            <div class="collapse" id="collapsePeriod">
-                <form action="/kpi/updatestage2_one" method="post">
-                    <input type="hidden" name="kpi_code" value="${kpi.code}">
-                    <div class="form-inline">
-                    <div class="form-group">
-                    <input type="hidden" name="plan_period" class="form-control"
-                        value="1">
-                    <input name="cycles" type="hidden" value="1">
-                    <label>Добавить отчетный период для</label>
-                    <div class='input-group date'>
-                        <input type='text' class="form-control" name="start_date" id="start_date1"
-                        % if current_map.start_date:
-                            value="${current_map.start_date.strftime('%d.%m.%Y')}"
-                        % else:
-                               value=""
-                        % endif
-                        />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                    <script type="text/javascript">
-                            $('#start_date1').datepicker({
-                                format: "mm.yyyy",
-                                language: "ru",
-                                calendarWeeks: true,
-                                autoclose: true,
-                                todayHighlight: true,
-                                todayBtn: "linked",
-                                startView: 1,
-                                minViewMode: 1,
-                                toggleActive: true
-                            });
-                    </script>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-link">
-                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-                    </button>
-                </div>
-                </div>
-                </form>
-                <br>
-                <form action="/kpi/updatestage2" method="post">
-                    <input type="hidden" name="kpi_code" value="${kpi.code}">
-                    <div class="form-inline">
-                    <div class="form-group">
-                    <label for="plan_period">Добавить отчетные периоды для</label>
-                    <input type="number" name="plan_period" id="plan_period" class="form-control"
-                        value="${current_map.cycle_count}">
-                    </div>
-                    <select name="cycles" id="cycles" class="form-control">
-                        % for one in cycles.keys():
-                            % if one == current_map.cycle:
-                                <option value="${one}" selected>${cycles[one]}</option>
-                            % else:
-                                <option value="${one}">${cycles[one]}</option>
-                            % endif
-                        % endfor
-                    </select>
-                    <div class="form-group">
-                    <label for="plan_period">начиная с</label>
-                    <div class='input-group date' id='start_date'>
-                        <input type='text' class="form-control" name="start_date"
-                        % if current_map.start_date:
-                            value="${current_map.start_date.strftime('%d.%m.%Y')}"
-                        % else:
-                               value=""
-                        % endif
-                        />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                    <script type="text/javascript">
-                            $('#start_date').datepicker({
-                                language: "ru",
-                                calendarWeeks: true,
-                                autoclose: true,
-                                todayHighlight: true,
-                                todayBtn: "linked",
-                                startView: 1,
-                                minViewMode: 1,
-                                toggleActive: true
-                            });
-                    </script>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-link">
-                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-                    </button>
-                </div>
-                </div>
-                </form>
-
-            </div>
-            <hr>
-            <table class="table table-condensed table-hover">
-                <thead>
-                <tr>
-                    <th></th>
-                    <th>Отчетный период</th>
-                    <th>Дата отчета</th>
-                    <th>Значение (${measures.get(int(kpi.measure))})</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-
-                % for one in target_values:
-                    <tr id="tr_period_${one.period_code}">
-                        <td width="5%">
-                            <a href="/kpi/delete_target?code=${kpi.code}&period_code=${one.period_code}"
-                               role="button" class="text-danger">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </a>
-                        </td>
-                        <td width="20%">
-                            ${one.period_name} (№${one.period_code} )
-                        %if one.formula:
-                            <small class="text-muted">Показатель рассчитывается автоматически.
-                            Вы можете указать значений вручную, но оно будет использоваться
-                                только для информирования.
-                            </small>
-                        % endif
-                        </td>
-                        <td width="10%">${one.date.strftime('%d.%m.%Y')}</td>
-                        <td width="20%">
-                            <div class="form-group">
-                                <input name="target_value" id="period_${one.period_code}" class="form-control"
-                                       type="number" value="${one.first_value}" autofocus
-                                       onchange="SendTargetValue('period_${one.period_code}');"
-                                       onfocus="ChangeColor('period_${one.period_code}');">
-                            </div>
-                        %if one.formula:
-                            <small class="text-muted">
-                                <b>${one.second_value}</b> - значение рассчитаное по формуле
-                            </small>
-                        % endif
-
-                        </td>
-                        <td></td>
-                    </tr>
-                % endfor
-
-                </tbody>
-            </table>
-            <hr>
-            % else:
-            <form action="/kpi/updatestage2" method="post">
-                <input type="hidden" name="kpi_code" value="${kpi.code}">
-                <div class="form-inline">
-                <div class="form-group">
-                <label for="plan_period">*Спланировать целевые значения на </label>
-                <input type="number" name="plan_period" id="plan_period" class="form-control"
-                    value="${current_map.cycle_count}">
-                <select name="cycles" id="cycles" class="form-control">
-                    % for one in cycles.keys():
-                        % if one == current_map.cycle:
-                            <option value="${one}" selected>${cycles[one]}</option>
-                        % else:
-                            <option value="${one}">${cycles[one]}</option>
-                        % endif
-                    % endfor
-                </select>
-                <label for="plan_period">начиная с</label>
-                <div class='input-group date' id='start_date'>
-                    <input type='text' class="form-control" name="start_date"
-                    % if current_map.start_date:
-                        value="${current_map.start_date.strftime('%d.%m.%Y')}"
-                    % else<%doc>:
-                           value=""
-                    % endif
-                    />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-                <script type="text/javascript">
-                        $('#start_date').datepicker({
-                            language: "ru",
-                            calendarWeeks: true,
-                            autoclose: true,
-                            todayHighlight: true,
-                            todayBtn: "linked",
-                            startView: 1,
-                            minViewMode: 1,
-                            toggleActive: true
-                        });
-                </script>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-default">Сохранить</button>
-            </div>
-            </div>
-            </form>
-            % endif
-           -->
-        </%doc>
 
 </div>
 
