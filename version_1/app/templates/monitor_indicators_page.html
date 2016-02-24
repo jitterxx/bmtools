@@ -65,11 +65,12 @@
                       %>
                       %for p in cur['groups']:
                         %for g in p:
+                            %if cur['linked'].get(g):
                             <p class="lead">
                             ${cur['goals'].get(g).goal_name}
                             </p>
                             <p>
-                            %for k in cur['linked'][g]:
+                            %for k in cur['linked'].get(g):
                                 <div style="margin-left: 2%;">
                                     <%
                                         kpi = cur['kpi'].get(k)
@@ -88,6 +89,7 @@
                                 </div>
                             %endfor
                             </p>
+                            %endif
                         %endfor
                       %endfor
                       <hr>
@@ -121,7 +123,7 @@
     </div>
     <script>
         function Uncheck(e) {
-            var ckd = e.checked;
+            var ckd = e.checked;supervisorctl status rework_test_webserver
             var a = document.getElementsByClassName(e.className);
             console.log(ckd);
             for (var j = 0; j < a.length; j++){
