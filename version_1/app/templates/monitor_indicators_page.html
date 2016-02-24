@@ -1,0 +1,138 @@
+<%inherit file="page_structure.html"/>
+
+<%block name="title">
+    <title>Главная</title>
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-datepicker3.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap-datepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/static/locales/bootstrap-datepicker.ru.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/static/js/kpi.js" charset="UTF-8"></script>
+</%block>
+
+<%block name="menu">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+          <li>
+              <a href="/back">
+                  Назад
+                  <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="separator divider">
+              <hr>
+          </li>
+          <li>
+              <a href="/monitoring/indicators?code=${mdesc.code}">
+                  Редактировать
+                  <span class="sr-only">(current)</span>
+              </a>
+          </li>
+
+      </ul>
+    </div>
+</%block>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h1>${step_desc['name']}</h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <form action="/monitoring/save_indicators" method="post">
+                <input type="hidden" name="monitor" value="${mdesc.code}">
+            % for map in maps:
+            <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading2_${map.code}">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2"
+                       href="#collapse2_${map.code}" aria-expanded="false" aria-controls="collapse2_${map.code}">
+                      ${map.name}
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapse2_${map.code}" class="panel-collapse collapse" role="tabpanel"
+                     aria-labelledby="heading2_${map.code}">
+                  <div class="panel-body">
+                      <%
+                        cur = all_indrs.get(map.code)
+                      %>
+                      %for p in cur['groups']:
+                        %for g in p:
+                            <p class="lead">
+                            ${cur['goals'].get(g).goal_name}
+                            </p>
+                            <p>
+                            %for k in cur['linked'][g]:
+                                <div style="margin-left: 2%;">
+                                    <%
+                                        kpi = cur['kpi'].get(k)
+                                    %>
+                                    <div class="checkbox">
+                                        <label>
+                                            %if kpi.code in mindrs['kpi']:
+                                            <input name="kpi" type="checkbox" value="${kpi.code}" checked class="${kpi.code}"
+                                                   onchange="Uncheck(this);">${kpi.name}
+                                            %else:
+                                            <input name="kpi" type="checkbox" value="${kpi.code}" class="${kpi.code}">
+                                            ${kpi.name}
+                                            %endif
+                                        </label>
+                                    </div>
+                                </div>
+                            %endfor
+                            </p>
+                        %endfor
+                      %endfor
+                      <hr>
+                      %if cur['opkpi']:
+                      <h3>Операционные показатели</h3>
+                      <div style="margin-left: 2%;">
+                        % for kpi in cur['opkpi'].values():
+                            <div class="checkbox">
+                                <label>
+                                    %if kpi.code in mindrs['opkpi']:
+                                    <input name="opkpi" type="checkbox" value="${kpi.code}" checked>${kpi.name}
+                                    %else:
+                                    <input name="opkpi" type="checkbox" value="${kpi.code}">${kpi.name}
+                                    %endif
+                                </label>
+                            </div>
+                        %endfor
+                      </div>
+                      %endif
+                  </div>
+                </div>
+              </div>
+            </div>
+            %endfor
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">Сохранить</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <script>
+        function Uncheck(e) {
+            var ckd = e.checked;
+            var a = document.getElementsByClassName(e.className);
+            console.log(ckd);
+            for (var j = 0; j < a.length; j++){
+                console.log(a[j]);
+                a[j].checked = ckd;
+            };
+        };
+    </script>
+
+
+
+
+</div>
+

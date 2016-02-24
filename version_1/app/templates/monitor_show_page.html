@@ -23,8 +23,8 @@
               <hr>
           </li>
           <li>
-              <a href="/monitoring/new">
-                  Создать монитор
+              <a href="/monitoring/indicators?code=${mdesc.code}">
+                  Редактировать
                   <span class="sr-only">(current)</span>
               </a>
           </li>
@@ -44,8 +44,9 @@
     </div>
     <div class="row">
         <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            % if monitors:
-            % for one in monitors.values():
+            % if mdata:
+            % for one in mdata.values():
+            <%doc>
             <div class="dropdown">
                 <a href="${one.code}"></a>
                 <a id="${one.code}" data-toggle="dropdown" role="button"
@@ -60,7 +61,7 @@
                 </ul>
             <a href="/monitoring/show?code=${one.code}">${one.name}</a>
             </div>
-
+            </%doc>
             % endfor
             % endif
         </div>

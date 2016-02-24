@@ -3775,7 +3775,124 @@ class Monitoring(object):
         :param code: код монитора для вывода
         :return:
         """
-        raise cherrypy.HTTPRedirect("/")
+        if not code:
+            return ShowError("Не указан монитор.")
+
+        # читаем данные монитора
+        try:
+            mdesc = BMTObjects.get_monitor_desc(mon_code=str(code))
+            mdata = BMTObjects.get_monitor_data(mon_code=str(code))
+        except Exception as e:
+            return ShowError(e)
+
+        tmpl = lookup.get_template("monitor_show_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Монитор: %s" % mdesc.name
+        step_desc['next_step'] = ""
+
+        return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons,
+                           mdesc=mdesc, mdata=mdata)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def indicators(self, code=None):
+        """
+        Редактировать список показателей входящих в монитор.
+        Собираем все стратегические карты и показатели входящие в них. Группируем по картам, делим на стратегические \
+        и операционные. Добавление галками. Группировки сворачиваются - collapse.
+
+        :param code: код монитора
+        :return:
+        """
+        if not code:
+            return ShowError("Не указан монитор.")
+
+        # читаем данные монитора
+        try:
+            mdesc = BMTObjects.get_monitor_desc(mon_code=str(code))
+            mindrs = BMTObjects.get_monitor_indicators(mon_code=str(code))
+        except Exception as e:
+            print "/monitoring/indicators. Ошибка получения данных для монитора: %s." % str(code), str(e.message)
+            return ShowError(e)
+
+        all_indrs = dict()
+        try:
+            maps = BMTObjects.get_all_maps()
+        except Exception as e:
+            print "/monitoring/indicators. Ошибка получения стратегических карт.", str(e.message)
+            return ShowError(e)
+
+        for one in maps:
+            # получаем для каждой карты списки показателей и сохраняем.
+            try:
+                goals, kpi, events, opkpi = BMTObjects.load_cur_map_objects(cur_map=one.code)
+            except Exception as e:
+                print "/monitoring/indicators. Ошибка получения данных из стратегической карты: %s." % str(one.code),\
+                    str(e.message)
+                return ShowError(e)
+
+            try:
+                custom_kpi_links = BMTObjects.load_map_links(for_goals=goals.keys(), for_kpi=kpi.keys())
+            except Exception as e:
+                return ShowError(e)
+            else:
+                all_indrs[one.code] = {"goals": goals, "kpi": kpi, "opkpi": opkpi,
+                                       "groups": BMTObjects.group_goals(goals), "linked": custom_kpi_links}
+
+        tmpl = lookup.get_template("monitor_indicators_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Монитор: %s" % mdesc.name
+        step_desc['next_step'] = ""
+
+        return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons,
+                           mdesc=mdesc, mindrs=mindrs, all_indrs=all_indrs, maps=maps)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def save_indicators(self, kpi=None, opkpi=None, monitor=None):
+
+        print kpi
+        print opkpi
+        print monitor
+
+        if kpi:
+            if not isinstance(kpi, list):
+                kpi = [kpi]
+        else:
+            kpi = list()
+
+        if opkpi:
+            if not isinstance(opkpi, list):
+                opkpi = [opkpi]
+        else:
+            opkpi = list()
+
+        if not monitor:
+            print ""
+            return ShowError("Не указан монитор.")
+
+        kpi1 = list()
+        for one in kpi:
+            if one not in kpi1:
+                kpi1.append(one)
+        kpi = kpi1
+
+        kpi1 = list()
+        for one in opkpi:
+            if one not in kpi1:
+                kpi1.append(one)
+        opkpi = kpi1
+
+        try:
+            status = BMTObjects.update_monitor_indicators(mon_code=monitor, kpi=kpi, opkpi=opkpi)
+        except Exception as e:
+            return ShowError(e)
+        else:
+            print "Обновление индикаторов монитора %s , статус: %s" % (monitor, status)
+
+        raise cherrypy.HTTPRedirect("/monitoring/indicators?code=%s" % monitor)
 
 
 class Root(object):

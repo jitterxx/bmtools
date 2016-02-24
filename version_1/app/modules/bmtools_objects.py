@@ -1769,50 +1769,6 @@ def save_picked_kpi_links_to_custom():
         session.close()
 
 
-def load_cur_map_objects(cur_map=None):
-    """
-    Загружаем объекты находящиеся в указанной стратегической карте.
-    Если ничего не указано, загружем для текущей current_strategic_map.
-
-    :return:
-    """
-    goals = dict()
-    kpi = dict()
-    events = dict()
-    metrics = dict()
-
-    if not cur_map:
-        cur_map = current_strategic_map
-
-    session = Session()
-    # Загружаем цели для указанной карты
-    try:
-        query = session.query(StrategicMap).filter(StrategicMap.map_code == cur_map).all()
-    except sqlalchemy.orm.exc.NoResultFound as e:
-        # Если ничего нет, то возвращаем None
-        pass
-    except Exception as e:
-        print "Ошибка в функции BMTObjects.load_cur_map_objects(). %s" % str(e)
-        raise e
-    else:
-        for each in query:
-            if each.goal_code:
-                goals[each.goal_code] = load_custom_goals_kpi(each.goal_code, None)[0]
-            if each.kpi_code:
-                one = load_custom_goals_kpi(None, each.kpi_code)[1]
-                kpi[each.kpi_code] = one
-                # проверяем наличие связанной цели. Если такой нет, то это операционный показатель
-                if not load_custom_links(for_kpi=each.kpi_code):
-                    metrics[each.kpi_code] = one
-            if each.event_code:
-                events[each.event_code] = get_events(each.event_code)
-            if each.metric_code:
-                pass
-    finally:
-        return goals, kpi, events, metrics
-        session.close()
-
-
 class StrategicMapDescription(Base):
     """
     Класс для хранения данных о стратегических картах. Код карты, название, описание, владелец, дата.
@@ -1945,12 +1901,12 @@ def get_map_for_dep(department):
 
 
 def get_all_maps():
-    # Возвращает объекты всех карт
+    # Возвращает объекты всех карт, отсортированные по дате создания.
 
     session = Session()
 
     try:
-        query = session.query(StrategicMapDescription).all()
+        query = session.query(StrategicMapDescription).order_by(StrategicMapDescription.date.asc()).all()
     except sqlalchemy.orm.exc.NoResultFound as e:
         print "Ничего не найдено для StrategicMapDescription(). BMTObjects.get_all_maps(). %s" % str(e)
         return None
@@ -2072,6 +2028,50 @@ class StrategicMap(Base):
         self.event_code = ""
         self.version = 0
         self.date = datetime.datetime.now()
+
+
+def load_cur_map_objects(cur_map=None):
+    """
+    Загружаем объекты находящиеся в указанной стратегической карте.
+    Если ничего не указано, загружем для текущей current_strategic_map.
+
+    :return:
+    """
+    goals = dict()
+    kpi = dict()
+    events = dict()
+    metrics = dict()
+
+    if not cur_map:
+        cur_map = current_strategic_map
+
+    session = Session()
+    # Загружаем цели для указанной карты
+    try:
+        query = session.query(StrategicMap).filter(StrategicMap.map_code == cur_map).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        # Если ничего нет, то возвращаем None
+        pass
+    except Exception as e:
+        print "Ошибка в функции BMTObjects.load_cur_map_objects(). %s" % str(e)
+        raise e
+    else:
+        for each in query:
+            if each.goal_code:
+                goals[each.goal_code] = load_custom_goals_kpi(each.goal_code, None)[0]
+            if each.kpi_code:
+                one = load_custom_goals_kpi(None, each.kpi_code)[1]
+                kpi[each.kpi_code] = one
+                # проверяем наличие связанной цели. Если такой нет, то это операционный показатель
+                if not load_custom_links(for_kpi=each.kpi_code):
+                    metrics[each.kpi_code] = one
+            if each.event_code:
+                events[each.event_code] = get_events(each.event_code)
+            if each.metric_code:
+                pass
+    finally:
+        return goals, kpi, events, metrics
+        session.close()
 
 
 def save_goals_to_map(picked_goals):
@@ -2203,6 +2203,8 @@ def remove_kpi_from_map(kpi_code=None, map_code=None):
 
 def group_goals(map_goals):
     """
+    Группирует цели по перспективам и прочим условиям.
+    Возвращает ТОЛЬКО КОДЫ для сгруппированных целей.
 
     :param map_goals:
     :return:
@@ -2970,7 +2972,7 @@ def get_monitor_desc(mon_code=None):
             print "Ошибка в функции get_monitor_desc(). %s" % str(e)
             raise e
         else:
-            return {str(resp.code): resp}
+            return resp
         finally:
             session.close()
 
@@ -2991,8 +2993,6 @@ def get_monitor_desc(mon_code=None):
     finally:
         session.close()
 
-    session.close()
-
 
 def create_monitor(monitor_fields=None):
 
@@ -3012,6 +3012,21 @@ def create_monitor(monitor_fields=None):
         session.close()
 
 
+def get_monitor_data(mon_code=None):
+    """
+        Возвращает данные о показателях входящих в монитор для вывода пользователю.
+        Название показателей, план, факт, оценку по шкале.
+
+    :param mon_code:
+    :return:
+    """
+
+    session = Session()
+
+    session.close()
+    return None
+
+
 class Monitor(Base):
 
     __tablename__ = "monitor"
@@ -3029,6 +3044,112 @@ class Monitor(Base):
         self.opkpi_code = ""
         self.version = 0
         self.date = datetime.datetime.now()
+
+
+def get_monitor_indicators(mon_code=None):
+    """
+    Возвращает список показателей входящих в монитор.
+
+    :param mon_code:
+    :return:
+    """
+    session = Session()
+
+    try:
+        resp = session.query(Monitor).filter(Monitor.mon_code == mon_code).all()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        print "Ничего не найдено get_monitor_indicators(). %s" % str(e)
+        return dict()
+    except Exception as e:
+        print "Ошибка в функции get_monitor_indicators(). %s" % str(e)
+        raise e
+    else:
+        mon = dict([("kpi", list()), ("opkpi", list())])
+        for one in resp:
+            if one.kpi_code:
+                mon["kpi"].append(one.kpi_code)
+            if one.opkpi_code:
+                mon["opkpi"].append(one.opkpi_code)
+        return mon
+    finally:
+        session.close()
+
+
+def update_monitor_indicators(mon_code=None, kpi=None, opkpi=None):
+
+    if not kpi and not opkpi:
+        return None
+
+    session = Session()
+    for_delete = [list(), list()]
+    for_add = [list(), list()]
+    try:
+        indrs = get_monitor_indicators(mon_code=str(mon_code))
+    except Exception as e:
+        print "update_monitor_indicators(). Ошибка получения данных для монитора: %s." % str(mon_code), str(e.message)
+        raise str(e)
+    else:
+        for one in kpi:
+            if one not in indrs["kpi"]:
+                for_add[0].append(one)
+
+        for one in opkpi:
+            if one not in indrs["opkpi"]:
+                for_add[1].append(one)
+
+        for one in indrs["kpi"]:
+            if one not in kpi:
+                for_delete[0].append(one)
+
+        for one in indrs["opkpi"]:
+            if one not in opkpi:
+                for_delete[1].append(one)
+
+        print for_delete
+        print for_add
+
+        try:
+            if for_delete[0]:
+                resp_kpi = session.query(Monitor).filter(and_(Monitor.kpi_code.in_(for_delete[0]),
+                                                              Monitor.mon_code == mon_code)).all()
+                for one in resp_kpi:
+                    session.delete(one)
+                session.commit()
+
+            if for_delete[1]:
+                resp_opkpi = session.query(Monitor).filter(and_(Monitor.opkpi_code.in_(for_delete[1]),
+                                                                Monitor.mon_code == mon_code)).all()
+                for one in resp_opkpi:
+                    session.delete(one)
+                session.commit()
+        except Exception as e:
+            print "Ошибка удаления показателя из монитора. %s" % str(e)
+            raise e
+
+        for one in for_add[0]:
+            new = Monitor()
+            new.mon_code = mon_code
+            new.kpi_code = one
+            try:
+                session.add(new)
+                session.commit()
+            except Exception as e:
+                print "Ошибка добавления стратегического показателя в монитор. %s " % str(e)
+                raise e
+
+        for one in for_add[1]:
+            new = Monitor()
+            new.mon_code = mon_code
+            new.opkpi_code = one
+            try:
+                session.add(new)
+                session.commit()
+            except Exception as e:
+                print "Ошибка добавления операционного показателя в монитор. %s " % str(e)
+                raise e
+        return "ok"
+    finally:
+        session.close()
 
 
 class MotivationCardData(Base):
