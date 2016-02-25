@@ -2472,7 +2472,7 @@ class KPIs(object):
 
         if period_code:
             # добавляем в конкретный период
-            kpi_fact['period'] = int(period_code)
+            kpi_fact['period_code'] = int(period_code)
         else:
             # сначала надо определить период
             try:
@@ -3741,18 +3741,54 @@ class Monitoring(object):
         :param code: код монитора для вывода
         :return:
         """
-        raise cherrypy.HTTPRedirect("/")
+
+        if not code:
+            return ShowError("Не указан монитор.")
+
+        # читаем данные монитора
+        try:
+            mdesc = BMTObjects.get_monitor_desc(mon_code=str(code))
+        except Exception as e:
+            print "/monitoring/edit. Ошибка: %s" % str(e)
+            return ShowError(e)
+
+        tmpl = lookup.get_template("monitor_edit_page.html")
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Редактирование: %s" % mdesc.name
+        step_desc['next_step'] = ""
+
+        return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons, mdesc=mdesc)
 
     @cherrypy.expose
     @require(member_of("users"))
-    def update(self):
+    def update(self, code=None, name=None, desc=None, owner=None):
         """
         Сохранить изменения монитора.
         Название, показатели, списиок людей имеющих доступ.
 
+        :param code:
+        :param name:
+        :param desc:
+        :param owner:
         :return:
         """
-        raise cherrypy.HTTPRedirect("/")
+
+        if not code:
+            return ShowError("Не указан монитор.")
+
+        if not desc:
+            desc = ""
+
+        if not name or not owner:
+            return ShowError("Укажите имя и владельца монитора.")
+        try:
+            status = BMTObjects.update_monitor_desc(code=code, name=name, desc=desc, owner=owner)
+        except Exception as e:
+            print "/monitoring/update. Ошибка: %s" % str(e)
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/monitoring")
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -3763,7 +3799,17 @@ class Monitoring(object):
         :param code: код монитора для удаления
         :return:
         """
-        raise cherrypy.HTTPRedirect("/")
+
+        if not code:
+            return ShowError("Не указан монитор.")
+
+        try:
+            status = BMTObjects.delete_monitor(code=code)
+        except Exception as e:
+            print "/monitoring/delete. Ошибка: %s" % str(e)
+            return ShowError(e)
+
+        raise cherrypy.HTTPRedirect("/monitoring")
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -3788,12 +3834,15 @@ class Monitoring(object):
         tmpl = lookup.get_template("monitor_show_page.html")
         step_desc = dict()
         step_desc['full_description'] = ""
-        step_desc['name'] = "Монитор: %s" % mdesc.name
+        step_desc['name'] = mdesc.name
         step_desc['next_step'] = ""
+        period = BMTObjects.define_period_new(date=datetime.datetime.now())
+
+        add_to_history("/monitoring/show?code=%s" % str(code))
 
         return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons, measures=BMTObjects.MEASURES,
                            mea_f=BMTObjects.MEASURES_FORMAT, mea_s=BMTObjects.MEASURES_SPEC,
-                           mdesc=mdesc, mdata=mdata, scale=BMTObjects.KPI_SCALE_TYPE)
+                           mdesc=mdesc, mdata=mdata, scale=BMTObjects.KPI_SCALE_TYPE, period=period)
 
     @cherrypy.expose
     @require(member_of("users"))
@@ -3893,7 +3942,7 @@ class Monitoring(object):
         else:
             print "Обновление индикаторов монитора %s , статус: %s" % (monitor, status)
 
-        raise cherrypy.HTTPRedirect("/monitoring/indicators?code=%s" % monitor)
+        raise cherrypy.HTTPRedirect("/monitoring/show?code=%s" % monitor)
 
 
 class Root(object):

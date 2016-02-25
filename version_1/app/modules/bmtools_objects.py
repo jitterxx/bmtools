@@ -50,7 +50,7 @@ CYCLES = {0: "Неделя", 1: "Месяца(ев)", 2: "Квартал", 3: "�
 
 MEASURES = {0: "Штуки", 1: "Проценты", 2: "Рубли", 3: "Баллы", 4: "Дни"}
 
-MEASURES_SPEC = {0: "шт", 1: "%", 2: "р", 3: "б", 4: "д"}
+MEASURES_SPEC = {0: "шт", 1: "%", 2: "руб", 3: "б", 4: "д"}
 
 MEASURES_FORMAT = {0: "{:3.0f}", 1: "{:3.0f}", 2: "{:.2f}", 3: "{:3.0f}", 4: "{:3.0f}"}
 
@@ -1170,6 +1170,7 @@ class Custom_KPI(Base):
     code = sqlalchemy.Column(sqlalchemy.String(10), default="", unique=True)
     formula = sqlalchemy.Column(sqlalchemy.String(256), default="")
     link_to_desc = sqlalchemy.Column(sqlalchemy.String(256), default="")
+    # TODO: перевести measure из строки в целое число
     measure = sqlalchemy.Column(sqlalchemy.String(256), default=0) # from MEASURES
     target_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
     fact_responsible = sqlalchemy.Column(sqlalchemy.Integer, default=0) # from PERSONS
@@ -2699,7 +2700,7 @@ def save_kpi_fact_value(kpi_fact=None):
     # проверяем, существует ли запись для этого показателя и периода
     try:
         exist = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == kpi_fact["kpi_code"],
-                                                   KPIFactValue.period_code == kpi_fact['period_code']).all()
+                                                   KPIFactValue.period_code == kpi_fact["period_code"]).all()
     except sqlalchemy.orm.exc.NoResultFound:
         exist = None
     except Exception as e:
@@ -3017,6 +3018,74 @@ def create_monitor(monitor_fields=None):
         raise e
     else:
         return new.code
+    finally:
+        session.close()
+
+
+def update_monitor_desc(code=None, name=None, desc=None, owner=None):
+
+    session = Session()
+
+    try:
+        query = session.query(MonitorDescription).filter(MonitorDescription.code == code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        return [False, "Нет такого монитора."]
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "Ошибка в функции update_monitor_desc(). Найдено много мониторов с кодом: %s. %s" % (code, str(e))
+        raise e
+    except Exception as e:
+        print "Ошибка в функции update_monitor_desc(). %s" % str(e)
+        raise e
+    else:
+        try:
+            query.name = name
+            query.description = desc
+            query.owner = owner
+        except Exception as e:
+            print "Ошибка в функции update_monitor_desc(). Не все параметры указаны. %s" % str(e)
+            raise e
+
+        try:
+            session.commit()
+        except Exception as e:
+            print "Ошибка в функции update_monitor_desc(). Монитор не обновлен. %s" % str(e)
+            raise e
+    finally:
+        session.close()
+
+
+def delete_monitor(code=None):
+
+    session = Session()
+    try:
+        query = session.query(MonitorDescription).filter(MonitorDescription.code == code).one()
+    except sqlalchemy.orm.exc.NoResultFound as e:
+        return [False, "Нет такого монитора."]
+    except sqlalchemy.orm.exc.MultipleResultsFound as e:
+        print "delete_monitor(). Найдено много мониторов с кодом: %s. %s" % (code, str(e))
+        raise e
+    except Exception as e:
+        print "delete_monitor().Ошибка поиска монитора: %s. %s" % (code,str(e))
+        raise e
+    else:
+        try:
+            mon = session.query(Monitor).filter(Monitor.mon_code == code).all()
+        except sqlalchemy.orm.exc.NoResultFound as e:
+            print "Нет индикаторов для монитора %s." % code
+            mon = list()
+        except Exception as e:
+            print "delete_monitor().Ошибка поиска индикаторов для монитора: %s. %s" % (code,str(e))
+            raise e
+
+        try:
+            if mon:
+                for one in mon:
+                    session.delete(one)
+            session.delete(query)
+            session.commit()
+        except Exception as e:
+            print "delete_monitor(). Ошибка при удалении записей монитора. %s" % str(e)
+            raise e
     finally:
         session.close()
 

@@ -94,9 +94,9 @@
                     </td>
                     <td width=20%">${one.name}</td>
                     <td width="10%" class="text-center">
-                        ${persons[one.target_responsible]}
+                        ${persons[int(one.target_responsible)]}
                     </td>
-                    <td width="5%">${measures[one.measure]}</td>
+                    <td width="5%">${measures[int(one.measure)]}</td>
                     % if kpi_target_values.get(one.code):
                         % for t in kpi_target_values.get(one.code):
                         <td width="8%" class="text-center">
@@ -110,7 +110,6 @@
                         </td>
                         % endfor
                     % endif
-
                     <td></td>
                 </tr>
                 % endif
