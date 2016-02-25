@@ -3838,11 +3838,212 @@ class Monitoring(object):
         step_desc['next_step'] = ""
         period = BMTObjects.define_period_new(date=datetime.datetime.now())
 
-        add_to_history("/monitoring/show?code=%s" % str(code))
+        #add_to_history("/monitoring/show?code=%s" % str(code))
 
         return tmpl.render(step_desc=step_desc, persons=BMTObjects.persons, measures=BMTObjects.MEASURES,
                            mea_f=BMTObjects.MEASURES_FORMAT, mea_s=BMTObjects.MEASURES_SPEC,
                            mdesc=mdesc, mdata=mdata, scale=BMTObjects.KPI_SCALE_TYPE, period=period)
+
+    @cherrypy.expose
+    @require(member_of("users"))
+    def show2(self, code=None):
+        """
+        Вывод монитора второй вариант.
+        Выводятся все показатели в таблицу, вложенность согласно формулам.
+        Столбцы = доступные периоды.
+        Для показателя в период выводится: факт, процент, план. Цвет согласно шкале.
+
+        :param code:
+        :return:
+        """
+        step_desc = dict()
+        step_desc['full_description'] = ""
+        step_desc['name'] = "Монитор: "
+        step_desc['next_step'] = ""
+        tmpl = lookup.get_template("monitor_show2_page.html")
+        if not code:
+            code = BMTObjects.current_strategic_map
+
+        try:
+            # TODO: вместо карты, надо вывести список показателей в мониторе
+            map_goals, map_kpi, map_events, map_opkpi = BMTObjects.load_cur_map_objects("ent0")
+            # custom_linked_goals = BMTObjects.load_custom_links()[0]
+        except Exception as e:
+            return ShowError(e)
+
+        try:
+            custom_kpi_links = BMTObjects.load_map_links(for_goals=map_goals.keys(), for_kpi=map_kpi.keys())
+        except Exception as e:
+            return ShowError(e)
+
+        kpi_target_values = dict()
+        kpi_target_formula_values = dict()
+        formula_kpi = dict()
+        now = datetime.datetime.now()
+        periods = BMTObjects.make_periods_for_kpi_new(start_date="01.01.%s" % now.year, plan_period=12)
+
+        # для каждого kpi и периода запрашиваем данные по факту, плану, шкале
+        for kpi in map_kpi.keys():
+            kpi_target_values[kpi] = dict()
+            for period in periods:
+                kpi_target_values[kpi][period] = None
+
+            #target = BMTObjects.get_kpi_target_value(one)
+            #if target:
+            #    kpi_target_values[one] = target
+
+        """
+        for one in map_kpi.values():
+            # Считаем значения по формуле, если она есть
+            if one and one.formula:
+                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
+                try:
+                    formula = py_expression_eval.Parser().parse(one.formula)
+                except Exception as e:
+                    print "Формула некорректная. %s" % str(e)
+                else:
+                    formula_kpi[one.code] = formula.variables()
+                    fsum = dict()
+                    var = dict()
+                    for e in kpi_target_values[one.code]:
+                        fsum[e.period_code] = 0
+                        var[e.period_code] = dict()
+                        for v in formula.variables():
+                            var[e.period_code][v] = 0
+
+                    for v in formula.variables():
+                        print "v: %s" % v
+                        print "var: %s" % var.keys()
+                        # Если целевые значения не заданы, ставим везде 0
+                        if kpi_target_values.get(v):
+                            for k in kpi_target_values[v]:
+                                if var.get(k.period_code):
+                                    var[k.period_code][v] = k.first_value
+                                else:
+                                    print "Предупреждение! Периоды целевых значений показателя %s не совпадают с" \
+                                          " периодами показателя %s." % (one.code, v)
+                        else:
+                            print "Предупреждение! Нет целевых значений показателя %s для расчета по формуле" \
+                                  " показателя %s" % (v, one.code)
+
+                    # print var
+
+                    for e in kpi_target_values[one.code]:
+                        try:
+                            fsum[e.period_code] = formula.evaluate(var[e.period_code])
+                        except ZeroDivisionError:
+                            fsum[e.period_code] = 0
+                        else:
+                            # сохраняем расчитанные по формуле значения в second_value KPITargetValues
+                            kpi_target = dict()
+                            kpi_target['kpi_code'] = str(one.code)
+                            kpi_target['period_code'] = str(e.period_code)
+                            kpi_target['second_value'] = float(fsum[e.period_code])
+                            try:
+                                BMTObjects.save_kpi_target_value(kpi_target)
+                            except Exception as e:
+                                print "Ошибка при обновлении KPI TARGET. /maps/kpi(). %s" % str(e)
+                                # return ShowError(e)
+                            else:
+                                # пересчет для авто периодов целевых значений
+                                try:
+                                    BMTObjects.calculate_auto_target_values(for_kpi=str(one.code))
+                                except Exception as e:
+                                    print "Ошибка при вычислении AUTO KPI for TARGET. /maps/kpi(). %s" % str(e)
+                                    # return ShowError(e)
+
+                    kpi_target_formula_values[one.code] = fsum
+        """
+
+        # Группируем цели по перспективами и порядку расположения
+        group_goals = BMTObjects.group_goals(map_goals)
+
+        print "Show KPI for MAP: %s" % code
+        #print "MAP goals: %s " % map_goals
+        #print "MAP kpi: %s " % map_kpi
+        #print "MAP linked goals: %s" % custom_linked_goals
+        #print "OPKPI : %s" % map_opkpi
+        #print "KPI links: %s" % custom_kpi_links
+        #print "KPI formula values: %s" % kpi_target_formula_values
+        #print "KPI targets: %s" % kpi_target_values
+        #print "Grouped goals: %s" % group_goals
+        print "Formula KPI: %s " % formula_kpi
+
+        # ДОбавляем в историю посещение страницы
+        add_to_history(href="/maps/kpi")
+
+        # Для каждого показателя который содержит формулы, формируем список показатлей внутри формулы
+        # для каждого показателя внутри формулы проверяем тоже самое. В результате должно получиться 2 списка
+        # сдвиг - равен уровню вложенности показателя в формуле, список показателей связанный с их включеним в формулы
+        kpi2 = list()
+        shift2 = list()
+
+        def shift(kpi, shift1):
+            shift1 += 1
+            # print "Работаем с KPI: %s, сдвиг: %s" % (kpi,shift1)
+            # рекурсивная функция, заполняет списки подчиненных показателей если формула содержит вложения
+            if kpi in formula_kpi.keys():
+                # print "Есть формула для KPI: %s" % kpi
+                kpi2.append(kpi)
+                shift2.append(shift1)
+                # print "KPI2: %s SHIFT2: %s" % (kpi2, shift2)
+                # есть формула для этого показателя
+                # для каждого ее члена проверяем наличие формулы в formula_key
+                for var1 in formula_kpi.get(kpi):
+                    # запускаем рекурсию для каждого показателя в формуле
+                    sh, lkp = shift(var1, shift1)
+                    if sh and lkp:
+                        kpi2.append(lkp)
+                        shift2.append(sh)
+            else:
+                # нет формулы для показателя
+                # print "Нет формулы для KPI: %s" % kpi
+                return shift1, kpi
+
+            return None, None
+
+        # shift("kp50f5", 0)
+
+
+        # исключаем из списка вывода показатели, которые входят в формулы других показателей. Они будут отображены
+        # другим способом
+        temp = dict()
+        depended_kpi = dict()
+        for goal in custom_kpi_links.keys():
+            temp[goal] = list()
+            for kpi in custom_kpi_links[goal]:
+                # формируем список входяих в формулу показателей
+                kpi2 = list()
+                shift2 = list()
+                shift(kpi, 0)
+                if kpi2 and shift2:
+                    depended_kpi[kpi] = {"shift": list(), "kpi": list()}
+                    depended_kpi[kpi]["shift"] = shift2[1:]
+                    depended_kpi[kpi]["kpi"] = kpi2[1:]
+                    # print "For KPI %s grouped by formula kpi: %s \n Shifts: %s" % (kpi, kpi2, shift2)
+                # проверяем наличие каждого показателя во всех формулах
+                check = True
+                for fk in formula_kpi.values():
+                    # если он есть хотя бы в одной форуле, исключаем
+                    if kpi in fk:
+                        check = False
+                        # print "Исключен KPI: %s" % kpi
+                if check:
+                    temp[goal].append(kpi)
+                    # print "Оставлен KPI: %s" % kpi
+
+        custom_kpi_links = temp
+
+        # print depended_kpi
+
+        return tmpl.render(step_desc=step_desc, current_map=BMTObjects.get_strategic_map_object(code),
+                           map_goals=map_goals, map_kpi=map_kpi, map_events=map_events, map_opkpi=map_opkpi,
+                           colors=BMTObjects.PERSPECTIVE_COLORS, formula_kpi=formula_kpi,
+                           persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
+                           kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
+                           kpi_target_values=kpi_target_values, group_goals=group_goals,
+                           perspectives=BMTObjects.perspectives, #fval=kpi_target_formula_values,
+                           depended_kpi=depended_kpi)
 
     @cherrypy.expose
     @require(member_of("users"))

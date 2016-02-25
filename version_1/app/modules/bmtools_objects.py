@@ -2299,6 +2299,7 @@ def get_kpi_target_value(kpi_code=None, period_code=None):
         session.close()
         return None
 
+
 def save_kpi_target_value(kpi_target_value):
     """
     Сохраняет объект класса KPITargetValue.
@@ -2497,6 +2498,8 @@ def create_auto_target_values(for_kpi=None):
                 target_value = dict()
                 target_value["kpi_code"] = for_kpi
                 # target_value["first_value"] = 0
+                # TODO: Различные варианты расчета исходя из природы показателя. Указать в свойствах показателя.
+                # Сумма, среднее
                 target_value["formula"] = " + ".join(formula[one][0])  # тут надо делать выбор формулы. Сейчас: сумма
                 target_value["date"] = formula[one][2]
                 target_value["period_code"] = int(one)
@@ -3109,12 +3112,13 @@ class Monitor(Base):
         self.date = datetime.datetime.now()
 
 
-def get_monitor_data(mon_code=None):
+def get_monitor_data(mon_code=None, period=None):
     """
         Возвращает данные о показателях входящих в монитор для вывода пользователю.
         Название показателей, план, факт, оценку по шкале.
 
     :param mon_code:
+    :param period:
     :return:
     """
 
@@ -3127,6 +3131,8 @@ def get_monitor_data(mon_code=None):
     """
     resp = get_monitor_indicators(mon_code=mon_code)
     mon = dict()
+    if not period:
+        period = define_period_new(datetime.datetime.now())
 
     # 1
     try:
@@ -3138,7 +3144,6 @@ def get_monitor_data(mon_code=None):
         print "Ошибка в функции get_monitor_data()1. %s" % str(e)
         raise e
 
-    period = define_period_new(datetime.datetime.now())
     for one in mon.keys():
         # 2 план для текущего периода
         try:
