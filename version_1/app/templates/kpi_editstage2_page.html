@@ -53,6 +53,13 @@
                 <p>Период: ${cycles[kpi.cycle]}</p>
                 <p>Отвественный за достижение: ${persons[kpi.target_responsible]}</p>
                 <p>Единица измерения: ${measures.get(int(kpi.measure))}</p>
+                <p>Формула для расчета:
+                    %if kpi.formula:
+                    ${kpi.formula}
+                    %else:
+                    нет формулы
+                    %endif
+                </p>
             </div>
             <div class="alert alert-success alert-dismissible hidden" role="alert" id="save_alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -199,12 +206,16 @@
                             </div>
                         %if one.formula:
                             <small class="text-muted">
-                                <b>${one.second_value}</b> - значение рассчитаное по формуле
+                                <b>${one.second_value}</b> - значение рассчитаное автоматически
                             </small>
-                        % endif
+                        %elif  kpi.formula:
+                            <small class="text-muted">
+                                <b>${one.second_value}</b> - значение рассчитанное по формуле
+                            </small>
+                        %endif
+
 
                         </td>
-                        <td></td>
                     </tr>
                 % endfor
 

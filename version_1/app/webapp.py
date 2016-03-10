@@ -1921,7 +1921,7 @@ class KPIs(object):
                            measures=BMTObjects.MEASURES, cycles=BMTObjects.CYCLES)
 
     @cherrypy.expose
-    @require(member_of("users"))
+    # @require(member_of("users"))
     def savestage2(self, kpi_code=None, period_code=None, target_value=None):
         """
 
@@ -1931,9 +1931,9 @@ class KPIs(object):
         :return:
         """
 
-        #print kpi_code
-        #print period_code
-        #print target_value
+        print kpi_code
+        print period_code
+        print target_value
 
         kpi_target = dict()
         kpi_target['kpi_code'] = str(kpi_code)
@@ -1946,9 +1946,17 @@ class KPIs(object):
             print "Ошибка при обновлении KPI TARGET. %s" % str(e)
             return ShowError(e)
         else:
-            # пересчет значений для авто периодов целевых значений
+            # пересчет значений для показателей с формулами, куда входит этот kpi
             try:
-                BMTObjects.calculate_auto_target_values(for_kpi=str(kpi_code))
+                BMTObjects.calculate_target_values(for_kpi=kpi_target['kpi_code'], for_period=kpi_target["period_code"])
+            except Exception as e:
+                print "Ошибка при вычислении KPI for TARGET по формулам. /kpi/savestage2(). %s" % str(e)
+                return ShowError(e)
+
+            # пересчет значений для авто периодов целевых значений
+            # TODO: обновлять значения на странице через JS
+            try:
+                BMTObjects.calculate_auto_target_values(for_kpi=kpi_target['kpi_code'])
             except Exception as e:
                 print "Ошибка при вычислении AUTO KPI for TARGET. /kpi/savestage2(). %s" % str(e)
                 return ShowError(e)
@@ -2061,13 +2069,13 @@ class KPIs(object):
         raise cherrypy.HTTPRedirect(history_back())
 
     @cherrypy.expose
-    @require(member_of("users"))
+    # @require(member_of("users"))
     def editstage2(self, code=None):
         # Редактирование целевых значений для показателя
         tmpl = lookup.get_template("kpi_editstage2_page.html")
         step_desc = dict()
         step_desc['full_description'] = ""
-        step_desc['name'] = "Целевые значения"
+        step_desc['name'] = "Плановые значения"
         step_desc['next_step'] = "/maps?code=%s" % BMTObjects.current_strategic_map
 
         try:
@@ -3878,7 +3886,6 @@ class Monitoring(object):
 
         kpi_target_values = dict()
         kpi_fact_values = dict()
-        kpi_target_formula_values = dict()
         formula_kpi = dict()
 
         now = datetime.datetime.now()

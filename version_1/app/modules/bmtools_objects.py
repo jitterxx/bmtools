@@ -2327,10 +2327,10 @@ def save_kpi_target_value(kpi_target_value):
         print "KPI TARGET такой объект существует, обновляем"
         try:
             # если значение не передано, присваиваем по умолчанию 0
-            if kpi_target_value.get("first_value"):
+            if kpi_target_value.get("first_value") or kpi_target_value.get("first_value") == 0:
                 exist.first_value = kpi_target_value["first_value"]
 
-            if kpi_target_value.get("second_value"):
+            if kpi_target_value.get("second_value") or kpi_target_value.get("second_value") == 0:
                 exist.second_value = kpi_target_value["second_value"]
 
             if kpi_target_value.get("formula"):
@@ -2613,6 +2613,81 @@ def calculate_auto_target_values(for_kpi=None, for_period=None):
                             session.close()
                             raise e
     session.close()
+
+
+def calculate_target_values(for_kpi=None, for_period=None):
+    """
+    Функция расчета значений плана по формулам при обновлении любого показателя.
+
+    :param for_kpi:
+    :param for_period:
+    :return:
+    """
+
+    if not for_kpi or not for_period:
+        return None
+
+    try:
+        resp = load_custom_goals_kpi(goal_code=None, kpi_code=None)[1]
+    except Exception as e:
+        print "Ошибка при получении kpi. %s" % str(e)
+    else:
+        kpi = dict()
+        for one in resp.values():
+            if one.formula:
+                formula = one.formula.split(" ")
+                # ищем вхождение измененного kpi в формулы
+                if for_kpi in formula:
+                    print "Вычисляем значение по формуле: %s" % formula
+                    try:
+                        py_expression_eval.Parser().parse(one.formula)
+                    except Exception as e:
+                        print "Формула некорректная. %s" % str(e)
+                    else:
+                        # Запоминаем ,если все ок и формула корректная
+                        kpi[one.code] = one
+
+    # Для каждого kpi с формулой: собираем значения входящих в нее kpi и делаем расчет.
+    # Если значений нет, то расчет не производится
+    print kpi
+
+    # для хранения значений используемых в формулах
+    fvar = dict()
+    fval = dict()
+    for one in kpi.values():
+        fvar[one.code] = dict()
+        fval[one.code] = None
+        formula = py_expression_eval.Parser().parse(one.formula)
+        for v in formula.variables():
+            try:
+                fvar[one.code][v] = get_kpi_target_value(kpi_code=v, period_code=for_period).first_value
+            except Exception as e:
+                fvar[one.code][v] = None
+
+        # расчет показателя
+        try:
+            fval[one.code] = formula.evaluate(fvar[one.code])
+        except ZeroDivisionError:
+            fval[one.code] = 0
+        except Exception as e:
+            print "Ошибка при расчете формулы. Ничего не сохраняем."
+            print str(e)
+        else:
+            # сохраняем расчитанные по формуле значения в second_value KPITargetValues
+            kpi_target = dict()
+            kpi_target['kpi_code'] = str(one.code)
+            kpi_target['period_code'] = str(for_period)
+            kpi_target['second_value'] = float(fval[one.code])
+
+            try:
+                save_kpi_target_value(kpi_target)
+            except Exception as e:
+                print "Ошибка при обновлении KPI TARGET. /maps/kpi(). %s" % str(e)
+                # return ShowError(e)
+
+    print fvar
+    print fval
+    return fval
 
 
 class KPIFactValue(Base):

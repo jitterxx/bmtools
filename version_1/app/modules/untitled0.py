@@ -19,17 +19,8 @@ sys.setdefaultencoding("utf-8")
 
 session = BMTObjects.Session()
 
-p = BMTObjects.make_periods_for_kpi_new(start_date=datetime.datetime.strptime("01.01.%s" % 2016, "%d.%m.%Y"),
-                                        plan_period=12)
+kpi = BMTObjects.calculate_target_values(for_kpi="kp635a", for_period=12016)
 
-
-for one in p.values():
-    print one[0]
-    print one[1]
-    print one[2]
-    print "-----------------------"
-
-
-print BMTObjects.define_period_new(date=datetime.datetime.now())
+print kpi
 
 session.close()
