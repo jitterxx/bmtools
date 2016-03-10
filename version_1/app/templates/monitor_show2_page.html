@@ -85,7 +85,11 @@
                                 <th>Название</th>
                                 <th>ПФ</th>
                                 %for per in periods.values():
-                                <th  align="center">${per[1]}</th>
+                                    %if cur_period == int(per[0]):
+                                    <th  align="center" bgcolor="#FFFFCC">${per[1]}</th>
+                                    %else:
+                                    <th  align="center">${per[1]}</th>
+                                    %endif
                                 %endfor
                             </tr>
                             </thead>
@@ -103,7 +107,9 @@
                                             <ul class="dropdown-menu" aria-labelledby="dLabel">
                                                 <li><a href="/kpi/edit?code=${kpi}">Свойства</a></li>
                                                 <li role="separator" class="divider"></li>
-                                                <li><a href="/kpi/editstage2?code=${kpi}">Целевые значения</a></li>
+                                                <li><a href="/kpi/editstage2?code=${kpi}">План</a></li>
+                                                <li role="separator" class="divider"></li>
+                                                <li><a href="/kpi/fact?code=${kpi}">Факт</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li><a href="/kpi/copy?code=${kpi}">Создать копию</a></li>
                                                 <li role="separator" class="divider"></li>
@@ -123,12 +129,16 @@
                                     %for per in periods.values():
                                     % if kpi_target_values[kpi][per[0]] and kpi_fact_values[kpi][per[0]]:
                                         %if kpi_target_values[kpi][per[0]].first_value <= kpi_fact_values[kpi][per[0]].fact_value:
-                                        <td align="center" style="color: green;">
+                                        <td align="center" bgcolor="#66CC66">
                                         %else:
-                                        <td align="center" style="color: red;">
+                                        <td align="center" bgcolor="#FF3300">
                                         %endif
                                     %else:
+                                        %if cur_period == int(per[0]):
+                                        <td align="center" bgcolor="#FFFFCC">
+                                        %else:
                                         <td align="center">
+                                        %endif
                                     %endif
 
                                         % if kpi_target_values[kpi][per[0]]:
@@ -173,7 +183,9 @@
                                                     <ul class="dropdown-menu" aria-labelledby="dLabel">
                                                         <li><a href="/kpi/edit?code=${dkpi}">Свойства</a></li>
                                                         <li role="separator" class="divider"></li>
-                                                        <li><a href="/kpi/editstage2?code=${dkpi}">Целевые значения</a></li>
+                                                        <li><a href="/kpi/editstage2?code=${dkpi}">План</a></li>
+                                                        <li role="separator" class="divider"></li>
+                                                        <li><a href="/kpi/fact?code=${dkpi}">Факт</a></li>
                                                         <li role="separator" class="divider"></li>
                                                         <li><a href="/kpi/copy?code=${dkpi}">Создать копию</a></li>
                                                         <li role="separator" class="divider"></li>
@@ -192,15 +204,19 @@
                                             <td>План<br>Факт</td>
 
                                             %for per in periods.values():
-                                            % if kpi_target_values[kpi][per[0]] and kpi_fact_values[kpi][per[0]]:
-                                                %if kpi_target_values[kpi][per[0]].first_value <= kpi_fact_values[kpi][per[0]].fact_value:
-                                                <td align="center" style="color: green;">
+                                                % if kpi_target_values[kpi][per[0]] and kpi_fact_values[kpi][per[0]]:
+                                                    %if kpi_target_values[kpi][per[0]].first_value <= kpi_fact_values[kpi][per[0]].fact_value:
+                                                    <td align="center" bgcolor="#66CC66">
+                                                    %else:
+                                                    <td align="center" bgcolor="#FF3300">
+                                                    %endif
                                                 %else:
-                                                <td align="center" style="color: red;">
+                                                    %if cur_period == int(per[0]):
+                                                    <td align="center" bgcolor="#FFFFCC">
+                                                    %else:
+                                                    <td align="center">
+                                                    %endif
                                                 %endif
-                                            %else:
-                                                <td align="center">
-                                            %endif
 
                                                 % if kpi_target_values[kpi][per[0]]:
                                                     <%

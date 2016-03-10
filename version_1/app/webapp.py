@@ -3881,24 +3881,25 @@ class Monitoring(object):
         kpi_target_formula_values = dict()
         formula_kpi = dict()
 
-        for one in map_kpi.values():
-            # Считаем значения по формуле, если она есть
-            if one and one.formula:
-                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
-                try:
-                    formula = py_expression_eval.Parser().parse(one.formula)
-                except Exception as e:
-                    print "Формула некорректная. %s" % str(e)
-                else:
-                    formula_kpi[one.code] = formula.variables()
-
         now = datetime.datetime.now()
+        cur_period = now.month*10000 + now.year
         periods = BMTObjects.make_periods_for_kpi_new(start_date=datetime.datetime.strptime("01.01.%s" % now.year,
                                                                                             "%d.%m.%Y"),
                                                       plan_period=12)
 
         # для каждого kpi и периода запрашиваем данные по факту, плану, шкале
         for kpi in map_kpi.keys():
+
+            # Считаем значения по формуле, если она есть
+            if kpi and map_kpi[kpi].formula:
+                # print "Есть формула для KPI: %s. Формула: %s" % (kpi, map_kpi[kpi].formula)
+                try:
+                    formula = py_expression_eval.Parser().parse(map_kpi[kpi].formula)
+                except Exception as e:
+                    print "Формула некорректная. %s" % str(e)
+                else:
+                    formula_kpi[kpi] = formula.variables()
+
             kpi_target_values[kpi] = dict()
             kpi_fact_values[kpi] = dict()
             for period in periods.values():
@@ -3963,9 +3964,6 @@ class Monitoring(object):
 
             return None, None
 
-        # shift("kp50f5", 0)
-
-
         # исключаем из списка вывода показатели, которые входят в формулы других показателей. Они будут отображены
         # другим способом
         temp = dict()
@@ -4004,7 +4002,8 @@ class Monitoring(object):
                            kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                            kpi_target_values=kpi_target_values, group_goals=group_goals,
                            perspectives=BMTObjects.perspectives, periods=periods, kpi_fact_values=kpi_fact_values,
-                           depended_kpi=depended_kpi, mea_f=BMTObjects.MEASURES_FORMAT)
+                           depended_kpi=depended_kpi, mea_f=BMTObjects.MEASURES_FORMAT,
+                           cur_period=cur_period)
 
     @cherrypy.expose
     @require(member_of("users"))
