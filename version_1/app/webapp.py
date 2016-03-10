@@ -3879,6 +3879,18 @@ class Monitoring(object):
         kpi_target_values = dict()
         kpi_target_formula_values = dict()
         formula_kpi = dict()
+
+        for one in map_kpi.values():
+            # Считаем значения по формуле, если она есть
+            if one and one.formula:
+                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
+                try:
+                    formula = py_expression_eval.Parser().parse(one.formula)
+                except Exception as e:
+                    print "Формула некорректная. %s" % str(e)
+                else:
+                    formula_kpi[one.code] = formula.variables()
+
         now = datetime.datetime.now()
         periods = BMTObjects.make_periods_for_kpi_new(start_date=datetime.datetime.strptime("01.01.%s" % now.year,
                                                                                             "%d.%m.%Y"),
@@ -3887,13 +3899,10 @@ class Monitoring(object):
         # для каждого kpi и периода запрашиваем данные по факту, плану, шкале
         for kpi in map_kpi.keys():
             kpi_target_values[kpi] = dict()
-            for period in periods:
-                kpi_target_values[kpi][period] = None
-
-            #target = BMTObjects.get_kpi_target_value(one)
-            #if target:
-            #    kpi_target_values[one] = target
-
+            for period in periods.values():
+                # получаем план для kpi и конкретного периода
+                target = BMTObjects.get_kpi_target_value(kpi_code=kpi, period_code=period[0])
+                kpi_target_values[kpi][period[0]] = target
 
         # Группируем цели по перспективами и порядку расположения
         group_goals = BMTObjects.group_goals(map_goals)
@@ -3983,7 +3992,7 @@ class Monitoring(object):
                            kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                            kpi_target_values=kpi_target_values, group_goals=group_goals,
                            perspectives=BMTObjects.perspectives, periods=periods,
-                           depended_kpi=depended_kpi)
+                           depended_kpi=depended_kpi, mea_f=BMTObjects.MEASURES_FORMAT)
 
     @cherrypy.expose
     @require(member_of("users"))

@@ -83,7 +83,7 @@
                             <thead>
                             <tr class="text-center">
                                 <th>Название</th>
-
+                                <th>ПФ</th>
                                 %for per in periods.values():
                                 <th>${per[0]}</th>
                                 %endfor
@@ -91,12 +91,12 @@
                             </thead>
                             <tbody>
                             % for kpi in custom_kpi_links[goal]:
-                                <tr style="color: ${colors[p]}">
+                                <tr>
                                     <td width="30%" >
                                         <div class="dropdown">
                                             <a href="${map_kpi.get(kpi).code}"></a>
                                             <a id="${map_kpi.get(kpi).code}" data-toggle="dropdown" role="button"
-                                                   aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
+                                                   aria-haspopup="true" aria-expanded="false" style="color: #000000;">
                                                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                                                         ${map_kpi.get(kpi).name}
                                                 </a>
@@ -118,6 +118,21 @@
                                         <small class="text-muted"><b>Единица измерения: </b>${measures.get(int(map_kpi.get(kpi).measure))}</small>
                                         </div>
                                     </td>
+                                    <td>План<br>Факт</td>
+
+                                    %for per in periods.values():
+                                    <td>
+                                        % if kpi_target_values[kpi][per[0]]:
+                                            <%
+                                                m = int(map_kpi[kpi].measure)
+                                            %>
+                                            ${mea_f[m].format(kpi_target_values[kpi][per[0]].first_value)}
+                                        % else:
+                                            -<br>
+                                        % endif
+                                    </td>
+                                    %endfor
+
                                 </tr>
                                 % if kpi in depended_kpi.keys():
                                     % for i in range(0, len(depended_kpi[kpi]['kpi'])):
@@ -126,13 +141,13 @@
                                             shift = depended_kpi[kpi]['shift'][i]
                                         %>
                                         % if map_kpi.get(dkpi):
-                                        <tr style="color: ${colors[p]}">
+                                        <tr>
                                             <td width="30%">
                                                 <div style="margin-left: ${shift*5}%">
                                                 <div class="dropdown">
                                                     <a href="${map_kpi.get(dkpi).code}"></a>
                                                     <a id="${map_kpi.get(dkpi).code}" data-toggle="dropdown" role="button"
-                                                           aria-haspopup="true" aria-expanded="false" style="color: ${colors[p]}">
+                                                           aria-haspopup="true" aria-expanded="false" style="color: #000000;">
                                                                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                                                                     ${map_kpi.get(dkpi).name}
                                                         </a>
@@ -155,6 +170,7 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td>План<br>Факт</td>
                                         </tr>
                                         % endif
                                     % endfor

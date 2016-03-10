@@ -2261,6 +2261,10 @@ def get_kpi_target_value(kpi_code=None, period_code=None):
     """
 
     session = Session()
+    if kpi_code:
+        kpi_code = str(kpi_code)
+    if period_code:
+        period_code = int(period_code)
 
     if kpi_code and not period_code:
         try:
