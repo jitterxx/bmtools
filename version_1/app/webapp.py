@@ -3845,7 +3845,7 @@ class Monitoring(object):
                            mdesc=mdesc, mdata=mdata, scale=BMTObjects.KPI_SCALE_TYPE, period=period)
 
     @cherrypy.expose
-    @require(member_of("users"))
+    # @require(member_of("users"))
     def show2(self, code=None):
         """
         Вывод монитора второй вариант.
@@ -3880,7 +3880,9 @@ class Monitoring(object):
         kpi_target_formula_values = dict()
         formula_kpi = dict()
         now = datetime.datetime.now()
-        periods = BMTObjects.make_periods_for_kpi_new(start_date="01.01.%s" % now.year, plan_period=12)
+        periods = BMTObjects.make_periods_for_kpi_new(start_date=datetime.datetime.strptime("01.01.%s" % now.year,
+                                                                                            "%d.%m.%Y"),
+                                                      plan_period=12)
 
         # для каждого kpi и периода запрашиваем данные по факту, плану, шкале
         for kpi in map_kpi.keys():
@@ -3892,68 +3894,6 @@ class Monitoring(object):
             #if target:
             #    kpi_target_values[one] = target
 
-        """
-        for one in map_kpi.values():
-            # Считаем значения по формуле, если она есть
-            if one and one.formula:
-                print "Есть формула для KPI: %s. Формула: %s" % (one, one.formula)
-                try:
-                    formula = py_expression_eval.Parser().parse(one.formula)
-                except Exception as e:
-                    print "Формула некорректная. %s" % str(e)
-                else:
-                    formula_kpi[one.code] = formula.variables()
-                    fsum = dict()
-                    var = dict()
-                    for e in kpi_target_values[one.code]:
-                        fsum[e.period_code] = 0
-                        var[e.period_code] = dict()
-                        for v in formula.variables():
-                            var[e.period_code][v] = 0
-
-                    for v in formula.variables():
-                        print "v: %s" % v
-                        print "var: %s" % var.keys()
-                        # Если целевые значения не заданы, ставим везде 0
-                        if kpi_target_values.get(v):
-                            for k in kpi_target_values[v]:
-                                if var.get(k.period_code):
-                                    var[k.period_code][v] = k.first_value
-                                else:
-                                    print "Предупреждение! Периоды целевых значений показателя %s не совпадают с" \
-                                          " периодами показателя %s." % (one.code, v)
-                        else:
-                            print "Предупреждение! Нет целевых значений показателя %s для расчета по формуле" \
-                                  " показателя %s" % (v, one.code)
-
-                    # print var
-
-                    for e in kpi_target_values[one.code]:
-                        try:
-                            fsum[e.period_code] = formula.evaluate(var[e.period_code])
-                        except ZeroDivisionError:
-                            fsum[e.period_code] = 0
-                        else:
-                            # сохраняем расчитанные по формуле значения в second_value KPITargetValues
-                            kpi_target = dict()
-                            kpi_target['kpi_code'] = str(one.code)
-                            kpi_target['period_code'] = str(e.period_code)
-                            kpi_target['second_value'] = float(fsum[e.period_code])
-                            try:
-                                BMTObjects.save_kpi_target_value(kpi_target)
-                            except Exception as e:
-                                print "Ошибка при обновлении KPI TARGET. /maps/kpi(). %s" % str(e)
-                                # return ShowError(e)
-                            else:
-                                # пересчет для авто периодов целевых значений
-                                try:
-                                    BMTObjects.calculate_auto_target_values(for_kpi=str(one.code))
-                                except Exception as e:
-                                    print "Ошибка при вычислении AUTO KPI for TARGET. /maps/kpi(). %s" % str(e)
-                                    # return ShowError(e)
-
-                    kpi_target_formula_values[one.code] = fsum
-        """
 
         # Группируем цели по перспективами и порядку расположения
         group_goals = BMTObjects.group_goals(map_goals)
@@ -4042,7 +3982,7 @@ class Monitoring(object):
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                            kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                            kpi_target_values=kpi_target_values, group_goals=group_goals,
-                           perspectives=BMTObjects.perspectives, #fval=kpi_target_formula_values,
+                           perspectives=BMTObjects.perspectives, periods=periods,
                            depended_kpi=depended_kpi)
 
     @cherrypy.expose

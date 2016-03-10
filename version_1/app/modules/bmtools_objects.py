@@ -187,29 +187,25 @@ def make_periods_for_kpi_new(start_date=None, plan_period=None):
         if month == 0:
             month = 12
 
-
         print "Месяц: %s, год: %s" % (month, year)
         print "Код периода: %s" % (str(month) + str(year))
         print "Название периода: %s" % (PERIOD_NAME[month] + str(year))
-        if month + 1 == 13:
-            month = 1
-            year += 1
-            print "Отчетная дата периода: %s" % datetime.datetime(year, month, 1)
-        else:
-            print "Отчетная дата периода: %s" % datetime.datetime(year, month + 1, 1)
-        print "-------------------------------------"
 
         # код периода
         periods[p].append(str(month) + str(year))
         # название периода
         periods[p].append(PERIOD_NAME[month] + " " + str(year))
-        # отчетная дата
+
         if month + 1 == 13:
             month = 1
             year += 1
             periods[p].append(datetime.datetime(year, month, 1))
+            print "Отчетная дата периода: %s" % datetime.datetime(year, month, 1)
         else:
             periods[p].append(datetime.datetime(year, month + 1, 1))
+            print "Отчетная дата периода: %s" % datetime.datetime(year, month + 1, 1)
+
+        print "-------------------------------------"
 
     return periods
 
