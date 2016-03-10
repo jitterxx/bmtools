@@ -3877,6 +3877,7 @@ class Monitoring(object):
             return ShowError(e)
 
         kpi_target_values = dict()
+        kpi_fact_values = dict()
         kpi_target_formula_values = dict()
         formula_kpi = dict()
 
@@ -3899,27 +3900,38 @@ class Monitoring(object):
         # для каждого kpi и периода запрашиваем данные по факту, плану, шкале
         for kpi in map_kpi.keys():
             kpi_target_values[kpi] = dict()
+            kpi_fact_values[kpi] = dict()
             for period in periods.values():
                 # получаем план для kpi и конкретного периода
                 target = BMTObjects.get_kpi_target_value(kpi_code=kpi, period_code=period[0])
                 kpi_target_values[kpi][period[0]] = target
 
+                # получаем факт для kpi и конкретного периода
+                fact = BMTObjects.get_kpi_fact_values(for_kpi=kpi, period_code=period[0])
+                if fact:
+                    if isinstance(fact, list):
+                        kpi_fact_values[kpi][period[0]] = fact[0]
+                    else:
+                        kpi_fact_values[kpi][period[0]] = fact
+                else:
+                    kpi_fact_values[kpi][period[0]] = None
+
         # Группируем цели по перспективами и порядку расположения
         group_goals = BMTObjects.group_goals(map_goals)
 
         print "Show KPI for MAP: %s" % code
-        #print "MAP goals: %s " % map_goals
-        #print "MAP kpi: %s " % map_kpi
-        #print "MAP linked goals: %s" % custom_linked_goals
-        #print "OPKPI : %s" % map_opkpi
-        #print "KPI links: %s" % custom_kpi_links
-        #print "KPI formula values: %s" % kpi_target_formula_values
-        #print "KPI targets: %s" % kpi_target_values
-        #print "Grouped goals: %s" % group_goals
-        print "Formula KPI: %s " % formula_kpi
+        # print "MAP goals: %s " % map_goals
+        # print "MAP kpi: %s " % map_kpi
+        # print "MAP linked goals: %s" % custom_linked_goals
+        # print "OPKPI : %s" % map_opkpi
+        # print "KPI links: %s" % custom_kpi_links
+        # print "KPI formula values: %s" % kpi_target_formula_values
+        # print "KPI targets: %s" % kpi_target_values
+        # print "Grouped goals: %s" % group_goals
+        # print "Formula KPI: %s " % formula_kpi
 
         # ДОбавляем в историю посещение страницы
-        add_to_history(href="/maps/kpi")
+        # add_to_history(href="/maps/kpi")
 
         # Для каждого показателя который содержит формулы, формируем список показатлей внутри формулы
         # для каждого показателя внутри формулы проверяем тоже самое. В результате должно получиться 2 списка
@@ -3991,7 +4003,7 @@ class Monitoring(object):
                            persons=BMTObjects.persons, cycles=BMTObjects.CYCLES, measures=BMTObjects.MEASURES,
                            kpi_scale=BMTObjects.KPI_SCALE_TYPE, custom_kpi_links=custom_kpi_links,
                            kpi_target_values=kpi_target_values, group_goals=group_goals,
-                           perspectives=BMTObjects.perspectives, periods=periods,
+                           perspectives=BMTObjects.perspectives, periods=periods, kpi_fact_values=kpi_fact_values,
                            depended_kpi=depended_kpi, mea_f=BMTObjects.MEASURES_FORMAT)
 
     @cherrypy.expose

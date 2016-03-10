@@ -85,7 +85,7 @@
                                 <th>Название</th>
                                 <th>ПФ</th>
                                 %for per in periods.values():
-                                <th>${per[0]}</th>
+                                <th  align="center">${per[1]}</th>
                                 %endfor
                             </tr>
                             </thead>
@@ -121,15 +121,34 @@
                                     <td>План<br>Факт</td>
 
                                     %for per in periods.values():
-                                    <td>
+                                    % if kpi_target_values[kpi][per[0]] and kpi_fact_values[kpi][per[0]]:
+                                        %if kpi_target_values[kpi][per[0]].first_value <= kpi_fact_values[kpi][per[0]].fact_value:
+                                        <td align="center" style="color: green;">
+                                        %else:
+                                        <td align="center" style="color: red;">
+                                        %endif
+                                    %else:
+                                        <td align="center">
+                                    %endif
+
                                         % if kpi_target_values[kpi][per[0]]:
                                             <%
                                                 m = int(map_kpi[kpi].measure)
                                             %>
                                             ${mea_f[m].format(kpi_target_values[kpi][per[0]].first_value)}
                                         % else:
-                                            -<br>
+                                            -
                                         % endif
+                                        <br>
+                                        % if kpi_fact_values[kpi][per[0]]:
+                                            <%
+                                                m = int(map_kpi[kpi].measure)
+                                            %>
+                                            ${mea_f[m].format(kpi_fact_values[kpi][per[0]].fact_value)}
+                                        % else:
+                                            -
+                                        % endif
+
                                     </td>
                                     %endfor
 
@@ -171,6 +190,39 @@
                                                 </div>
                                             </td>
                                             <td>План<br>Факт</td>
+
+                                            %for per in periods.values():
+                                            % if kpi_target_values[kpi][per[0]] and kpi_fact_values[kpi][per[0]]:
+                                                %if kpi_target_values[kpi][per[0]].first_value <= kpi_fact_values[kpi][per[0]].fact_value:
+                                                <td align="center" style="color: green;">
+                                                %else:
+                                                <td align="center" style="color: red;">
+                                                %endif
+                                            %else:
+                                                <td align="center">
+                                            %endif
+
+                                                % if kpi_target_values[kpi][per[0]]:
+                                                    <%
+                                                        m = int(map_kpi[kpi].measure)
+                                                    %>
+                                                    ${mea_f[m].format(kpi_target_values[kpi][per[0]].first_value)}
+                                                % else:
+                                                    -
+                                                % endif
+                                                <br>
+                                                % if kpi_fact_values[kpi][per[0]]:
+                                                    <%
+                                                        m = int(map_kpi[kpi].measure)
+                                                    %>
+                                                    ${mea_f[m].format(kpi_fact_values[kpi][per[0]].fact_value)}
+                                                % else:
+                                                    -
+                                                % endif
+
+                                            </td>
+                                            %endfor
+
                                         </tr>
                                         % endif
                                     % endfor

@@ -2271,7 +2271,7 @@ def get_kpi_target_value(kpi_code=None, period_code=None):
             resp = session.query(KPITargetValue).filter(KPITargetValue.kpi_code == kpi_code).\
                 order_by(KPITargetValue.date.asc(), KPITargetValue.period_code.asc()).all()
         except sqlalchemy.orm.exc.NoResultFound as e:
-            print "BMTObjects.get_kpi_target_value(). Ничего не найдено для KPI = %s" % kpi_code
+            # print "BMTObjects.get_kpi_target_value(). Ничего не найдено для KPI = %s" % kpi_code
             return None
         except Exception as e:
             print "Ошибка в функции BMTObjects.get_kpi_target_value(). " + str(e)
@@ -2285,8 +2285,8 @@ def get_kpi_target_value(kpi_code=None, period_code=None):
             resp = session.query(KPITargetValue).filter(and_(KPITargetValue.kpi_code == kpi_code,
                                                              KPITargetValue.period_code == period_code)).one()
         except sqlalchemy.orm.exc.NoResultFound as e:
-            print "BMTObjects.get_kpi_target_value(). Ничего не найдено для KPI = %s и Period = %s" % \
-                  (kpi_code, period_code)
+            # print "BMTObjects.get_kpi_target_value(). Ничего не найдено для KPI = %s и Period = %s" % \
+                  # (kpi_code, period_code)
             return None
         except Exception as e:
             print "Ошибка в функции BMTObjects.get_kpi_target_value(). " + str(e)
@@ -2646,6 +2646,12 @@ def get_kpi_fact_values(for_kpi=None, period_code=None):
     """
 
     session = Session()
+
+    if for_kpi:
+        for_kpi = str(for_kpi)
+    if period_code:
+        period_code = str(period_code)
+
     if for_kpi and not period_code:
         try:
             if for_kpi:
@@ -2654,7 +2660,7 @@ def get_kpi_fact_values(for_kpi=None, period_code=None):
             else:
                 return None
         except sqlalchemy.orm.exc.NoResultFound as e:
-            print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s" % for_kpi
+            # print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s" % for_kpi
             return None
         except Exception as e:
             print "Ошибка в функции BMTObjects.get_kpi_fact_value(). " + str(e)
@@ -2676,8 +2682,8 @@ def get_kpi_fact_values(for_kpi=None, period_code=None):
                                                            KPIFactValue.period_code == period_code)).\
                 order_by(KPIFactValue.create_date.asc()).all()
         except sqlalchemy.orm.exc.NoResultFound as e:
-            print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s и Period = %s" % \
-                  (for_kpi, period_code)
+            # print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s и Period = %s" % \
+                   # (for_kpi, period_code)
             return None
         except Exception as e:
             print "Ошибка в функции BMTObjects.get_kpi_fact_value(). " + str(e)
