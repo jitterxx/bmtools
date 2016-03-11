@@ -19,7 +19,7 @@ sys.setdefaultencoding("utf-8")
 
 session = BMTObjects.Session()
 
-kpi = BMTObjects.calculate_target_values(for_kpi="kp635a", for_period=12016)
+kpi = BMTObjects.calculate_fact_values(for_kpi="kpd9f1", for_period=12016)
 
 print kpi
 

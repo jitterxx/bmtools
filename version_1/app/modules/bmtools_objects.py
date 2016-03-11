@@ -52,7 +52,7 @@ MEASURES = {0: "Штуки", 1: "Проценты", 2: "Рубли", 3: "Бал�
 
 MEASURES_SPEC = {0: "шт", 1: "%", 2: "руб", 3: "б", 4: "д"}
 
-MEASURES_FORMAT = {0: "{:3,.0f}", 1: "{:3,.0f}", 2: "{:,.2f}", 3: "{:3,.0f}", 4: "{:3,.0f}"}
+MEASURES_FORMAT = {0: "{:3,.0f}", 1: "{:3,.0f}", 2: "{:,.2f}", 3: "{:3,.0f}", 4: "{:,.1f}"}
 
 GOAL_TYPE = {0: "lib", 1: "custom"}
 
@@ -2731,7 +2731,8 @@ def get_kpi_fact_values(for_kpi=None, period_code=None):
         try:
             if for_kpi:
                 resp = session.query(KPIFactValue).filter(KPIFactValue.kpi_code == for_kpi).\
-                    order_by(KPIFactValue.period_code.asc(), KPIFactValue.create_date.asc()).all()
+                    order_by(KPIFactValue.period_code.asc(), KPIFactValue.create_date.desc(),
+                             KPIFactValue.id.desc()).all()
             else:
                 return None
         except sqlalchemy.orm.exc.NoResultFound as e:
@@ -2755,7 +2756,7 @@ def get_kpi_fact_values(for_kpi=None, period_code=None):
         try:
             resp = session.query(KPIFactValue).filter(and_(KPIFactValue.kpi_code == for_kpi,
                                                            KPIFactValue.period_code == period_code)).\
-                order_by(KPIFactValue.create_date.asc()).all()
+                order_by(KPIFactValue.create_date.desc(), KPIFactValue.id.desc()).all()
         except sqlalchemy.orm.exc.NoResultFound as e:
             # print "BMTObjects.get_kpi_fact_value(). Ничего не найдено для KPI = %s и Period = %s" % \
                    # (for_kpi, period_code)
@@ -2828,6 +2829,88 @@ def save_kpi_fact_value(kpi_fact=None):
 def calculate_auto_fact_values(for_kpi=None):
 
     return ""
+
+
+def calculate_fact_values(for_kpi=None, for_period=None):
+    """
+    Функция расчета факта по формулам
+    :param for_kpi:
+    :param for_period:
+    :return:
+    """
+
+    if not for_kpi or not for_period:
+        return None
+
+    try:
+        resp = load_custom_goals_kpi(goal_code=None, kpi_code=None)[1]
+    except Exception as e:
+        print "Ошибка при получении kpi. %s" % str(e)
+    else:
+        kpi = dict()
+        for one in resp.values():
+            if one.formula:
+                formula = one.formula.split(" ")
+                # ищем вхождение измененного kpi в формулы
+                if for_kpi in formula:
+                    print "Вычисляем значение по формуле: %s" % formula
+                    try:
+                        py_expression_eval.Parser().parse(one.formula)
+                    except Exception as e:
+                        print "Формула некорректная. %s" % str(e)
+                    else:
+                        # Запоминаем ,если все ок и формула корректная
+                        kpi[one.code] = one
+
+    # Для каждого kpi с формулой: собираем значения входящих в нее kpi и делаем расчет.
+    # Если значений нет, то расчет не производится
+    print kpi
+
+    # для хранения значений используемых в формулах
+    fvar = dict()
+    fval = dict()
+    for one in kpi.values():
+        fvar[one.code] = dict()
+        fval[one.code] = None
+        formula = py_expression_eval.Parser().parse(one.formula)
+        for v in formula.variables():
+            try:
+                fact = get_kpi_fact_values(for_kpi=v, period_code=for_period)
+                print v
+                for o in fact:
+                    print o.fact_value
+                if fact:
+                    fvar[one.code][v] = fact[0].fact_value
+                else:
+                    fvar[one.code][v] = None
+            except Exception as e:
+                print str(e)
+                fvar[one.code][v] = None
+
+        # расчет показателя
+        try:
+            fval[one.code] = formula.evaluate(fvar[one.code])
+        except ZeroDivisionError:
+            fval[one.code] = 0
+        except Exception as e:
+            print "Ошибка при расчете формулы. Ничего не сохраняем. calculate_fact_values(). %s" % str(e)
+            print str(e)
+        else:
+            # сохраняем расчитанные по формуле значения в fact_value KPIFactValue
+            kpi_fact = dict()
+            kpi_fact['kpi_code'] = str(one.code)
+            kpi_fact['period_code'] = str(for_period)
+            kpi_fact['fact_value'] = float(fval[one.code])
+
+            try:
+                save_kpi_fact_value(kpi_fact)
+            except Exception as e:
+                print "Ошибка при обновлении KPI FACT. calculate_fact_values(). %s" % str(e)
+                # return ShowError(e)
+
+    print fvar
+    print fval
+    return fval
 
 
 class Event(Base):

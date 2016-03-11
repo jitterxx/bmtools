@@ -2498,6 +2498,13 @@ class KPIs(object):
             print "Ошибка при сохранении KPI FACT. /kpi/add_fact(). %s" % str(e)
             return ShowError(e)
         else:
+            # пересчет значений по формулам для периодов фактических значений
+            try:
+                BMTObjects.calculate_fact_values(for_kpi=kpi_fact['kpi_code'], for_period=kpi_fact['period_code'])
+            except Exception as e:
+                print "Ошибка при вычислении значений KPI FACT по формулам. /kpi/add_fact2. %s" % str(e)
+                return "error"
+
             # пересчет значений для авто периодов фактических значений
             try:
                 BMTObjects.calculate_auto_fact_values(for_kpi=str(kpi_code))
@@ -2579,7 +2586,6 @@ class KPIs(object):
             try:
                 fact = BMTObjects.get_kpi_fact_values(for_kpi=kpi, period_code=period[0])
                 if fact:
-                    fact.reverse()
                     fact_values[kpi] = fact[0]
                 print "KPI: ", kpi, "Fact: ", fact_values[kpi]
             except Exception as e:
@@ -2650,6 +2656,13 @@ class KPIs(object):
             print "Ошибка при сохранении KPI FACT. /kpi/add_fact2(). %s" % str(e)
             return "error"
         else:
+            # пересчет значений по формулам для периодов фактических значений
+            try:
+                BMTObjects.calculate_fact_values(for_kpi=kpi_fact['kpi_code'], for_period=kpi_fact['period_code'])
+            except Exception as e:
+                print "Ошибка при вычислении значений KPI FACT по формулам. /kpi/add_fact2. %s" % str(e)
+                return "error"
+
             # пересчет значений для авто периодов фактических значений
             try:
                 BMTObjects.calculate_auto_fact_values(for_kpi=str(kpi_code))
@@ -3917,10 +3930,7 @@ class Monitoring(object):
                 # получаем факт для kpi и конкретного периода
                 fact = BMTObjects.get_kpi_fact_values(for_kpi=kpi, period_code=period[0])
                 if fact:
-                    if isinstance(fact, list):
-                        kpi_fact_values[kpi][period[0]] = fact[0]
-                    else:
-                        kpi_fact_values[kpi][period[0]] = fact
+                    kpi_fact_values[kpi][period[0]] = fact[0]
                 else:
                     kpi_fact_values[kpi][period[0]] = None
 
